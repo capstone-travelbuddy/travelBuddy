@@ -5,9 +5,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <title class="m-5">Coffee Shops</title>
     <style>
-        a {
+        img {
+            max-width: 100% !important;
+            height: 300px;
+            display: block;
+        }
+        .image-wrap {
             display: inline-block;
-            height: 80%;
+            max-width: 100%;
+        }
+        .image-wrap span {
+            padding: 5px;
+            border: 1px solid black;
+            display: block;
         }
 
 
@@ -17,14 +27,34 @@
 <div class="all-classes-container">
 <h1 class="p-5">Coffee Shops</h1>
 <div class="row row-cols-1 row-cols-md-4 p-5">
-    <a href="testReviewPage.html">
-        <img src="https://imgur.com/GAVcpGW.jpg" class="img-thumbnail" alt="Merit Coffee Shop"></a>
-    <a href="testReviewPage.html">
-        <img src="https://cdn.businessyab.com/assets/uploads/a4bbebfc5650d1e16307d5492bca4eaa_-united-states-texas-bexar-county-san-antonio-harlandale-bustillos-drive-359-cafe-azteca-210-507-2241.jpg" class="img-thumbnail" alt="Cafe Azteca"></a>
-    <a href="testReviewPage.html">
-        <img src="https://media-cdn.tripadvisor.com/media/photo-s/0f/dd/45/23/king-william-1mi-south.jpg" class="img-thumbnail" alt="Halcyon Southtown"></a>
-    <a href="testReviewPage.html">
-        <img src="https://cdn.shopify.com/s/files/1/0250/3331/0292/files/78E7E6F6-473A-4EE3-88DB-F628E311CA04_1024x1024.png?v=1605495711" class="img-thumbnail" alt="Pulp Coffee"></a>
+    <div class="container-sm">
+        <a class="image-wrap" href="testReviewPage.html">
+            <span>
+                <img src="https://imgur.com/GAVcpGW.jpg" alt="Merit Coffee Shop">
+            </span>
+        </a>
+    </div>
+    <div class="container-sm" >
+        <a class="image-wrap" href="testReviewPage.html">
+            <span>
+        <img src="https://cdn.businessyab.com/assets/uploads/a4bbebfc5650d1e16307d5492bca4eaa_-united-states-texas-bexar-county-san-antonio-harlandale-bustillos-drive-359-cafe-azteca-210-507-2241.jpg" alt="Cafe Azteca">
+            </span>
+        </a>
+    </div>
+    <div class="container-sm">
+        <a class="image-wrap" href="testReviewPage.html">
+            <span>
+                <img src="https://media-cdn.tripadvisor.com/media/photo-s/0f/dd/45/23/king-william-1mi-south.jpg" alt="Halcyon Southtown">
+            </span>
+        </a>
+    </div>
+    <div class="container-sm">
+        <a class="image-wrap" href="testReviewPage.html">
+            <span>
+                <img src="https://cdn.shopify.com/s/files/1/0250/3331/0292/files/78E7E6F6-473A-4EE3-88DB-F628E311CA04_1024x1024.png?v=1605495711" alt="Pulp Coffee">
+            </span>
+        </a>
+    </div>
 </div>
 </div>
 
