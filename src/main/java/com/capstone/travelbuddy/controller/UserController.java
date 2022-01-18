@@ -1,7 +1,28 @@
 package com.capstone.travelbuddy.controller;
 
+import com.capstone.travelbuddy.model.User;
 import com.capstone.travelbuddy.repository.UserRepository;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 public class UserController {
 	private UserRepository userDao;
+
+	public UserController(UserRepository userDao){
+		this.userDao = userDao;
+	}
+
+	@GetMapping("/sign-up")
+	public String showSignupForm(Model model) {
+		model.addAttribute("user", new User());
+		return "users/sign-up";
+	}
+
+	@PostMapping("/sign-up")
+	public String saveUser(@ModelAttribute User user) {
+		userDao.save(user);
+		return "redirect:/login";
+	}
 }
