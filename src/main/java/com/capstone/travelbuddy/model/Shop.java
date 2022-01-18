@@ -1,6 +1,7 @@
 package com.capstone.travelbuddy.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "shops")
@@ -25,8 +26,70 @@ public class Shop {
 	@JoinColumn(name = "city_id")
 	private City city;
 
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
+	@ManyToMany(mappedBy = "likedShops")
+	private Set<User> likes;
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public Image getShopImage() {
+		return shopImage;
+	}
+
+	public void setShopImage(Image shopImage) {
+		this.shopImage = shopImage;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	public Set<User> getLikes() {
+		return likes;
+	}
+
+	public void setLikes(Set<User> likes) {
+		this.likes = likes;
+	}
 }
