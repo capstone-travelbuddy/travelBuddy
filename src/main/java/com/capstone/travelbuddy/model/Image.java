@@ -9,11 +9,11 @@ public class Image {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(nullable = false)
+	@Column(length = 512, nullable = false, unique = true)
 	private String name;
 
-	@Column(nullable = false)
-	private String path;
+	@Lob
+	private byte[] content;
 
 	@ManyToOne
 	@JoinColumn(name = "review_id")
@@ -35,12 +35,12 @@ public class Image {
 		this.name = name;
 	}
 
-	public String getPath() {
-		return path;
+	public byte[] getContent() {
+		return content;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public void setContent(byte[] content) {
+		this.content = content;
 	}
 
 	public Review getReview() {
