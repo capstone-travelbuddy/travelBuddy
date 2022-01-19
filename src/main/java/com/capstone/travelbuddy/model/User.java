@@ -1,7 +1,6 @@
 package com.capstone.travelbuddy.model;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -11,10 +10,10 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(nullable = false)
-	private String name;
+	@Column(unique = true, nullable = false)
+	private String username;
 
-	@Column(nullable = false)
+	@Column(unique = true, nullable = false)
 	private String email;
 
 	@Column(nullable = false)
@@ -33,6 +32,17 @@ public class User {
 			inverseJoinColumns = @JoinColumn(name = "shop_id"))
 	private Set<Shop> likedShops;
 
+	public User() {
+
+	}
+
+	public User(User copy) {
+		id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+		email = copy.email;
+		username = copy.username;
+		password = copy.password;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -41,12 +51,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {
@@ -71,5 +81,21 @@ public class User {
 
 	public void setUserImage(Image userImage) {
 		this.userImage = userImage;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	public Set<Shop> getLikedShops() {
+		return likedShops;
+	}
+
+	public void setLikedShops(Set<Shop> likedShops) {
+		this.likedShops = likedShops;
 	}
 }
