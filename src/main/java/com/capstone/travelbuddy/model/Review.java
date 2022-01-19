@@ -1,7 +1,7 @@
 package com.capstone.travelbuddy.model;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -18,7 +18,7 @@ public class Review {
 	private int rating;
 
 	@Column(nullable = false)
-	private Date created;
+	private LocalDate created;
 
 	@OneToOne
 	private User user;
@@ -50,11 +50,11 @@ public class Review {
 		this.rating = rating;
 	}
 
-	public Date getCreated() {
+	public LocalDate getCreated() {
 		return created;
 	}
 
-	public void setCreated(Date created) {
+	public void setCreated(LocalDate created) {
 		this.created = created;
 	}
 
