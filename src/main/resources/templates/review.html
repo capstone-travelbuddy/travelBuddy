@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Review</title>
+</head>
+<body>
+<h1>Create an account</h1>
+<form th:action="@{/review}" method="POST" th:object="${review}">
+	<label for="rating">Rating</label>
+	<input id="rating" th:field="*{rating}" />
+
+	<label for="description">Review</label>
+	<input id="description" th:field="*{description}" />
+
+	<input value="Submit Review" type="submit" />
+</form>
+</body>
+</html>
