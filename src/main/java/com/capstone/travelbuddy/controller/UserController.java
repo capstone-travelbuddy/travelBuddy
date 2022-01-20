@@ -2,12 +2,11 @@ package com.capstone.travelbuddy.controller;
 
 import com.capstone.travelbuddy.model.User;
 import com.capstone.travelbuddy.repository.UserRepository;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -32,4 +31,28 @@ public class UserController {
 		userDao.save(user);
 		return "redirect:/login";
 	}
+
+//	@GetMapping(path = "/profile/edit/{id}")
+//	public String editProfile(@PathVariable long id, Model model){
+//		Profile editProfile = userDao.getById(id);
+//
+//		model.addAttribute("profileToEdit", editProfile);
+//
+//		return "profile/edit";
+//	}
+//
+//	@PostMapping("/profile/edit")
+//	public String saveEditProfile(@RequestParam(name="profileName") String profileName, @RequestParam(name="profileEmail") String profileEmail, long id){
+//
+//		Profile profileToEdit = userDao.getById(id);
+//		profileToEdit.setName(profileName);
+//		profileToEdit.setEmail(profileEmail);
+//
+//		userDao.save(profileToEdit);
+//
+//		return "redirect:/profile";
+//	}
 }
+
+}
+ 
