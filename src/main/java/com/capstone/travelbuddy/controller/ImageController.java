@@ -3,8 +3,10 @@ package com.capstone.travelbuddy.controller;
 import com.capstone.travelbuddy.model.Image;
 import com.capstone.travelbuddy.repository.ImageRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,8 +39,15 @@ public class ImageController {
 
 		imageDao.save(image);
 
-		redirectAttributes.addFlashAttribute("message", "Upload successful!");
+		redirectAttributes.addAttribute("message", "Upload successful!");
 
-		return "upload";
+		return "redirect:/upload";
+	}
+
+	@GetMapping(value = "images/{id}")
+	public String helloWorld(@PathVariable int id, Model model){
+		Image image = imageDao.getById(id);
+		model.addAttribute("image", image);
+		return "images";
 	}
 }

@@ -1,5 +1,6 @@
 package com.capstone.travelbuddy.model;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import javax.persistence.*;
 
 @Entity
@@ -49,5 +50,10 @@ public class Image {
 
 	public void setReview(Review review) {
 		this.review = review;
+	}
+
+	public String generateBase64Image()
+	{
+		return Base64.encodeBase64String(this.getContent());
 	}
 }
