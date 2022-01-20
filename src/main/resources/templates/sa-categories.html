@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -32,6 +32,7 @@
     </style>
 </head>
 <body>
+<nav th:insert="fragments/navbar"></nav>
 <div class="container">
     <div class="card float-left">
         <div class="row ">
@@ -46,7 +47,7 @@
                     <br>
                     <br>
                     <br>
-                    <a href="coffee.html" class="btn btn-primary btn-sm">GO LOCAL!</a>
+                    <a th:href="coffee" class="btn btn-primary btn-sm">GO LOCAL!</a>
                 </div>
             </div>
             <div class="col-sm-5">
@@ -74,7 +75,7 @@
                         experiences. </p>
                     <br>
                     <br>
-                    <a href="brews.html" class="btn btn-primary btn-sm float-right">GO LOCAL!</a>
+                    <a th:href="brews" class="btn btn-primary btn-sm float-right">GO LOCAL!</a>
                 </div>
             </div>
         </div>
@@ -94,7 +95,7 @@
                         ready to eat!</p>
                     <br>
                     <br>
-                    <a href="eats.html" class="btn btn-primary btn-sm">GO LOCAL!</a>
+                    <a th:href="eats" class="btn btn-primary btn-sm">GO LOCAL!</a>
                 </div>
             </div>
             <div class="col-sm-5">

@@ -11,4 +11,29 @@ public class CityController {
 		return "cities";
 	}
 
+	@GetMapping("/category")
+	public String getCategoryView(){
+		return "sa-categories";
+	}
+
+	@GetMapping("/coffee")
+	public String getCoffeeView(){
+		return "coffee";
+	}
+
+	@GetMapping("/brews")
+	public String getBrewsView(){
+		return "brews";
+	}
+
+	@GetMapping("/eats")
+	public String getEatsView(){
+		return "eats";
+	}
+
+	@GetMapping("/shop")
+	public String getShopView(){
+		return "shop";
+	}
+
 }
