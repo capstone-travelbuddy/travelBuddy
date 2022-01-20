@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Images</title>
+</head>
+<body>
+<div>
+	<p>
+		<img th:src="@{'data:image/jpeg;base64,'+${image.generateBase64Image()}}" />
+	</p>
+</div>
+</body>
+</html>
