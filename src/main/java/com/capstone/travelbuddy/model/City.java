@@ -16,7 +16,7 @@ public class City {
 	@Column(nullable = false)
 	private String state;
 
-	@Column(nullable = false)
+	@Column(nullable = false, length = 512)
 	private String description;
 
 	@OneToOne
