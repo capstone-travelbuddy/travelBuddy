@@ -16,8 +16,8 @@ public class City {
 	@Column(nullable = false)
 	private String state;
 
-	@Column(nullable = false)
-	private int zipcode;
+	@Column(nullable = false, length = 512)
+	private String description;
 
 	@OneToOne
 	private Image cityImage;
@@ -49,12 +49,12 @@ public class City {
 		this.state = state;
 	}
 
-	public int getZipcode() {
-		return zipcode;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setZipcode(int zipcode) {
-		this.zipcode = zipcode;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Image getCityImage() {

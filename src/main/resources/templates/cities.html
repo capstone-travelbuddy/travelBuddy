@@ -1,175 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Poppins', sans-serif
-    }
-
-    body {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center
-    }
-
-    .container {
-        transform-style: preserve-3d
-    }
-
-    .container .box {
-        position: relative;
-        width: 300px;
-        height: 300px;
-        margin: 20px;
-        transform-style: preserve-3d;
-        perspective: 1000px;
-        cursor: pointer
-    }
-
-    .container .box .body {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transform-style: preserve-3d;
-        transition: 0.9s ease
-    }
-
-    .container .box .body .imgContainer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transform-style: preserve-3d
-    }
-
-    .container .box .body .imgContainer img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover
-    }
-
-    .container .box .body .content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #333;
-        backface-visibility: hidden;
-        transform-style: preserve-3d;
-        transform: rotateY(180deg)
-    }
-
-    .container .box:hover .body {
-        transform: rotateY(180deg)
-    }
-
-    .container .box .body .content div {
-        transform-style: preserve-3d;
-        padding: 20px;
-        background: linear-gradient(45deg, #FE0061, #FFEB3B);
-        transform: translateZ(100px)
-    }
-
-    .container .box .body .content div h3 {
-        letter-spacing: 1px
-    }
-</style>
+<head th:insert="fragments/header">
+	<meta charset="UTF-8">
+	<title>Destinations</title>
 </head>
 <body>
-<div class="container d-flex align-items-center justify-content-center flex-wrap">
-    <div class="box">
-        <div class="body">
-            <div class="imgContainer"> <img src="https://austin.com/wp-content/uploads/2020/08/Austin-Lady-Bird-Lake-scaled-e1598026929283.jpeg.jpeg" alt=""> </div>
-            <div class="content d-flex flex-column align-items-center justify-content-center">
-                <div>
-                    <h3 class="text-white fs-5 text-center">AUSTIN</h3>
-                    <p class="fs-6 text-white">Austin is located in central Texas, at the boundary between the Texas Hill Country and the prairies of East Texas. Austin has abundant greenery and forestation with lakes and streams, and is surrounded by state parks. Austin is well-known for its support of freedom of expression. There is also active support of the arts and film, and over 200 live music venues.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="box">
-        <div class="body">
-            <div class="imgContainer"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl_QEd-Vbjc&#45;&#45;fCciZgMnXQmXiXOuc3mHi1w&usqp=CAU" alt=""> </div>
-            <div class="content d-flex flex-column align-items-center justify-content-center">
-                <div>
-                    <a style="text-decoration:none" href="sa-categories.html">
-                    <h3 class="text-white fs-5 text-center">SAN ANTONIO</h3>
-                    <p class="fs-6 text-white">San Antonio is a major city in south-central Texas with a rich colonial heritage. The Alamo, an 18th-century Spanish mission preserved as a museum, marks an infamous 1836 battle for Texan independence from Mexico. Following the San Antonio River, the miles-long River Walk is a landmark pedestrian promenade lined with cafes and shops.</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="box">
-        <div class="body">
-            <div class="imgContainer"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj2wuHnHVOw3VSowMOPAJgvnjTQ2olDC4cvw&usqp=CAU" alt=""> </div>
-            <div class="content d-flex flex-column align-items-center justify-content-center">
-                <div>
-                    <h3 class="text-white fs-5 text-center">DALLAS</h3>
-                    <p class="fs-6 text-white">As the ninth-largest city and part of the fourth-largest metropolitan area in the nation, Dallas covers approximately 343 square miles and has a population of 1,241,162. The ultra modern and sophisticated city attracts worldwide travelers, making the area the No. 1 visitor and leisure destination in Texas. provident ex.<br><br></p>
-                </div>
-            </div>
-        </div>
-    </div>
+<nav th:insert="fragments/navbar"></nav>
+<div class="container d-flex align-items-center justify-content-center flex-wrap" th:each="city : ${cities}">
+	<div class="box">
+		<div class="body">
+			<div class="imgContainer">
+				<img th:src="@{'data:image/jpeg;base64,'+${city.cityImage.generateBase64Image()}}" alt="City Photo"/>
+			</div>
+			<div class="content d-flex flex-column align-items-center justify-content-center">
+				<div>
+					<a style="text-decoration:none" th:href="category">
+					<h3 class="text-white fs-5 text-center" th:text="${city.name}"></h3>
+					<p class="fs-6 text-white" th:text="${city.description}"></p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
-<!--<h1>Welcome to Texas! We're glad you're here!</h1>-->
-<!--<h1> Choose A City:</h1>-->
-<!--<div class="row row-cols-1 row-cols-md-3 g-4">-->
-<!--    <div class="col">-->
-<!--        <div class="card h-100">-->
-<!--            <img src="https://austin.com/wp-content/uploads/2020/08/Austin-Lady-Bird-Lake-scaled-e1598026929283.jpeg.jpeg" class="card-img-top" alt="...">-->
-<!--            <div class="austin-body">-->
-<!--                <h5 class="austin-title">Austin</h5>-->
-<!--                <p class="austin-text">Austin is located in central Texas, at the boundary between the Texas Hill Country and the prairies of East Texas. Austin has abundant greenery and forestation with lakes and streams, and is surrounded by state parks. Austin is well-known for its support of freedom of expression. There is also active support of the arts and film, and over 200 live music venues.</p>-->
-<!--            </div>-->
-<!--            <div class="card-footer">-->
-<!--                <a href="#" class="btn btn-primary">Go Visit Austin</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="col">-->
-<!--        <div class="card h-100">-->
-<!--            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl_QEd-Vbjc&#45;&#45;fCciZgMnXQmXiXOuc3mHi1w&usqp=CAU" class="card-img-top" alt="...">-->
-<!--            <div class="sa-body">-->
-<!--                <h5 class="sa-title">San Antonio</h5>-->
-<!--                <p class="sa-text">San Antonio is a major city in south-central Texas with a rich colonial heritage. The Alamo, an 18th-century Spanish mission preserved as a museum, marks an infamous 1836 battle for Texan independence from Mexico. Following the San Antonio River, the miles-long River Walk is a landmark pedestrian promenade lined with cafes and shops. </p>-->
-<!--            </div>-->
-<!--            <div class="card-footer">-->
-<!--                <a href="sa-categories.html" class="btn btn-primary">Go Visit San Antonio</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="col">-->
-<!--        <div class="card h-100">-->
-<!--            <img src="	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj2wuHnHVOw3VSowMOPAJgvnjTQ2olDC4cvw&usqp=CAU" class="card-img-top" alt="...">-->
-<!--            <div class="dallas-body">-->
-<!--                <h5 class="dallas-title">Dallas</h5>-->
-<!--                <p class="dallas-text">As the ninth-largest city and part of the fourth-largest metropolitan area in the nation, Dallas covers approximately 343 square miles and has a population of 1,241,162. The ultra modern and sophisticated city attracts worldwide travelers, making the area the No. 1 visitor and leisure destination in Texas.</p>-->
-<!--            </div>-->
-<!--            <div class="card-footer">-->
-<!--                <a href="#" class="btn btn-primary">Go Visit Dallas</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
 </body>
 </html>

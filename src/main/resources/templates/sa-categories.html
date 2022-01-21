@@ -1,59 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <style>
+
+        .card-block {
+            font-size: 1em;
+            position: relative;
+            margin: 0;
+            padding: 1em;
+            border: none;
+            border-top: 1px solid rgba(34, 36, 38, .1);
+            box-shadow: none;
+        }
+
+        .card {
+            height: 350px;
+            font-size: 1em;
+            overflow: hidden;
+            /*padding: 5;*/
+            border: none;
+            border-radius: .28571429rem;
+            box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+            margin-top: 20px;
+        }
 
     </style>
 </head>
 <body>
-
-<h1>Welcome to San Antonio!</h1>
-<p> Help our city stand out! Local businesses add to the character and success of the community you’re visiting.  Not only is it an economic advantage for the town, but you foster a happy and unique experience for you, your friends and family! In comparison to larger chain stores, local businesses generally recycle money back into the local economy. Likewise, when visitors shop at local businesses those dollars stay within the local economy. All of these aspects help with the economic development within our city.</p>
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-        <div class="card h-100">
-            <img src="https://s3-media0.fl.yelpcdn.com/bphoto/BdhqhBV6hZbiVTXLJPzpaA/1000s.jpg" class="card-img-top" alt="...">
-            <div class="coffee-body">
-                <h5 class="coffee-title">Local Coffee Shops</h5>
-                <p class="coffee-text">Coffee is booming in San Antonio. While the family at What’s Brewing? Coffee Roasters has been roasting in the Alamo City since 1981, it’s only been in recent years that locals have had their choice of high-quality roasts from dozens of local roasters and cafes.</p>
+<nav th:insert="fragments/navbar"></nav>
+<div class="container">
+    <div class="card float-left">
+        <div class="row ">
+            <div class="col-sm-7">
+                <div class="card-block">
+                    <h4 class="coffee-title">LOCAL COFFEE SHOPS</h4>
+                    <br>
+                    <br>
+                    <p class="coffee-text">Coffee is booming in San Antonio. While the family at What’s Brewing? Coffee
+                        Roasters has been roasting in the Alamo City since 1981, it’s only been in recent years that
+                        locals have had their choice of high-quality roasts from dozens of local roasters and cafes.</p>
+                    <br>
+                    <br>
+                    <br>
+                    <a th:href="coffee" class="btn btn-primary btn-sm">GO LOCAL!</a>
+                </div>
             </div>
-            <div class="card-footer">
-                <a href="Coffee.html" class="btn btn-primary">Check Out Local Coffee Shops</a>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100">
-            <img src="https://s3-media0.fl.yelpcdn.com/bphoto/un6jL26GpO_F2_d8-_oJuQ/1000s.jpg" class="card-img-top" alt="...">
-            <div class="brews-body">
-                <h5 class="brews-title">Local Breweries</h5>
-                <p class="brews-text">San Antonio’s landscape is a mecca for micro-brew fans and is only getting better. For those looking at what the city has to offer, taking a weekend to map out a craft beer jaunt from the Blue Star Arts Complex to Pearl Brewery, provides a number of amazing craft experiences.  </p>
-            </div>
-            <div class="card-footer">
-                <a href="brews.html" class="btn btn-primary">Check Out Local Breweries</a>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100">
-            <img src="https://s3-media0.fl.yelpcdn.com/bphoto/zgCsl8hVmq2ycRrBIglZNA/1000s.jpg" class="card-img-top" alt="...">
-            <div class="eats-body">
-                <h5 class="eats-title">Local Eateries</h5>
-                <p class="eats-text">Our restaurants’ culinary traditions blend with new and traditional homegrown talent for a food and drink scene bursting with flavor and fun. We are serving up more than just delicious food at our restaurants. We are sharing experiences, traditions and culture – are you ready to eat!</p>
-            </div>
-            <div class="card-footer">
-                <a href="eats.html" class="btn btn-primary">Check Out Local Eateries</a>
+            <div class="col-sm-5">
+                <img class="d-block w-100"
+                     src="https://s3-media0.fl.yelpcdn.com/bphoto/BdhqhBV6hZbiVTXLJPzpaA/1000s.jpg" alt="local coffee">
             </div>
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="card float-right">
+        <div class="row">
+            <div class="col-sm-5">
+                <img class="d-block w-100"
+                     src="https://s3-media0.fl.yelpcdn.com/bphoto/un6jL26GpO_F2_d8-_oJuQ/1000s.jpg" alt="local brews">
+            </div>
+            <div class="col-sm-7">
+                <div class="card-block">
+                    <h4 class="brews-title">LOCAL BREWERIES</h4>
+                    <br>
+                    <br>
+                    <p class="brews-text">San Antonio’s landscape is a mecca for micro-brew fans and is only getting
+                        better. For those looking at what the city has to offer, taking a weekend to map out a craft
+                        beer jaunt from the Blue Star Arts Complex to Pearl Brewery, provides a number of amazing craft
+                        experiences. </p>
+                    <br>
+                    <br>
+                    <a th:href="brews" class="btn btn-primary btn-sm float-right">GO LOCAL!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="card float-left">
+        <div class="row ">
+            <div class="col-sm-7">
+                <div class="card-block">
+                    <h4 class="eats-title">LOCAL EATERIES</h4>
+                    <br>
+                    <br>
+                    <p class="eats-text">Our restaurants’ culinary traditions blend with new and traditional homegrown
+                        talent for a food and drink scene bursting with flavor and fun. We are serving up more than just
+                        delicious food at our restaurants. We are sharing experiences, traditions and culture – are you
+                        ready to eat!</p>
+                    <br>
+                    <br>
+                    <a th:href="eats" class="btn btn-primary btn-sm">GO LOCAL!</a>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <img class="d-block w-100"
+                     src="https://s3-media0.fl.yelpcdn.com/bphoto/zgCsl8hVmq2ycRrBIglZNA/1000s.jpg" alt="local eats">
+            </div>
+        </div>
+    </div>
+</div>
+<br>
 </body>
 </html>

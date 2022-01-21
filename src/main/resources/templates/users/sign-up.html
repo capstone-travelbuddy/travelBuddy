@@ -1,52 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign-Up Page</title>
-
+<head th:insert="fragments/header">
+    <meta charset="UTF-8" />
+    <title>Sign up</title>
 </head>
 <body>
+<nav th:insert="fragments/navbar"></nav>
+<h1>Create an account</h1>
+<form th:action="@{/sign-up}" method="POST" th:object="${user}">
+    <label for="name">Name</label>
+    <input id="name" th:field="*{username}" />
 
-            <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="registerModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                            <div class="modal-body">
-                                <form th:action="@{/sign-up}" method="POST" th:object="${user}">
-                                    <label for="username">Username</label>
-                                    <input id="username" th:field="*{name}" />
+    <label for="email">Email</label>
+    <input id="email" th:field="*{email}" />
 
-                                    <label for="email">Email</label>
-                                    <input id="email" th:field="*{email}" />
+    <label for="password">Password</label>
+    <input id="password" type="password" th:field="*{password}" />
 
-                                    <label for="password">Password</label>
-                                    <input id="password" type="password" th:field="*{password}" />
-
-                                    <input value="Sign me up!" type="submit" />
-                                </form>
-                            </div>
-                    </div>
-                </div>
-            </div>
-
-<!--            <script>-->
-<!--                var modal = document.getElementById('registerModal');-->
-<!--                var btn = document.getElementById("myBtn");-->
-<!--                var span = document.getElementsByClassName("close")[0];-->
-<!--                btn.onclick = function() {-->
-<!--                    modal.style.display = "block";-->
-<!--                }-->
-<!--                span.onclick = function() {-->
-<!--                    modal.style.display = "none";-->
-<!--                }-->
-<!--                window.onclick = function(event) {-->
-<!--                    if (event.target === modal) {-->
-<!--                        modal.style.display = "none";-->
-<!--                    }-->
-<!--                }-->
-<!--            </script>-->
+    <input value="Sign me up!" type="submit" />
+</form>
 </body>
 </html>
