@@ -20,44 +20,50 @@ public class CityController {
 	private ShopRepository shopDao;
 	private CategoryRepository categoryDao;
 
-	public CityController(CityRepository cityDao, ShopRepository shopDao, CategoryRepository categoryDao){
+	public CityController(CityRepository cityDao, ShopRepository shopDao, CategoryRepository categoryDao) {
 		this.cityDao = cityDao;
 		this.shopDao = shopDao;
 		this.categoryDao = categoryDao;
 	}
 
 	@GetMapping("/destinations")
-	public String getCitiesView(Model model){
+	public String getCitiesView(Model model) {
 		model.addAttribute("cities", cityDao.findAll());
 		return "cities";
 	}
 
 	@GetMapping("/category/{id}")
-	public String getCategoryView(@PathVariable int id, Model model){
+	public String getCategoryView(@PathVariable int id, Model model) {
 		model.addAttribute("city", cityDao.getById(id));
 		model.addAttribute("categories", categoryDao.findAll());
 
 		return "sa-categories";
 	}
 
-	@GetMapping("category/coffee/{id}")
-	public String getCoffeeView(@PathVariable int id, Model model){
-		model.addAttribute("shops", shopDao.getShopsByCityId(id));
+	@GetMapping("category/{categoryType}/{id}")
+	public String getCoffeeView(@PathVariable int id, @PathVariable String categoryType, Model model) {
+		if (categoryType.equals("brews")){
+			model.addAttribute("shops", shopDao.getShopsByCityIdAndCategoryType(id, categoryType));
+			return "brews";
+		} else if (categoryType.equals("eats")){
+			return "eats";
+		}
+		model.addAttribute("shops", shopDao.getShopsByCityIdAndCategoryType(id, categoryType));
 		return "coffee";
 	}
 
-	@GetMapping("category/brews/{id}")
-	public String getBrewsView(@PathVariable int id){
-		return "brews";
-	}
-
-	@GetMapping("category/eats/{id}")
-	public String getEatsView(@PathVariable int id){
-		return "eats";
-	}
+//	@GetMapping("category/brews/{id}")
+//	public String getBrewsView(@PathVariable int id) {
+//		return "brews";
+//	}
+//
+//	@GetMapping("category/eats/{id}")
+//	public String getEatsView(@PathVariable int id) {
+//		return "eats";
+//	}
 
 	@GetMapping("category/coffee/shop/{id}")
-	public String getShopView(@PathVariable int id, Model model){
+	public String getShopView(@PathVariable int id, Model model) {
 //		Shop shop = shopDao.findById(id);
 //		model.addAttribute("shop", shop);
 		System.out.println(id);
@@ -65,7 +71,7 @@ public class CityController {
 	}
 
 	@GetMapping("/create/review")
-	public String getCreateReview(){
+	public String getCreateReview() {
 		return "leaveReview";
 	}
 
