@@ -16,6 +16,9 @@ public class Shop {
 
 	private String phoneNumber;
 
+	@Column(nullable = false, length = 512)
+	private String description;
+
 	@OneToOne
 	private Image shopImage;
 
@@ -59,6 +62,14 @@ public class Shop {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Image getShopImage() {
