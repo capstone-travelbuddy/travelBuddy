@@ -6,18 +6,21 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-<div class="container d-flex align-items-center justify-content-center flex-wrap" th:each="city : ${cities}">
-	<div class="box">
-		<div class="body">
-			<div class="imgContainer">
-				<img th:src="@{'data:image/jpeg;base64,'+${city.cityImage.generateBase64Image()}}" alt="City Photo"/>
-			</div>
-			<div class="content d-flex flex-column align-items-center justify-content-center">
-				<div>
-					<a style="text-decoration:none" th:href="category">
-					<h3 class="text-white fs-5 text-center" th:text="${city.name}"></h3>
-					<p class="fs-6 text-white" th:text="${city.description}"></p>
-					</a>
+<div class="bernie">
+	<div class="container d-flex align-items-center justify-content-center flex-wrap" th:each="city : ${cities}">
+		<div class="box">
+			<div class="body">
+				<div class="imgContainer">
+					<img th:src="@{'data:image/jpeg;base64,'+${city.cityImage.generateBase64Image()}}"
+						 alt="City Photo"/>
+				</div>
+				<div class="content d-flex flex-column align-items-center justify-content-center">
+					<div>
+						<a style="text-decoration:none" th:href="category">
+							<h3 class="text-white fs-5 text-center" th:text="${city.name}"></h3>
+							<p class="fs-6 text-white" th:text="${city.description}"></p>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
