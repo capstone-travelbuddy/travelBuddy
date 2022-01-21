@@ -10,67 +10,38 @@
     <h1>Travel Buddy</h1>
 </div>
 <div class = "container">
-<div class="row">
-    <div class="col-sm-4 offset-sm-8 mt-5">
-        <div class="card shadow rounded">
-            <form th:action="@{/login}" method="post">
-                <div class="card-body">
-                    <div class="form-group mt-2">
-                        <input type="text" class="form-control" placeholder="Username" name="username">
-                    </div>
+        <div class="row">
+            <div class="col-sm-4 offset-sm-8 mt-5">
+                <div class="card shadow rounded">
+                    <form th:action="@{/login}" method="post">
+                        <div class="card-body">
+                            <div class="form-group mt-2">
+                                <input type="text" class="form-control" placeholder="Username" name="username">
+                            </div>
 
-                    <div class="form-group mt-2">
-                        <input type="password" class="form-control" placeholder="Password" name="password">
-                    </div>
+                            <div class="form-group mt-2">
+                                <input type="password" class="form-control" placeholder="Password" name="password">
+                            </div>
+                            <div class="d-grid gap-2 text-center mt-2">
+                                <button type="submit" class="btn btn-primary text-center" value="Submit">Login</button>
+                            </div>
+                            <div class="text-center mt-1">
+                                <a href="#" style="text-decoration: none; color: black">Forgot password?</a>
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                    <!--Button for registration Modal-->
+                    <a type="button" class="btn m-2 btn-grad2" id="myBtn" data-toggle="modal" th:href="@{/sign-up}" data-target="#registerModal">Create New User</a>
+<!--                    <th:block th:replace="sign-up::registerModal"></th:block>-->
 
-                    <div class="d-grid gap-2 text-center mt-2">
-                    <button type="submit" class="btn btn-primary text-center" value="Submit">Login</button>
-                    </div>
-                    <div class="text-center mt-1">
-                        <a href="#" style="text-decoration: none; color: black">Forgot password?</a>
-                    </div>
                 </div>
-            </form>
-            <hr>
-            <!--Button for registration Modal-->
-            <button type="button" class="btn m-2 btn-grad2" data-toggle="modal" data-target="registerModal">Create New User</button>
-
-            <!--Modal-->
-<!--            <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">-->
-<!--                <div class="modal-dialog">-->
-<!--                    <div class="modal-content">-->
-<!--                        <div class="modal-header">-->
-<!--                            <h5 class="modal-title" id="registerModalLabel">Modal title</h5>-->
-<!--                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--                        </div>-->
-<!--                        <div class="modal-body">-->
-<!--                            <form th:action="@{/sign-up}" method="POST" th:object="${user}">-->
-<!--                                <label for="username">Username</label>-->
-<!--                                <input id="username" th:field="*{username}" />-->
-
-<!--                                <label for="email">Email</label>-->
-<!--                                <input id="email" th:field="*{email}" />-->
-
-<!--                                <label for="password">Password</label>-->
-<!--                                <input id="password" type="password" th:field="*{password}" />-->
-
-<!--                                <input value="Sign me up!" type="submit" />-->
-<!--                            </form>-->
-<!--                        </div>-->
-<!--                        <div class="modal-footer">-->
-<!--                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--                            <button type="button" class="btn btn-primary">Save changes</button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-
+            </div>
         </div>
-    </div>
 </div>
-</div>
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
