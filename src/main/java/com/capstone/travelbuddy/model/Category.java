@@ -12,7 +12,7 @@ public class Category {
 	@Column(nullable = false)
 	private String name;
 
-	@Column(nullable = false)
+	@Column(nullable = false, length = 512)
 	private String description;
 
 	public int getId() {
