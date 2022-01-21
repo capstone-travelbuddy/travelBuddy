@@ -18,6 +18,21 @@ VALUES ('Coffee is booming in San Antonio. While the family at What’s Brewing?
        ('Our restaurants’ culinary traditions blend with new and traditional homegrown talent for a food and drink scene bursting with flavor and fun. We are serving up more than just delicious food at our restaurants. We are sharing experiences, traditions and culture – are you ready to eat!',
         'eatery');
 
+INSERT INTO category(name, description)
+VALUES ('coffee shop', 'coffee shop'),
+       ('brewery', 'brewery'),
+       ('eatery', 'eatery');
+
+INSERT INTO shops(name, category_id, city_id, shop_image_id, description)
+VALUES ('Merit Coffee Co.', 1, 1, 1,
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.'),
+       ('Cafe Azteca', 1, 1, 1,
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.'),
+       ('Halcyon Southtown', 1, 1, 1,
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.'),
+       ('La Panaderia', 1, 1, 1,
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.');
+
 #     https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl_QEd-Vbjc&#45;&#45;fCciZgMnXQmXiXOuc3mHi1w&usqp=CAU
 #     https://austin.com/wp-content/uploads/2020/08/Austin-Lady-Bird-Lake-scaled-e1598026929283.jpeg.jpeg
 #     https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj2wuHnHVOw3VSowMOPAJgvnjTQ2olDC4cvw&usqp=CAU
