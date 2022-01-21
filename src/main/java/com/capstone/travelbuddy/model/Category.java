@@ -12,8 +12,14 @@ public class Category {
 	@Column(nullable = false)
 	private String name;
 
+	@Column(nullable = false)
+	private String type;
+
 	@Column(nullable = false, length = 512)
 	private String description;
+
+	@OneToOne
+	private Image categoryImage;
 
 	public int getId() {
 		return id;
@@ -31,11 +37,27 @@ public class Category {
 		this.name = name;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Image getCategoryImage() {
+		return categoryImage;
+	}
+
+	public void setCategoryImage(Image categoryImage) {
+		this.categoryImage = categoryImage;
 	}
 }

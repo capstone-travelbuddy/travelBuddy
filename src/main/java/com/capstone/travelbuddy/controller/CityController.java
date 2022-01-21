@@ -1,6 +1,8 @@
 package com.capstone.travelbuddy.controller;
 
+import com.capstone.travelbuddy.model.City;
 import com.capstone.travelbuddy.model.Shop;
+import com.capstone.travelbuddy.repository.CategoryRepository;
 import com.capstone.travelbuddy.repository.CityRepository;
 import com.capstone.travelbuddy.repository.ShopRepository;
 import org.springframework.stereotype.Controller;
@@ -16,10 +18,12 @@ public class CityController {
 
 	private CityRepository cityDao;
 	private ShopRepository shopDao;
+	private CategoryRepository categoryDao;
 
-	public CityController(CityRepository cityDao, ShopRepository shopDao){
+	public CityController(CityRepository cityDao, ShopRepository shopDao, CategoryRepository categoryDao){
 		this.cityDao = cityDao;
 		this.shopDao = shopDao;
+		this.categoryDao = categoryDao;
 	}
 
 	@GetMapping("/destinations")
@@ -28,28 +32,31 @@ public class CityController {
 		return "cities";
 	}
 
-	@GetMapping("/category")
-	public String getCategoryView(){
+	@GetMapping("/category/{id}")
+	public String getCategoryView(@PathVariable int id, Model model){
+		model.addAttribute("city", cityDao.getById(id));
+		model.addAttribute("categories", categoryDao.findAll());
+
 		return "sa-categories";
 	}
 
-	@GetMapping("/coffee")
-	public String getCoffeeView(Model model){
-		model.addAttribute("shops", shopDao.getShopsByCityId(1));
+	@GetMapping("category/coffee/{id}")
+	public String getCoffeeView(@PathVariable int id, Model model){
+		model.addAttribute("shops", shopDao.getShopsByCityId(id));
 		return "coffee";
 	}
 
-	@GetMapping("/brews")
-	public String getBrewsView(){
+	@GetMapping("category/brews/{id}")
+	public String getBrewsView(@PathVariable int id){
 		return "brews";
 	}
 
-	@GetMapping("/eats")
-	public String getEatsView(){
+	@GetMapping("category/eats/{id}")
+	public String getEatsView(@PathVariable int id){
 		return "eats";
 	}
 
-	@GetMapping("/shop/{id}")
+	@GetMapping("category/coffee/shop/{id}")
 	public String getShopView(@PathVariable int id, Model model){
 //		Shop shop = shopDao.findById(id);
 //		model.addAttribute("shop", shop);
