@@ -1,0 +1,226 @@
+
+/*.navbar {*/
+/*    width:100%;*/
+/*    overflow: hidden;*/
+/*    height: 40px;*/
+/*    line-height: 40px;*/
+/*    background: #fff;*/
+/*    border-bottom: 2px solid black;*/
+/*}*/
+
+.city-card-item {
+    display: block;
+    width: 100%;
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+    z-index: 9;
+    bottom: 0;
+    margin-bottom: 30px;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+    -ms-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+    -o-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.city-card-item figure {
+    height: 240px;
+    overflow: hidden;
+    z-index: 12;
+    position: relative;
+}
+
+.city-card-item figure .overlay {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    -webkit-transition: 0.7s;
+    -o-transition: 0.7s;
+    transition: 0.7s;
+}
+
+.city-card-item figure .overlay i {
+    z-index: 12;
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    margin-left: -15px;
+    margin-top: -45px;
+    top: 50%;
+    left: 50%;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.city-card-item img {
+    z-index: 8;
+    opacity: 1;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.city-card-item .city-text {
+    padding: 0px 10px 10px 20px;
+    text-align: center;
+}
+
+.city-card-item .city-text h2, .city-card-item .city-text span {
+    text-decoration: none !important;
+}
+
+.city-card-item .city-text h2 {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 0 10px 0;
+    color: #09C6AB;
+}
+
+.city-card-item .city-text span {
+    color: #b3b3b3;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.city-card-item .city-text p {
+    color: #000;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.city-card-item .city-text span.btn {
+    color: #fff !important;
+    opacity: 1;
+    visibility: visible;
+    bottom: 0;
+    background: #1a1a1a;
+    border: 2px solid #1a1a1a !important;
+    position: relative;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.city-card-item:hover, .city-card-item:focus {
+    bottom: 7px;
+    text-decoration: none;
+    -webkit-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+    -ms-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+    -o-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+}
+
+.city-card-item:hover img, .city-card-item:focus img {
+    -webkot-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.city-card-item:hover span.btn, .city-card-item:focus span.btn {
+    opacity: 1;
+    visibility: visible;
+    bottom: 0px;
+    border: 2px solid #0adec0 !important;
+    background: #0adec0 !important;
+}
+
+.city-card-item:hover figure .overlay, .city-card-item:focus figure .overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.city-card-item:hover figure .overlay i, .city-card-item:focus figure .overlay i {
+    margin-top: -15px;
+}
+
+.city-card-item:hover h2, .city-card-item:hover span, .city-card-item:focus h2, .city-card-item:focus span {
+    text-decoration: none !important;
+}
+
+/*Profile Cards*/
+
+body {
+    background: #ddd;
+}
+
+.profile-area {
+    padding: 80px 0;
+}
+
+.card {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.img1 img {
+    height: 200px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    width: 100%;
+}
+
+.img2 img {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 7px solid #fff;
+    margin-top: -80px;
+}
+
+.card:hover .img2 img {
+    border-color: darkcyan;
+    transition: .7s;
+}
+
+.main-text {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.main-text h2 {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 20px;
+    margin: 0 0 20px;
+}
+
+.main-text p {
+    font-size: 16px;
+    padding: 0 35px;
+}
+
+.socials {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.socials i {
+    font-size: 20px;
+    color: darkcyan;
+    padding: 0 10px;
+}
