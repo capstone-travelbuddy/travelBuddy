@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--<head th:insert="fragments/header">-->
+<head>
+
 <head th:insert="fragments/header">
+
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +17,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <link th:href="@{/styles/css/landingpage.css}" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="topnav" id="myTopnav">
+    <a href="#" class="active">Home</a>
+
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
     <link th:href="@{../static/styles/css/landingpage.css}" rel="stylesheet"/>
@@ -343,6 +357,7 @@
 <body>
 <div class="topnav" id="myTopnav">
     <a href="#home" class="active">Home</a>
+
     <a href="/sign-up">Register</a>
     <a href="/login">Login</a>
     <a href="/logout">Logout</a>
@@ -350,7 +365,11 @@
 </div>
 <header id="travelbuddy-header" class="img-responsive" role="banner">
     <video style="width: 100%; height: auto;" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+
+        <source th:src="@{/video/travel-buddy.mp4}" type="video/mp4">
+
         <source src="travel-buddy.mp4" type="video/mp4">
+
     </video>
 
 </header>
@@ -428,7 +447,11 @@
                     <div class="img1"><img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdzg_C6N8KYOfPqgZXRAXGM3x3whzDgGT1EQ&usqp=CAU"
                             alt=""></div>
+
+                    <div class="img2"><img th:src="@{/img/Bernie Esquivel.jpg}" alt="Bernie Image"></div>
+
                     <div class="img2"><img src="../static/img/Bernie Esquivel.jpg" alt="Bernie Image"></div>
+
                     <div class="main-text">
                         <h2>Bernie Esquivel</h2>
                         <h4>Full Stack Web Developer</h4>
@@ -445,7 +468,11 @@
                     <div class="img1"><img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkvNF7YU4zv4nD9dYUycXAcHO8S4lV0i1zUQ&usqp=CAU"
                             alt=""></div>
+
+                    <div class="img2"><img th:src="@{/img/Adamina.png}" alt="Adamina Image"></div>
+
                     <div class="img2"><img src="../static/img/Adamina.png" alt="Adamina Image"></div>
+
                     <div class="main-text">
                         <h2>Adamina Flores</h2>
                         <h4>Full Stack Web Developer</h4>
@@ -462,7 +489,11 @@
                     <div class="img1"><img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrGZ2uNmg7yYZuR4rgbaESOj413ibQYujhDg&usqp=CAU"
                             alt=""></div>
+
+                    <div class="img2"><img th:src="@{/img/bosch.png}" alt="Bosch Image"></div>
+
                     <div class="img2"><img src="../static/img/bosch.png" alt="Bosch Image"></div>
+
                     <div class="main-text">
                         <h2>Bosch Leith</h2>
                         <h4>Full Stack Web Developer</h4>
@@ -479,7 +510,11 @@
                     <div class="img1"><img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJb9mjv_6b19A6qb_8KZtMEY1AbjSJ_iDhMg&usqp=CAU"
                             alt=""></div>
+
+                    <div class="img2"><img th:src="@{/img/JohnAlejandro.png}" alt="John Image"></div>
+
                     <div class="img2"><img src="../static/img/JohnAlejandro.png" alt="John Image"></div>
+
                     <div class="main-text">
                         <h2>John Alejandro</h2>
                         <h4>Full Stack Web Developer</h4>
@@ -496,7 +531,11 @@
 </div>
 <div class="footer-basic">
     <footer>
+
+        <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
+
         <div class="social" ><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
+
                 class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a
                 href="#"><i class="icon ion-social-facebook"></i></a></div>
         <ul class="list-inline text-center">
