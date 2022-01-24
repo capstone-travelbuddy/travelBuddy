@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.io.IOException;
 import java.util.Objects;
 
@@ -30,7 +28,7 @@ public class ImageController {
 	}
 
 	@PostMapping("/upload")
-	public String uploadImage(@RequestParam("image")MultipartFile multipartFile, RedirectAttributes redirectAttributes) throws IOException {
+	public String uploadImage(@RequestParam("image")MultipartFile multipartFile, Model model) throws IOException {
 
 		String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
 		Image image = new Image();
@@ -39,9 +37,9 @@ public class ImageController {
 
 		imageDao.save(image);
 
-		redirectAttributes.addAttribute("message", "Upload successful!");
+		model.addAttribute("message", "Upload successful!");
 
-		return "redirect:/upload";
+		return "upload";
 	}
 
 	@GetMapping(value = "images/{id}")
