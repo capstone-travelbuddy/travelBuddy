@@ -11,7 +11,7 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-<<<<<<< HEAD
+
 <section class="vh-100" style="background-color: #00b0b1;">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -49,6 +49,17 @@
                                         </div>
                                     </div>
 
+                                    <div class="btn-group d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                                            Choose A City
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                                            <li><a class="dropdown-item" href="#">San Antonio</a></li>
+                                            <li><a class="dropdown-item" href="#">Austin</a></li>
+                                            <li><a class="dropdown-item" href="#">Dallas</a></li>
+                                        </ul>
+                                    </div>
+
                                     <div class="form-check d-flex justify-content-center mb-5">
                                         <input
                                                 class="form-check-input me-2"
@@ -80,37 +91,37 @@
     </div>
 </section>
 
-=======
-<h1>Create an account</h1>
-<div class="container">
-<form th:action="@{/sign-up}" method="POST" th:object="${user}">
-    <label for="name">Name</label>
-    <input id="name" th:field="*{username}" />
-    <br>
-    <br>
-    <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
-    <br>
-    <br>
-    <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
-    <br>
-    <br>
-    <div class="btn-group">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
-            Choose A City
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
-            <li><a class="dropdown-item" href="#">San Antonio</a></li>
-            <li><a class="dropdown-item" href="#">Austin</a></li>
-            <li><a class="dropdown-item" href="#">Dallas</a></li>
-        </ul>
-    </div>
-    <br>
-    <br>
-    <input value="Sign me up!" type="submit" style="background-color: #ef482f"  />
-</form>
-</div>
->>>>>>> main
+
+<!--<h1>Create an account</h1>-->
+<!--<div class="container">-->
+<!--<form th:action="@{/sign-up}" method="POST" th:object="${user}">-->
+<!--    <label for="name">Name</label>-->
+<!--    <input id="name" th:field="*{username}" />-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <label for="email">Email</label>-->
+<!--    <input id="email" th:field="*{email}" />-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <label for="password">Password</label>-->
+<!--    <input id="password" type="password" th:field="*{password}" />-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <div class="btn-group">-->
+<!--        <button class="btn btn-secondary dropdown-toggle" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">-->
+<!--            Choose A City-->
+<!--        </button>-->
+<!--        <ul class="dropdown-menu" aria-labelledby="defaultDropdown">-->
+<!--            <li><a class="dropdown-item" href="#">San Antonio</a></li>-->
+<!--            <li><a class="dropdown-item" href="#">Austin</a></li>-->
+<!--            <li><a class="dropdown-item" href="#">Dallas</a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <input value="Sign me up!" type="submit" style="background-color: #ef482f"  />-->
+<!--</form>-->
+<!--</div>-->
+
 </body>
 </html>
