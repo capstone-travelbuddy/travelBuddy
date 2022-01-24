@@ -5,10 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class landingPageController {
+public class LandingPageController {
 
     @GetMapping("/landingPage")
-    public String getCitiesView(Model model) {
+    public String showLandingPage(Model model) {
 
         return "landingPage";
     }
