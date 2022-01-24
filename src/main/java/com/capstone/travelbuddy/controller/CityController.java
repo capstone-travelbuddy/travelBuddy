@@ -1,5 +1,6 @@
 package com.capstone.travelbuddy.controller;
 
+import com.capstone.travelbuddy.model.Shop;
 import com.capstone.travelbuddy.repository.CategoryRepository;
 import com.capstone.travelbuddy.repository.CityRepository;
 import com.capstone.travelbuddy.repository.ShopRepository;
@@ -45,8 +46,8 @@ public class CityController {
 
 	@GetMapping("category/coffee/shop/{id}")
 	public String getShopView(@PathVariable int id, Model model) {
-//		Shop shop = shopDao.findById(id);
-//		model.addAttribute("shop", shop);
+		Shop shop = shopDao.getById(id);
+		model.addAttribute("shop", shop);
 		System.out.println(id);
 		return "shop";
 	}
