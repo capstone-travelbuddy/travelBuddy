@@ -83,18 +83,18 @@
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 10,
-        center: [-98.46584991434109,29.483725325591443]
+        zoom: 15,
+        center: [-98.46584991434109, 29.483725325591443],
     });
+
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-98.46584991434109, 29.483725325591443])
+        .addTo(map);
 
     geocode("5903 Broadway · In Villita Del Sol, San Antonio, TX 78209", mapboxAPIKey).then(function(result) {
         console.log(result);
         map.setCenter(result);
-        map.setZoom(20);
-
-        var marker = new mapboxgl.Marker()
-            .setLngLat([-98.46584991434109,29.483725325591443])
-            .addTo(map);
+        map.setZoom(15);
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
