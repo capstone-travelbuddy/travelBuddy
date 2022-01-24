@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -9,7 +9,11 @@
         .checked {
             color: orange;
         }
-
+        #map {
+            /* the width and height may be set to any size */
+            width: 30%;
+            height: 800px;
+        }
     </style>
 
 </head>
@@ -24,8 +28,6 @@
         </ul>
     </div>
 </div>
-</nav>
-
 <div class="large-image m-5">
     <img src="https://imgur.com/GAVcpGW.jpg" class="img-fluid" alt="...">
 </div>
@@ -34,7 +36,9 @@
     <button type="button" class="btn btn-secondary btn-sm"><i class="fa fa-camera" aria-hidden="true"></i> Add Photo</button>
     <button type="button" class="btn btn-secondary btn-sm">Save To Intineray</button>
 </div>
-<div class="float-right m-5">
+<div class="float-right m-5" id='map'></div>
+
+<div class="float-right">
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
@@ -63,16 +67,24 @@
                         <h4>Bart Simpson</h4> <span>- January 2, 2022</span> <br>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
                     </div>
-                </div>
+                </div>=
 
             </div>
         </div>
     </section>
-
-
     <p class="float-left m-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi nihil quas soluta tenetur vel. Aut consectetur dolorem, ipsum iusto labore laboriosam quisquam veritatis. Commodi cupiditate exercitationem laboriosam sequi, sint soluta.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aut consequatur consequuntur cum debitis dignissimos dolore, doloremque, ducimus eligendi error, modi molestiae neque nesciunt perferendis quam repellat sunt vel voluptate.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, cum deserunt dolorem dolores esse ex explicabo fugiat in ipsam itaque minima odit perferendis praesentium quas quod ratione tempora totam voluptate.</p>
 </div>
-
+<script th:src="@{keys.js}"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script>
+    mapboxgl.accessToken = mapboxApiKey;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [-98.4916, 29.4252]
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>

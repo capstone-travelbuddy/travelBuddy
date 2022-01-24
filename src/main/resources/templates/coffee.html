@@ -294,38 +294,13 @@
 <main>
 	<div class="container-fluid bg-transparent my-4 p-3" style="position: relative;">
 		<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-			<div class="col">
-				<div class="card h-100 shadow-sm"><img src="https://imgur.com/GAVcpGW.jpg" class="card-img-top"
-													   alt="Merit Coffee Shop">
-					<div class="label-top shadow-sm">Local Favorite</div>
-					<div class="card-body">
-						<div class="rate">
-							<input type="radio" id="star5" name="rate" value="5"/>
-							<label for="star5" title="text">5 stars</label>
-							<input type="radio" id="star4" name="rate" value="4"/>
-							<label for="star4" title="text">4 stars</label>
-							<input type="radio" id="star3" name="rate" value="3"/>
-							<label for="star3" title="text">3 stars</label>
-							<input type="radio" id="star2" name="rate" value="2"/>
-							<label for="star2" title="text">2 stars</label>
-							<input type="radio" id="star1" name="rate" value="1"/>
-							<label for="star1" title="text">1 star</label>
-						</div>
-						<div class="clearfix mb-3"><span class="float-end"><a href="#"
-																			  class="small text-muted">Reviews</a></span>
-						</div>
-						<h5 class="card-title text-center">Merit Coffee Co.</h5>
-						<p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem
-							eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe,
-							iste optio laudantium sed aliquam sequi.</p>
-						<div class="text-center my-4"><a th:href="shop" class="btn btn-warning">GO LOCAL!</a></div>
+			<div class="col" th:each="shop : ${shops}">
+				<div class="card h-100 shadow-sm">
+					<img th:src="@{'data:image/jpeg;base64,'+${shop.shopImage.generateBase64Image()}}"
+						 alt="Shop Photo"/>
+					<div class="label-top shadow-sm">
+						Local Favorite
 					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card h-100 shadow-sm"><img
-						src="https://cdn.businessyab.com/assets/uploads/a4bbebfc5650d1e16307d5492bca4eaa_-united-states-texas-bexar-county-san-antonio-harlandale-bustillos-drive-359-cafe-azteca-210-507-2241.jpg"
-						class="card-img-top" alt="Cafe Azteca">
 					<div class="card-body">
 						<div class="rate">
 							<input type="radio" id="star5" name="rate" value="5"/>
@@ -339,76 +314,17 @@
 							<input type="radio" id="star1" name="rate" value="1"/>
 							<label for="star1" title="text">1 star</label>
 						</div>
-						<div class="clearfix mb-3"><span class="float-end"><a href="#"
-																			  class="small text-muted">Reviews</a></span>
+						<div class="clearfix mb-3">
+							<span class="float-end">
+								<a href="#" class="small text-muted">Reviews</a>
+							</span>
 						</div>
-						<h5 class="card-title text-center">Cafe Azteca</h5>
-						<p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem
-							eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe,
-							iste optio laudantium sed aliquam sequi.</p>
-						<div class="text-center my-4"><a href="shop.html" class="btn btn-warning">GO LOCAL!</a></div>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card h-100 shadow-sm"><img
-						src="https://media-cdn.tripadvisor.com/media/photo-s/0f/dd/45/23/king-william-1mi-south.jpg"
-						class="card-img-top" alt="Halcyon Southtown">
-					<div class="card-body">
-						<div class="rate">
-							<input type="radio" id="star5" name="rate" value="5"/>
-							<label for="star5" title="text">5 stars</label>
-							<input type="radio" id="star4" name="rate" value="4"/>
-							<label for="star4" title="text">4 stars</label>
-							<input type="radio" id="star3" name="rate" value="3"/>
-							<label for="star3" title="text">3 stars</label>
-							<input type="radio" id="star2" name="rate" value="2"/>
-							<label for="star2" title="text">2 stars</label>
-							<input type="radio" id="star1" name="rate" value="1"/>
-							<label for="star1" title="text">1 star</label>
+						<h5 class="card-title text-center" th:text="${shop.name}"></h5>
+						<p class="card-text" th:text="${shop.description}"></p>
+						<div style="display: none" th:text="${shop.id}"></div>
+						<div class="text-center my-4">
+							<a th:href="'shop/' + ${shop.id}" class="btn btn-warning">GO LOCAL!</a>
 						</div>
-						<div class="clearfix mb-3"><span class="float-end"><a href="#"
-																			  class="small text-muted">Reviews</a></span>
-						</div>
-						<h5 class="card-title text-center">Halcyon Southtown</h5>
-						<p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem
-							eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe,
-							iste optio laudantium sed aliquam sequi.</p>
-						<div class="text-center my-4"><a href="shop.html" class="btn btn-warning">GO LOCAL!</a></div>
-						<div class="clearfix mb-1"><span class="float-start"><i
-								class="far fa-question-circle"></i></span> <span class="float-end"><i
-								class="fas fa-plus"></i></span></div>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card h-100 shadow-sm"><img
-						src="https://cdn.shopify.com/s/files/1/0479/6225/9605/files/unnamed_960x.jpg?v=1617733359"
-						class="card-img-top" alt="La Panaderia">
-					<div class="card-body">
-						<div class="rate">
-							<input type="radio" id="star5" name="rate" value="5"/>
-							<label for="star5" title="text">5 stars</label>
-							<input type="radio" id="star4" name="rate" value="4"/>
-							<label for="star4" title="text">4 stars</label>
-							<input type="radio" id="star3" name="rate" value="3"/>
-							<label for="star3" title="text">3 stars</label>
-							<input type="radio" id="star2" name="rate" value="2"/>
-							<label for="star2" title="text">2 stars</label>
-							<input type="radio" id="star1" name="rate" value="1"/>
-							<label for="star1" title="text">1 star</label>
-						</div>
-						<div class="clearfix mb-3"><span class="float-end"><a href="#"
-																			  class="small text-muted">Reviews</a></span>
-						</div>
-						<h5 class="card-title text-center">La Panaderia</h5>
-						<p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem
-							eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe,
-							iste optio laudantium sed aliquam sequi.</p>
-						<div class="text-center my-4"><a href="shop.html" class="btn btn-warning">GO LOCAL!</a></div>
-						<div class="clearfix mb-1"><span class="float-start"><i
-								class="far fa-question-circle"></i></span> <span class="float-end"><i
-								class="fas fa-plus"></i></span></div>
 					</div>
 				</div>
 			</div>

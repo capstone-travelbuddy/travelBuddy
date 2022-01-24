@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/header">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TravelBuddy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+          type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+
+
+    <style>
+        /*Profile Cards*/
+        body {
+            background: rgb(255, 244, 244);
+        }
+
+        .profile-card {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 10px;
+            box-shadow: 0px 2px 3px #222;
+            top: 150px;
+        }
+
+        .profile-card:hover .profile-img img {
+            transform: scale(1.2);
+        }
+
+        .profile-card .profile-img img {
+            width: 100%;
+            height: auto;
+            transition: transform 1s;
+        }
+
+        .profile-card .profile-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 40%;
+            border: 3px solid #333;
+            border-right: 3px solid transparent;
+            border-bottom: 3px solid transparent;
+            transform: scale(1, 1);
+            transition: all 0.50s linear;
+        }
+
+        .profile-card .profile-content::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50%;
+            height: 40%;
+            border: 3px solid #222;
+            border-left: 3px solid transparent;
+            border-top: 3px solid transparent;
+            transition: all 0.50s linear;
+
+        }
+
+        .profile-card:hover .profile-content:before {
+            top: 20px;
+            left: 20px;
+        }
+
+        .profile-card:hover .profile-content:after {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .profile-card .profile-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 50% 4%;
+            text-align: center;
+
+        }
+
+        .profile-card .profile-content:hover {
+            background-color: rgba(255, 43, 131, 0.5);
+        }
+
+        .profile-card .profile-content .title {
+            font-size: 24px;
+            color: #333;
+            opacity: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transform: translateY(-100px);
+            transition: all 900ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.20s;
+        }
+
+        .profile-card:hover .title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .profile-card:hover .title::after {
+            content: "";
+            display: block;
+            width: 50%;
+            margin: 10px auto;
+            border-bottom: 2px solid #222;
+        }
+
+        .profile-card .profile-content .title > span {
+            display: block;
+            margin: 5px 0;
+            font-size: 14px;
+            text-transform: capitalize;
+        }
+
+        .profile-card .profile-content .social-link {
+            margin: 20px 0;
+            padding: 0;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.20s;
+        }
+
+        .profile-card:hover .social-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .profile-card .profile-content .social-link li {
+            display: inline-block;
+            list-style: none;
+            margin: 0 4px;
+        }
+
+        .profile-card .profile-content .social-link li a {
+            color: #333;
+            width: 30px;
+            height: 25px;
+            line-height: 24px;
+            text-align: center;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        /*Profile Card End*/
+
+        .travelbuddy-container {
+            max-width: 1100px;
+            position: relative;
+            margin: 0 auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .travelbuddy-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1001;
+        }
+
+        @media screen and (max-width: 768px) {
+            .travelbuddy-nav {
+                padding: 20px 0;
+            }
+        }
+
+        .travelbuddy-nav #travelbuddy-logo {
+            font-size: 20px;
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .travelbuddy-nav #travelbuddy-logo em {
+            color: #09C6AB;
+        }
+
+        .travelbuddy-nav a {
+            padding: 5px 10px;
+            color: #fff;
+        }
+
+        @media screen and (max-width: 768px) {
+            .travelbuddy-nav .menu-1, .travelbuddy-nav .menu-2 {
+                display: none;
+            }
+        }
+
+        .travelbuddy-nav ul {
+            padding: 0;
+            margin: 2px 0 0 0;
+        }
+
+        .travelbuddy-nav ul li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: inline;
+        }
+
+        .travelbuddy-nav ul li a {
+            font-size: 16px;
+            padding: 30px 10px;
+            color: rgba(255, 255, 255, 0.7);
+            -webkit-transition: 0.3s;
+            -o-transition: 0.3s;
+            transition: 0.3s;
+        }
+
+        .travelbuddy-nav ul li a:hover, .travelbuddy-nav ul li a:focus, .travelbuddy-nav ul li a:active {
+            color: white;
+        }
+
+        .travelbuddy-nav ul li.has-dropdown {
+            position: relative;
+        }
+
+        .travelbuddy-nav ul li.has-dropdown .dropdown {
+            width: 130px;
+            -webkit-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.15);
+            z-index: 1002;
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            text-align: left;
+            background: #fff;
+            padding: 20px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -ms-border-radius: 4px;
+            border-radius: 4px;
+            -webkit-transition: 0s;
+            -o-transition: 0s;
+            transition: 0s;
+        }
+
+        .travelbuddy-nav ul li.has-dropdown .dropdown:before {
+            bottom: 100%;
+            left: 40px;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-bottom-color: #fff;
+            border-width: 8px;
+            margin-left: -8px;
+        }
+
+        .travelbuddy-nav ul li.has-dropdown .dropdown li {
+            display: block;
+            margin-bottom: 7px;
+        }
+
+        .travelbuddy-nav ul li.has-dropdown .dropdown li:last-child {
+            margin-bottom: 0;
+        }
+
+        /*.travelbuddy-nav ul li.has-dropdown .dropdown li a {*/
+        /*    padding: 2px 0;*/
+        /*    display: block;*/
+        /*    color: #999999;*/
+        /*    line-height: 1.2;*/
+        /*    text-transform: none;*/
+        /*    font-size: 15px;*/
+        /*}*/
+
+        .travelbuddy-nav ul li.has-dropdown .dropdown li a:hover {
+            color: #09C6AB;
+        }
+
+        .travelbuddy-nav ul li.has-dropdown .dropdown li.active > a {
+            color: #000 !important;
+        }
+
+        .travelbuddy-nav ul li.has-dropdown:hover a, .travelbuddy-nav ul li.has-dropdown:focus a {
+            color: #fff;
+        }
+
+        .travelbuddy-nav ul li.btn-cta a {
+            color: #09C6AB;
+        }
+
+        .travelbuddy-nav ul li.btn-cta a span {
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 4px 20px;
+            color: #fff;
+            display: -moz-inline-stack;
+            display: inline-block;
+            zoom: 1;
+            *display: inline;
+            -webkit-transition: 0.3s;
+            -o-transition: 0.3s;
+            transition: 0.3s;
+            -webkit-border-radius: 7px;
+            -moz-border-radius: 7px;
+            -ms-border-radius: 7px;
+            border-radius: 7px;
+        }
+
+        .travelbuddy-nav ul li.btn-cta a:hover span {
+            background: #fff;
+            color: #09C6AB;
+        }
+
+        .travelbuddy-nav ul li.active > a {
+            color: #fff !important;
+        }
+
+        #travelbuddy-header {
+            background: #4d4d4d;
+        }
+
+        @media screen and (max-width: 992px) {
+            #travelbuddy-header.travelbuddy-cover {
+                height: inherit !important;
+                padding: 3em 0 !important;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            #travelbuddy-header .text-left {
+                text-align: center !important;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            #travelbuddy-header .btn {
+                display: block;
+                width: 100%;
+            }
+        }
+
+        #travelbuddy-header .mt-text {
+            margin-top: 7em;
+            margin-bottom: 3em;
+        }
+
+        @media screen and (max-width: 768px) {
+            #travelbuddy-header .mt-text {
+                margin-top: 0;
+            }
+        }
+
+        /*#travelbuddy-header .intro-text-small {*/
+        /*    font-size: 14px;*/
+        /*    text-transform: uppercase;*/
+        /*    color: rgba(255, 255, 255, 0.5);*/
+        /*    letter-spacing: .15em;*/
+        /*    display: block;*/
+        /*    margin-bottom: 10px;*/
+        /*}*/
+
+        #travelbuddy-header h1, #gtco-header h2 {
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+
+        #travelbuddy-header h1 {
+            margin-bottom: 0px;
+            font-size: 59px;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+
+        @media screen and (max-width: 768px) {
+            #travelbuddy-header h1 {
+                font-size: 34px;
+                line-height: 1.2;
+                margin-bottom: 10px;
+            }
+        }
+
+        #travelbuddy-header h2 {
+            font-weight: 300;
+            font-size: 22px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        #travelbuddy-header .form-wrap {
+            border-top: 10px solid #09C6AB;
+            position: relative;
+            width: 100%;
+            -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+        }
+
+        #travelbuddy-header .form-wrap .tab-menu {
+            padding: 0 !important;
+            margin: 0 0 -10px 0 !important;
+            width: 100%;
+            float: left;
+            z-index: 12;
+            position: relative;
+        }
+
+        #travelbuddy-header .form-wrap .tab-menu li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: inline;
+            float: left;
+            width: 50%;
+            text-align: center;
+        }
+
+        /*#travelbuddy-header .form-wrap .tab-menu li a {*/
+        /*    padding: 10px 20px 20px 20px;*/
+        /*    float: left;*/
+        /*    width: 100%;*/
+        /*    display: block;*/
+        /*    !*background: rgba(255, 255, 255, 0.5);*!*/
+        /*    color: #1a1a1a;*/
+        /*}*/
+
+        #travelbuddy-header .form-wrap .tab-menu li a:hover {
+            color: #1a1a1a;
+        }
+
+        #travelbuddy-header .form-wrap .tab-menu li.active a {
+            display: block;
+            padding: 10px 20px 20px 20px;
+            background: #fff;
+            color: #09C6AB;
+        }
+
+        #travelbuddy-header .form-wrap .tab-menu li.travelbuddy-first a {
+            border-top-left-radius: 7px;
+        }
+
+        #travelbuddy-header .form-wrap .tab-menu li.travelbuddy-second a {
+            border-top-right-radius: 7px;
+        }
+
+        #travelbuddy-header .form-wrap .tab-content {
+            z-index: 10;
+            position: relative;
+            clear: both;
+            background: #fff;
+            padding: 30px;
+        }
+
+        #travelbuddy-header .form-wrap .tab-content .tab-content-inner {
+            display: none;
+        }
+
+        #travelbuddy-header .form-wrap .tab-content .tab-content-inner.active {
+            display: block;
+        }
+
+        .travelbuddy-video a {
+            z-index: 1001;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -45px;
+            margin-left: -45px;
+            width: 90px;
+            height: 90px;
+            display: table;
+            text-align: center;
+            background: #fff;
+            -webkit-box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75);
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        .travelbuddy-video a i {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 40px;
+        }
+
+        .travelbuddy-video .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            -webkit-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+        }
+
+        .travelbuddy-video:hover .overlay {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .travelbuddy-video:hover a {
+            position: relative;
+            -webkit-transform: scale(1.2);
+            -moz-transform: scale(1.2);
+            -ms-transform: scale(1.2);
+            -o-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+
+        .travelbuddy-cover {
+            height: 900px;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            position: relative;
+            float: left;
+            width: 100%;
+        }
+
+        .travelbuddy-cover a {
+            color: #09C6AB;
+        }
+
+        .travelbuddy-cover a:hover {
+            color: white;
+        }
+
+        .city-card-item {
+            display: block;
+            width: 100%;
+            position: relative;
+            background: #fff;
+            overflow: hidden;
+            z-index: 9;
+            bottom: 0;
+            margin-bottom: 30px;
+            -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+            -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+            -ms-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+            -o-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            -ms-border-radius: 0px;
+            border-radius: 0px;
+            -webkit-transition: 0.3s;
+            -o-transition: 0.3s;
+            transition: 0.3s;
+        }
+
+        .city-card-item figure {
+            height: 240px;
+            overflow: hidden;
+            z-index: 12;
+            position: relative;
+        }
+
+        .city-card-item figure .overlay {
+            opacity: 0;
+            visibility: hidden;
+            z-index: 10;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.4);
+            -webkit-transition: 0.7s;
+            -o-transition: 0.7s;
+            transition: 0.7s;
+        }
+
+        .city-card-item figure .overlay i {
+            z-index: 12;
+            color: #fff;
+            font-size: 30px;
+            position: absolute;
+            margin-left: -15px;
+            margin-top: -45px;
+            top: 50%;
+            left: 50%;
+            -webkit-transition: 0.3s;
+            -o-transition: 0.3s;
+            transition: 0.3s;
+        }
+
+        .city-card-item img {
+            z-index: 8;
+            opacity: 1;
+            -webkit-transition: 0.3s;
+            -o-transition: 0.3s;
+            transition: 0.3s;
+        }
+
+        .city-card-item .city-text {
+            padding: 0px 10px 10px 20px;
+            text-align: center;
+        }
+
+        .city-card-item .city-text h2, .city-card-item .city-text span {
+            text-decoration: none !important;
+        }
+
+        .city-card-item .city-text h2 {
+            font-size: 20px;
+            font-weight: 400;
+            margin: 0 0 10px 0;
+            color: #09C6AB;
+        }
+
+        .city-card-item .city-text span {
+            color: #b3b3b3;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .city-card-item .city-text p {
+            color: #000;
+            -webkit-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+        }
+
+        .city-card-item .city-text span.btn {
+            color: #fff !important;
+            opacity: 1;
+            visibility: visible;
+            bottom: 0;
+            background: #1a1a1a;
+            border: 2px solid #1a1a1a !important;
+            position: relative;
+            -webkit-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+        }
+
+        .city-card-item:hover, .city-card-item:focus {
+            bottom: 7px;
+            text-decoration: none;
+            -webkit-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+            -moz-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+            -ms-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+            -o-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+            box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+        }
+
+        .city-card-item:hover img, .city-card-item:focus img {
+            -webkot-transform: scale(1.2);
+            -moz-transform: scale(1.2);
+            -ms-transform: scale(1.2);
+            -o-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+
+        .city-card-item:hover span.btn, .city-card-item:focus span.btn {
+            opacity: 1;
+            visibility: visible;
+            bottom: 0px;
+            border: 2px solid #0adec0 !important;
+            background: #0adec0 !important;
+        }
+
+        .city-card-item:hover figure .overlay, .city-card-item:focus figure .overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .city-card-item:hover figure .overlay i, .city-card-item:focus figure .overlay i {
+            margin-top: -15px;
+        }
+
+        .city-card-item:hover h2, .city-card-item:hover span, .city-card-item:focus h2, .city-card-item:focus span {
+            text-decoration: none !important;
+        }
+
+    </style>
+</head>
+<body>
+
+<header id="travelbuddy-header" class="travelbuddy-cover" role="banner">
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="travel-buddy.mp4" type="video/mp4">
+    </video>
+</header>
+<div class="travelbuddy-section">
+    <div class="travelbuddy-container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center travelbuddy-heading">
+                <h2>Most Popular Destinations</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi corporis cum dicta dolor eaque
+                    excepturi expedita explicabo, inventore ipsam minima nam nisi nostrum praesentium repudiandae
+                    sit tempore ut? Minima, officia?</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <a href="cities.html" class="city-card-item image-popup">
+                    <figure>
+                        <div class="overlay"><i class="ti-plus"></i></div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSPfAVcI5hO7f5P2fzgbc1S5_0jIlo1Yc5DQ&usqp=CAU"
+                             alt="SA Image" style="width:100%; height:100%;" class="img-responsive">
+                    </figure>
+                    <div class="city-text">
+                        <br>
+                        <h2>San Antonio, TX</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, quae.</p>
+                        <p><span class="btn btn-primary">GO LOCAL</span></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBHKsPTU_pXkeSv3FbcZybtqFKMBobN6QrNw&usqp=CAU"
+                   class="city-card-item image-popup">
+                    <figure>
+                        <div class="overlay"><i class="ti-plus"></i></div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBHKsPTU_pXkeSv3FbcZybtqFKMBobN6QrNw&usqp=CAU"
+                             alt="Austin Image" style="width:100%; height:100%;" class="img-responsive">
+                    </figure>
+                    <div class="city-text">
+                        <br>
+                        <h2>Austin, TX</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, harum?</p>
+                        <p><span class="btn btn-primary">GO LOCAL</span></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyQM6UkY7S8rLgpi61r2cnWDiXjkumnHjJfQ&usqp=CAU"
+                   class="city-card-item image-popup">
+                    <figure>
+                        <div class="overlay"><i class="ti-plus"></i></div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyQM6UkY7S8rLgpi61r2cnWDiXjkumnHjJfQ&usqp=CAU"
+                             alt="Dallas Image" style="width:100%; height:100%" class="img-responsive">
+                    </figure>
+                    <div class="city-text">
+                        <br>
+                        <h2>Dallas, TX</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, explicabo.</p>
+                        <p><span class="btn btn-primary">GO LOCAL</span></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="travelbuddy-container text-center">
+    <div class="display-t">
+        <div class="travelbuddy-container">
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center travelbuddy-heading">
+                            <h2 class="text-center">Meet the Team</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid cumque eius enim, illum
+                                iste iure quos ratione tempora vero voluptas.</p>
+                        </div>
+                        <div class="col-sm-6 col-md-3 text-center">
+                            <div class="profile-card">
+                                <div class="profile-img">
+                                    <img src="../static/img/Bernie Esquivel.jpg" alt="Bernie Image">
+                                </div>
+                                <div class="profile-content">
+                                    <h2 class="title">Bernie<br>
+                                        Esquivel
+                                        <span>Full Stack Web Developer</span>
+                                    </h2>
+                                    <ul class="social-link">
+                                        <li><a href="#" class="fa fa-envelope"></a></li>
+                                        <li><a href="https://github.com/bernieesquivel01" class="fa fa-github"></a></li>
+                                        <li><a href="https://www.linkedin.com/feed/" class="fa fa-linkedin"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="profile-card">
+                                <div class="profile-img">
+                                    <img src="../static/img/Bernie Esquivel.jpg" alt="Adamina Image"/>
+                                </div>
+                                <div class="profile-content">
+                                    <h2 class="title">Adamina<br>
+                                        Flores
+                                        <span>Full Stack Web Developer</span>
+                                    </h2>
+                                    <ul class="social-link">
+                                        <li><a href="#" class="fa fa-envelope"></a></li>
+                                        <li><a href="#" class="fa fa-github"></a></li>
+                                        <li><a href="#" class="fa fa-linkedin"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="profile-card">
+                                <div class="profile-img">
+                                    <img src="../static/img/Bernie Esquivel.jpg" alt="Team Image"/>
+                                </div>
+                                <div class="profile-content">
+                                    <h2 class="title">Bosch<br>
+                                        Leith
+                                        <span>Full Stack Web Developer</span>
+                                    </h2>
+                                    <ul class="social-link">
+                                        <li><a href="#" class="fa fa-envelope"></a></li>
+                                        <li><a href="#" class="fa fa-github"></a></li>
+                                        <li><a href="#" class="fa fa-linkedin"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="profile-card">
+                                <div class="profile-img">
+                                    <img src="../static/img/Bernie Esquivel.jpg" alt="Team Image"/>
+                                </div>
+                                <div class="profile-content">
+                                    <h2 class="title">John Alejandro
+                                        <span>Full Stack Web Developer</span>
+                                    </h2>
+                                    <ul class="social-link">
+                                        <li><a href="#" class="fa fa-envelope"></a></li>
+                                        <li><a href="#" class="fa fa-github"></a></li>
+                                        <li><a href="#" class="fa fa-linkedin"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<br>
+<br>
+
+</body>
+</html>
