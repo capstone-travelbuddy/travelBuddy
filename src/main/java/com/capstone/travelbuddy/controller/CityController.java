@@ -22,6 +22,11 @@ public class CityController {
 		this.categoryDao = categoryDao;
 	}
 
+	@GetMapping("/")
+	public String getHomeView(){
+		return "landingPage";
+	}
+
 	@GetMapping("/destinations")
 	public String getCitiesView(Model model) {
 		model.addAttribute("cities", cityDao.findAll());
