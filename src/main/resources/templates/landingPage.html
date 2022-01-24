@@ -4,8 +4,6 @@
 <!--<head th:insert="fragments/header">-->
 
 
-<head th:insert="fragments/header">
-
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,343 +19,11 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
     <link th:href="@{/styles/css/landingpage.css}" rel="stylesheet"/>
 
-</head>
-<body>
-<div class="topnav" id="myTopnav">
-    <a href="#" class="active">Home</a>
 
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
-    <link th:href="@{../static/styles/css/landingpage.css}" rel="stylesheet"/>
-
-    <style>
-
-        .city-card-item {
-            display: block;
-            width: 100%;
-            position: relative;
-            background: #fff;
-            overflow: hidden;
-            z-index: 9;
-            bottom: 0;
-            margin-bottom: 30px;
-            -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
-            -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
-            -ms-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
-            -o-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
-            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
-            -webkit-border-radius: 0px;
-            -moz-border-radius: 0px;
-            -ms-border-radius: 0px;
-            border-radius: 0px;
-            -webkit-transition: 0.3s;
-            -o-transition: 0.3s;
-            transition: 0.3s;
-        }
-
-        .city-card-item figure {
-            height: 240px;
-            overflow: hidden;
-            z-index: 12;
-            position: relative;
-        }
-
-        .city-card-item figure .overlay {
-            opacity: 0;
-            visibility: hidden;
-            z-index: 10;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            position: absolute;
-            background: rgba(0, 0, 0, 0.4);
-            -webkit-transition: 0.7s;
-            -o-transition: 0.7s;
-            transition: 0.7s;
-        }
-
-        .city-card-item figure .overlay i {
-            z-index: 12;
-            color: #fff;
-            font-size: 30px;
-            position: absolute;
-            margin-left: -15px;
-            margin-top: -45px;
-            top: 50%;
-            left: 50%;
-            -webkit-transition: 0.3s;
-            -o-transition: 0.3s;
-            transition: 0.3s;
-        }
-
-        .city-card-item img {
-            z-index: 8;
-            opacity: 1;
-            -webkit-transition: 0.3s;
-            -o-transition: 0.3s;
-            transition: 0.3s;
-        }
-
-        .city-card-item .city-text {
-            padding: 0px 10px 10px 20px;
-            text-align: center;
-        }
-
-        .city-card-item .city-text h2, .city-card-item .city-text span {
-            text-decoration: none !important;
-        }
-
-        .city-card-item .city-text h2 {
-            font-size: 20px;
-            font-weight: 400;
-            margin: 0 0 10px 0;
-            color: #09C6AB;
-        }
-
-        .city-card-item .city-text span {
-            color: #b3b3b3;
-            font-size: 16px;
-            font-weight: 400;
-        }
-
-        .city-card-item .city-text p {
-            color: #000;
-            -webkit-transition: 0.5s;
-            -o-transition: 0.5s;
-            transition: 0.5s;
-        }
-
-        .city-card-item .city-text span.btn {
-            color: #fff !important;
-            opacity: 1;
-            visibility: visible;
-            bottom: 0;
-            background: #1a1a1a;
-            border: 2px solid #1a1a1a !important;
-            position: relative;
-            -webkit-transition: 0.5s;
-            -o-transition: 0.5s;
-            transition: 0.5s;
-        }
-
-        .city-card-item:hover, .city-card-item:focus {
-            bottom: 7px;
-            text-decoration: none;
-            -webkit-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
-            -moz-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
-            -ms-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
-            -o-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
-            box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
-        }
-
-        .city-card-item:hover img, .city-card-item:focus img {
-            -webkot-transform: scale(1.2);
-            -moz-transform: scale(1.2);
-            -ms-transform: scale(1.2);
-            -o-transform: scale(1.2);
-            transform: scale(1.2);
-        }
-
-        .city-card-item:hover span.btn, .city-card-item:focus span.btn {
-            opacity: 1;
-            visibility: visible;
-            bottom: 0px;
-            border: 2px solid #0adec0 !important;
-            background: #0adec0 !important;
-        }
-
-        .city-card-item:hover figure .overlay, .city-card-item:focus figure .overlay {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .city-card-item:hover figure .overlay i, .city-card-item:focus figure .overlay i {
-            margin-top: -15px;
-        }
-
-        .city-card-item:hover h2, .city-card-item:hover span, .city-card-item:focus h2, .city-card-item:focus span {
-            text-decoration: none !important;
-        }
-
-        /*Profile Cards*/
-
-        body {
-            background: #ddd;
-        }
-
-        .profile-area {
-            padding: 80px 0;
-        }
-
-        .card {
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            border-radius: 15px;
-        }
-
-        .img1 img {
-            height: 200px;
-            border-top-right-radius: 15px;
-            border-top-left-radius: 15px;
-            width: 100%;
-        }
-
-        .img2 img {
-            position: relative;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            z-index: 1;
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 7px solid #fff;
-            margin-top: -80px;
-        }
-
-        .card:hover .img2 img {
-            border-color: darkcyan;
-            transition: .7s;
-        }
-
-        .main-text {
-            padding: 30px 0;
-            text-align: center;
-        }
-
-        .main-text h2 {
-            text-transform: uppercase;
-            font-weight: 900;
-            font-size: 20px;
-            margin: 0 0 20px;
-        }
-
-        .main-text p {
-            font-size: 16px;
-            padding: 0 35px;
-        }
-
-        .socials {
-            text-align: center;
-            padding-bottom: 20px;
-        }
-
-        .socials i {
-            font-size: 20px;
-            color: darkcyan;
-            padding: 0 10px;
-        }
-
-        /*footer*/
-        .footer-basic {
-            padding: 40px 0;
-            background-color: #ffffff;
-            color: #4b4c4d;
-        }
-
-        .footer-basic ul {
-            padding: 0;
-            list-style: none;
-            text-align: center;
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 0;
-        }
-
-        .footer-basic li {
-            padding: 0 10px;
-        }
-
-        .footer-basic ul a {
-            color: inherit;
-            text-decoration: none;
-            opacity: 0.8;
-        }
-
-        .footer-basic ul a:hover {
-            opacity: 1;
-        }
-
-        .footer-basic .social {
-            text-align: center;
-            padding-bottom: 25px;
-        }
-
-        .footer-basic .social > a {
-            font-size: 24px;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            display: inline-block;
-            text-align: center;
-            border-radius: 50%;
-            border: 1px solid #ccc;
-            margin: 0 8px;
-            color: inherit;
-            opacity: 0.75;
-        }
-
-        .footer-basic .social > a:hover {
-            opacity: 0.9;
-        }
-
-        .footer-basic .copyright {
-            margin-top: 15px;
-            text-align: center;
-            font-size: 13px;
-            color: #aaa;
-            margin-bottom: 0;
-        }
-
-        .topnav {
-            overflow: hidden;
-            background-color: #ef482f;
-        }
-
-        .topnav a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
-
-        .topnav a.active {
-            background-color: #ef482f;
-            color: white;
-        }
-
-        @media screen and (max-width: 600px) {
-            .topnav a:not(:first-child) {display: none;}
-            .topnav a.icon {
-                float: right;
-                display: block;
-            }
-        }
-
-        @media screen and (max-width: 600px) {
-            .topnav.responsive {position: relative;}
-            .topnav.responsive .icon {
-                position: absolute;
-                right: 0;
-                top: 0;
-            }
-            .topnav.responsive a {
-                float: none;
-                display: block;
-                text-align: left;
-            }
-        }
-
-    </style>
 </head>
 <body>
 <div class="topnav" id="myTopnav">
     <a href="#home" class="active">Home</a>
-
     <a href="/sign-up">Register</a>
     <a href="/login">Login</a>
     <a href="/logout">Logout</a>
@@ -367,8 +33,6 @@
     <video style="width: 100%; height: auto;" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
 
         <source th:src="@{/video/travel-buddy.mp4}" type="video/mp4">
-
-        <source src="travel-buddy.mp4" type="video/mp4">
 
     </video>
 
@@ -450,8 +114,6 @@
 
                     <div class="img2"><img th:src="@{/img/Bernie Esquivel.jpg}" alt="Bernie Image"></div>
 
-                    <div class="img2"><img src="../static/img/Bernie Esquivel.jpg" alt="Bernie Image"></div>
-
                     <div class="main-text">
                         <h2>Bernie Esquivel</h2>
                         <h4>Full Stack Web Developer</h4>
@@ -470,8 +132,6 @@
                             alt=""></div>
 
                     <div class="img2"><img th:src="@{/img/Adamina.png}" alt="Adamina Image"></div>
-
-                    <div class="img2"><img src="../static/img/Adamina.png" alt="Adamina Image"></div>
 
                     <div class="main-text">
                         <h2>Adamina Flores</h2>
@@ -492,8 +152,6 @@
 
                     <div class="img2"><img th:src="@{/img/bosch.png}" alt="Bosch Image"></div>
 
-                    <div class="img2"><img src="../static/img/bosch.png" alt="Bosch Image"></div>
-
                     <div class="main-text">
                         <h2>Bosch Leith</h2>
                         <h4>Full Stack Web Developer</h4>
@@ -512,9 +170,6 @@
                             alt=""></div>
 
                     <div class="img2"><img th:src="@{/img/JohnAlejandro.png}" alt="John Image"></div>
-
-                    <div class="img2"><img src="../static/img/JohnAlejandro.png" alt="John Image"></div>
-
                     <div class="main-text">
                         <h2>John Alejandro</h2>
                         <h4>Full Stack Web Developer</h4>
@@ -531,8 +186,6 @@
 </div>
 <div class="footer-basic">
     <footer>
-
-        <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
 
         <div class="social" ><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
 
