@@ -49,15 +49,19 @@
                                         </div>
                                     </div>
 
-                                    <div class="btn-group d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
-                                            Choose A City
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
-                                            <li><a class="dropdown-item" href="#">San Antonio</a></li>
-                                            <li><a class="dropdown-item" href="#">Austin</a></li>
-                                            <li><a class="dropdown-item" href="#">Dallas</a></li>
-                                        </ul>
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <div class="form-group">
+                                                <select class="form-control" id="city" th:field="*{city}">
+                                                    <option selected value="0" >City</option>
+                                                    <div th:each="city : ${cities}">
+                                                        <option th:value="${city.id}" th:text="${city.name}"></option>
+                                                    </div>
+                                                </select>
+                                                <label for="city">Choose a City</label>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="form-check d-flex justify-content-center mb-5">
