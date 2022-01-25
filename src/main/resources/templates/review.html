@@ -7,8 +7,8 @@
 
 </head>
 <body>
-<h1>Create an account</h1>
-<form th:action="@{/review}" method="POST" th:object="${review}">
+<h1>Leave Review</h1>
+<form th:action="@{'/create/review/shop/' + ${shop.getId()}}" method="POST" th:object="${review}">
 	<label for="rating">Rating</label>
 	<input id="rating" th:field="*{rating}" />
 
