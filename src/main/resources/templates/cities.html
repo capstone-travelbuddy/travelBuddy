@@ -3,10 +3,12 @@
 <head th:insert="fragments/header">
 	<meta charset="UTF-8">
 	<title>Destinations</title>
+
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-<div class="bernie">
+
+<div class="bernie" style="background-color: #04999e;">
 	<div class="container d-flex align-items-center justify-content-center flex-wrap" th:each="city : ${cities}">
 		<div class="box">
 			<div class="body">
