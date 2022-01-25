@@ -1,16 +1,185 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
+
+<head th:insert="fragments/header">
+
+    <meta charset="utf-8">
+    <title>TravelBuddy</title>
+
+
 </head>
 <body>
-<!--NavBar-->
+<nav th:insert="fragments/navbar"></nav>
 
+<header id="travelbuddy-header" class="img-responsive" role="banner">
+    <video style="width: 100%; height: auto;" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source th:src="@{/video/travel-buddy.mp4}" type="video/mp4">
+    </video>
+</header>
+<div class="travelbuddy-section">
+    <div class="travelbuddy-container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center travelbuddy-heading">
+                <h2>Most Popular Destinations</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi corporis cum dicta dolor eaque
+                    excepturi expedita explicabo, inventore ipsam minima nam nisi nostrum praesentium repudiandae
+                    sit tempore ut? Minima, officia?</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <a th:href="@{/category/{id}}" class="city-card-item image-popup">
 
-<!--Video as Background-->
-<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    <source src="../static/video/travel-buddy.mp4" type="video/mp4">
-</video>
+                    <figure>
+                        <div class="overlay"><i class="ti-plus"></i></div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSPfAVcI5hO7f5P2fzgbc1S5_0jIlo1Yc5DQ&usqp=CAU"
+                             alt="SA Image" style="width:100%; height:100%;" class="img-responsive">
+                    </figure>
+                    <div class="city-text">
+                        <br>
+                        <h2>San Antonio, TX</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, quae.</p>
+                        <p><span class="btn btn-primary">GO LOCAL</span></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <a href="/login"
+                   class="city-card-item image-popup">
+                    <figure>
+                        <div class="overlay"><i class="ti-plus"></i></div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBHKsPTU_pXkeSv3FbcZybtqFKMBobN6QrNw&usqp=CAU"
+                             alt="Austin Image" style="width:100%; height:100%;" class="img-responsive">
+                    </figure>
+                    <div class="city-text">
+                        <br>
+                        <h2>Austin, TX</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, harum?</p>
+                        <p><span class="btn btn-primary">GO LOCAL</span></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <a href="/login"
+                   class="city-card-item image-popup">
+                    <figure>
+                        <div class="overlay"><i class="ti-plus"></i></div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyQM6UkY7S8rLgpi61r2cnWDiXjkumnHjJfQ&usqp=CAU"
+                             alt="Dallas Image" style="width:100%; height:100%" class="img-responsive">
+                    </figure>
+                    <div class="city-text">
+                        <br>
+                        <h2>Dallas, TX</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, explicabo.</p>
+                        <p><span class="btn btn-primary">GO LOCAL</span></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="team-container text-center row">
+    <h2>Meet the Team</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid cumque eius enim, illum
+        iste iure quos ratione tempora vero voluptas.</p>
+</div>
+<div class="profile-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="img1"><img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdzg_C6N8KYOfPqgZXRAXGM3x3whzDgGT1EQ&usqp=CAU"
+                            alt=""></div>
+
+                    <div class="img2"><img th:src="@{/img/Bernie Esquivel.jpg}" alt="Bernie Image"></div>
+
+                    <div class="main-text">
+                        <h2>Bernie Esquivel</h2>
+                        <h4>Full Stack Web Developer</h4>
+                    </div>
+                    <div class="socials">
+                        <a href="mailto: bernieesquivel01@gmail.com"><i class="fa fa-envelope"></i></a>
+                        <a href="https://www.linkedin.com/in/bernieesquivel/"><i class="fa fa-linkedin"></i></a>
+                        <a href="https://github.com/bernieesquivel01"><i class="fa fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="img1"><img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkvNF7YU4zv4nD9dYUycXAcHO8S4lV0i1zUQ&usqp=CAU"
+                            alt=""></div>
+
+                    <div class="img2"><img th:src="@{/img/Adamina.png}" alt="Adamina Image"></div>
+
+                    <div class="main-text">
+                        <h2>Adamina Flores</h2>
+                        <h4>Full Stack Web Developer</h4>
+                    </div>
+                    <div class="socials">
+                        <a href="mailto: adaminaflores19@gmail.com"><i class="fa fa-envelope"></i></a>
+                        <a href="https://www.linkedin.com/in/adamina-flores/"><i class="fa fa-linkedin"></i></a>
+                        <a href="https://github.com/adaminaflores"><i class="fa fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="img1"><img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrGZ2uNmg7yYZuR4rgbaESOj413ibQYujhDg&usqp=CAU"
+                            alt=""></div>
+
+                    <div class="img2"><img th:src="@{/img/bosch.png}" alt="Bosch Image"></div>
+
+                    <div class="main-text">
+                        <h2>Bosch Leith</h2>
+                        <h4>Full Stack Web Developer</h4>
+                    </div>
+                    <div class="socials">
+                        <a href="mailto: bosch.leith@gmail.com"><i class="fa fa-envelope"></i></a>
+                        <a href="https://www.linkedin.com/in/bosch-leith/"><i class="fa fa-linkedin"></i></a>
+                        <a href="https://github.com/BoschLeith"><i class="fa fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="img1"><img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJb9mjv_6b19A6qb_8KZtMEY1AbjSJ_iDhMg&usqp=CAU"
+                            alt=""></div>
+
+                    <div class="img2"><img th:src="@{/img/JohnAlejandro.png}" alt="John Image"></div>
+                    <div class="main-text">
+                        <h2>John Alejandro</h2>
+                        <h4>Full Stack Web Developer</h4>
+                    </div>
+                    <div class="socials">
+                        <a href="mailto: john.e.alejandro01@gmail.com"><i class="fa fa-envelope"></i></a>
+                        <a href="https://www.linkedin.com/in/john-alejandro01/"><i class="fa fa-linkedin"></i></a>
+                        <a href="https://github.com/John-Alejandro"><i class="fa fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-basic">
+    <footer>
+
+        <div class="social" ><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
+
+                class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a
+                    href="#"><i class="icon ion-social-facebook"></i></a></div>
+        <ul class="list-inline text-center">
+            <li class="list-inline-item"><a href="#">Home</a></li>
+            <li class="list-inline-item"><a href="#">Services</a></li>
+            <li class="list-inline-item"><a href="#">About</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+        </ul>
+        <p class="copyright">TravelBuddy © 2022</p>
+    </footer>
+</div>
 </body>
 </html>
