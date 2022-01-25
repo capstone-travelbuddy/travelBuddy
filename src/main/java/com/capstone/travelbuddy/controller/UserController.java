@@ -3,7 +3,6 @@ package com.capstone.travelbuddy.controller;
 import com.capstone.travelbuddy.model.User;
 import com.capstone.travelbuddy.repository.CityRepository;
 import com.capstone.travelbuddy.repository.UserRepository;
-import org.springframework.data.domain.Example;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,16 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
-
 @Controller
 public class UserController {
 	private UserRepository userDao;
 	private PasswordEncoder passwordEncoder;
 	private CityRepository cityDao;
-
-	public boolean userNameExist(String username) {
-		return userDao.findByUsername(username) != null;}
 
 	public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, CityRepository cityDao) {
 		this.userDao = userDao;
