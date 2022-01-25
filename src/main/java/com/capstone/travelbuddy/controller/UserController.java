@@ -3,6 +3,7 @@ package com.capstone.travelbuddy.controller;
 import com.capstone.travelbuddy.model.User;
 import com.capstone.travelbuddy.repository.CityRepository;
 import com.capstone.travelbuddy.repository.UserRepository;
+import org.springframework.data.domain.Example;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +11,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class UserController {
 	private UserRepository userDao;
 	private PasswordEncoder passwordEncoder;
 	private CityRepository cityDao;
+
+	public boolean userNameExist(String username) {
+		return userDao.findByUsername(username) != null;}
 
 	public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, CityRepository cityDao) {
 		this.userDao = userDao;
@@ -30,33 +36,34 @@ public class UserController {
 	}
 
 	@PostMapping("/sign-up")
-	public String saveUser(@ModelAttribute User user){
+	public String saveUser(@ModelAttribute User user, Model model){
+
+		if (userDao.findByUsername(user.getUsername()) != null) {
+			model.addAttribute("userMessage", "Username already exist");
+			model.addAttribute("cities", cityDao.findAll());
+
+			return "users/sign-up";
+		}
+
+		if (userDao.findByEmail(user.getEmail()) != null) {
+			model.addAttribute("emailMessage", "Email already exist");
+			model.addAttribute("cities", cityDao.findAll());
+
+			return "users/sign-up";
+		}
+
+		if (user.getCity() == null){
+			model.addAttribute("cityMessage", "Please select a city");
+			model.addAttribute("cities", cityDao.findAll());
+
+			return "users/sign-up";
+		}
+
 		String hash = passwordEncoder.encode(user.getPassword());
 		user.setPassword(hash);
 		userDao.save(user);
 		return "redirect:/login";
 	}
-
-//	@GetMapping(path = "/profile/edit/{id}")
-//	public String editProfile(@PathVariable long id, Model model){
-//		Profile editProfile = userDao.getById(id);
-//
-//		model.addAttribute("profileToEdit", editProfile);
-//
-//		return "profile/edit";
-//	}
-//
-//	@PostMapping("/profile/edit")
-//	public String saveEditProfile(@RequestParam(name="profileName") String profileName, @RequestParam(name="profileEmail") String profileEmail, long id){
-//
-//		Profile profileToEdit = userDao.getById(id);
-//		profileToEdit.setName(profileName);
-//		profileToEdit.setEmail(profileEmail);
-//
-//		userDao.save(profileToEdit);
-//
-//		return "redirect:/profile";
-//	}
 }
 
 
