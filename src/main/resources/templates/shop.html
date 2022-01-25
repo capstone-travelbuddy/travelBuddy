@@ -10,7 +10,6 @@
             color: orange;
         }
         #map {
-            /* the width and height may be set to any size */
             width: 30%;
             height: 800px;
         }
@@ -43,13 +42,6 @@
         <span class="fa fa-star"></span>
         <span class="fa fa-star"></span>
     </div>
-</div>
-<section id="container">
-    <div class="float-right m-5" id='map'></div>
-</section>
-
-
-<div>
     <section>
         <div class="container float-left">
             <div class="row">
@@ -72,17 +64,28 @@
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
                     </div>
                 </div>
-
+                    <div class="float-right m-5" id='map'></div>
             </div>
         </div>
     </section>
 </div>
-<script th:src="@{keys.js}"></script>
+
+
+
+
+<!--<script th:src="@{keys.js}"></script>-->
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="mapbox-geocoder-utils.js"></script>
 
-<script>
-    mapboxgl.accessToken = mapboxAPIKey;
+<script th:inline="javascript">
+    // @VALUE("${spring.mail.from}")
+    // private String from;
+
+    /*<![CDATA[*/
+
+    let key = [[${mapboxApikey}]];
+
+    mapboxgl.accessToken = key;
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
@@ -95,10 +98,10 @@
         .setLngLat([-98.46584991434109, 29.483725325591443])
         .addTo(map);
 
-    var geocoder = new MapboxGeocoder({ // Initialize the geocoder
-        accessToken: mapboxgl.accessToken, // Set the access token
-        mapboxgl: mapboxgl, // Set the mapbox-gl instance
-        marker: false, // Do not use the default marker style
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+        marker: false,
         placeholder: '',
         proximity: {
             longitude: -98.46584991434109,
@@ -106,12 +109,13 @@
         }
     });
 
-    geocode("5903 Broadway · In Villita Del Sol, San Antonio, TX 78209", mapboxAPIKey).then(function(result) {
+    geocode("5903 Broadway, In Villita Del Sol, San Antonio, TX 78209", key).then(function(result) {
         console.log(result);
         map.setCenter(result);
         map.setZoom(15);
     });
-    map.addControl(geocoder);
+
+    /*]]>*/
 </script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
