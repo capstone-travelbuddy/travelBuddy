@@ -4,6 +4,7 @@ import com.capstone.travelbuddy.model.Shop;
 import com.capstone.travelbuddy.repository.CategoryRepository;
 import com.capstone.travelbuddy.repository.CityRepository;
 import com.capstone.travelbuddy.repository.ShopRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,8 @@ public class CityController {
 		this.shopDao = shopDao;
 		this.categoryDao = categoryDao;
 	}
+	@Value("${mapbox.api.key}")
+	private String mapboxApiKey;
 
 	@GetMapping("/")
 	public String getHomeView(){
@@ -53,6 +56,7 @@ public class CityController {
 	public String getShopView(@PathVariable int id, Model model) {
 		Shop shop = shopDao.getById(id);
 		model.addAttribute("shop", shop);
+		model.addAttribute("mapboxApiKey", mapboxApiKey);
 
 		return "shop";
 	}

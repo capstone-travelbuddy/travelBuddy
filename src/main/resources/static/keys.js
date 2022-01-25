@@ -1,1 +1,0 @@
-var mapboxAPIKey = 'pk.eyJ1Ijoiam9obmFsZWphbmRybzEiLCJhIjoiY2t5b3A0N2diMDJieDJ1bnlmeDhjOGowNCJ9.JUBoVGCKMYpF-Ig9d-fFEA'
