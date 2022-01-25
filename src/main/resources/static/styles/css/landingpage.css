@@ -291,6 +291,29 @@ body {
     text-decoration: none;
     font-size: 17px;
 }
+#nav a:hover {
+    opacity:0.36;
+}
+
+.span-logo {
+
+    display: inline-block;
+    vertical-align: top;
+    height: 30px;
+    width: 150px;
+
+}
+div.main_logo{
+    padding:0;
+    float:left
+}
+#nav div a.logo_li{
+    opacity:1
+}
+.span-logo img{
+    width:100%;
+    height:auto;
+}
 
 .topnav a.active {
     background-color: #ef482f;
