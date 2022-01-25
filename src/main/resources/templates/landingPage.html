@@ -22,13 +22,7 @@
 
 </head>
 <body>
-<div class="topnav" id="myTopnav">
-    <a href="#home" class="active">Home</a>
-    <a href="/sign-up">Register</a>
-    <a href="/login">Login</a>
-<!--    <a href="/logout">Logout</a>-->
-
-</div>
+<nav th:insert="fragments/navbar"></nav>
 <header id="travelbuddy-header" class="img-responsive" role="banner">
     <video style="width: 100%; height: auto;" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
         <source th:src="@{/video/travel-buddy.mp4}" type="video/mp4">
