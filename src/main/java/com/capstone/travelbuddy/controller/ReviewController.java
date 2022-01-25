@@ -26,15 +26,19 @@ public class ReviewController {
 
 	@GetMapping("/create/review/shop/{id}")
 	public String getCreateReview(Model model, @PathVariable int id) {
+		Review review = new Review();
+		System.out.println(review.getId() + "line 30");
 
-		model.addAttribute("review", new Review());
+		model.addAttribute("review", review);
+		System.out.println(shopDao.getById(id).getId() + "line 31");
 		model.addAttribute("shop", shopDao.getById(id));
+
 
 		return "review";
 	}
 
 	@PostMapping("create/review/shop/{id}")
-	public String saveReview(@ModelAttribute Review review, @PathVariable int id){
+	public String saveReview(@ModelAttribute Review review){
 //		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		Shop shop = shopDao.getById(id);
 //
