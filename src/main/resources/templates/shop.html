@@ -31,8 +31,9 @@
 <div class="large-image m-5">
     <img src="https://imgur.com/GAVcpGW.jpg" class="img-fluid" alt="...">
 </div>
+<div th:text="${shop.name}"></div>
 <div class="m-5">
-    <a href="leaveReview.html"> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-star" aria-hidden="true"></i>Write A Review</button></a>
+    <a th:href="'/create/review/shop/' + ${shop.id}"> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-star" aria-hidden="true"></i>Write A Review</button></a>
     <button type="button" class="btn btn-secondary btn-sm"><i class="fa fa-camera" aria-hidden="true"></i> Add Photo</button>
     <button type="button" class="btn btn-secondary btn-sm">Save To Intineray</button>
     <div class="float-right">

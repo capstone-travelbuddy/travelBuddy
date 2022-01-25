@@ -49,17 +49,11 @@ public class CityController {
 		return "category";
 	}
 
-	@GetMapping("category/coffee/shop/{id}")
+	@GetMapping("/shop/{id}")
 	public String getShopView(@PathVariable int id, Model model) {
 		Shop shop = shopDao.getById(id);
 		model.addAttribute("shop", shop);
-		System.out.println(id);
+
 		return "shop";
 	}
-
-	@GetMapping("/create/review")
-	public String getCreateReview() {
-		return "leaveReview";
-	}
-
 }
