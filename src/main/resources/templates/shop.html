@@ -35,16 +35,17 @@
     <a th:href="'/create/review/shop/' + ${shop.id}"> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-star" aria-hidden="true"></i>Write A Review</button></a>
     <button type="button" class="btn btn-secondary btn-sm"><i class="fa fa-camera" aria-hidden="true"></i> Add Photo</button>
     <button type="button" class="btn btn-secondary btn-sm">Save To Intineray</button>
-    <div class="float-right">
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-    </div>
+
     <section>
-        <div class="container float-left">
+        <div class="container">
             <div class="row">
+                <div class="">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </div>
                 <div class="col-sm-5 col-md-6 col-12 pb-4">
                     <h1>Reviews</h1>
                     <div class="comment mt-4 text-justify float-left"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB555gY7t6xtooHJHtuQ9ClW7STrNvDCHTwg&usqp=CAU" alt="" class="rounded-circle" width="40" height="40">
@@ -64,8 +65,8 @@
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
                     </div>
                 </div>
-                    <div class="float-right m-5" id='map'></div>
-            </div>
+                    <div class="float-right" id='map'></div>
+            </div>-->
         </div>
     </section>
 </div>
@@ -73,17 +74,14 @@
 
 
 
-<!--<script th:src="@{keys.js}"></script>-->
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="mapbox-geocoder-utils.js"></script>
 
 <script th:inline="javascript">
-    // @VALUE("${spring.mail.from}")
-    // private String from;
 
     /*<![CDATA[*/
 
-    let key = [[${mapboxApikey}]];
+    let key = /*[[${mapboxApiKey}]]*/ 'default';
 
     mapboxgl.accessToken = key;
     const map = new mapboxgl.Map({
