@@ -12,10 +12,10 @@
 <body>
 <nav th:insert="fragments/navbar"></nav>
 
-<section class="vh-100" style="background-color: #00b0b1;">
+<section class="sign-up" style="background-color: #00b0b1;">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-lg-12 col-xl-11">
+            <div class="col-lg-12 col-xl-12" style="background-color: #00b0b1; padding: 20px 20px;">
                 <div class="card text-black" style="border-radius: 25px;">
                     <div class="card-body p-md-5">
                         <div class="row justify-content-center">
@@ -90,38 +90,6 @@
         </div>
     </div>
 </section>
-
-
-<!--<h1>Create an account</h1>-->
-<!--<div class="container">-->
-<!--<form th:action="@{/sign-up}" method="POST" th:object="${user}">-->
-<!--    <label for="name">Name</label>-->
-<!--    <input id="name" th:field="*{username}" />-->
-<!--    <br>-->
-<!--    <br>-->
-<!--    <label for="email">Email</label>-->
-<!--    <input id="email" th:field="*{email}" />-->
-<!--    <br>-->
-<!--    <br>-->
-<!--    <label for="password">Password</label>-->
-<!--    <input id="password" type="password" th:field="*{password}" />-->
-<!--    <br>-->
-<!--    <br>-->
-<!--    <div class="btn-group">-->
-<!--        <button class="btn btn-secondary dropdown-toggle" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">-->
-<!--            Choose A City-->
-<!--        </button>-->
-<!--        <ul class="dropdown-menu" aria-labelledby="defaultDropdown">-->
-<!--            <li><a class="dropdown-item" href="#">San Antonio</a></li>-->
-<!--            <li><a class="dropdown-item" href="#">Austin</a></li>-->
-<!--            <li><a class="dropdown-item" href="#">Dallas</a></li>-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--    <br>-->
-<!--    <br>-->
-<!--    <input value="Sign me up!" type="submit" style="background-color: #ef482f"  />-->
-<!--</form>-->
-<!--</div>-->
 
 </body>
 </html>
