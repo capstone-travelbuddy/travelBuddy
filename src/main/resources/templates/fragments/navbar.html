@@ -21,7 +21,7 @@
 				<form th:action="@{/logout}" th:method="post">
 					<button>Logout</button>
 				</form>
-				<a th:href="@{/profile}">Profile</a>
+				<a th:href="@{/profile}" th:text="${#authentication.getPrincipal().getUsername()}">Profile</a>
 			</div>
 			<form class="d-flex">
 				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
