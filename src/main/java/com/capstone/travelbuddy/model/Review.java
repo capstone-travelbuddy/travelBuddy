@@ -20,8 +20,13 @@ public class Review {
 	@Column(nullable = false)
 	private LocalDate created;
 
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "user_id")
 	private User user;
+
+	@ManyToOne
+	@JoinColumn(name = "shop_id")
+	private Shop shop;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "review")
 	private List<Image> images;
@@ -66,6 +71,14 @@ public class Review {
 		this.user = user;
 	}
 
+	public Shop getShop() {
+		return shop;
+	}
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+
 	public List<Image> getImages() {
 		return images;
 	}
@@ -82,6 +95,7 @@ public class Review {
 				", rating=" + rating +
 				", created=" + created +
 				", user=" + user +
+				", shop=" + shop +
 				", images=" + images +
 				'}';
 	}
