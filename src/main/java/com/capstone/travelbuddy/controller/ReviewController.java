@@ -52,6 +52,6 @@ public class ReviewController {
 		System.out.println(review.getId());
 
 //		user.setReviews(userReviews);
-		return "landingPage";
+		return "home";
 	}
 }

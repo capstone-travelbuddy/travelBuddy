@@ -27,14 +27,14 @@ public class CityController {
 
 	@GetMapping("/")
 	public String getHomeView(){
-		return "landingPage";
+		return "home";
 	}
 
 	@GetMapping("/destinations")
 	public String getCitiesView(Model model) {
 		model.addAttribute("cities", cityDao.findAll());
 
-		return "cities";
+		return "destinations";
 	}
 
 	@GetMapping("/category/{id}")
