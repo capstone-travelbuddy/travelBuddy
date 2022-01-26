@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css' rel='stylesheet' />
+
     <title>Shop Page</title>
     <style>
         .checked {
             color: orange;
         }
         #map {
-            width: 30%;
-            height: 800px;
+            width: 50%;
+            height: 500px;
         }
+
     </style>
 
 </head>
@@ -35,17 +38,16 @@
     <a th:href="'/create/review/shop/' + ${shop.id}"> <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-star" aria-hidden="true"></i>Write A Review</button></a>
     <button type="button" class="btn btn-secondary btn-sm"><i class="fa fa-camera" aria-hidden="true"></i> Add Photo</button>
     <button type="button" class="btn btn-secondary btn-sm">Save To Intineray</button>
-
+    <div class="float-right">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+    </div>
     <section>
         <div class="container">
             <div class="row">
-                <div class="">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
                 <div class="col-sm-5 col-md-6 col-12 pb-4">
                     <h1>Reviews</h1>
                     <div class="comment mt-4 text-justify float-left"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB555gY7t6xtooHJHtuQ9ClW7STrNvDCHTwg&usqp=CAU" alt="" class="rounded-circle" width="40" height="40">
@@ -66,14 +68,23 @@
                     </div>
                 </div>
                     <div class="float-right" id='map'></div>
+                <div class="card" style="width: 20rem; font-weight: 600;">
+                    <div class="card-header">
+                        <a href="https://meritcoffee.com/" role="link">https://meritcoffee.com</a>
+                    </div>
+                    <div class="card-header">
+                        <h5>(210) 222-2222<i class="fa fa-phone float-right" style="font-size: 20px"></i></h5>
+                    </div>
+                    <div class="card-header">
+                        <a href="##map" role="link">Get Directions:</a>
+                        <p>5903 Broadway,<i class="fas fa-directions float-right" style='font-size:24px'></i>
+                            <br>San Antonio, TX 78209</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 </div>
-
-
-
-
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="mapbox-geocoder-utils.js"></script>
 
@@ -88,13 +99,32 @@
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
         zoom: 15,
-        center: [-98.46531, 29.48106],
+        center: [-98.46529, 29.48079],
     });
 
 
     var marker = new mapboxgl.Marker()
-        .setLngLat([-98.46531, 29.48106])
+        .setLngLat([-98.46529, 29.48079])
         .addTo(map);
+
+    var meritInfo = {
+        address: "5903 Broadway, In Villita Del Sol, San Antonio, TX 78209",
+        popupHTML: "<p>Merit Coffee</p>"
+    };
+
+    function placeMarkerAndPopup(info, token, map) {
+        geocode(info.address, token).then(function(coordinates) {
+            var popup = new mapboxgl.Popup()
+                .setHTML(info.popupHTML);
+            var marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .addTo(map)
+                .setPopup(popup);
+            popup.addTo(map);
+        });
+    }
+
+    placeMarkerAndPopup(meritInfo, accessToken, map);
 
     var geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
@@ -102,8 +132,8 @@
         marker: false,
         placeholder: '',
         proximity: {
-            longitude: -98.46531,
-            latitude: 29.48106
+            longitude: -98.46529,
+            latitude: 29.48079
         }
     });
 
