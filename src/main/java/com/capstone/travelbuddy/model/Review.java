@@ -73,4 +73,16 @@ public class Review {
 	public void setImages(List<Image> images) {
 		this.images = images;
 	}
+
+	@Override
+	public String toString() {
+		return "Review{" +
+				"id=" + id +
+				", description='" + description + '\'' +
+				", rating=" + rating +
+				", created=" + created +
+				", user=" + user +
+				", images=" + images +
+				'}';
+	}
 }

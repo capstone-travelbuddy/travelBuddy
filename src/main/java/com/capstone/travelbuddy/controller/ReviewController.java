@@ -7,10 +7,9 @@ import com.capstone.travelbuddy.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import java.time.LocalDate;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ReviewController {
@@ -26,19 +25,27 @@ public class ReviewController {
 
 	@GetMapping("/create/review/shop/{id}")
 	public String getCreateReview(Model model, @PathVariable int id) {
+
 		Review review = new Review();
-		System.out.println(review.getId() + "line 30");
-
 		model.addAttribute("review", review);
-		System.out.println(shopDao.getById(id).getId() + "line 31");
 		model.addAttribute("shop", shopDao.getById(id));
-
 
 		return "review";
 	}
 
 	@PostMapping("create/review/shop/{id}")
-	public String saveReview(@ModelAttribute Review review){
+	public String saveReview(@RequestParam int rating, @RequestParam String description, @PathVariable int id){
+
+		Review review = new Review();
+		review.setRating(rating);
+		review.setDescription(description);
+		System.out.println(review);
+
+		return "home";
+	}
+
+	//	@PostMapping("create/review/shop/{id}")
+//	public String saveReview(@ModelAttribute Review review){
 //		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		Shop shop = shopDao.getById(id);
 //
@@ -47,11 +54,13 @@ public class ReviewController {
 //
 //		review.setUser(user);
 //		review.setShop(shop);
-		review.setCreated(LocalDate.now());
+//		review.setCreated(LocalDate.now());
 //		reviewDao.save(review);
-		System.out.println(review.getId());
-
+//		System.out.println(review.getId());
+//
 //		user.setReviews(userReviews);
-		return "home";
-	}
+//
+//		System.out.println(review);
+//		return "home";
+//	}
 }

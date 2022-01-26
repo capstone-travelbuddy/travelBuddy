@@ -8,16 +8,16 @@
 </head>
 <body>
 <h1>Leave Review</h1>
-<form th:action="@{'/create/review/shop/' + ${shop.getId()}}" method="POST" th:object="${review}">
+<form th:action="@{'/create/review/shop/' + ${shop.getId()}}" method="POST">
 	<label for="rating">Rating</label>
-	<input id="rating" th:field="*{rating}" />
+	<input id="rating" name="rating" />
 
 	<label for="description">Review</label>
-	<input id="description" th:field="*{description}" />
-
-	<input th:text="${shop.getId()}" type="hidden">
+	<input id="description" name="description" />
 
 	<input value="Submit Review" type="submit" />
 </form>
 </body>
 </html>
+
+
