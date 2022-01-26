@@ -5,38 +5,14 @@
     <meta charset="UTF-8">
     <title>Shop Page</title>
 
+		#map {
+			width: 30%;
+			height: 800px;
+		}
+	</style>
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-
-<div class="large-image m-5" style="width: auto;">
-    <img src="https://imgur.com/GAVcpGW.jpg" class="img-fluid" alt="...">
-</div>
-<div class="m-5" style="font-size: 24px; font-weight: 600;" th:text="${shop.name}"></div>
-<div class="m-5">
-    <a th:href="'/create/review/shop/' + ${shop.id}">
-        <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star" aria-hidden="true"></i>Write A Review
-        </button>
-    </a>
-    <button type="button" class="btn btn-secondary btn-lg"><i class="fa fa-camera" aria-hidden="true"></i> Add Photo
-    </button>
-    <button type="button" class="btn btn-secondary btn-lg">Save To Intineray</button>
-
-
-    <div class="container-fluid">
-        <div class="col-sm-6  float-left" style="font-size: 12px; margin-left: -10px;">
-            <br>
-            <h1>Reviews</h1>
-            <div class="comment mt-4 text-justify float-left"><img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB555gY7t6xtooHJHtuQ9ClW7STrNvDCHTwg&usqp=CAU"
-                    alt="" class="rounded-circle" width="40" height="40">
-                <h4>Joey Donuts
-                    <div class="float-right">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
                     </div>
                 </h4>
                 <span>- January 15, 2022</span> <br>
@@ -118,10 +94,33 @@
 
 <script th:inline="javascript">
 
-    /*<![CDATA[*/
+	/*<![CDATA[*/
 
-    let key = /*[[${mapboxApiKey}]]*/ 'default';
+	let key = /*[[${mapboxApiKey}]]*/ 'default';
 
+	mapboxgl.accessToken = key;
+	const map = new mapboxgl.Map({
+		container: 'map',
+		style: 'mapbox://styles/mapbox/streets-v9',
+		zoom: 15,
+		center: [-98.46584991434109, 29.483725325591443],
+	});
+
+
+	var marker = new mapboxgl.Marker()
+		.setLngLat([-98.46584991434109, 29.483725325591443])
+		.addTo(map);
+
+	var geocoder = new MapboxGeocoder({
+		accessToken: mapboxgl.accessToken,
+		mapboxgl: mapboxgl,
+		marker: false,
+		placeholder: '',
+		proximity: {
+			longitude: -98.46584991434109,
+			latitude: 29.483725325591443
+		}
+	});
     mapboxgl.accessToken = key;
     const map = new mapboxgl.Map({
         container: 'map',
@@ -165,22 +164,8 @@
         }
     });
 
-    geocode("5903 Broadway, In Villita Del Sol, San Antonio, TX 78209", key).then(function (result) {
-        console.log(result);
-        map.setCenter(result);
-        map.setZoom(15);
-    });
-
-    /*]]>*/
+	/*]]>*/
 </script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
-        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
-        crossorigin="anonymous"></script>
 </body>
 </html>

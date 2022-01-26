@@ -283,12 +283,12 @@ body {
     margin-bottom: 0;
 }
 
-.topnav {
+.topNav {
     overflow: hidden;
     background-color: #ef482f;
 }
 
-.topnav a {
+.topNav a {
     float: left;
     display: block;
     color: #f2f2f2;

@@ -1,15 +1,18 @@
 package com.capstone.travelbuddy.controller;
 
 import com.capstone.travelbuddy.model.Review;
+import com.capstone.travelbuddy.model.Shop;
+import com.capstone.travelbuddy.model.User;
 import com.capstone.travelbuddy.repository.ReviewRepository;
 import com.capstone.travelbuddy.repository.ShopRepository;
 import com.capstone.travelbuddy.repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDate;
 
 @Controller
@@ -26,32 +29,29 @@ public class ReviewController {
 
 	@GetMapping("/create/review/shop/{id}")
 	public String getCreateReview(Model model, @PathVariable int id) {
+
 		Review review = new Review();
-		System.out.println(review.getId() + "line 30");
-
 		model.addAttribute("review", review);
-		System.out.println(shopDao.getById(id).getId() + "line 31");
 		model.addAttribute("shop", shopDao.getById(id));
-
 
 		return "review";
 	}
 
 	@PostMapping("create/review/shop/{id}")
-	public String saveReview(@ModelAttribute Review review){
-//		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		Shop shop = shopDao.getById(id);
-//
-//		List<Review> userReviews = user.getReviews();
-//		userReviews.add(review);
-//
-//		review.setUser(user);
-//		review.setShop(shop);
-		review.setCreated(LocalDate.now());
-//		reviewDao.save(review);
-		System.out.println(review.getId());
+	public String saveReview(@RequestParam int rating, @RequestParam String description, @PathVariable int id){
 
-//		user.setReviews(userReviews);
-		return "home";
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Shop shop = shopDao.getById(id);
+
+		Review review = new Review();
+		review.setUser(user);
+		review.setShop(shop);
+		review.setRating(rating);
+		review.setDescription(description);
+		review.setCreated(LocalDate.now());
+		System.out.println(review);
+		reviewDao.save(review);
+
+		return "redirect:/shop/" + id;
 	}
 }
