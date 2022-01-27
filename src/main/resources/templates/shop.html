@@ -8,9 +8,9 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-
-<div class="large-image m-5" style="width: auto;">
-    <img src="https://imgur.com/GAVcpGW.jpg" class="img-fluid" alt="...">
+<div class="large-image m-5" style="width: auto;" th:each="image : ${shop.images}">
+    <img class="img-fluid" th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}">
+    <!--    <img src="https://imgur.com/GAVcpGW.jpg" class="img-fluid" alt="...">-->
 </div>
 <div class="m-5" style="font-size: 24px; font-weight: 600;" th:text="${shop.name}"></div>
 <div class="m-5">
@@ -21,94 +21,38 @@
     <button type="button" class="btn btn-secondary btn-lg"><i class="fa fa-camera" aria-hidden="true"></i> Add Photo
     </button>
     <button type="button" class="btn btn-secondary btn-lg">Save To Intineray</button>
-
-
     <div class="container-fluid">
         <div class="col-sm-6  float-left" style="font-size: 12px; margin-left: -10px;">
             <br>
             <h1>Reviews</h1>
-            <div class="comment mt-4 text-justify float-left"><img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB555gY7t6xtooHJHtuQ9ClW7STrNvDCHTwg&usqp=CAU"
-                    alt="" class="rounded-circle" width="40" height="40">
-                <h4>Joey Donuts
-                    <div class="float-right">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </h4>
-                <span>- January 15, 2022</span> <br>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam
-                    vero sequi velit molestias doloremque molestiae dicta?</p>
-            </div>
-            <div class="text-justify darker mt-4 float-right"><img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStNGlM-N_68C0DVtefYhf2PhLdKhPU5a3hCg&usqp=CAU"
-                    alt="" class="rounded-circle" width="40" height="40">
-                <h4>Bart Simpson
-                    <div class="float-right">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </h4>
-                <span>- January 10, 2022</span> <br>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam
-                    vero sequi velit molestias doloremque molestiae dicta?</p>
-            </div>
-            <div class="comment mt-4 text-justify"><img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB555gY7t6xtooHJHtuQ9ClW7STrNvDCHTwg&usqp=CAU"
-                    alt="" class="rounded-circle" width="40" height="40">
-                <h4>Joey Donuts
-                    <div class="float-right">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </h4>
-                <span>- January 8, 2022</span> <br>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam
-                    vero sequi velit molestias doloremque molestiae dicta?</p>
-            </div>
-            <div class="darker mt-4 text-justify"><img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStNGlM-N_68C0DVtefYhf2PhLdKhPU5a3hCg&usqp=CAU"
-                    alt="" class="rounded-circle" width="40" height="40">
-                <h4>Bart Simpson
-                    <div class="float-right">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </h4>
-                <span>- January 2, 2022</span> <br>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam
-                    vero sequi velit molestias doloremque molestiae dicta?</p>
+            <div th:each="review : ${shop.getReviews()}" class="comment mt-4 text-justify float-left">
+                <img th:src="@{'data:image/jpeg;base64,'+${review.getUser().getUserImage().generateBase64Image()}}"
+                     alt="User Photo" class="rounded-circle" width="40" height="40"/>
+                <h4 th:text="${review.getUser().username}"></h4>
+                <span th:text="${review.getCreated()}"></span>
+                <br>
+                <p th:text="${review.getDescription()}"></p>
             </div>
         </div>
-        <div class="card col-sm-6 float-right" style="background-color: #c2c2c2; width: 40rem; height: 22rem; font-size: 20px; font-weight: 600; margin-top: -40px; margin-bottom: 20px;">
+        <div class="card col-sm-6 float-right"
+             style="background-color: #c2c2c2; width: 40rem; height: 22rem; font-size: 20px; font-weight: 600; margin-top: -40px; margin-bottom: 20px;">
             <div class="card-header">
-                <a href="https://meritcoffee.com/" role="link">https://meritcoffee.com</a>
+                <a th:href="${shop.website}" role="link">Website</a>
             </div>
             <div class="card-header" style="margin-top: 5px;">
-                <p>(210) 222-2222<i class="fa fa-phone fa-lg float-right"></i></p>
+                <p th:text="${shop.phoneNumber}"><i class="fa fa-phone fa-lg float-right"></i></p>
             </div>
             <div class="card-header">
                 <a href="##map" role="link">Get Directions:</a>
-                <p>5903 Broadway,<i class="fa fa-directions fa-lg float-right"></i>
-                    <br>San Antonio, TX 78209</p>
+                <p th:text="${shop.address}"><i class="fa fa-directions fa-lg float-right"></i></p>
+            </div>
+            <div class="card-header">
+                <a th:href="${shop.socialURL}" role="link">Social Media</a>
             </div>
         </div>
         <br>
         <br>
         <div class="card col-sm-6 float-right" id="map" style="width: 40rem; height: 40rem;"></div>
-
     </div>
 </div>
 
