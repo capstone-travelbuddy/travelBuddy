@@ -22,9 +22,11 @@
 					<button class="btn-link btn" style="margin-top: 8px">Logout</button>
 				</form>
 			</div>
-			<form class="d-flex">
-				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+			<form class="d-flex"  th:action="@{/search/{name}}" method="post">
+				<div>
+				<input class="form-control me-2" name="shops" id="shops"  th:text="${name}" type="text" placeholder="Find by Shop Name" size="50" aria-label="Search">
 				<button class="btn btn-outline-success" size="4" type="submit">Search</button>
+				</div>
 			</form>
 		</div>
 
