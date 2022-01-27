@@ -1,22 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:insert="fragments/header">
-	<meta charset="UTF-8" />
-	<title>Leave a Review</title>
+    <meta charset="UTF-8"/>
+    <title>Leave a Review</title>
+
+
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-<h1>Leave a Review</h1>
-<div th:text="${shop.name}"></div>
-<form th:action="@{'/create/review/shop/' + ${shop.id}}" method="POST">
-	<label for="rating">Rating</label>
-	<input id="rating" name="rating" />
+<div class="card"
+     style="width: 60rem;height: 30rem; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <div class="row">
+        <div class="col-2"><img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB555gY7t6xtooHJHtuQ9ClW7STrNvDCHTwg&usqp=CAU"
+                alt="review profile pic" width="70" class="rounded-circle mt-2"></div>
+        <div class="col-10">
+            <div class="comment-box ml-2 text-center" style="margin-top: 10px; margin-right: 10px;">
+                <div style="font-size: 20px; font-weight: 400;" th:text="${shop.name}"></div>
+                <h4>Leave a Review</h4>
+                <form th:action="@{'/create/review/shop/' + ${shop.id}}" method="POST">
 
-	<label for="description">Review</label>
-	<input id="description" name="description" />
+                    <div id="reviewpage" class="rating"><label for="rating"></label><input id="rating" type="radio" name="rating" value="5" id="5"><label
+                            for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label
+                            for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label
+                            for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label
+                            for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label
+                            for="1">☆</label></div>
+                    <div class="comment-area"><label for="description"></label><textarea class="form-control" placeholder="Write a Review!"
+                                                        rows="10"></textarea><input id="description" name="description"/></div>
 
-	<input value="Submit Review" type="submit" />
-</form>
+                    <div class="comment-btns mt-2">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="pull-left">
+                                    <button class="btn btn-success btn-sm">Cancel</button>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="pull-right">
+                                    	<input class="submit review" type="submit"  value="Submit"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 </body>
 </html>
 
