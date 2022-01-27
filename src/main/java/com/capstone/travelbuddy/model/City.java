@@ -23,6 +23,9 @@ public class City {
 	private Image cityImage;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "city")
+	private List<User> users;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "city")
 	private List<Shop> shops;
 
 	public int getId() {
@@ -71,5 +74,13 @@ public class City {
 
 	public void setShops(List<Shop> shops) {
 		this.shops = shops;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 }

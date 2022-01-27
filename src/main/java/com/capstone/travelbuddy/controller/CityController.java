@@ -46,7 +46,7 @@ public class CityController {
 		model.addAttribute("city", cityDao.getById(id));
 		model.addAttribute("categories", categoryDao.findAll());
 
-		return "sa-categories";
+		return "categories";
 	}
 
 	@GetMapping("category/{categoryType}/{id}")

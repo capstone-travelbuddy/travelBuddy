@@ -1,6 +1,7 @@
 package com.capstone.travelbuddy.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,8 +23,12 @@ public class User {
 	@OneToOne
 	private Image userImage;
 
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "city_id")
 	private City city;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private List<Review> reviews;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(
@@ -43,7 +48,7 @@ public class User {
 		password = copy.password;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -89,6 +94,14 @@ public class User {
 
 	public void setCity(City city) {
 		this.city = city;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 	public Set<Shop> getLikedShops() {

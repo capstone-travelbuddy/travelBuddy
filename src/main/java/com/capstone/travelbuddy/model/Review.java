@@ -2,7 +2,6 @@ package com.capstone.travelbuddy.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "reviews")
@@ -20,11 +19,13 @@ public class Review {
 	@Column(nullable = false)
 	private LocalDate created;
 
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "user_id")
 	private User user;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "review")
-	private List<Image> images;
+	@ManyToOne
+	@JoinColumn(name = "shop_id")
+	private Shop shop;
 
 	public int getId() {
 		return id;
@@ -66,11 +67,23 @@ public class Review {
 		this.user = user;
 	}
 
-	public List<Image> getImages() {
-		return images;
+	public Shop getShop() {
+		return shop;
 	}
 
-	public void setImages(List<Image> images) {
-		this.images = images;
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+
+	@Override
+	public String toString() {
+		return "Review{" +
+				"id=" + id +
+				", description='" + description + '\'' +
+				", rating=" + rating +
+				", created=" + created +
+				", user=" + user +
+				", shop=" + shop +
+				'}';
 	}
 }

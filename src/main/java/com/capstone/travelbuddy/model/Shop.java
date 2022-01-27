@@ -1,6 +1,7 @@
 package com.capstone.travelbuddy.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,15 +13,18 @@ public class Shop {
 
 	private String name;
 
+	private String description;
+
 	private String address;
 
 	private String phoneNumber;
 
-	@Column(nullable = false, length = 512)
-	private String description;
+	private String socialURL;
 
-	@OneToOne
-	private Image shopImage;
+	private String website;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "shop")
+	private List<Image> images;
 
 	@OneToOne
 	private Category category;
@@ -28,6 +32,9 @@ public class Shop {
 	@ManyToOne
 	@JoinColumn(name = "city_id")
 	private City city;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "shop")
+	private List<Review> reviews;
 
 	@ManyToMany(mappedBy = "likedShops")
 	private Set<User> likes;
@@ -48,6 +55,14 @@ public class Shop {
 		this.name = name;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public String getAddress() {
 		return address;
 	}
@@ -64,20 +79,28 @@ public class Shop {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getSocialURL() {
+		return socialURL;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setSocialURL(String socialURL) {
+		this.socialURL = socialURL;
 	}
 
-	public Image getShopImage() {
-		return shopImage;
+	public String getWebsite() {
+		return website;
 	}
 
-	public void setShopImage(Image shopImage) {
-		this.shopImage = shopImage;
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 
 	public Category getCategory() {
@@ -94,6 +117,14 @@ public class Shop {
 
 	public void setCity(City city) {
 		this.city = city;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 	public Set<User> getLikes() {
