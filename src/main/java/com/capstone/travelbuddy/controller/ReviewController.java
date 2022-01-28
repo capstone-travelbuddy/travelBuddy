@@ -9,10 +9,7 @@ import com.capstone.travelbuddy.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 
 @Controller
@@ -21,7 +18,7 @@ public class ReviewController {
 	private ShopRepository shopDao;
 	private UserRepository userDao;
 
-	public ReviewController(ReviewRepository reviewDao, UserRepository userDao, ShopRepository shopDao){
+	public ReviewController(ReviewRepository reviewDao, UserRepository userDao, ShopRepository shopDao) {
 		this.reviewDao = reviewDao;
 		this.shopDao = shopDao;
 		this.userDao = userDao;
@@ -38,7 +35,7 @@ public class ReviewController {
 	}
 
 	@PostMapping("create/review/shop/{id}")
-	public String saveReview(@RequestParam int rating, @RequestParam String description, @PathVariable int id){
+	public String saveReview(@RequestParam int rating, @RequestParam String description, @PathVariable int id) {
 
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Shop shop = shopDao.getById(id);
@@ -53,5 +50,32 @@ public class ReviewController {
 		reviewDao.save(review);
 
 		return "redirect:/shop/" + id;
+	}
+
+	@GetMapping("/review/edit/{id}")
+	public String editPost(Model model, @PathVariable int id) {
+		Review review = reviewDao.getById(id);
+		model.addAttribute("review", review);
+		model.addAttribute("titleLabel", "Edit Description: ");
+		model.addAttribute("bodyLabel", "Edit Rating: ");
+
+		return "form";
+	}
+
+	@PostMapping("review/edit/{id}")
+	public String saveEditPost(@RequestParam int rating, @RequestParam String description, @PathVariable int id) {
+		Review review = reviewDao.getById(id);
+		review.setRating(rating);
+		review.setDescription(description);
+		reviewDao.save(review);
+		System.out.println(review);
+		return "redirect:/profile";
+	}
+
+	@PostMapping("/review/delete/{id}")
+	public String deletePostById(@PathVariable int id) {
+		reviewDao.deleteById(id);
+
+		return "redirect:/profile";
 	}
 }
