@@ -1,43 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	  lang="en">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 
 <div th:fragment="navbar">
-	<nav class="navbar topNav main-logo">
-		<a class="logo_li" th:href="@{/}">
+    <nav class="navbar topNav main-logo">
+        <a class="logo_li" th:href="@{/}">
 			<span class="span-logo">
 				<img th:src="@{/img/TBLogo2.jpg}" alt="TBLogo">
 			</span>
-		</a>
-		<div sec:authorize="isAnonymous()">
-			<a th:href="@{/sign-up}">Register</a>
-			<a th:href="@{/login}">Login</a>
+        </a>
+        <div sec:authorize="isAnonymous()">
+            <a th:href="@{/sign-up}">Register</a>
+            <a th:href="@{/login}">Login</a>
 
 
-			</div>
-			<div sec:authorize="isAuthenticated()" style="float: left;">
-				<form th:action="@{/logout}" th:method="post">
-					<button class="btn-link btn" style="margin-top: 8px">Logout</button>
-				</form>
-			</div>
-			<form class="d-flex"  th:action="@{/search/{name}}" method="post">
-				<div>
-				<input class="form-control me-2" name="shops" id="shops"  th:text="${name}" type="text" placeholder="Find by Shop Name" size="50" aria-label="Search">
-				<button class="btn btn-outline-success" size="4" type="submit">Search</button>
-				</div>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" th:method="post">
+                <button>Logout</button>
+            </form>
+            <a th:href="@{/profile}" th:text="${#authentication.getPrincipal().getUsername()}">Profile</a>
+        </div>
+        <form class="d-flex" th:action="@{/search/{name}}" method="post">
+            <div>
+                <input class="form-control me-2" name="shops" id="shops" th:text="${name}" type="text"
+                       placeholder="Find by Shop Name" size="50" aria-label="Search">
+                <button class="btn btn-outline-success" size="4" type="submit">Search</button>
+            </div>
+        </form>
 
-		</div>
-		<div sec:authorize="isAuthenticated()">
-			<form th:action="@{/logout}" th:method="post">
-				<button>Logout</button>
-			</form>
-			<a th:href="@{/profile}" th:text="${#authentication.getPrincipal().getUsername()}">Profile</a>
-		</div>
-<!--		<form class="form-inline">-->
-<!--			<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--			<button class="btn btn-outline-success" size="4" type="submit">Search</button>-->
-<!--		</form>-->
-	</nav>
+    </nav>
 </div>
 </html>
