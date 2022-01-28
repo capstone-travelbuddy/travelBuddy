@@ -81,9 +81,12 @@
 						</div>
 						<hr>
 						<div class="row">
-							<div class="col-sm-12">
-								<a class="btn btn-info " target="__blank" href="#">Edit</a>
-							</div>
+							<form class="col" th:action="'/profile/edit/' + ${user.id}" method="get">
+								<button class="btn btn-primary">Edit Profile</button>
+							</form>
+							<form class="col" th:action="'/profile/delete/' + ${user.id}" method="get">
+								<button class="btn btn-danger">Delete Profile</button>
+							</form>
 						</div>
 					</div>
 				</div>
