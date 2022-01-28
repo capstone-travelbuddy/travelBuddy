@@ -13,7 +13,7 @@
 		<div sec:authorize="isAnonymous()">
 			<a th:href="@{/sign-up}">Register</a>
 			<a th:href="@{/login}">Login</a>
-			<a th:href="@{/profile/Mina}">Profile</a>
+
 
 			</div>
 			<div sec:authorize="isAuthenticated()" style="float: left;">
@@ -34,10 +34,10 @@
 			</form>
 			<a th:href="@{/profile}" th:text="${#authentication.getPrincipal().getUsername()}">Profile</a>
 		</div>
-		<form class="form-inline">
-			<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success" size="4" type="submit">Search</button>
-		</form>
+<!--		<form class="form-inline">-->
+<!--			<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--			<button class="btn btn-outline-success" size="4" type="submit">Search</button>-->
+<!--		</form>-->
 	</nav>
 </div>
 </html>
