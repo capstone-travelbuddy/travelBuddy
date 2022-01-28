@@ -2,7 +2,6 @@ package com.capstone.travelbuddy.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "reviews")
@@ -27,9 +26,6 @@ public class Review {
 	@ManyToOne
 	@JoinColumn(name = "shop_id")
 	private Shop shop;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "review")
-	private List<Image> images;
 
 	public int getId() {
 		return id;
@@ -79,14 +75,6 @@ public class Review {
 		this.shop = shop;
 	}
 
-	public List<Image> getImages() {
-		return images;
-	}
-
-	public void setImages(List<Image> images) {
-		this.images = images;
-	}
-
 	@Override
 	public String toString() {
 		return "Review{" +
@@ -96,7 +84,6 @@ public class Review {
 				", created=" + created +
 				", user=" + user +
 				", shop=" + shop +
-				", images=" + images +
 				'}';
 	}
 }

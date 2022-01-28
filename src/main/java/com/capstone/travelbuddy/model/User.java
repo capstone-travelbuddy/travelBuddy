@@ -2,7 +2,6 @@ package com.capstone.travelbuddy.model;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -35,7 +34,7 @@ public class User {
 			name = "shop_like",
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "shop_id"))
-	private Set<Shop> likedShops;
+	private List<Shop> likedShops;
 
 	public User() {
 
@@ -104,11 +103,11 @@ public class User {
 		this.reviews = reviews;
 	}
 
-	public Set<Shop> getLikedShops() {
+	public List<Shop> getLikedShops() {
 		return likedShops;
 	}
 
-	public void setLikedShops(Set<Shop> likedShops) {
+	public void setLikedShops(List<Shop> likedShops) {
 		this.likedShops = likedShops;
 	}
 }

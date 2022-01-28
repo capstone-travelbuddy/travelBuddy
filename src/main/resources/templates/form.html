@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:insert="fragments/header">
+	<meta charset="UTF-8">
+	<title>Edit Post</title>
+</head>
+<body>
+<nav th:insert="fragments/navbar"></nav>
+<form th:action="@{#}" th:method="post" th:object="${review}">
+	<label><span th:text="${titleLabel}"></span>
+		<input type="text" name="description" th:value="${review.description}">
+	</label>
+	<label><span th:text="${bodyLabel}"></span>
+		<input name="rating" th:value="${review.rating}">
+	</label>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>
