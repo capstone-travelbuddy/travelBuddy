@@ -25,7 +25,7 @@ public class ReviewController {
 	}
 
 	@GetMapping("/create/review/shop/{id}")
-	public String getCreateReview(Model model, @PathVariable int id) {
+	public String createReview(Model model, @PathVariable int id) {
 
 		Review review = new Review();
 		model.addAttribute("review", review);
@@ -53,17 +53,17 @@ public class ReviewController {
 	}
 
 	@GetMapping("/review/edit/{id}")
-	public String editPost(Model model, @PathVariable int id) {
+	public String editReview(Model model, @PathVariable int id) {
 		Review review = reviewDao.getById(id);
 		model.addAttribute("review", review);
 		model.addAttribute("titleLabel", "Edit Description: ");
 		model.addAttribute("bodyLabel", "Edit Rating: ");
 
-		return "form";
+		return "edit-review";
 	}
 
 	@PostMapping("review/edit/{id}")
-	public String saveEditPost(@RequestParam int rating, @RequestParam String description, @PathVariable int id) {
+	public String saveEditReview(@RequestParam int rating, @RequestParam String description, @PathVariable int id) {
 		Review review = reviewDao.getById(id);
 		review.setRating(rating);
 		review.setDescription(description);
@@ -73,7 +73,7 @@ public class ReviewController {
 	}
 
 	@PostMapping("/review/delete/{id}")
-	public String deletePostById(@PathVariable int id) {
+	public String deleteReviewById(@PathVariable int id) {
 		reviewDao.deleteById(id);
 
 		return "redirect:/profile";
