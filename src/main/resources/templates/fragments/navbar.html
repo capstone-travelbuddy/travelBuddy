@@ -10,6 +10,7 @@
 				<img th:src="@{/img/TBLogo2.jpg}" alt="TBLogo">
 			</span>
         </a>
+        <a th:href="@{/destinations}">Destinations</a>
         <div sec:authorize="isAnonymous()">
             <a th:href="@{/sign-up}">Register</a>
             <a th:href="@{/login}">Login</a>
