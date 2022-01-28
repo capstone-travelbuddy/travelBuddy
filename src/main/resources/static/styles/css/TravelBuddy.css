@@ -779,10 +779,81 @@ h2 {
     width: 50%;
     height: 500px;
 }
+
+.comment {
+    width: 40rem;
+    border: 1px solid rgb(4, 153, 158);
+    background-color: rgba(159, 162, 162, 0.97);
+    float: left;
+    border-radius: 5px;
+    padding-left: 40px;
+    padding-right: 30px;
+    padding-top: 10px
+}
+
+.comment h4,
+.comment span,
+.darker h4,
+.darker span {
+    display: inline
+}
+
+.comment p,
+.comment span,
+.darker p,
+.darker span {
+    color: rgb(14, 13, 13)
+}
+
+h4 {
+    margin: 20px 10px 10px;
+}
+p {
+    margin: 10px;
+}
+
+
+.carousel-item {
+    height: 100vh;
+    min-width: 300px;
+}
+
+.bg-1, .bg-2, .bg-3 {
+    background-size: cover;
+}
+.carousel-caption {
+    bottom: 220px;
+    z-index: 2;
+}
+
+.carousel-inner::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /*background: rgba(0,0,0,0.6);*/
+    z-index: 1;
+}
+
+.carousel-indicators {
+    bottom: 35px;
+}
+
+.carousel-indicators button {
+    width: 100px; !important;
+}
+
+
+@media only screen and (min-width:768px) and (max-width: 991px){
+
+}
+
 /*Shops Page End*/
 
 /*Review Page Start*/
-#reviewpage {
+#rating {
     text-align: center;
     display: flex;
     margin-top: -10px;
@@ -791,11 +862,11 @@ h2 {
     float: left
 }
 
-#reviewpage >input {
+#rating >input {
     display: none
 }
 
-#reviewpage >label {
+#rating >label {
     position: relative;
     width: 19px;
     font-size: 25px;
@@ -803,22 +874,39 @@ h2 {
     cursor: pointer
 }
 
-#reviewpage >label::before {
+#rating >label::before {
     content: "\2605";
     position: absolute;
     opacity: 0
 }
 
-#reviewpage >label:hover:before,
-#reviewpage >label:hover~label:before {
+#rating >label:hover:before,
+#rating >label:hover~label:before {
     opacity: 1 !important
 }
 
-#reviewpage >input:checked~label:before {
+#rating >input:checked~label:before {
     opacity: 1
 }
 
-#reviewpage hover>input:checked~label:before {
+#rating hover>input:checked~label:before {
     opacity: 0.4
 }
+
+.Stars {
+    /*!*url: star.png;*!*/
+    /*--percent: calc(var(--rating) / 5 * 100%);*/
+    /*display: inline-block;*/
+    /*font-size: var(--star-size);*/
+    /*font-family: Times;*/
+height: 15px;
+}
+/*.Stars::before {*/
+/*    content: '★★★★★';*/
+/*    letter-spacing: 3px;*/
+/*    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));*/
+/*    -webkit-background-clip: text;*/
+/*    -webkit-text-fill-color: transparent;*/
+/*}*/
+
 /*Review Page End*/

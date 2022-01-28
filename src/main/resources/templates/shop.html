@@ -8,12 +8,44 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-inner">
+        <div class="carousel-item active bg-1">
+            <img src="https://s3-media0.fl.yelpcdn.com/bphoto/AaJ_ULvWoK52S-7OYMr1Cg/l.jpg" class="d-block w-100 h-100" alt="...">
+        </div>
+        <div class="carousel-item bg-2">
+            <img src="https://s3-media0.fl.yelpcdn.com/bphoto/IEGpk_ZULftx9BNYEtgCwA/l.jpg" class="d-block w-100 h-100" alt="...">
+        </div>
+        <div class="carousel-item bg-3">
+            <img src="https://s3-media0.fl.yelpcdn.com/bphoto/rStyrTeUUKj7a9Nl9hyqQA/l.jpg" class="d-block w-100 h-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"><img src="https://s3-media0.fl.yelpcdn.com/bphoto/AaJ_ULvWoK52S-7OYMr1Cg/l.jpg" alt="" class="d-block w-100 img-fluid"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"><img src="https://s3-media0.fl.yelpcdn.com/bphoto/IEGpk_ZULftx9BNYEtgCwA/l.jpg" alt="" class="d-block w-100 img-fluid"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"  aria-label="Slide 3"><img src="https://s3-media0.fl.yelpcdn.com/bphoto/rStyrTeUUKj7a9Nl9hyqQA/l.jpg" alt="" class="d-block w-100 img-fluid"></button>
+    </div>
+
 <div class="h1 text-success text-center" th:text="${add}"></div>
 <div class="h1 text-success text-center" th:text="${remove}"></div>
 <div class="large-image m-5" style="width: auto;" th:each="image : ${shop.images}">
     <img class="img-fluid" th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}">
     <!--    <img src="https://imgur.com/GAVcpGW.jpg" class="img-fluid" alt="...">-->
 </div>
+
+<!--<div class="large-image m-5" style="width: auto;" th:each="image : ${shop.images}">-->
+<!--    <img class="img-fluid" th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}">-->
+<!--</div>-->
 <div class="m-5" style="font-size: 24px; font-weight: 600;" th:text="${shop.name}"></div>
 <div class="m-5">
     <div sec:authorize="isAuthenticated()">
@@ -43,13 +75,31 @@
         <div class="col-sm-6  float-left" style="font-size: 12px; margin-left: -10px;">
             <br>
             <h1>Reviews</h1>
+<!--            <div class="comment mt-4 text-justify float-left"> <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">-->
+<!--                <h4>Jhon Doe</h4> <span>- 20 October, 2018</span> <br>-->
+<!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>-->
+<!--            </div>-->
             <div th:each="review : ${shop.getReviews()}" class="comment mt-4 text-justify float-left">
                 <img th:src="@{'data:image/jpeg;base64,'+${review.getUser().getUserImage().generateBase64Image()}}"
                      alt="User Photo" class="rounded-circle" width="40" height="40"/>
                 <h4 th:text="${review.getUser().username}"></h4>
-                <span th:text="${review.getCreated()}"></span>
+                <div class="float-right">
+                <p th:if="${review.getRating() == 1}"><img class="Stars" th:src="@{/img/star.png}"></p>
+                <p th:if="${review.getRating() == 2}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"></p>
+                <p th:if="${review.getRating() == 3}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"></p>
+                <p th:if="${review.getRating() == 4}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"></p>
+                <p th:if="${review.getRating() == 5}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"></p>
+                </div>
+                <br>
+                <div class="float-right">
+                <h4 id="review date" th:text="${review.getCreated()}"></h4>
+                </div>
                 <br>
                 <p th:text="${review.getDescription()}"></p>
+
+<!--                <p th:text="${review.getRating()}"></p>-->
+
+
             </div>
         </div>
         <div class="card col-sm-6 float-right"
