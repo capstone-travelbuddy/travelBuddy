@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="fragments/header">
 
     <meta charset="UTF-8">
@@ -35,27 +35,23 @@
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"><img src="https://s3-media0.fl.yelpcdn.com/bphoto/IEGpk_ZULftx9BNYEtgCwA/l.jpg" alt="" class="d-block w-100 img-fluid"></button>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"  aria-label="Slide 3"><img src="https://s3-media0.fl.yelpcdn.com/bphoto/rStyrTeUUKj7a9Nl9hyqQA/l.jpg" alt="" class="d-block w-100 img-fluid"></button>
     </div>
-
+</div>
 <div class="h1 text-success text-center" th:text="${add}"></div>
 <div class="h1 text-success text-center" th:text="${remove}"></div>
-<div class="large-image m-5" style="width: auto;" th:each="image : ${shop.images}">
-    <img class="img-fluid" th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}">
-    <!--    <img src="https://imgur.com/GAVcpGW.jpg" class="img-fluid" alt="...">-->
-</div>
-
 <!--<div class="large-image m-5" style="width: auto;" th:each="image : ${shop.images}">-->
 <!--    <img class="img-fluid" th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}">-->
 <!--</div>-->
 <div class="m-5" style="font-size: 24px; font-weight: 600;" th:text="${shop.name}"></div>
 <div class="m-5">
     <div sec:authorize="isAuthenticated()">
-        <a th:href="'/create/review/shop/' + ${shop.id}">
-            <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star" aria-hidden="true"></i>Write A Review
-            </button>
-        </a>
+    <a th:href="'/create/review/shop/' + ${shop.id}">
+        <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star" aria-hidden="true"></i>Write A Review
+        </button>
+    </a>
         <a th:href="'/shop/' + ${shop.id} + '/upload/'">
-            <button type="button" class="btn btn-secondary btn-lg"><i class="fa fa-camera" aria-hidden="true"></i>Add Photo</button>
-        </a>
+        <button type="button" class="btn btn-secondary btn-lg"><i class="fa fa-camera" aria-hidden="true"></i> Add Photo
+        </button>
+    </a>
         <a th:if="${user.getLikedShops().contains(shop)}" class="btn" th:href="'/like/shop/' + ${shop.id}">UNLIKE</a>
         <a th:if="${!user.getLikedShops().contains(shop)}" class="btn" th:href="'/like/shop/' + ${shop.id}">LIKE</a>
         <button th:attr="onclick=|add('${shop}')|"  type="button" class="btn btn-secondary btn-lg">Save To Intineray</button>
@@ -69,15 +65,15 @@
                      alt="User Photo" class="rounded-circle" width="40" height="40"/>
                 <h4 th:text="${review.getUser().username}"></h4>
                 <div class="float-right">
-                <p th:if="${review.getRating() == 1}"><img class="Stars" th:src="@{/img/star.png}"></p>
-                <p th:if="${review.getRating() == 2}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"></p>
-                <p th:if="${review.getRating() == 3}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"></p>
-                <p th:if="${review.getRating() == 4}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"></p>
-                <p th:if="${review.getRating() == 5}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"></p>
+                    <p th:if="${review.getRating() == 1}"><img class="Stars" th:src="@{/img/star.png}"></p>
+                    <p th:if="${review.getRating() == 2}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"></p>
+                    <p th:if="${review.getRating() == 3}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"></p>
+                    <p th:if="${review.getRating() == 4}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"></p>
+                    <p th:if="${review.getRating() == 5}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}"></p>
                 </div>
                 <br>
                 <div class="float-right">
-                <h4 id="review date" th:text="${review.getCreated()}"></h4>
+                    <h4 id="review date" th:text="${review.getCreated()}"></h4>
                 </div>
                 <br>
                 <p th:text="${review.getDescription()}"></p>
@@ -104,7 +100,6 @@
         <div class="card col-sm-6 float-right" id="map" style="width: 40rem; height: 40rem;"></div>
     </div>
 </div>
-
 
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="mapbox-geocoder-utils.js"></script>
