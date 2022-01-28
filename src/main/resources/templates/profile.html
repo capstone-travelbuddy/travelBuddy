@@ -105,6 +105,12 @@
 							</div>
 							<div th:each="review : ${user.getReviews()}">
 								<div class="card-text" th:text="${review.description}"></div>
+								<form class="col" th:action="'/review/edit/' + ${review.id}" method="get">
+									<button class="btn btn-primary">Edit</button>
+								</form>
+								<form class="col" th:action="'/review/delete/' + ${review.id}" method="post">
+									<button class="btn btn-danger">Delete</button>
+								</form>
 							</div>
 						</div>
 					</div>
