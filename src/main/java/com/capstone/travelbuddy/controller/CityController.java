@@ -5,10 +5,12 @@ import com.capstone.travelbuddy.repository.CategoryRepository;
 import com.capstone.travelbuddy.repository.CityRepository;
 import com.capstone.travelbuddy.repository.ShopRepository;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class CityController {
@@ -16,11 +18,13 @@ public class CityController {
 	private CityRepository cityDao;
 	private ShopRepository shopDao;
 	private CategoryRepository categoryDao;
+//	private ShopService service;
 
 	public CityController(CityRepository cityDao, ShopRepository shopDao, CategoryRepository categoryDao) {
 		this.cityDao = cityDao;
 		this.shopDao = shopDao;
 		this.categoryDao = categoryDao;
+//		this.service = service;
 	}
 	@Value("${mapbox.api.key}")
 	private String mapboxApiKey;
@@ -42,7 +46,7 @@ public class CityController {
 		model.addAttribute("city", cityDao.getById(id));
 		model.addAttribute("categories", categoryDao.findAll());
 
-		return "sa-categories";
+		return "categories";
 	}
 
 	@GetMapping("category/{categoryType}/{id}")
@@ -60,4 +64,27 @@ public class CityController {
 
 		return "shop";
 	}
-}
+
+	@PostMapping("/search/{name}")
+	public String shopSearch(@PathVariable String name, Model model){
+		System.out.println(name);
+		model.addAttribute("shops", shopDao.findByNameIgnoreCaseContaining(name));
+		return "search";
+
+	}
+
+//	@RequestMapping(path= {"/","/search"})
+//	public String home(Shop shop, Model model, String keyword) {
+//		if (keyword != null) {
+//			List<Shop> list = service.getByKeyword(keyword);
+//			model.addAttribute("list", list);
+//		}else{
+//			List<Shop> list = service.getAllShops();
+//			model.addAttribute("list",list);
+//		}
+//		return "/";
+//		}
+	}
+
+
+

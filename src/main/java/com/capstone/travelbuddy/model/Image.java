@@ -17,8 +17,8 @@ public class Image {
 	private byte[] content;
 
 	@ManyToOne
-	@JoinColumn(name = "review_id")
-	private Review review;
+	@JoinColumn(name = "shop_id")
+	private Shop shop;
 
 	public int getId() {
 		return id;
@@ -44,12 +44,12 @@ public class Image {
 		this.content = content;
 	}
 
-	public Review getReview() {
-		return review;
+	public Shop getShop() {
+		return shop;
 	}
 
-	public void setReview(Review review) {
-		this.review = review;
+	public void setShop(Shop shop) {
+		this.shop = shop;
 	}
 
 	public String generateBase64Image()

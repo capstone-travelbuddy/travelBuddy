@@ -13,15 +13,18 @@ public class Shop {
 
 	private String name;
 
+	private String description;
+
 	private String address;
 
 	private String phoneNumber;
 
-	@Column(nullable = false, length = 512)
-	private String description;
+	private String socialURL;
 
-	@OneToOne
-	private Image shopImage;
+	private String website;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "shop")
+	private List<Image> images;
 
 	@OneToOne
 	private Category category;
@@ -52,6 +55,14 @@ public class Shop {
 		this.name = name;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public String getAddress() {
 		return address;
 	}
@@ -68,20 +79,28 @@ public class Shop {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getSocialURL() {
+		return socialURL;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setSocialURL(String socialURL) {
+		this.socialURL = socialURL;
 	}
 
-	public Image getShopImage() {
-		return shopImage;
+	public String getWebsite() {
+		return website;
 	}
 
-	public void setShopImage(Image shopImage) {
-		this.shopImage = shopImage;
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 
 	public Category getCategory() {
