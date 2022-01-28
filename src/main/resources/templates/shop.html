@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:insert="fragments/header">
 
     <meta charset="UTF-8">
@@ -8,20 +8,27 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
+<div class="h1 text-success text-center" th:text="${add}"></div>
+<div class="h1 text-success text-center" th:text="${remove}"></div>
 <div class="large-image m-5" style="width: auto;" th:each="image : ${shop.images}">
     <img class="img-fluid" th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}">
     <!--    <img src="https://imgur.com/GAVcpGW.jpg" class="img-fluid" alt="...">-->
 </div>
 <div class="m-5" style="font-size: 24px; font-weight: 600;" th:text="${shop.name}"></div>
 <div class="m-5">
-    <a th:href="'/create/review/shop/' + ${shop.id}">
-        <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star" aria-hidden="true"></i>Write A Review
-        </button>
-    </a>
-    <a th:href="'/shop/' + ${shop.id} + '/upload/'">
-        <button type="button" class="btn btn-secondary btn-lg"><i class="fa fa-camera" aria-hidden="true"></i>Add Photo</button>
-    </a>
-    <button type="button" class="btn btn-secondary btn-lg">Save To Intineray</button>
+    <div sec:authorize="isAuthenticated()">
+        <a th:href="'/create/review/shop/' + ${shop.id}">
+            <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star" aria-hidden="true"></i>Write A Review
+            </button>
+        </a>
+        <a th:href="'/shop/' + ${shop.id} + '/upload/'">
+            <button type="button" class="btn btn-secondary btn-lg"><i class="fa fa-camera" aria-hidden="true"></i>Add Photo</button>
+        </a>
+        <a th:if="${user.getLikedShops().contains(shop)}" class="btn" th:href="'/like/shop/' + ${shop.id}">UNLIKE</a>
+        <a th:if="${!user.getLikedShops().contains(shop)}" class="btn" th:href="'/like/shop/' + ${shop.id}">LIKE</a>
+        <button th:attr="onclick=|add('${shop}')|"  type="button" class="btn btn-secondary btn-lg">Save To Intineray</button>
+    </div>
+
     <div class="container-fluid">
         <div class="col-sm-6  float-left" style="font-size: 12px; margin-left: -10px;">
             <br>
