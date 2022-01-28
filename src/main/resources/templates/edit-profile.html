@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:insert="fragments/header">
+	<meta charset="UTF-8">
+	<title>Edit Profile</title>
+</head>
+<body>
+<nav th:insert="fragments/navbar"></nav>
+<form th:action="@{#}" th:method="post" th:object="${user}">
+	<label><span th:text="${titleLabel}"></span>
+		<input type="text" name="username" th:value="${user.username}">
+	</label>
+	<label><span th:text="${bodyLabel}"></span>
+		<input name="email" th:value="${user.email}">
+	</label>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>
