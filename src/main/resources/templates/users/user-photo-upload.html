@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:insert="fragments/header">
+	<meta charset="UTF-8">
+	<title>Upload Image</title>
+</head>
+<body>
+<nav th:insert="fragments/navbar"></nav>
+<div class="container-fluid text-center">
+	<div>
+		<h1 th:text="${user.username}"></h1>
+	</div>
+	<form th:action="@{/profile/upload}" method="post" enctype="multipart/form-data" style="max-width: 40em; margin: 0 auto">
+		<div class="border rounded m-3">
+			<h2 class="m-3">Upload Your Image:</h2>
+			<div class="container text-center">
+				<input class="form-control" type="file" name="image" required>
+			</div>
+			<div>
+				<input type="submit" value="Upload" class="btn btn-primary m-3">
+			</div>
+		</div>
+	</form>
+</div>
+</body>
+</html>
