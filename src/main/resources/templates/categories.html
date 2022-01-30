@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="fragments/header">
+
 	<meta charset="UTF-8">
 	<title>Title</title>
 
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
+
 <div class="container">
-	<div class="card float-left" th:each="category : ${categories}">
+	<div id="categories" class="card float-left" th:each="category : ${categories}">
 		<div class="row">
 			<div class="col-sm-7">
 				<div class="card-block">
