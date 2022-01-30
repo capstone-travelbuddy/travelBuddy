@@ -1,57 +1,57 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
 
-<head th:insert="fragments/header">
+<!--<head th:insert="fragments/header">-->
 
-	<meta charset="utf-8">
-	<title>TravelBuddy</title>
+<!--	<meta charset="utf-8">-->
+<!--	<title>TravelBuddy</title>-->
 
 
-</head>
-<body>
-<nav th:insert="fragments/navbar"></nav>
-<main>
+<!--</head>-->
+<!--<body>-->
+<!--<nav th:insert="fragments/navbar"></nav>-->
+<!--<main>-->
 
-	<div class="container-fluid bg-transparent my-4 p-3" style="position: relative;">
-		<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-			<div class="col" th:each="shop : ${shops}">
-				<div class="card h-100 shadow-sm">
-					<img th:src="@{'data:image/jpeg;base64,'+${shop.shopImage.generateBase64Image()}}"
-						 alt="Shop Photo"/>
-					<div class="label-top shadow-sm">
-						Local Favorite
-					</div>
-					<div class="card-body">
-						<div class="rate">
-							<input type="radio" id="star5" name="rate" value="5"/>
-							<label for="star5" title="text">5 stars</label>
-							<input type="radio" id="star4" name="rate" value="4"/>
-							<label for="star4" title="text">4 stars</label>
-							<input type="radio" id="star3" name="rate" value="3"/>
-							<label for="star3" title="text">3 stars</label>
-							<input type="radio" id="star2" name="rate" value="2"/>
-							<label for="star2" title="text">2 stars</label>
-							<input type="radio" id="star1" name="rate" value="1"/>
-							<label for="star1" title="text">1 star</label>
-						</div>
-						<div class="clearfix mb-3">
-							<span class="float-end">
-								<a href="#" class="small text-muted">Reviews</a>
-							</span>
-						</div>
-						<h5 class="card-title text-center" th:text="${shop.name}"></h5>
-						<p class="card-text" th:text="${shop.description}"></p>
-						<div style="display: none" th:text="${shop.id}"></div>
-						<div class="text-center my-4">
-							<a th:href="'shop/' + ${shop.id}" class="btn btn-warning">GO LOCAL!</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</main>
-</body>
-</html>
+<!--	<div id="coffee" class="container-fluid bg-transparent my-4 p-3" style="position: relative; height: 100vh; margin-top: -22px;">-->
+<!--		<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">-->
+<!--			<div class="col" th:each="shop : ${shops}">-->
+<!--				<div class="card h-100 shadow-sm">-->
+<!--					<img th:src="@{'data:image/jpeg;base64,'+${shop.shopImage.generateBase64Image()}}"-->
+<!--						 alt="Shop Photo"/>-->
+<!--					<div class="label-top shadow-sm">-->
+<!--						Local Favorite-->
+<!--					</div>-->
+<!--					<div class="card-body">-->
+<!--						<div class="rate">-->
+<!--							<input type="radio" id="star5" name="rate" value="5"/>-->
+<!--							<label for="star5" title="text">5 stars</label>-->
+<!--							<input type="radio" id="star4" name="rate" value="4"/>-->
+<!--							<label for="star4" title="text">4 stars</label>-->
+<!--							<input type="radio" id="star3" name="rate" value="3"/>-->
+<!--							<label for="star3" title="text">3 stars</label>-->
+<!--							<input type="radio" id="star2" name="rate" value="2"/>-->
+<!--							<label for="star2" title="text">2 stars</label>-->
+<!--							<input type="radio" id="star1" name="rate" value="1"/>-->
+<!--							<label for="star1" title="text">1 star</label>-->
+<!--						</div>-->
+<!--						<div class="clearfix mb-3">-->
+<!--							<span class="float-end">-->
+<!--								<a href="#" class="small text-muted">Reviews</a>-->
+<!--							</span>-->
+<!--						</div>-->
+<!--						<h5 class="card-title text-center" th:text="${shop.name}"></h5>-->
+<!--						<p class="card-text" th:text="${shop.description}"></p>-->
+<!--						<div style="display: none" th:text="${shop.id}"></div>-->
+<!--						<div class="text-center my-4">-->
+<!--							<a th:href="'shop/' + ${shop.id}" class="btn btn-warning">GO LOCAL!</a>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</main>-->
+<!--</body>-->
+<!--</html>-->
 
 
