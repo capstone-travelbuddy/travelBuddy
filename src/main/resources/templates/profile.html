@@ -103,13 +103,15 @@
 								<h6 class="d-flex align-items-center mb-3">Local Reviews</h6>
 							</div>
 							<div th:each="review : ${user.getReviews()}">
-								<div class="card-text" th:text="${review.description}"></div>
+								<div class="card-text ml-1" th:text="${review.description}"></div>
+								<div class="btn-toolbar mt-3 mb-3">
 								<form class="col" th:action="'/review/edit/' + ${review.id}" method="get">
 									<button class="btn btn-primary">Edit</button>
 								</form>
 								<form class="col" th:action="'/review/delete/' + ${review.id}" method="post">
 									<button class="btn btn-danger">Delete</button>
 								</form>
+								</div>
 							</div>
 						</div>
 					</div>
