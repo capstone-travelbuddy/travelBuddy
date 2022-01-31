@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:insert="fragments/header">
     <style>
         table td{
             vertical-align:top;
@@ -12,6 +12,8 @@
     </style>
 </head>
 <body>
+<nav th:insert="fragments/navbar"></nav>
+
 <h1>My Thymeleaf Error Page</h1>
 <table>
     <tr>
