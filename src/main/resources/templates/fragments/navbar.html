@@ -8,7 +8,6 @@
 			<span class="span-logo">
 				<img th:src="@{/img/TBLogo2.jpg}" alt="TBLogo">
 			</span>
-
 		</a>
 		<a th:href="@{/destinations}">Destinations</a>
 		<div sec:authorize="isAnonymous()">
@@ -20,7 +19,7 @@
 			</form>
 			<a th:href="@{/profile}" th:text="${#authentication.getPrincipal().getUsername()}">Profile</a>
 		</div>
-		<form class="d-flex" th:action="@{/search/{name}}" method="post">
+		<form class="d-flex" th:action="@{/search}" method="post" th:object="${shop}">
 			<div>
 				<input class="form-control me-2" name="shops" id="shops" th:text="${name}" type="text"
 					   placeholder="Find by Shop Name" size="50" aria-label="Search">
@@ -28,32 +27,5 @@
 			</div>
 		</form>
 	</nav>
-
-        </a>
-        <a th:href="@{/destinations}">Destinations</a>
-        <div sec:authorize="isAnonymous()">
-            <a th:href="@{/sign-up}">Register</a>
-            <a th:href="@{/login}">Login</a>
-
-
-        </div>
-        <div sec:authorize="isAuthenticated()">
-            <form th:action="@{/logout}" th:method="post">
-              <button>Logout</button>
-            </form>
-<!--            <img th:src="@{'data:image/jpeg;base64,'+${#authentication.getPrincipal().getUserImage().generateBase64Image()}}">-->
-
-            <a th:href="@{/profile}" th:text="${#authentication.getPrincipal().getUsername()}">Profile</a>
-        </div>
-        <form class="d-flex" th:action="@{/search}" method="post" th:object="${shop}">
-            <div>
-                <input class="form-control me-2" name="shops" id="shops" th:text="${name}" type="text"
-                       placeholder="Find by Shop Name" size="50" aria-label="Search">
-                <button class="btn btn-outline-success" size="4" type="submit">Search</button>
-            </div>
-        </form>
-
-    </nav>
-
 </div>
 </html>
