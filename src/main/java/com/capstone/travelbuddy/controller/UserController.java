@@ -1,7 +1,9 @@
 package com.capstone.travelbuddy.controller;
 
+import com.capstone.travelbuddy.model.Image;
 import com.capstone.travelbuddy.model.User;
 import com.capstone.travelbuddy.repository.CityRepository;
+import com.capstone.travelbuddy.repository.ImageRepository;
 import com.capstone.travelbuddy.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,13 +15,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 	private UserRepository userDao;
+	private ImageRepository imageDao;
 	private PasswordEncoder passwordEncoder;
 	private CityRepository cityDao;
 
-	public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, CityRepository cityDao) {
+	public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, CityRepository cityDao, ImageRepository imageDao) {
 		this.userDao = userDao;
 		this.passwordEncoder = passwordEncoder;
 		this.cityDao = cityDao;
+		this.imageDao = imageDao;
 	}
 
 	@GetMapping("/sign-up")
@@ -55,6 +59,8 @@ public class UserController {
 
 		String hash = passwordEncoder.encode(user.getPassword());
 		user.setPassword(hash);
+		Image image = imageDao.getById(21);
+		user.setUserImage(image);
 		userDao.save(user);
 		return "redirect:/login";
 	}

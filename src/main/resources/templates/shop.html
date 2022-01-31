@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head th:insert="fragments/header">
 
     <meta charset="UTF-8">
@@ -45,13 +46,24 @@
         <a th:if="${user.getLikedShops().contains(shop)}" class="btn"
            th:href="'/like/shop/' + ${shop.id}">UNLIKE</a>
         <a th:if="${!user.getLikedShops().contains(shop)}" class="btn" th:href="'/like/shop/' + ${shop.id}">LIKE</a>
-        <button th:attr="onclick=|add('${shop}')|" type="button" class="btn btn-secondary btn-lg">Save To Intineray
-        </button>
+<!--        <button th:attr="onclick=|add('${shop}')|" type="button" class="btn btn-secondary btn-lg">Save To Intineray-->
+<!--        </button>-->
     </div>
     <div class="container-fluid">
         <div class="col-sm-6  float-left" style="font-size: 12px; margin-left: -10px;">
             <br>
             <h1>Reviews</h1>
+            <div th:if="${shop.getReviews().isEmpty()}">
+                No reviews found
+                <div sec:authorize="isAuthenticated()">
+                    <a th:href="'/create/review/shop/' + ${shop.id}">
+                        <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star"
+                                                                                aria-hidden="true"></i>Write A
+                            Review
+                        </button>
+                    </a>
+                </div>
+            </div>
             <div th:each="review : ${shop.getReviews()}" class="comment mt-4 text-justify float-left">
                 <img th:src="@{'data:image/jpeg;base64,'+${review.getUser().getUserImage().generateBase64Image()}}"
                      alt="User Photo" class="rounded-circle" width="40" height="40"/>
@@ -90,7 +102,8 @@
                 <p th:text="${shop.phoneNumber}"><i class="fa fa-phone fa-lg float-right"></i></p>
             </div>
             <div class="card-header">
-                <a href="##map" role="link">Get Directions:</a>
+<!--                <a href="##map" role="link">Get Directions:</a>-->
+                <h4>Address</h4>
                 <p id="mark" th:text="${shop.address}"><i class="fa fa-directions fa-lg float-right"></i></p>
 
             </div>
