@@ -182,7 +182,7 @@
                 </div>
                 <div class="card-header">
                     <a href="##map" role="link">Get Directions:</a>
-                    <p th:text="${shop.address}"><i class="fa fa-directions fa-lg float-right"></i></p>
+                    <p id="mark" th:text="${shop.address}"><i class="fa fa-directions fa-lg float-right"></i></p>
                 </div>
                 <div class="card-header">
                     <a th:href="${shop.socialURL}" role="link">Social Media</a>
@@ -192,8 +192,6 @@
             <br>
             <div class="card col-sm-6 float-right" id="map" style="width: 40rem; height: 40rem;"></div>
             <input type="hidden" name="address" id="address" th:value="${shop.address}">
-<!--            <input type="hidden" name="lat" id="lat" th:value="${shop.id}">-->
-<!--            <input type="hidden" name="lng" id="lng" th:value="${shop.id}">-->
 
         </div>
     </div>
@@ -203,6 +201,9 @@
 
 
     <script th:inline="javascript">
+
+    var mark = document.getElementById('mark').innerText;
+
 
         /*<![CDATA[*/
 
@@ -225,61 +226,26 @@
             trackUserLocation: true
         }));
 
-        // let address = document.getElementById('address').value;
-        let lat = document.getElementById('lat').value;
-        let lng = document.getElementById('lng').value;
+            function geocode(search, token) {
+                var baseUrl = 'https://api.mapbox.com';
+                var endPoint = '/geocoding/v5/mapbox.places/';
+                return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+                    .then(function(res) {
+                        return res.json();
+                        // to get all the data from the request, comment out the following three lines...
+                    }).then(function(data) {
+                        return data.features[0].center;
+                    });
+            }
+            console.log(geocode(mark, key));
+            geocode(mark,key).then(function(results){
+                let marker = new mapboxgl.Marker();
+                marker
+                .setLngLat(results)
+                .addTo(map)
+            })
 
-        let marker = new mapboxgl.Marker();
-        marker
-            // .setLngLat([address])
-            .setLngLat([lng, lat])
-            .addTo(map)
         })();
-
-
-        // var marker = new mapboxgl.Marker()
-        //     .setLngLat([-98.48607752698483, 29.42688287863023])
-        //     .addTo(map);
-
-
-        // const geocoder = new MapboxGeocoder({
-        //     accessToken: mapboxgl.accessToken,
-        //     mapboxgl: mapboxgl,
-        //     marker: false,
-        //     placeholder: 'Search for places in San Antonio',
-        //     bbox: [-98.7215234530207, 29.201150330311634, -98.23214596567195, 29.607074460887134],
-        //     proximity: {
-        //         longitude: -98.48617,
-        //         latitude: 29.42674
-        //     }
-        // });
-        //
-        // map.addControl(geocoder);
-        //
-        // map.on('load', () => {
-        //     map.addSource('single-point', {
-        //         'type': 'geojson',
-        //         'data': {
-        //             'type': 'FeatureCollection',
-        //             'features': []
-        //         }
-        //     });
-        //
-        //     map.addLayer({
-        //         'id': 'point',
-        //         'source': 'single-point',
-        //         'type': 'circle',
-        //         'paint': {
-        //             'circle-radius': 10,
-        //             'circle-color': '#448ee4'
-        //         }
-        //     });
-        //
-        // geocoder.on('result', (event) => {
-        //     map.getSource('single-point').setData(event.result.geometry);
-        //     });
-        // });
-
 
         /*]]>*/
 
@@ -294,7 +260,6 @@
             integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
             crossorigin="anonymous"></script>
 
-</main>
 </body>
 
 </html>
