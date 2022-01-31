@@ -5,7 +5,7 @@
     <title>Search</title>
 </head>
 <body>
-<form th:action="@{/search/{name}}" method="post"></form>
+<form th:action="@{/search}" method="post"></form>
 <div th:each="shop : ${shops}"><div class="h1" th:text="${shop.name}"></div></div>
 
 

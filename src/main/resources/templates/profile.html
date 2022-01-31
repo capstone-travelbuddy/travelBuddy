@@ -8,7 +8,12 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
+
+<div class="h1 text-success text-center" th:text="${add}"></div>
+<div class="profile-container">
+
 <div class="profile-container" style="margin-left: 10px; margin-right: 10px;">
+
 	<div class="profile main-body">
 		<div class="row gutters-sm">
 			<div class="col-md-4 mb-3">
@@ -22,41 +27,55 @@
 								<p class="text-muted font-size-sm" th:text="${user.getCity().name}"></p>
 								<a th:href="@{/profile/upload}">
 									<button type="submit" class="btn btn-primary">Edit Profile Picture</button>
+
+
 								</a>
 								<a href="destinations.html">
 <!--									<button type="submit" class="btn btn-primary">Start Trip</button>-->
+
 								</a>
+<!--								"Start Trip" btn can be used for something later if we want -BOSCH-->
+<!--								<a href="destinations.html">-->
+<!--									<button type="submit" class="btn btn-primary">Start Trip</button>-->
+<!--								</a>-->
 								<br>
 								<br>
+
+								<a th:href="@{/shop/recommend}">
+								<button type="submit" class="btn btn-primary">Add Local Recommendation</button>
+								</a>
+
 <!--								<button type="submit" class="btn btn-primary">Add Local Recommendation</button>-->
+
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="card mt-3">
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-							<h6 class="mb-0">Travel Itinerary:</h6>
-							<button class="btn"><i class="fa fa-plus"></i></button>
-						</li>
-						<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-							<h6 class="mb-0">Placeholder</h6>
-							<button class="btn"><i class="fa fa-trash"></i></button>
-						</li>
-						<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-							<h6 class="mb-0">Placeholder</h6>
-							<button class="btn"><i class="fa fa-trash"></i></button>
-						</li>
-						<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-							<h6 class="mb-0">Placeholder</h6>
-							<button class="btn"><i class="fa fa-trash"></i></button>
-						</li>
-						<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-							<h6 class="mb-0">Placeholder</h6>
-							<button class="btn"><i class="fa fa-trash"></i></button>
-						</li>
-					</ul>
-				</div>
+<!--				Feature is not working at this time. Will add functionality later for Itinerary. -BOSCH -->
+<!--				<div class="card mt-3">-->
+<!--					<ul class="list-group list-group-flush">-->
+<!--						<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">-->
+<!--							<h6 class="mb-0">Travel Itinerary:</h6>-->
+<!--							<button class="btn"><i class="fa fa-plus"></i></button>-->
+<!--						</li>-->
+<!--						<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">-->
+<!--							<h6 class="mb-0">Placeholder</h6>-->
+<!--							<button class="btn"><i class="fa fa-trash"></i></button>-->
+<!--						</li>-->
+<!--						<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">-->
+<!--							<h6 class="mb-0">Placeholder</h6>-->
+<!--							<button class="btn"><i class="fa fa-trash"></i></button>-->
+<!--						</li>-->
+<!--						<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">-->
+<!--							<h6 class="mb-0">Placeholder</h6>-->
+<!--							<button class="btn"><i class="fa fa-trash"></i></button>-->
+<!--						</li>-->
+<!--						<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">-->
+<!--							<h6 class="mb-0">Placeholder</h6>-->
+<!--							<button class="btn"><i class="fa fa-trash"></i></button>-->
+<!--						</li>-->
+<!--					</ul>-->
+<!--				</div>-->
 			</div>
 			<div class="col-md-8">
 				<div class="card mb-3">
