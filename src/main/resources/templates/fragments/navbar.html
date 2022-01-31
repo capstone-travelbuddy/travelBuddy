@@ -19,11 +19,11 @@
         </div>
         <div sec:authorize="isAuthenticated()">
             <form th:action="@{/logout}" th:method="post">
-                <button>Logout</button>
+              <button>Logout</button>
             </form>
             <a th:href="@{/profile}" th:text="${#authentication.getPrincipal().getUsername()}">Profile</a>
         </div>
-        <form class="d-flex" th:action="@{/search/{name}}" method="post">
+        <form class="d-flex" th:action="@{/search}" method="post" th:object="${shop}">
             <div>
                 <input class="form-control me-2" name="shops" id="shops" th:text="${name}" type="text"
                        placeholder="Find by Shop Name" size="50" aria-label="Search">
