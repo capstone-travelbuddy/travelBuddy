@@ -2,17 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="fragments/header">
 
-
-
-
 	<meta charset="UTF-8">
 	<title>Title</title>
 
 </head>
-<body id="category">
+<body>
 <nav th:insert="fragments/navbar"></nav>
 <main>
-	<div class="container-fluid my-4 p-3" style="background-color: #04999e; height: 100vh; margin-top: -22px;">
+	<div  id="category" class="container-fluid my-4 p-3" style="background-color: #04999e; height: 100vh; margin-top: -22px;">
 		<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
 			<div class="col" th:each="shop : ${shops}">
 				<div class="card h-100 shadow-sm">

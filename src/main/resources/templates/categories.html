@@ -2,36 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="fragments/header">
 
-	<meta charset="UTF-8">
-	<title>Title</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
 
-<div class="container">
-	<div id="categories" class="card float-left" th:each="category : ${categories}">
-		<div class="row">
-			<div class="col-sm-7">
-				<div class="card-block">
-					<h4 class="coffee-title" th:text="${category.name}"></h4>
-					<br>
-					<br>
-<!--					<p class="coffee-text" th:text="${category.description}"></p>-->
-					<br>
-					<br>
-					<br>
-					<a th:href="${category.type} + '/' + ${city.id}" class="btn btn-primary btn-sm">GO LOCAL!</a>
-				</div>
-			</div>
-			<div class="col-sm-5">
-				<img class="d-block w-100"
-					 th:src="@{'data:image/jpeg;base64,'+${category.categoryImage.generateBase64Image()}}"
-					 alt="Category Image">
-			</div>
-		</div>
-	</div>
+<div class="card-deck">
+    <div class="card" th:each="category : ${categories}">
+        <img th:src="@{'data:image/jpeg;base64,'+${category.categoryImage.generateBase64Image()}}" class="card-img-top"
+             alt="...">
+        <div class="card-body">
+            <h3 class="card-title text-center" th:text="${category.name}"></h3>
+            <p class="card-text text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda deleniti, ea eveniet expedita explicabo id libero modi mollitia necessitatibus nesciunt officiis quibusdam, veritatis voluptates! Ducimus fugiat reiciendis soluta. Ad amet animi aperiam aut beatae, consequatur cupiditate debitis dignissimos doloremque ea error ex, laboriosam nihil nulla perferendis quisquam sunt vero vitae..</p>
+            <div class="footer text-center">
+            <a th:href="${category.type} + '/' + ${city.id}" type="button" class="btn btn-warning">GO LOCAL!</a>
+            </div>
+        </div>
+    </div>
 </div>
-<br>
+
 </body>
 </html>
