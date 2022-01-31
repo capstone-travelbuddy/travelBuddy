@@ -21,6 +21,8 @@
             <form th:action="@{/logout}" th:method="post">
                 <button>Logout</button>
             </form>
+<!--            <img th:src="@{'data:image/jpeg;base64,'+${#authentication.getPrincipal().getUserImage().generateBase64Image()}}">-->
+
             <a th:href="@{/profile}" th:text="${#authentication.getPrincipal().getUsername()}">Profile</a>
         </div>
         <form class="d-flex" th:action="@{/search/{name}}" method="post">

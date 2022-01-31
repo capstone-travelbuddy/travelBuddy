@@ -24,11 +24,11 @@
 									<button type="submit" class="btn btn-primary">Edit Profile Picture</button>
 								</a>
 								<a href="destinations.html">
-									<button type="submit" class="btn btn-primary">Start Trip</button>
+<!--									<button type="submit" class="btn btn-primary">Start Trip</button>-->
 								</a>
 								<br>
 								<br>
-								<button type="submit" class="btn btn-primary">Add Local Recommendation</button>
+<!--								<button type="submit" class="btn btn-primary">Add Local Recommendation</button>-->
 							</div>
 						</div>
 					</div>
@@ -103,7 +103,7 @@
 					<div class="col-sm-6 mb-3">
 						<div class="card h-100">
 							<div class="profile card-body">
-								<h6 class="d-flex align-items-center mb-3">Local Reviews</h6>
+								<h5  th:text="${user.username}+'s' + ' Reviews'" class="d-flex text-center mb-3"></h5>
 							</div>
 							<div th:each="review : ${user.getReviews()}">
 								<div class="card-text ml-1" th:text="${review.description}"></div>
