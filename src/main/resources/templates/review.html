@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="pull-left">
-                                    <button class="btn btn-success btn-sm">Cancel</button>
+                                    <a th:href="'/shop/' + ${shop.id}" class="btn btn-success btn-sm">Cancel</a>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -50,15 +50,7 @@
         </div>
     </div>
 </div>
-<!--<form th:action="@{'/create/review/shop/' + ${shop.id}}" method="POST">-->
-<!--	<label for="rating">Rating</label>-->
-<!--	<input id="rating" name="rating" />-->
 
-<!--	<label for="description">Review</label>-->
-<!--	<input id="description" name="description" />-->
-
-<!--	<input value="Submit Review" type="submit" />-->
-<!--</form>-->
 </body>
 </html>
 
