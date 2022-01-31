@@ -11,9 +11,9 @@ VALUES ('San Antonio is a major city in south-central Texas with a rich colonial
         'Dallas', 'Texas', 1);
 
 INSERT INTO category(name, description, type, category_image_id)
-VALUES ('coffee shop', 'coffee shop', 'coffee', 1),
-       ('brewery', 'brewery', 'brews', 1),
-       ('eatery', 'eatery', 'eats', 1);
+VALUES ('Coffee Shop', 'Coffee Shop', 'coffee', 1),
+       ('Brewery', 'Brewery', 'brews', 1),
+       ('Eatery', 'Eatery', 'eats', 1);
 
 INSERT INTO shops(name, address, category_id, city_id, description, website, socialurl)
 VALUES ('Merit Coffee Co.', '5903 Broadway, San Antonio, TX 78209', 1, 1,
