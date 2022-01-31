@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      lang="en">
-
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  lang="en">
 <div th:fragment="navbar">
-    <nav class="navbar topNav main-logo">
-        <a class="logo_li" th:href="@{/}">
+	<nav class="navbar topNav main-logo">
+		<a class="logo_li" th:href="@{/}">
 			<span class="span-logo">
 				<img th:src="@{/img/TBLogo2.jpg}" alt="TBLogo">
 			</span>
+
+		</a>
+		<a th:href="@{/destinations}">Destinations</a>
+		<div sec:authorize="isAnonymous()">
+			<a th:href="@{/login}">Login</a>
+		</div>
+		<div sec:authorize="isAuthenticated()">
+			<form th:action="@{/logout}" th:method="post">
+				<button>Logout</button>
+			</form>
+			<a th:href="@{/profile}" th:text="${#authentication.getPrincipal().getUsername()}">Profile</a>
+		</div>
+		<form class="d-flex" th:action="@{/search/{name}}" method="post">
+			<div>
+				<input class="form-control me-2" name="shops" id="shops" th:text="${name}" type="text"
+					   placeholder="Find by Shop Name" size="50" aria-label="Search">
+				<button class="btn btn-outline-success" size="4" type="submit">Search</button>
+			</div>
+		</form>
+	</nav>
+
         </a>
         <a th:href="@{/destinations}">Destinations</a>
         <div sec:authorize="isAnonymous()">
@@ -34,5 +54,6 @@
         </form>
 
     </nav>
+
 </div>
 </html>

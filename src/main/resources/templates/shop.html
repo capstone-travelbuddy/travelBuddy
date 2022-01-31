@@ -1,13 +1,82 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:insert="fragments/header">
 
-    <meta charset="UTF-8">
-    <title>Shop Page</title>
+	<meta charset="UTF-8">
+	<title>Shop Page</title>
 
 </head>
 <body id="shop">
 <nav th:insert="fragments/navbar"></nav>
+
+
+<div class="container">
+	<div class="row">
+		<div class="gallery" th:each="image : ${shop.images}">
+			<figure>
+				<img th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}" alt=""/>
+				<figcaption><small>Posted by: coffeegang210</small></figcaption>
+			</figure>
+			<figure>
+				<img th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}" alt=""/>
+				<figcaption><small>Posted by: bernieesquivel</small></figcaption>
+			</figure>
+			<figure>
+				<img th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}" alt=""/>
+				<figcaption><small>Posted by: j_alejandro</small></figcaption>
+			</figure>
+		</div>
+
+		<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+			<symbol id="close" viewBox="0 0 18 18">
+				<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M9,0.493C4.302,0.493,0.493,4.302,0.493,9S4.302,17.507,9,17.507
+			S17.507,13.698,17.507,9S13.698,0.493,9,0.493z M12.491,11.491c0.292,0.296,0.292,0.773,0,1.068c-0.293,0.295-0.767,0.295-1.059,0
+			l-2.435-2.457L6.564,12.56c-0.292,0.295-0.766,0.295-1.058,0c-0.292-0.295-0.292-0.772,0-1.068L7.94,9.035L5.435,6.507
+			c-0.292-0.295-0.292-0.773,0-1.068c0.293-0.295,0.766-0.295,1.059,0l2.504,2.528l2.505-2.528c0.292-0.295,0.767-0.295,1.059,0
+			s0.292,0.773,0,1.068l-2.505,2.528L12.491,11.491z"/>
+			</symbol>
+		</svg>
+		<script>
+			popup = {
+				init: function () {
+					$('figure').click(function () {
+						popup.open($(this));
+					});
+
+					$(document).on('click', '.popup img', function () {
+						return false;
+					}).on('click', '.popup', function () {
+						popup.close();
+					})
+				},
+				open: function ($figure) {
+					$('.gallery').addClass('pop');
+					$popup = $('<div class="popup" />').appendTo($('body'));
+					$fig = $figure.clone().appendTo($('.popup'));
+					$bg = $('<div class="bg" />').appendTo($('.popup'));
+					$close = $('<div class="close"><svg><use xlink:href="#close"></use></svg></div>').appendTo($fig);
+					$shadow = $('<div class="shadow" />').appendTo($fig);
+					src = $('img', $fig).attr('src');
+					$shadow.css({backgroundImage: 'url(' + src + ')'});
+					$bg.css({backgroundImage: 'url(' + src + ')'});
+					setTimeout(function () {
+						$('.popup').addClass('pop');
+					}, 10);
+				},
+				close: function () {
+					$('.gallery, .popup').removeClass('pop');
+					setTimeout(function () {
+						$('.popup').remove()
+					}, 100);
+				}
+			}
+
+			popup.init()
+
+		</script>
+	</div>
+</div>
+
 <section class="pt-5 pb-5">
     <div class="container">
         <div class="row">
@@ -58,11 +127,233 @@
     </div>
 </section>
 
+
 <div class="h1 text-success text-center" th:text="${add}"></div>
 <div class="h1 text-success text-center" th:text="${remove}"></div>
 
 <div class="m-5" th:text="${shop.name}" style="font-size: 24px; font-weight: 600; margin-left: -10px;"></div>
 <div class="m-5">
+
+	<div sec:authorize="isAuthenticated()">
+		<a th:href="'/create/review/shop/' + ${shop.id}">
+			<button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star" aria-hidden="true"></i>Write A
+				Review
+			</button>
+		</a>
+		<a th:href="'/shop/' + ${shop.id} + '/upload/'">
+			<button type="button" class="btn btn-secondary btn-lg"><i class="fa fa-camera" aria-hidden="true"></i> Add
+				Photo
+			</button>
+		</a>
+		<a th:if="${user.getLikedShops().contains(shop)}" class="btn" th:href="'/like/shop/' + ${shop.id}">UNLIKE</a>
+		<a th:if="${!user.getLikedShops().contains(shop)}" class="btn" th:href="'/like/shop/' + ${shop.id}">LIKE</a>
+		<button th:attr="onclick=|add('${shop}')|" type="button" class="btn btn-secondary btn-lg">Save To Itinerary
+		</button>
+	</div>
+	<div class="container-fluid">
+		<div class="col-sm-6  float-left" style="font-size: 12px; margin-left: -10px;">
+			<br>
+			<h1>Reviews</h1>
+			<div th:if="${shop.getReviews().isEmpty()}">
+					No reviews found
+					<div sec:authorize="isAuthenticated()">
+						<a th:href="'/create/review/shop/' + ${shop.id}">
+							<button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star"
+																					aria-hidden="true"></i>Write A
+								Review
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+				<div th:each="review : ${shop.getReviews()}" class="comment mt-4 text-justify float-left">
+					<img th:src="@{'data:image/jpeg;base64,'+${review.getUser().getUserImage().generateBase64Image()}}"
+						 alt="User Photo" class="rounded-circle" width="40" height="40"/>
+					<h4 th:text="${review.getUser().username}"></h4>
+					<div class="float-right">
+						<p th:if="${review.getRating() == 1}"><img class="Stars" th:src="@{/img/star.png}"></p>
+						<p th:if="${review.getRating() == 2}"><img class="Stars" th:src="@{/img/star.png}"><img
+								class="Stars" th:src="@{/img/star.png}"></p>
+						<p th:if="${review.getRating() == 3}"><img class="Stars" th:src="@{/img/star.png}"><img
+								class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}">
+						</p>
+						<p th:if="${review.getRating() == 4}"><img class="Stars" th:src="@{/img/star.png}"><img
+								class="Stars" th:src="@{/img/star.png}"><img class="Stars"
+																			 th:src="@{/img/star.png}"><img
+								class="Stars" th:src="@{/img/star.png}"></p>
+						<p th:if="${review.getRating() == 5}"><img class="Stars" th:src="@{/img/star.png}"><img
+								class="Stars" th:src="@{/img/star.png}"><img class="Stars"
+																			 th:src="@{/img/star.png}"><img
+								class="Stars" th:src="@{/img/star.png}"><img class="Stars" th:src="@{/img/star.png}">
+						</p>
+					</div>
+					<br>
+					<div class="float-right">
+						<h4 id="review date" th:text="${review.getCreated()}"></h4>
+					</div>
+					<br>
+					<p th:text="${review.getDescription()}"></p>
+				</div>
+			</div>
+			<div class="card col-sm-6 float-right"
+				 style="background-color: #c2c2c2; width: 40rem; height: 22rem; font-size: 20px; font-weight: 600; margin-top: -40px; margin-bottom: 20px;">
+				<div class="card-header">
+					<a th:href="${shop.website}" role="link">Website</a>
+				</div>
+				<div class="card-header" style="margin-top: 5px;">
+					<p th:text="${shop.phoneNumber}"><i class="fa fa-phone fa-lg float-right"></i></p>
+				</div>
+				<div class="card-header">
+					<a href="##map" role="link">Get Directions:</a>
+					<p th:text="${shop.address}"><i class="fa fa-directions fa-lg float-right"></i></p>
+				</div>
+				<div class="card-header">
+					<a th:href="${shop.socialURL}" role="link">Social Media</a>
+				</div>
+			</div>
+			<br>
+			<br>
+			<div class="card col-sm-6 float-right" id="map" style="width: 40rem; height: 40rem;"></div>
+			<input type="hidden" name="lat" id="lat" th:value="${shop.id}">
+			<input type="hidden" name="lng" id="lng" th:value="${shop.id}">
+
+		</div>
+
+		<script src="mapbox-geocoder-utils.js"></script>
+		<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+		<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+
+
+		<script th:inline="javascript">
+
+			/*<![CDATA[*/
+
+			let key = /*[[${mapboxApiKey}]]*/ 'default';
+
+			mapboxgl.accessToken = key;
+			const map = new mapboxgl.Map({
+				container: 'map',
+				style: 'mapbox://styles/mapbox/streets-v9',
+				center: [-98.4916, 29.4252],
+				zoom: 10,
+			});
+
+
+			var marker = new mapboxgl.Marker()
+				.setLngLat([-98.48607752698483, 29.42688287863023])
+				.addTo(map);
+
+
+			const geocoder = new MapboxGeocoder({
+				accessToken: mapboxgl.accessToken,
+				mapboxgl: mapboxgl,
+				marker: false,
+				placeholder: 'Search for places in San Antonio',
+				bbox: [-98.7215234530207, 29.201150330311634, -98.23214596567195, 29.607074460887134],
+				proximity: {
+					longitude: -98.48617,
+					latitude: 29.42674
+				}
+			});
+
+			map.addControl(geocoder);
+
+			map.on('load', () => {
+				map.addSource('single-point', {
+					'type': 'geojson',
+					'data': {
+						'type': 'FeatureCollection',
+						'features': []
+					}
+				});
+
+				map.addLayer({
+					'id': 'point',
+					'source': 'single-point',
+					'type': 'circle',
+					'paint': {
+						'circle-radius': 10,
+						'circle-color': '#448ee4'
+					}
+				});
+
+				geocoder.on('result', (event) => {
+					map.getSource('single-point').setData(event.result.geometry);
+				});
+			});
+
+			map.addControl(new mapboxgl.GeolocateControl({
+				positionOptions: {
+					enableHighAccuracy: true
+				},
+				trackUserLocation: true
+			}));
+
+			let lat = document.getElementById('lat').value;
+			let lng = document.getElementById('lng').value;
+
+			let marker = new mapboxgl.Marker();
+			marker
+				.setLngLat([lng.lat])
+				.addTo(map)
+
+			// var marker = new mapboxgl.Marker()
+			//     .setLngLat([-98.48607752698483, 29.42688287863023])
+			//     .addTo(map);
+
+
+			// const geocoder = new MapboxGeocoder({
+			//     accessToken: mapboxgl.accessToken,
+			//     mapboxgl: mapboxgl,
+			//     marker: false,
+			//     placeholder: 'Search for places in San Antonio',
+			//     bbox: [-98.7215234530207, 29.201150330311634, -98.23214596567195, 29.607074460887134],
+			//     proximity: {
+			//         longitude: -98.48617,
+			//         latitude: 29.42674
+			//     }
+			// });
+			//
+			// map.addControl(geocoder);
+			//
+			// map.on('load', () => {
+			//     map.addSource('single-point', {
+			//         'type': 'geojson',
+			//         'data': {
+			//             'type': 'FeatureCollection',
+			//             'features': []
+			//         }
+			//     });
+			//
+			//     map.addLayer({
+			//         'id': 'point',
+			//         'source': 'single-point',
+			//         'type': 'circle',
+			//         'paint': {
+			//             'circle-radius': 10,
+			//             'circle-color': '#448ee4'
+			//         }
+			//     });
+			//
+			// geocoder.on('result', (event) => {
+			//     map.getSource('single-point').setData(event.result.geometry);
+			//     });
+			// });
+
+
+			/*]]>*/
+
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+				integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+				crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+				integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+				crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+				integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+				crossorigin="anonymous"></script>
+=======
     <div sec:authorize="isAuthenticated()">
         <a th:href="'/create/review/shop/' + ${shop.id}">
             <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star" aria-hidden="true"></i>Write
@@ -236,6 +527,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
         integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
         crossorigin="anonymous"></script>
+
 
 <script th:inline="javascript">
     var destinations = document.getElementsByClassName('carousel-item')

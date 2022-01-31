@@ -11,6 +11,9 @@
 <main>
 	<div  id="category" class="container-fluid my-4 p-3" style="background-color: #04999e; height: 100vh; margin-top: -22px;">
 		<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+			<div th:if="${shops.isEmpty()}">
+				<div>No shops found</div>
+			</div>
 			<div class="col" th:each="shop : ${shops}">
 				<div class="card h-100 shadow-sm">
 					<img th:src="@{'data:image/jpeg;base64,' + ${shop.images.get(0).generateBase64Image()}}"
