@@ -114,5 +114,20 @@ public class CityController {
 		model.addAttribute("shops", shopDao.findByNameIgnoreCaseContaining(name));
 		return "search";
 	}
+
+	@GetMapping("/shop/recommend")
+	public String getRecommendShop(Model model){
+		model.addAttribute("cities", cityDao.findAll());
+		model.addAttribute("categories", categoryDao.findAll());
+		return "shop-recommend-form";
+	}
+
+	@PostMapping("/shop/recommend")
+	public String saveRecommendShop(@RequestParam(name = "city") int city, @RequestParam(name = "category") String category, @RequestParam(name = "shopName") String shopName){
+		System.out.println(city);
+		System.out.println(category);
+		System.out.println(shopName);
+		return "home";
+	}
   
 	}
