@@ -8,8 +8,12 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
+
 <div class="h1 text-success text-center" th:text="${add}"></div>
 <div class="profile-container">
+
+<div class="profile-container" style="margin-left: 10px; margin-right: 10px;">
+
 	<div class="profile main-body">
 		<div class="row gutters-sm">
 			<div class="col-md-4 mb-3">
@@ -23,6 +27,12 @@
 								<p class="text-muted font-size-sm" th:text="${user.getCity().name}"></p>
 								<a th:href="@{/profile/upload}">
 									<button type="submit" class="btn btn-primary">Edit Profile Picture</button>
+
+
+								</a>
+								<a href="destinations.html">
+<!--									<button type="submit" class="btn btn-primary">Start Trip</button>-->
+
 								</a>
 <!--								"Start Trip" btn can be used for something later if we want -BOSCH-->
 <!--								<a href="destinations.html">-->
@@ -30,9 +40,13 @@
 <!--								</a>-->
 								<br>
 								<br>
+
 								<a th:href="@{/shop/recommend}">
 								<button type="submit" class="btn btn-primary">Add Local Recommendation</button>
 								</a>
+
+<!--								<button type="submit" class="btn btn-primary">Add Local Recommendation</button>-->
+
 							</div>
 						</div>
 					</div>
@@ -108,7 +122,7 @@
 					<div class="col-sm-6 mb-3">
 						<div class="card h-100">
 							<div class="profile card-body">
-								<h6 class="d-flex align-items-center mb-3">Local Reviews</h6>
+								<h5  th:text="${user.username}+'s' + ' Reviews'" class="d-flex text-center mb-3"></h5>
 							</div>
 							<div th:each="review : ${user.getReviews()}">
 								<div class="card-text ml-1" th:text="${review.description}"></div>

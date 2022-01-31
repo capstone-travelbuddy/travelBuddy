@@ -1,109 +1,109 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/header">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:insert="fragments/header">-->
 
-    <meta charset="UTF-8">
-    <title>Title</title>
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
 
-</head>
-<body>
-<nav th:insert="fragments/navbar"></nav>
-<!--<main>-->
-    <div class="container-fluid bg-transparent my-4 p-3" style="position: relative;">
-        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-            <div class="col">
-                <div class="card h-100 shadow-sm"> <img src="https://s3-media0.fl.yelpcdn.com/bphoto/mDl7r7Vc-71ukSk2kAfMyA/1000s.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <div class="rate">
-                            <input type="radio" id="star5" name="rate" value="5" />
-                            <label for="star5" title="text">5 stars</label>
-                            <input type="radio" id="star4" name="rate" value="4" />
-                            <label for="star4" title="text">4 stars</label>
-                            <input type="radio" id="star3" name="rate" value="3" />
-                            <label for="star3" title="text">3 stars</label>
-                            <input type="radio" id="star2" name="rate" value="2" />
-                            <label for="star2" title="text">2 stars</label>
-                            <input type="radio" id="star1" name="rate" value="1" />
-                            <label for="star1" title="text">1 star</label>
-                        </div>
-                        <div class="clearfix mb-3"> <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span> </div>
-                        <h5 class="card-title text-center">Carnitas Don Raul</h5>
-                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</p>
-                        <div class="text-center my-4"> <a href="#" class="btn btn-warning">GO LOCAL!</a> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow-sm"> <img src="https://s3-media0.fl.yelpcdn.com/bphoto/CCMWLVv2sExsQpY1C7vFVw/1000s.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <div class="rate">
-                            <input type="radio" id="star5" name="rate" value="5" />
-                            <label for="star5" title="text">5 stars</label>
-                            <input type="radio" id="star4" name="rate" value="4" />
-                            <label for="star4" title="text">4 stars</label>
-                            <input type="radio" id="star3" name="rate" value="3" />
-                            <label for="star3" title="text">3 stars</label>
-                            <input type="radio" id="star2" name="rate" value="2" />
-                            <label for="star2" title="text">2 stars</label>
-                            <input type="radio" id="star1" name="rate" value="1" />
-                            <label for="star1" title="text">1 star</label>
-                        </div>
-                        <div class="clearfix mb-3"> <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span> </div>
-                        <h5 class="card-title text-center">Chi Chi Birds Hot Chicken</h5>
-                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</p>
-                        <div class="text-center my-4"> <a href="#" class="btn btn-warning">GO LOCAL!</a> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow-sm"> <img src="https://s3-media0.fl.yelpcdn.com/bphoto/ALdCXees-knSIJlAy8iY8w/l.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <div class="rate">
-                            <input type="radio" id="star5" name="rate" value="5" />
-                            <label for="star5" title="text">5 stars</label>
-                            <input type="radio" id="star4" name="rate" value="4" />
-                            <label for="star4" title="text">4 stars</label>
-                            <input type="radio" id="star3" name="rate" value="3" />
-                            <label for="star3" title="text">3 stars</label>
-                            <input type="radio" id="star2" name="rate" value="2" />
-                            <label for="star2" title="text">2 stars</label>
-                            <input type="radio" id="star1" name="rate" value="1" />
-                            <label for="star1" title="text">1 star</label>
-                        </div>
-                        <div class="clearfix mb-3"> <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span> </div>
-                        <h5 class="card-title text-center">Ida Claire</h5>
-                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</p>
-                        <div class="text-center my-4"> <a href="#" class="btn btn-warning">GO LOCAL!</a> </div>
-                        <div class="clearfix mb-1"> <span class="float-start"><i class="far fa-question-circle"></i></span> <span class="float-end"><i class="fas fa-plus"></i></span> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow-sm"> <img src="https://s3-media0.fl.yelpcdn.com/bphoto/PAEto8-0Fj1Lq9TdeiP54w/l.jpg" class="card-img-top" alt="...">
-                    <div class="label-top shadow-sm">Local Favorite</div>
-                    <div class="card-body">
-                        <div class="rate">
-                            <input type="radio" id="star5" name="rate" value="5" />
-                            <label for="star5" title="text">5 stars</label>
-                            <input type="radio" id="star4" name="rate" value="4" />
-                            <label for="star4" title="text">4 stars</label>
-                            <input type="radio" id="star3" name="rate" value="3" />
-                            <label for="star3" title="text">3 stars</label>
-                            <input type="radio" id="star2" name="rate" value="2" />
-                            <label for="star2" title="text">2 stars</label>
-                            <input type="radio" id="star1" name="rate" value="1" />
-                            <label for="star1" title="text">1 star</label>
-                        </div>
-                        <div class="clearfix mb-3"> <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span> </div>
-                        <h5 class="card-title text-center">Tlahco Mexican Kitchen</h5>
-                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</p>
-                        <div class="text-center my-4"> <a href="#" class="btn btn-warning">GO LOCAL!</a> </div>
-                        <div class="clearfix mb-1"> <span class="float-start"><i class="far fa-question-circle"></i></span> <span class="float-end"><i class="fas fa-plus"></i></span> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!--</main>-->
-</body>
-</html>
+<!--</head>-->
+<!--<body>-->
+<!--<nav th:insert="fragments/navbar"></nav>-->
+<!--&lt;!&ndash;<main>&ndash;&gt;-->
+<!--    <div class="container-fluid bg-transparent my-4 p-3" style="position: relative;">-->
+<!--        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">-->
+<!--            <div class="col">-->
+<!--                <div class="card h-100 shadow-sm"> <img src="https://s3-media0.fl.yelpcdn.com/bphoto/mDl7r7Vc-71ukSk2kAfMyA/1000s.jpg" class="card-img-top" alt="...">-->
+<!--                    <div class="card-body">-->
+<!--                        <div class="rate">-->
+<!--                            <input type="radio" id="star5" name="rate" value="5" />-->
+<!--                            <label for="star5" title="text">5 stars</label>-->
+<!--                            <input type="radio" id="star4" name="rate" value="4" />-->
+<!--                            <label for="star4" title="text">4 stars</label>-->
+<!--                            <input type="radio" id="star3" name="rate" value="3" />-->
+<!--                            <label for="star3" title="text">3 stars</label>-->
+<!--                            <input type="radio" id="star2" name="rate" value="2" />-->
+<!--                            <label for="star2" title="text">2 stars</label>-->
+<!--                            <input type="radio" id="star1" name="rate" value="1" />-->
+<!--                            <label for="star1" title="text">1 star</label>-->
+<!--                        </div>-->
+<!--                        <div class="clearfix mb-3"> <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span> </div>-->
+<!--                        <h5 class="card-title text-center">Carnitas Don Raul</h5>-->
+<!--                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</p>-->
+<!--                        <div class="text-center my-4"> <a href="#" class="btn btn-warning">GO LOCAL!</a> </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col">-->
+<!--                <div class="card h-100 shadow-sm"> <img src="https://s3-media0.fl.yelpcdn.com/bphoto/CCMWLVv2sExsQpY1C7vFVw/1000s.jpg" class="card-img-top" alt="...">-->
+<!--                    <div class="card-body">-->
+<!--                        <div class="rate">-->
+<!--                            <input type="radio" id="star5" name="rate" value="5" />-->
+<!--                            <label for="star5" title="text">5 stars</label>-->
+<!--                            <input type="radio" id="star4" name="rate" value="4" />-->
+<!--                            <label for="star4" title="text">4 stars</label>-->
+<!--                            <input type="radio" id="star3" name="rate" value="3" />-->
+<!--                            <label for="star3" title="text">3 stars</label>-->
+<!--                            <input type="radio" id="star2" name="rate" value="2" />-->
+<!--                            <label for="star2" title="text">2 stars</label>-->
+<!--                            <input type="radio" id="star1" name="rate" value="1" />-->
+<!--                            <label for="star1" title="text">1 star</label>-->
+<!--                        </div>-->
+<!--                        <div class="clearfix mb-3"> <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span> </div>-->
+<!--                        <h5 class="card-title text-center">Chi Chi Birds Hot Chicken</h5>-->
+<!--                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</p>-->
+<!--                        <div class="text-center my-4"> <a href="#" class="btn btn-warning">GO LOCAL!</a> </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col">-->
+<!--                <div class="card h-100 shadow-sm"> <img src="https://s3-media0.fl.yelpcdn.com/bphoto/ALdCXees-knSIJlAy8iY8w/l.jpg" class="card-img-top" alt="...">-->
+<!--                    <div class="card-body">-->
+<!--                        <div class="rate">-->
+<!--                            <input type="radio" id="star5" name="rate" value="5" />-->
+<!--                            <label for="star5" title="text">5 stars</label>-->
+<!--                            <input type="radio" id="star4" name="rate" value="4" />-->
+<!--                            <label for="star4" title="text">4 stars</label>-->
+<!--                            <input type="radio" id="star3" name="rate" value="3" />-->
+<!--                            <label for="star3" title="text">3 stars</label>-->
+<!--                            <input type="radio" id="star2" name="rate" value="2" />-->
+<!--                            <label for="star2" title="text">2 stars</label>-->
+<!--                            <input type="radio" id="star1" name="rate" value="1" />-->
+<!--                            <label for="star1" title="text">1 star</label>-->
+<!--                        </div>-->
+<!--                        <div class="clearfix mb-3"> <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span> </div>-->
+<!--                        <h5 class="card-title text-center">Ida Claire</h5>-->
+<!--                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</p>-->
+<!--                        <div class="text-center my-4"> <a href="#" class="btn btn-warning">GO LOCAL!</a> </div>-->
+<!--                        <div class="clearfix mb-1"> <span class="float-start"><i class="far fa-question-circle"></i></span> <span class="float-end"><i class="fas fa-plus"></i></span> </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col">-->
+<!--                <div class="card h-100 shadow-sm"> <img src="https://s3-media0.fl.yelpcdn.com/bphoto/PAEto8-0Fj1Lq9TdeiP54w/l.jpg" class="card-img-top" alt="...">-->
+<!--                    <div class="label-top shadow-sm">Local Favorite</div>-->
+<!--                    <div class="card-body">-->
+<!--                        <div class="rate">-->
+<!--                            <input type="radio" id="star5" name="rate" value="5" />-->
+<!--                            <label for="star5" title="text">5 stars</label>-->
+<!--                            <input type="radio" id="star4" name="rate" value="4" />-->
+<!--                            <label for="star4" title="text">4 stars</label>-->
+<!--                            <input type="radio" id="star3" name="rate" value="3" />-->
+<!--                            <label for="star3" title="text">3 stars</label>-->
+<!--                            <input type="radio" id="star2" name="rate" value="2" />-->
+<!--                            <label for="star2" title="text">2 stars</label>-->
+<!--                            <input type="radio" id="star1" name="rate" value="1" />-->
+<!--                            <label for="star1" title="text">1 star</label>-->
+<!--                        </div>-->
+<!--                        <div class="clearfix mb-3"> <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span> </div>-->
+<!--                        <h5 class="card-title text-center">Tlahco Mexican Kitchen</h5>-->
+<!--                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut. Saepe, iste optio laudantium sed aliquam sequi.</p>-->
+<!--                        <div class="text-center my-4"> <a href="#" class="btn btn-warning">GO LOCAL!</a> </div>-->
+<!--                        <div class="clearfix mb-1"> <span class="float-start"><i class="far fa-question-circle"></i></span> <span class="float-end"><i class="fas fa-plus"></i></span> </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--&lt;!&ndash;</main>&ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->

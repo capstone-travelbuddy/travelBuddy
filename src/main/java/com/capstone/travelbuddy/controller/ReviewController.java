@@ -26,6 +26,8 @@ public class ReviewController {
 
 	@GetMapping("/create/review/shop/{id}")
 	public String createReview(Model model, @PathVariable int id) {
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("user", user);
 
 		Review review = new Review();
 		model.addAttribute("review", review);
