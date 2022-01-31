@@ -8,55 +8,21 @@
 </head>
 <body id="shop">
 <nav th:insert="fragments/navbar"></nav>
-<section class="pt-5 pb-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <h3 th:text="${shop.name}" class="mb-3"></h3>
-            </div>
-            <div class="col-6 text-right">
-                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                    <i class="fa fa-arrow-left"></i>
-                </a>
-                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-                    <i class="fa fa-arrow-right"></i>
-                </a>
-            </div>
-            <div class="col-12">
-                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-
-                    <div class="carousel-inner" style="height: 200px;">
-                        <div class="carousel-item" th:each="image : ${shop.images}">
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280"
-                                             th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280"
-                                             th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}">
-
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280"
-                                             th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item" th:each="image : ${shop.images}">
+            <img th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}" class="d-block w-100" alt="...">
         </div>
     </div>
-</section>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
 <div class="h1 text-success text-center" th:text="${add}"></div>
 <div class="h1 text-success text-center" th:text="${remove}"></div>
@@ -125,7 +91,8 @@
             </div>
             <div class="card-header">
                 <a href="##map" role="link">Get Directions:</a>
-                <p th:text="${shop.address}"><i class="fa fa-directions fa-lg float-right"></i></p>
+                <p id="mark" th:text="${shop.address}"><i class="fa fa-directions fa-lg float-right"></i></p>
+
             </div>
             <div class="card-header">
                 <a th:href="${shop.socialURL}" role="link">Social Media</a>
@@ -134,9 +101,6 @@
         <br>
         <br>
         <div class="card col-sm-6 float-right" id="map" style="width: 40rem; height: 40rem;"></div>
-        <input type="hidden" name="address" id="address" th:value="${shop.address}">
-        <!--            <input type="hidden" name="lat" id="lat" th:value="${shop.id}">-->
-        <!--            <input type="hidden" name="lng" id="lng" th:value="${shop.id}">-->
 
     </div>
 </div>
@@ -146,6 +110,8 @@
 
 
 <script th:inline="javascript">
+
+    var mark = document.getElementById('mark').innerText;
 
     /*<![CDATA[*/
 
@@ -168,21 +134,32 @@
             trackUserLocation: true
         }));
 
-        // let address = document.getElementById('address').value;
-        let lat = document.getElementById('lat').value;
-        let lng = document.getElementById('lng').value;
+        function geocode(search, token) {
+            var baseUrl = 'https://api.mapbox.com';
+            var endPoint = '/geocoding/v5/mapbox.places/';
+            return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+                .then(function (res) {
+                    return res.json();
+                    // to get all the data from the request, comment out the following three lines...
+                }).then(function (data) {
+                    return data.features[0].center;
+                });
+        }
 
-        let marker = new mapboxgl.Marker();
-        marker
-            // .setLngLat([address])
-            .setLngLat([lng, lat])
-            .addTo(map)
+        console.log(geocode(mark, key));
+        geocode(mark, key).then(function (results) {
+            let marker = new mapboxgl.Marker();
+            marker
+                .setLngLat(results)
+                .addTo(map)
+        })
+
     })();
-
-
-
+    /*]]>*/
 
 </script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
