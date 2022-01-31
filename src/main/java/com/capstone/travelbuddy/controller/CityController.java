@@ -107,11 +107,18 @@ public class CityController {
 
 		return "shop";
 	}
+	@GetMapping("/search")
+	public String shopSearch(Model model){
+		model.addAttribute("shop", new Shop());
+		return "search";
+	}
 
-	@PostMapping("/search/{name}")
-	public String shopSearch(@PathVariable String name, Model model){
-		System.out.println(name);
-		model.addAttribute("shops", shopDao.findByNameIgnoreCaseContaining(name));
+	@PostMapping("/search")
+	public String showShop(@RequestParam(name="shops") String shops, Model model){
+		Shop shop = new Shop();
+		shop.setName(shops);
+		System.out.println(shops);
+		model.addAttribute("shops", shopDao.findByNameIgnoreCaseContaining(shops));
 		return "search";
 	}
   
