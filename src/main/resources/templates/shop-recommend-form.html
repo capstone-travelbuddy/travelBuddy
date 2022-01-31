@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:insert="fragments/header">
 	<meta charset="UTF-8">
-	<title>Title</title>
+	<title>Recommend a Shop</title>
 </head>
 <body>
+<nav th:insert="fragments/navbar"></nav>
 <form th:action="@{/shop/recommend}" method="post">
 	<div class="form-group">
 		<label for="city">Choose a City:</label>

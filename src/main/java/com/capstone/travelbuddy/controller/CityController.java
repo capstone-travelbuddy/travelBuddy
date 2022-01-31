@@ -1,11 +1,14 @@
 package com.capstone.travelbuddy.controller;
 
+import com.capstone.travelbuddy.model.Category;
+import com.capstone.travelbuddy.model.City;
 import com.capstone.travelbuddy.model.Shop;
 import com.capstone.travelbuddy.model.User;
 import com.capstone.travelbuddy.repository.CategoryRepository;
 import com.capstone.travelbuddy.repository.CityRepository;
 import com.capstone.travelbuddy.repository.ShopRepository;
 import com.capstone.travelbuddy.repository.UserRepository;
+import com.capstone.travelbuddy.service.EmailService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -30,12 +33,15 @@ public class CityController {
 	private ShopRepository shopDao;
 	private CategoryRepository categoryDao;
 	private UserRepository userDao;
+	private final EmailService emailService;
 
-	public CityController(CityRepository cityDao, ShopRepository shopDao, CategoryRepository categoryDao, UserRepository userDao) {
+
+	public CityController(CityRepository cityDao, ShopRepository shopDao, CategoryRepository categoryDao, UserRepository userDao, EmailService emailService) {
 		this.cityDao = cityDao;
 		this.shopDao = shopDao;
 		this.categoryDao = categoryDao;
 		this.userDao = userDao;
+		this.emailService = emailService;
 	}
   
 	@Value("${mapbox.api.key}")
@@ -123,11 +129,20 @@ public class CityController {
 	}
 
 	@PostMapping("/shop/recommend")
-	public String saveRecommendShop(@RequestParam(name = "city") int city, @RequestParam(name = "category") String category, @RequestParam(name = "shopName") String shopName){
-		System.out.println(city);
-		System.out.println(category);
+	public String saveRecommendShop(RedirectAttributes attributes, @RequestParam(name = "city") int cityId, @RequestParam(name = "category") int categoryId, @RequestParam(name = "shopName") String shopName){
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		City city = cityDao.getById(cityId);
+		Category category = categoryDao.getById(categoryId);
+		System.out.println(city.getName());
+		System.out.println(category.getName());
 		System.out.println(shopName);
-		return "home";
+
+		String postBody = "Your shop recommendation has been submitted for review. \n" + "City: " +city.getName() + "\n" + "Category: " + category.getName() + "\n" + "Shop name: " + shopName;
+		emailService.prepareAndSend(currentUser, "New Shop Recommendation", postBody);
+
+		attributes.addFlashAttribute("add", "Recommendation submitted!");
+
+		return "redirect:/profile";
 	}
   
 	}
