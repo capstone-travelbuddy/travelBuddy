@@ -28,7 +28,9 @@
 <div class="h1 text-success text-center" th:text="${add}"></div>
 <div class="h1 text-success text-center" th:text="${remove}"></div>
 
-<div class="m-5" th:text="${shop.name}" style="font-size: 24px; font-weight: 600; margin-left: -10px;"></div>
+<div class="m-5" th:text="${shop.name}" style="font-size: 24px; font-weight: 600; margin-left: -10px;">
+
+</div>
 <div class="m-5">
     <div sec:authorize="isAuthenticated()">
         <a th:href="'/create/review/shop/' + ${shop.id}">
