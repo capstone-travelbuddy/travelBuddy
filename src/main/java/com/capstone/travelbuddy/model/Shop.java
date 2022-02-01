@@ -39,6 +39,9 @@ public class Shop {
 	@ManyToMany(mappedBy = "likedShops")
 	private Set<User> likes;
 
+	@ManyToMany(mappedBy = "shopsToVisit")
+	private Set<User> toVisit;
+
 	public int getId() {
 		return id;
 	}
@@ -133,5 +136,13 @@ public class Shop {
 
 	public void setLikes(Set<User> likes) {
 		this.likes = likes;
+	}
+
+	public Set<User> getToGo() {
+		return toVisit;
+	}
+
+	public void setToGo(Set<User> toVisit) {
+		this.toVisit = toVisit;
 	}
 }

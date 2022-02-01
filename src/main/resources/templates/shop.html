@@ -21,13 +21,12 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
-
 </div>
-<div class="h1 text-success text-center" th:text="${add}"></div>
-<div class="h1 text-success text-center" th:text="${remove}"></div>
-
+<div class="h1 text-success text-center" th:text="${addLike}"></div>
+<div class="h1 text-success text-center" th:text="${removeLike}"></div>
+<div class="h1 text-success text-center" th:text="${addVisit}"></div>
+<div class="h1 text-success text-center" th:text="${removeVisit}"></div>
 <div class="m-5" th:text="${shop.name}" style="font-size: 24px; font-weight: 600; margin-left: -10px;"></div>
-
 <div class="m-5">
 	<div sec:authorize="isAuthenticated()">
 		<a th:href="'/create/review/shop/' + ${shop.id}">
@@ -45,6 +44,9 @@
 		<a th:if="${user.getLikedShops().contains(shop)}" class="btn"
 		   th:href="'/like/shop/' + ${shop.id}">UNLIKE</a>
 		<a th:if="${!user.getLikedShops().contains(shop)}" class="btn" th:href="'/like/shop/' + ${shop.id}">LIKE</a>
+		<a th:if="${user.getShopsToVisit().contains(shop)}" class="btn"
+		   th:href="'/toVisit/shop/' + ${shop.id}">REMOVE</a>
+		<a th:if="${!user.getShopsToVisit().contains(shop)}" class="btn" th:href="'/toVisit/shop/' + ${shop.id}">ADD</a>
 		<!--        <button th:attr="onclick=|add('${shop}')|" type="button" class="btn btn-secondary btn-lg">Save To Intineray-->
 		<!--        </button>-->
 	</div>
