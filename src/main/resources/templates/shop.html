@@ -21,7 +21,6 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
-
 </div>
 <div class="h1 text-success text-center" th:text="${addLike}"></div>
 <div class="h1 text-success text-center" th:text="${removeLike}"></div>
@@ -122,51 +121,53 @@
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
 <script th:inline="javascript">
 
-	var mark = document.getElementById('mark').innerText;
 
-	/*<![CDATA[*/
+    var mark = document.getElementById('mark').innerText;
 
-	let key = /*[[${mapboxApiKey}]]*/ 'default';
+    /*<![CDATA[*/
 
-	(function () {
+    let key = /*[[${mapboxApiKey}]]*/ 'default';
 
-		mapboxgl.accessToken = key;
-		const map = new mapboxgl.Map({
-			container: 'map',
-			style: 'mapbox://styles/mapbox/streets-v9',
-			center: [-98.4916, 29.4252],
-			zoom: 10,
-		});
+    (function () {
 
-		map.addControl(new mapboxgl.GeolocateControl({
-			positionOptions: {
-				enableHighAccuracy: true
-			},
-			trackUserLocation: true
-		}));
+        mapboxgl.accessToken = key;
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            center: [-98.4916, 29.4252],
+            zoom: 10,
+        });
 
-		function geocode(search, token) {
-			var baseUrl = 'https://api.mapbox.com';
-			var endPoint = '/geocoding/v5/mapbox.places/';
-			return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-				.then(function (res) {
-					return res.json();
-					// to get all the data from the request, comment out the following three lines...
-				}).then(function (data) {
-					return data.features[0].center;
-				});
-		}
+        map.addControl(new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true
+        }));
 
-		console.log(geocode(mark, key));
-		geocode(mark, key).then(function (results) {
-			let marker = new mapboxgl.Marker();
-			marker
-				.setLngLat(results)
-				.addTo(map)
-		})
+        function geocode(search, token) {
+            var baseUrl = 'https://api.mapbox.com';
+            var endPoint = '/geocoding/v5/mapbox.places/';
+            return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+                .then(function(res) {
+                    return res.json();
 
-	})();
-	/*]]>*/
+                }).then(function(data) {
+                    return data.features[0].center;
+                });
+        }
+
+        console.log(geocode(mark, key));
+        geocode(mark, key).then(function (results) {
+            let marker = new mapboxgl.Marker();
+            marker
+                .setLngLat(results)
+                .addTo(map)
+        })
+
+    })();
+    /*]]>*/
+
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
