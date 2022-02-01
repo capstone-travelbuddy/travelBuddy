@@ -8,14 +8,14 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-<div id="carouselDestinationCaptions" class="carousel slide" data-bs-ride="carousel" >
+<div id="carouselDestinationCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel" >
     <div class="carousel-inner"  style="margin-top: -22px;">
         <div class="carousel-item" th:each="city : ${cities}">
             <img th:src="@{'data:image/jpeg;base64,'+${city.cityImage.generateBase64Image()}}" alt="Destination Photos"
-                 class="d-block w-100">
-            <div class="carousel-caption d-none d-md-block">
+                 class="d-block w-100 h-100">
+            <div class="carousel-caption d-md-block responsive">
                 <a style="text-decoration:none" th:href="'category/' + ${city.id}">
-                    <h3 class="text-white fs-3 text-center" th:text="${city.name}"></h3>
+                    <h1 class="text-white text-center" th:text="${city.name}"></h1>
                     <p class="fs-4 text-white text-center" th:text="${city.description}"></p>
                 </a>
             </div>
