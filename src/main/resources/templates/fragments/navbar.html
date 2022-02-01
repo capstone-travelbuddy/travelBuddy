@@ -4,28 +4,30 @@
 	  lang="en">
 <div th:fragment="navbar">
 	<nav class="navbar topNav main-logo">
+		<div class="container-fluid">
 		<a class="logo_li" th:href="@{/}">
 			<span class="span-logo">
 				<img th:src="@{/img/TBLogo2.jpg}" alt="TBLogo">
 			</span>
 		</a>
 		<a th:href="@{/destinations}">Destinations</a>
-		<div sec:authorize="isAnonymous()">
+			<div sec:authorize="isAnonymous()">
 			<a th:href="@{/login}">Login</a>
 		</div>
 		<div sec:authorize="isAuthenticated()">
 			<form th:action="@{/logout}" th:method="post">
-				<button>Logout</button>
+				<button class="btn btn1 mt-3" type="button" style="font-size: 15px; font-family: sans-serif; color: #f2f2f2">logout</button>
+				<a th:href="@{/profile}" th:text="${#authentication.getPrincipal().getUsername()}">Profile</a>
 			</form>
-			<a th:href="@{/profile}" th:text="${#authentication.getPrincipal().getUsername()}">Profile</a>
 		</div>
-		<form class="d-flex" th:action="@{/search}" method="post" th:object="${shop}">
-			<div>
+		<div>
+				<form class="d-flex" th:action="@{/search}" method="post" th:object="${shop}">
 				<input class="form-control me-2" name="shops" id="shops" th:text="${name}" type="text"
 					   placeholder="Find by Shop Name" size="50" aria-label="Search">
 				<button class="btn btn-outline-success" size="4" type="submit">Search</button>
-			</div>
-		</form>
+				</form>
+		</div>
+		</div>
 	</nav>
 </div>
 </html>
