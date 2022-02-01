@@ -16,7 +16,7 @@
 		</div>
 		<div sec:authorize="isAuthenticated()">
 			<form th:action="@{/logout}" th:method="post">
-				<button class="btn btn1 mt-3" type="button" style="font-size: 15px; font-family: sans-serif; color: #f2f2f2">logout</button>
+				<button>logout</button>
 				<a th:href="@{/profile}" th:text="${#authentication.getPrincipal().getUsername()}">Profile</a>
 			</form>
 		</div>
