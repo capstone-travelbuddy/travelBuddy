@@ -59,7 +59,13 @@ public class UserController {
 
 		String hash = passwordEncoder.encode(user.getPassword());
 		user.setPassword(hash);
-		Image image = imageDao.getById(21);
+
+//		For LOCAL use only. Set imageDao.getById() to default profile image id. -BOSCH
+//		Image image = imageDao.getById();
+//		user.setUserImage(image);
+
+		// For DOMAIN use only. Set imageDao.getById() to default profile image id. -BOSCH
+		Image image = imageDao.getById(2);
 		user.setUserImage(image);
 		userDao.save(user);
 		return "redirect:/login";
