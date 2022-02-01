@@ -29,7 +29,7 @@ public class User {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Review> reviews;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(
 			name = "shop_like",
 			joinColumns = @JoinColumn(name = "user_id"),
