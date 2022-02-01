@@ -31,10 +31,17 @@ public class User {
 
 	@ManyToMany
 	@JoinTable(
-			name = "shop_like",
+			name = "liked_shops",
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "shop_id"))
 	private List<Shop> likedShops;
+
+	@ManyToMany
+	@JoinTable(
+			name = "shops_toVisit",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "shop_id"))
+	private List<Shop> shopsToVisit;
 
 	public User() {
 
@@ -109,5 +116,13 @@ public class User {
 
 	public void setLikedShops(List<Shop> likedShops) {
 		this.likedShops = likedShops;
+	}
+
+	public List<Shop> getShopsToVisit() {
+		return shopsToVisit;
+	}
+
+	public void setShopsToVisit(List<Shop> shopsToVisit) {
+		this.shopsToVisit = shopsToVisit;
 	}
 }

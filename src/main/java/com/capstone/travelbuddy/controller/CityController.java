@@ -48,15 +48,55 @@ public class CityController {
 		if (user.getLikedShops().contains(shop)){
 			user.getLikedShops().remove(shop);
 			userDao.save(user);
-			attributes.addFlashAttribute("remove", "Unliked!");
+			attributes.addFlashAttribute("removeLike", "Unliked!");
 			return "redirect:/shop/" + id;
 		}
 
 		user.getLikedShops().add(shop);
 		userDao.save(user);
-		attributes.addFlashAttribute("add", "Liked!");
+		attributes.addFlashAttribute("addLike", "Liked!");
 
 		return "redirect:/shop/" + id;
+	}
+
+	@RequestMapping("/toVisit/shop/{id}")
+	public String addToShopsToVisit(@PathVariable int id, RedirectAttributes attributes){
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Shop shop = shopDao.getById(id);
+		User user = userDao.getById(currentUser.getId());
+
+		if (user.getShopsToVisit().contains(shop)){
+			user.getShopsToVisit().remove(shop);
+			userDao.save(user);
+			attributes.addFlashAttribute("removeVisit", "Removed from \"Want to Visit\" list");
+			return "redirect:/shop/" + id;
+		}
+
+		user.getShopsToVisit().add(shop);
+		userDao.save(user);
+		attributes.addFlashAttribute("addVisit", "Added to \"Want to Visit\" list");
+
+		return "redirect:/shop/" + id;
+	}
+
+	@RequestMapping("profile/toVisit/shop/{id}")
+	public String removeToShopsToVisit(@PathVariable int id, RedirectAttributes attributes){
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Shop shop = shopDao.getById(id);
+		User user = userDao.getById(currentUser.getId());
+
+		if (user.getShopsToVisit().contains(shop)){
+			user.getShopsToVisit().remove(shop);
+			userDao.save(user);
+//			attributes.addFlashAttribute("removeVisit", "Removed from \"Want to Visit\" list");
+			return "redirect:/profile";
+		}
+
+		user.getShopsToVisit().add(shop);
+		userDao.save(user);
+//		attributes.addFlashAttribute("addVisit", "Added to \"Want to Visit\" list");
+
+		return "redirect:/profile";
 	}
 
 	@GetMapping("/")
