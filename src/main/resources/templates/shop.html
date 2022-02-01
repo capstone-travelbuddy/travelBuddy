@@ -9,10 +9,10 @@
 </head>
 <body id="shop">
 <nav th:insert="fragments/navbar"></nav>
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel" style="margin-top: -22px;">
     <div class="carousel-inner">
         <div class="carousel-item" th:each="image : ${shop.images}">
-            <img th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}" class="d-block w-100" alt="...">
+            <img th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}" class="d-block w-100 h-100" alt="...">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

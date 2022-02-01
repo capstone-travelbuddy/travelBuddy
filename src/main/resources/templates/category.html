@@ -7,19 +7,20 @@
 <body id="category">
 <nav th:insert="fragments/navbar"></nav>
 <main>
-	<div class="container-fluid my-4 p-3" style="background-color: #04999e; height: 100vh; margin-top: -22px;">
+	<div class="container-fluid w-100" style="height: 100vh; margin-top: -22px;">
 		<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
 			<div th:if="${shops.isEmpty()}">
 				<div>No shops found</div>
 			</div>
 			<div class="col" th:each="shop : ${shops}">
-				<div class="card h-100 shadow-sm">
+				<div class="card h-100 shadow-sm" style="margin-top: 40px;">
 					<img th:src="@{'data:image/jpeg;base64,' + ${shop.images.get(0).generateBase64Image()}}"
 						 alt="Shop Photo" style="height: 162px;"/>
 					<div class="label-top shadow-sm">
 						Local Favorite
 					</div>
 					<div class="card-body">
+						<div th:text="${reviewDao.avg(shop.id)}"></div>
 						<div class="rate">
 							<input type="radio" id="star5" name="rate" value="5"/>
 							<label for="star5" title="text">5 stars</label>
