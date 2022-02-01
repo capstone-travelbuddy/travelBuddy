@@ -3,12 +3,12 @@
 <head th:insert="fragments/header">
 
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${city.name + ' Shop Categories'}"></title>
 
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-
+<h1 class="text-center" th:text="${city.name}"></h1>
 <div class="card-deck">
     <div class="card" th:each="category : ${categories}">
         <img th:src="@{'data:image/jpeg;base64,'+${category.categoryImage.generateBase64Image()}}" class="card-img-top"
