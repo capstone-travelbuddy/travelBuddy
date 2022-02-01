@@ -2,6 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:insert="fragments/header">
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+
     <style>
         table td{
             vertical-align:top;
@@ -14,7 +17,7 @@
 <body>
 <nav th:insert="fragments/navbar"></nav>
 
-<h1>My Thymeleaf Error Page</h1>
+<h1 th:text="${status}"></h1>
 <table>
     <tr>
         <td>Date</td>
