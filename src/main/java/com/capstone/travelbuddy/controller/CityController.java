@@ -60,7 +60,8 @@ public class CityController {
 	}
 
 	@GetMapping("/")
-	public String getHomeView(){
+	public String getHomeView(Model model){
+		model.addAttribute("cities", cityDao.findAll());
 		return "home";
 	}
 
