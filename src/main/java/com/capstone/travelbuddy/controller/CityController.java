@@ -4,10 +4,7 @@ import com.capstone.travelbuddy.model.Category;
 import com.capstone.travelbuddy.model.City;
 import com.capstone.travelbuddy.model.Shop;
 import com.capstone.travelbuddy.model.User;
-import com.capstone.travelbuddy.repository.CategoryRepository;
-import com.capstone.travelbuddy.repository.CityRepository;
-import com.capstone.travelbuddy.repository.ShopRepository;
-import com.capstone.travelbuddy.repository.UserRepository;
+import com.capstone.travelbuddy.repository.*;
 import com.capstone.travelbuddy.service.EmailService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -15,15 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -33,14 +23,16 @@ public class CityController {
 	private ShopRepository shopDao;
 	private CategoryRepository categoryDao;
 	private UserRepository userDao;
+	private ReviewRepository reviewDao;
 	private final EmailService emailService;
 
 
-	public CityController(CityRepository cityDao, ShopRepository shopDao, CategoryRepository categoryDao, UserRepository userDao, EmailService emailService) {
+	public CityController(CityRepository cityDao, ShopRepository shopDao, CategoryRepository categoryDao, UserRepository userDao, EmailService emailService, ReviewRepository reviewDao) {
 		this.cityDao = cityDao;
 		this.shopDao = shopDao;
 		this.categoryDao = categoryDao;
 		this.userDao = userDao;
+		this.reviewDao = reviewDao;
 		this.emailService = emailService;
 	}
   
@@ -90,6 +82,7 @@ public class CityController {
 	@GetMapping("category/{categoryType}/{id}")
 	public String getCoffeeView(@PathVariable int id, @PathVariable String categoryType, Model model) {
 		model.addAttribute("shops", shopDao.getShopsByCityIdAndCategoryType(id, categoryType));
+		model.addAttribute("reviewDao", reviewDao);
 
 		return "category";
 	}
@@ -121,9 +114,6 @@ public class CityController {
 
 	@PostMapping("/search")
 	public String showShop(@RequestParam(name="shops") String shops, Model model){
-		Shop shop = new Shop();
-		shop.setName(shops);
-		System.out.println(shops);
 		model.addAttribute("shops", shopDao.findByNameIgnoreCaseContaining(shops));
 		return "search";
 	}
