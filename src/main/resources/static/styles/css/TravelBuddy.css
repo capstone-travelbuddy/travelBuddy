@@ -686,7 +686,7 @@ profile body{
     font-size: 12px;
     width: auto;
     border: 2px solid rgb(4, 153, 158);
-    background-color: rgba(222, 229, 229, 0.97);
+    background-color: floralwhite;
     float: left;
     border-radius: 5px;
     padding-left: 10px;
@@ -858,5 +858,5 @@ height: 15px;
 
 
 #shop {
-    background-color: #c9c8c8;
+    background-color: white;
 }
