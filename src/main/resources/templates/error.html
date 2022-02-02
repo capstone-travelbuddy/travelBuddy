@@ -6,50 +6,60 @@
     <title>Error Page</title>
 
     <style>
-        tbody {
-            margin-left: auto;
-            margin-right: auto;
+        h1 {
+            color: red;
+            font-size: 100px;
+            font-weight: bold;
         }
-
     </style>
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-<div class="container">
+<div class="container text-lg-center">
     <div class="container">
-<h1 style="color:red;font-size: 500px" th:text="${status}"></h1>
-<table id="error">
-    <tr>
-        <td>Date</td>
-        <td th:text="${timestamp}"/>
-    </tr>
-    <tr>
-        <td>Path</td>
-        <td th:text="${path}"/>
-    </tr>
-    <tr>
-        <td>Error</td>
-        <td th:text="${error}"/>
-    </tr>
-    <tr>
-        <td>Status</td>
-        <td th:text="${status}"/>
-    </tr>
-    <tr>
-        <td>Message</td>
-        <td th:text="${message}"/>
-    </tr>
-    <tr>
-        <td>Exception</td>
-        <td th:text="${exception}"/>
-    </tr>
-    <tr>
-        <td>Trace</td>
-        <td>
-            <pre th:text="${trace}"/>
-        </td>
-    </tr>
-</table>
+<h1 style="color:red;font-size: 600px; font-weight: bolder" th:text="${status}"></h1>
+        <th:block th:switch="${error}">
+            <div th:case="'Not Found'">
+                <h1>Sorry, your page was not found!!</h1>
+            </div>
+            <div th:case="'Forbidden'">
+                <h1>Sorry, you don't have permission to view this page.</h1>
+            </div>
+        </th:block>
+        <h1>Try your search again</h1>
+
+<!--<div id="error">-->
+<!--    <div>-->
+<!--        <h1>Date</h1>-->
+<!--        <p th:text="${timestamp}"/>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <h1>Path</h1>-->
+<!--        <p th:text="${path}"/>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <h1>Error</h1>-->
+<!--        <p th:text="${error}"/>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <h1>Status</h1>-->
+<!--        <p th:text="${status}"/>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <h1>Message</h1>-->
+<!--        <p th:text="${message}"/>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <h1>Exception</h1>-->
+<!--        <p th:text="${exception}"/>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <h1>Trace</h1>-->
+<!--        <td>-->
+<!--            <p th:text="${trace}"/>-->
+<!--        </td>-->
+<!--    </div>-->
+<!--</div>-->
     </div>
 </div>
 </body>
