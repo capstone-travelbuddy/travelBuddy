@@ -17,7 +17,7 @@
 		<div sec:authorize="isAuthenticated()">
 			<form th:action="@{/logout}" th:method="post">
 				<button>logout</button>
-				<a th:href="@{/profile}" th:text="${#authentication.getPrincipal().getUsername()}">Profile</a>
+				<a th:href="@{/profile}" th:text="${user.username}">Profile</a>
 			</form>
 		</div>
 		<div>

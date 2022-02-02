@@ -4,6 +4,8 @@ import com.capstone.travelbuddy.model.Image;
 import com.capstone.travelbuddy.model.User;
 import com.capstone.travelbuddy.repository.ImageRepository;
 import com.capstone.travelbuddy.repository.UserRepository;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,89 +14,97 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
 import java.util.Objects;
 
 @Controller
 public class ProfileController {
 
-    private UserRepository userDao;
-    private ImageRepository imageDao;
+	private UserRepository userDao;
+	private ImageRepository imageDao;
 
-    public ProfileController(UserRepository userDao, ImageRepository imageDao){
-        this.userDao = userDao;
-        this.imageDao = imageDao;
-    }
+	public ProfileController(UserRepository userDao, ImageRepository imageDao) {
+		this.userDao = userDao;
+		this.imageDao = imageDao;
+	}
 
-    @GetMapping("/profile")
-    public String profile(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", userDao.getById(user.getId()));
+	private void createCurrentUser(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			User user = userDao.getById(currentUser.getId());
+			model.addAttribute("user", user);
+		}
+	}
 
-        return "profile";
-    }
+	@GetMapping("/profile")
+	public String profile(Model model) {
+		createCurrentUser(model);
 
-    @GetMapping("/profile/edit")
-    public String editProfile(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", userDao.getById(user.getId()));
-        model.addAttribute("titleLabel", "Edit Username: ");
-        model.addAttribute("bodyLabel", "Edit Email: ");
+		return "profile";
+	}
 
-        return "edit-profile";
-    }
+	@GetMapping("/profile/edit")
+	public String editProfile(Model model) {
+		createCurrentUser(model);
+		model.addAttribute("titleLabel", "Edit Username: ");
+		model.addAttribute("bodyLabel", "Edit Email: ");
 
-    @PostMapping("/profile/edit")
-    public String saveEditProfile(@RequestParam String username, @RequestParam String email) {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userDao.getById(currentUser.getId());
-        user.setUsername(username);
-        user.setEmail(email);
-        userDao.save(user);
-        System.out.println(user);
-        return "redirect:/profile";
-    }
+		return "edit-profile";
+	}
 
-    @GetMapping("/profile/upload")
-    public String editProfilePicture(Model model){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", userDao.getById(user.getId()));
+	@PostMapping("/profile/edit")
+	public String saveEditProfile(@RequestParam String username, @RequestParam String email) {
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = userDao.getById(currentUser.getId());
+		user.setUsername(username);
+		user.setEmail(email);
+		userDao.save(user);
+		System.out.println(user);
+		return "redirect:/profile";
+	}
 
-        return "users/user-photo-upload";
-    }
+	@GetMapping("/profile/upload")
+	public String editProfilePicture(Model model) {
+		createCurrentUser(model);
 
-    @PostMapping("/profile/upload")
-    public String uploadImage(@RequestParam("image") MultipartFile multipartFile) throws IOException {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userDao.getById(currentUser.getId());
+		return "users/user-photo-upload";
+	}
 
-        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-        Image image = new Image();
-        image.setName(fileName);
-        image.setContent(multipartFile.getBytes());
+	@PostMapping("/profile/upload")
+	public String uploadImage(@RequestParam("image") MultipartFile multipartFile) throws IOException {
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = userDao.getById(currentUser.getId());
 
-        imageDao.save(image);
+		String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+		Image image = new Image();
+		image.setName(fileName);
+		image.setContent(multipartFile.getBytes());
 
-        user.setUserImage(image);
-        userDao.save(user);
+		imageDao.save(image);
 
-        return "redirect:/profile";
-    }
+		user.setUserImage(image);
+		userDao.save(user);
 
-    @GetMapping("/profile/delete")
-    public String deleteUser(){
+		return "redirect:/profile";
+	}
 
-        return "delete-profile";
-    }
+	@GetMapping("/profile/delete")
+	public String deleteUser(Model model) {
+		createCurrentUser(model);
 
-    @PostMapping("/profile/delete")
-    public String deleteUserById() {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return "delete-profile";
+	}
+
+	@PostMapping("/profile/delete")
+	public String deleteUserById() {
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        SecurityContextHolder.clearContext();
-        userDao.deleteById(user.getId());
+		userDao.deleteById(user.getId());
 
-        return "home";
-    }
+		return "home";
+	}
 
 }
 
