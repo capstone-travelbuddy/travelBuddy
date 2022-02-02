@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 @Controller
 public class CityController {
 
@@ -26,7 +25,6 @@ public class CityController {
 	private ReviewRepository reviewDao;
 	private final EmailService emailService;
 
-
 	public CityController(CityRepository cityDao, ShopRepository shopDao, CategoryRepository categoryDao, UserRepository userDao, EmailService emailService, ReviewRepository reviewDao) {
 		this.cityDao = cityDao;
 		this.shopDao = shopDao;
@@ -35,7 +33,16 @@ public class CityController {
 		this.reviewDao = reviewDao;
 		this.emailService = emailService;
 	}
-  
+
+	private void createCurrentUser(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			User user = userDao.getById(currentUser.getId());
+			model.addAttribute("user", user);
+		}
+	}
+
 	@Value("${mapbox.api.key}")
 	private String mapboxApiKey;
 
@@ -45,12 +52,12 @@ public class CityController {
 	}
 
 	@RequestMapping("/like/shop/{id}")
-	public String addToShopLikes(@PathVariable int id, RedirectAttributes attributes){
+	public String addToShopLikes(@PathVariable int id, RedirectAttributes attributes) {
 		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Shop shop = shopDao.getById(id);
 		User user = userDao.getById(currentUser.getId());
 
-		if (user.getLikedShops().contains(shop)){
+		if (user.getLikedShops().contains(shop)) {
 			user.getLikedShops().remove(shop);
 			userDao.save(user);
 			attributes.addFlashAttribute("removeLike", "Unliked!");
@@ -65,12 +72,12 @@ public class CityController {
 	}
 
 	@RequestMapping("/toVisit/shop/{id}")
-	public String addToShopsToVisit(@PathVariable int id, RedirectAttributes attributes){
+	public String addToShopsToVisit(@PathVariable int id, RedirectAttributes attributes) {
 		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Shop shop = shopDao.getById(id);
 		User user = userDao.getById(currentUser.getId());
 
-		if (user.getShopsToVisit().contains(shop)){
+		if (user.getShopsToVisit().contains(shop)) {
 			user.getShopsToVisit().remove(shop);
 			userDao.save(user);
 			attributes.addFlashAttribute("removeVisit", "Removed from \"Want to Visit\" list");
@@ -85,12 +92,12 @@ public class CityController {
 	}
 
 	@RequestMapping("profile/toVisit/shop/{id}")
-	public String removeToShopsToVisit(@PathVariable int id){
+	public String removeToShopsToVisit(@PathVariable int id) {
 		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Shop shop = shopDao.getById(id);
 		User user = userDao.getById(currentUser.getId());
 
-		if (user.getShopsToVisit().contains(shop)){
+		if (user.getShopsToVisit().contains(shop)) {
 			user.getShopsToVisit().remove(shop);
 			userDao.save(user);
 
@@ -104,13 +111,16 @@ public class CityController {
 	}
 
 	@GetMapping("/")
-	public String getHomeView(Model model){
+	public String getHomeView(Model model) {
+		createCurrentUser(model);
 		model.addAttribute("cities", cityDao.findAll());
+
 		return "home";
 	}
 
 	@GetMapping("/destinations")
 	public String getCitiesView(Model model) {
+		createCurrentUser(model);
 		model.addAttribute("cities", cityDao.findAll());
 
 		return "destinations";
@@ -118,6 +128,7 @@ public class CityController {
 
 	@GetMapping("/category/{id}")
 	public String getCategoryView(@PathVariable int id, Model model) {
+		createCurrentUser(model);
 		model.addAttribute("city", cityDao.getById(id));
 		model.addAttribute("categories", categoryDao.findAll());
 
@@ -126,6 +137,7 @@ public class CityController {
 
 	@GetMapping("category/{categoryType}/{id}")
 	public String getCoffeeView(@PathVariable int id, @PathVariable String categoryType, Model model) {
+		createCurrentUser(model);
 		model.addAttribute("shops", shopDao.getShopsByCityIdAndCategoryType(id, categoryType));
 		model.addAttribute("reviewDao", reviewDao);
 
@@ -135,7 +147,7 @@ public class CityController {
 	@GetMapping("/shop/{id}")
 	public String getShopView(@PathVariable int id, Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (!(authentication instanceof AnonymousAuthenticationToken)){
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
 			User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			User user = userDao.getById(currentUser.getId());
 			Shop shop = shopDao.getById(id);
@@ -153,27 +165,34 @@ public class CityController {
 
 		return "shop";
 	}
+
 	@GetMapping("/search")
-	public String shopSearch(Model model){
+	public String shopSearch(Model model) {
+		createCurrentUser(model);
 		model.addAttribute("shop", new Shop());
+
 		return "search";
 	}
 
 	@PostMapping("/search")
-	public String showShop(@RequestParam(name="shops") String shops, Model model){
+	public String showShop(@RequestParam(name = "shops") String shops, Model model) {
+		createCurrentUser(model);
 		model.addAttribute("shops", shopDao.findByNameIgnoreCaseContaining(shops));
+
 		return "search";
 	}
 
 	@GetMapping("/shop/recommend")
-	public String getRecommendShop(Model model){
-		model.addAttribute("cities", cityDao.findAll());
+	public String getRecommendShop(Model model) {
+		createCurrentUser(model);
 		model.addAttribute("categories", categoryDao.findAll());
+		model.addAttribute("cities", cityDao.findAll());
+
 		return "shop-recommend-form";
 	}
 
 	@PostMapping("/shop/recommend")
-	public String saveRecommendShop(RedirectAttributes attributes, @RequestParam(name = "city") int cityId, @RequestParam(name = "category") int categoryId, @RequestParam(name = "shopName") String shopName){
+	public String saveRecommendShop(RedirectAttributes attributes, @RequestParam(name = "city") int cityId, @RequestParam(name = "category") int categoryId, @RequestParam(name = "shopName") String shopName) {
 		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		City city = cityDao.getById(cityId);
 		Category category = categoryDao.getById(categoryId);
@@ -181,12 +200,12 @@ public class CityController {
 		System.out.println(category.getName());
 		System.out.println(shopName);
 
-		String postBody = "Your shop recommendation has been submitted for review. \n" + "City: " +city.getName() + "\n" + "Category: " + category.getName() + "\n" + "Shop name: " + shopName;
+		String postBody = "Your shop recommendation has been submitted for review. \n" + "City: " + city.getName() + "\n" + "Category: " + category.getName() + "\n" + "Shop name: " + shopName;
 		emailService.prepareAndSend(currentUser, "New Shop Recommendation", postBody);
 
 		attributes.addFlashAttribute("add", "Recommendation submitted!");
 
 		return "redirect:/profile";
 	}
-  
-	}
+
+}

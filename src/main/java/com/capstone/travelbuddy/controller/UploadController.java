@@ -2,8 +2,11 @@ package com.capstone.travelbuddy.controller;
 
 import com.capstone.travelbuddy.model.Image;
 import com.capstone.travelbuddy.model.Shop;
+import com.capstone.travelbuddy.model.User;
 import com.capstone.travelbuddy.repository.ImageRepository;
 import com.capstone.travelbuddy.repository.ShopRepository;
+import com.capstone.travelbuddy.repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -20,16 +23,23 @@ public class UploadController {
 
 	private ImageRepository imageDao;
 	private ShopRepository shopDao;
+	private UserRepository userDao;
 
-	public UploadController(ImageRepository imageDao, ShopRepository shopDao){
+	public UploadController(ImageRepository imageDao, ShopRepository shopDao, UserRepository userDao){
 		this.imageDao = imageDao;
 		this.shopDao = shopDao;
+		this.userDao = userDao;
 	}
 
 	@GetMapping("/shop/{id}/upload")
 	public String getUploadView(@PathVariable int id, Model model){
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = userDao.getById(currentUser.getId());
 		Shop shop = shopDao.getById(id);
+
+		model.addAttribute("user", user);
 		model.addAttribute("shop", shop);
+
 		return "photo-upload";
 	}
 

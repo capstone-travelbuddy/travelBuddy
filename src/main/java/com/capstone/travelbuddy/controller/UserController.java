@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserController {
+
 	private UserRepository userDao;
 	private ImageRepository imageDao;
 	private PasswordEncoder passwordEncoder;
@@ -27,14 +28,14 @@ public class UserController {
 	}
 
 	@GetMapping("/sign-up")
-	public String showSignupForm(Model model){
+	public String showSignupForm(Model model) {
 		model.addAttribute("user", new User());
 		model.addAttribute("cities", cityDao.findAll());
 		return "users/sign-up";
 	}
 
 	@PostMapping("/sign-up")
-	public String saveUser(@ModelAttribute User user, Model model){
+	public String saveUser(@ModelAttribute User user, Model model) {
 
 		if (userDao.findByUsername(user.getUsername()) != null) {
 			model.addAttribute("userMessage", "Username already exist");
@@ -50,7 +51,7 @@ public class UserController {
 			return "users/sign-up";
 		}
 
-		if (user.getCity() == null){
+		if (user.getCity() == null) {
 			model.addAttribute("cityMessage", "Please select a city");
 			model.addAttribute("cities", cityDao.findAll());
 
