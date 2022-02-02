@@ -19,6 +19,8 @@ public class Review {
 	@Column(nullable = false)
 	private LocalDate created;
 
+	private int userType;
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -59,6 +61,14 @@ public class Review {
 		this.created = created;
 	}
 
+	public int getUserType() {
+		return userType;
+	}
+
+	public void setUserType(int userType) {
+		this.userType = userType;
+	}
+
 	public User getUser() {
 		return user;
 	}
@@ -82,6 +92,7 @@ public class Review {
 				", description='" + description + '\'' +
 				", rating=" + rating +
 				", created=" + created +
+				", userType=" + userType +
 				", user=" + user +
 				", shop=" + shop +
 				'}';

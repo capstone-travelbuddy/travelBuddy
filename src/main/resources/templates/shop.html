@@ -38,6 +38,8 @@
 <!--<div id="shop demo">-->
 <div id="shop contact" class="align-content-center">
     <div class="align-text-item" style="margin-top: -30px;">
+        <div th:text="${'Local Review Average = ' + reviewDao.localAvg(shop.id)}"></div>
+        <div th:text="${'Traveler Review Average = ' + reviewDao.travelerAvg(shop.id)}"></div>
         <h1 th:text="${shop.name}"></h1>
         <h4 id="mark" th:text="${shop.address}"></h4>
 
@@ -98,6 +100,8 @@
             <img th:src="@{'data:image/jpeg;base64,'+${review.getUser().getUserImage().generateBase64Image()}}"
                  alt="User Photo" class="rounded-circle" width="40" height="40"/>
             <h4 th:text="${review.getUser().username}"></h4>
+            <div th:if="${review.getUserType() == 1}">LOCAL</div>
+            <div th:if="${review.getUserType() == 2}">TRAVELER</div>
             <div class="float-right">
                 <p th:if="${review.getRating() == 1}"><img class="Stars" th:src="@{/img/star.png}" alt="Star"></p>
                 <p th:if="${review.getRating() == 2}"><img class="Stars" th:src="@{/img/star.png}" alt="Star"><img

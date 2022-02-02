@@ -136,12 +136,14 @@ public class CityController {
 			Shop shop = shopDao.getById(id);
 			model.addAttribute("shop", shop);
 			model.addAttribute("user", user);
+			model.addAttribute("reviewDao", reviewDao);
 			model.addAttribute("mapboxApiKey", mapboxApiKey);
 
 			return "shop";
 		}
 		Shop shop = shopDao.getById(id);
 		model.addAttribute("shop", shop);
+		model.addAttribute("reviewDao", reviewDao);
 		model.addAttribute("mapboxApiKey", mapboxApiKey);
 
 		return "shop";
