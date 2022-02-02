@@ -39,6 +39,11 @@ public class CityController {
 	@Value("${mapbox.api.key}")
 	private String mapboxApiKey;
 
+	@GetMapping("/team")
+	public String getTeam(){
+		return "team";
+	}
+
 	@RequestMapping("/like/shop/{id}")
 	public String addToShopLikes(@PathVariable int id, RedirectAttributes attributes){
 		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
