@@ -8,6 +8,8 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
+
+<div id="destinations" style="height: 100vh;">
 <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-6" th:each="city : ${cities}">
         <a th:href="@{'/category/' + ${city.id}}" class="city-card-item image-popup">
@@ -24,6 +26,7 @@
             </div>
         </a>
     </div>
+</div>
 </div>
 <!--<div id="carouselDestinationCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel" >-->
 <!--    <div class="carousel-inner"  style="margin-top: -22px;">-->
@@ -55,5 +58,7 @@
 <!--    console.log(destinations[0].classList +=" active")-->
 
 <!--</script>-->
+<footer th:insert="fragments/footer"></footer>
+
 </body>
 </html>
