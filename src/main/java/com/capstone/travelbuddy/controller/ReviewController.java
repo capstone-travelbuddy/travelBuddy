@@ -39,8 +39,22 @@ public class ReviewController {
 	@PostMapping("create/review/shop/{id}")
 	public String saveReview(@RequestParam int rating, @RequestParam String description, @PathVariable int id) {
 
-		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = userDao.getById(currentUser.getId());
 		Shop shop = shopDao.getById(id);
+
+		if (shop.getCity().getId() == user.getCity().getId()){
+			Review review = new Review();
+			review.setUser(user);
+			review.setShop(shop);
+			review.setRating(rating);
+			review.setDescription(description);
+			review.setCreated(LocalDate.now());
+			review.setUserType(1);
+			System.out.println(review);
+			reviewDao.save(review);
+			return "redirect:/shop/" + id;
+		}
 
 		Review review = new Review();
 		review.setUser(user);
@@ -48,9 +62,9 @@ public class ReviewController {
 		review.setRating(rating);
 		review.setDescription(description);
 		review.setCreated(LocalDate.now());
+		review.setUserType(2);
 		System.out.println(review);
 		reviewDao.save(review);
-
 		return "redirect:/shop/" + id;
 	}
 

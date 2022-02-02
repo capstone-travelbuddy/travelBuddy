@@ -85,7 +85,7 @@ public class CityController {
 	}
 
 	@RequestMapping("profile/toVisit/shop/{id}")
-	public String removeToShopsToVisit(@PathVariable int id, RedirectAttributes attributes){
+	public String removeToShopsToVisit(@PathVariable int id){
 		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Shop shop = shopDao.getById(id);
 		User user = userDao.getById(currentUser.getId());
@@ -93,13 +93,12 @@ public class CityController {
 		if (user.getShopsToVisit().contains(shop)){
 			user.getShopsToVisit().remove(shop);
 			userDao.save(user);
-//			attributes.addFlashAttribute("removeVisit", "Removed from \"Want to Visit\" list");
+
 			return "redirect:/profile";
 		}
 
 		user.getShopsToVisit().add(shop);
 		userDao.save(user);
-//		attributes.addFlashAttribute("addVisit", "Added to \"Want to Visit\" list");
 
 		return "redirect:/profile";
 	}
@@ -142,12 +141,14 @@ public class CityController {
 			Shop shop = shopDao.getById(id);
 			model.addAttribute("shop", shop);
 			model.addAttribute("user", user);
+			model.addAttribute("reviewDao", reviewDao);
 			model.addAttribute("mapboxApiKey", mapboxApiKey);
 
 			return "shop";
 		}
 		Shop shop = shopDao.getById(id);
 		model.addAttribute("shop", shop);
+		model.addAttribute("reviewDao", reviewDao);
 		model.addAttribute("mapboxApiKey", mapboxApiKey);
 
 		return "shop";
