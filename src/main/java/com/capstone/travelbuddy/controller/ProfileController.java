@@ -64,7 +64,7 @@ public class ProfileController {
     }
 
     @PostMapping("/profile/upload")
-    public String uploadImage(@RequestParam("image") MultipartFile multipartFile, Model model) throws IOException {
+    public String uploadImage(@RequestParam("image") MultipartFile multipartFile) throws IOException {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.getById(currentUser.getId());
 
@@ -78,22 +78,19 @@ public class ProfileController {
         user.setUserImage(image);
         userDao.save(user);
 
-//        model.addAttribute("message", "Upload successful!");
-
         return "redirect:/profile";
     }
 
     @GetMapping("/profile/delete")
-    public String deleteProfile(Model model){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", userDao.getById(user.getId()));
+    public String deleteUser(){
 
         return "delete-profile";
     }
 
     @PostMapping("/profile/delete")
-    public String deleteReviewById() {
+    public String deleteUserById() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        SecurityContextHolder.clearContext();
         userDao.deleteById(user.getId());
 
         return "home";
