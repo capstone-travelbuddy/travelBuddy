@@ -6,12 +6,14 @@
 </head>
 <body id="home">
 <nav th:insert="fragments/navbar"></nav>
-<header id="travelBuddy-header" class="img-responsive" role="banner">
-    <video style="width: 100%; height: auto; margin-top: -22px;" playsinline="playsinline" autoplay="autoplay"
+
+<div id="travelBuddy-header" class="img-responsive" role="banner">
+    <video playsinline="playsinline" autoplay="autoplay"
            muted="muted" loop="loop">
         <source th:src="@{/video/travel-buddy.mp4}" type="video/mp4">
     </video>
-</header>
-<nav th:insert="fragments/footer"></nav>
+</div>
+
+<footer th:insert="fragments/footer"></footer>
 </body>
 </html>
