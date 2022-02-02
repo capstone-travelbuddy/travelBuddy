@@ -98,12 +98,17 @@ public class ProfileController {
 	}
 
 	@PostMapping("/profile/delete")
-	public String deleteUserById() {
-		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        SecurityContextHolder.clearContext();
-		userDao.deleteById(user.getId());
+	public String deleteUserById(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			User user = userDao.getById(currentUser.getId());
+//			model.addAttribute("user", user);
+			userDao.delete(user);
+		}
 
-		return "home";
+		SecurityContextHolder.clearContext();
+		return "users/login";
 	}
 
 }
