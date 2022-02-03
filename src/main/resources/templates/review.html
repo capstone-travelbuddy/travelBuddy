@@ -6,49 +6,37 @@
     <title>Leave a Review</title>
 
 </head>
-<body>
+<body id="reviewpage">
 <nav th:insert="fragments/navbar"></nav>
-<div class="col-lg 3 col-md-3  col-sm-12 col-xs-12">
-    <div class="row">
-<!--        <div class="col-2">-->
-<!--            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB555gY7t6xtooHJHtuQ9ClW7STrNvDCHTwg&usqp=CAU"-->
-<!--                width="70" class="rounded-circle mt-2"></div>-->
-        <div class="col-10 align-content-center">
-            <div class="comment-box ml-2 text-center" style="margin-top: 10px;">
-                <div style="font-size: 20px; font-weight: 400;" th:text="${shop.name}"></div>
-                <h4>Leave a Review</h4>
-                <form th:action="@{'/create/review/shop/' + ${shop.id}}" method="POST">
 
-                    <label for="rating"></label>
-                    <div id="rating" class="rating">
-                        <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                        <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                        <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                        <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                        <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                    </div>
+<div class="card text-center py-4">
+    <h5 class="card-heading">Thanks For Supporting Our Local Business</h5>
+    <div class="shopname" th:text="${shop.name}"></div>
+    <form th:action="@{'/create/review/shop/' + ${shop.id}}" method="POST">
 
-                    <div class="comment-area"><textarea class="form-control" name="description" placeholder="Write a Review!"
-                                                        rows="10"></textarea></div>
-                    <div class="comment-btns mt-2">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="pull-left">
-                                    <a th:href="'/shop/' + ${shop.id}" class="btn btn-success btn-sm">Cancel</a>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="pull-right">
-                                    <button class="btn btn-success send btn-sm">Send <i
-                                            class="fa fa-long-arrow-right ml-1"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+        <label for="rating"></label>
+        <div id="rating" class="rating">
+            <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+            <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+            <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+            <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+            <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+        </div>
+        <div class="review mt-5 mb-5">
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1"></label>
+                <h6>Leave Your Review Below</h6>
+                <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="10"></textarea>
             </div>
         </div>
-    </div>
+
+        <a th:href="'/shop/' + ${shop.id}">
+            <button class="btn btn-success mb-2 cancel-button">CANCEL</button>
+        </a>
+        <button class="btn btn-outline-primary submit">SUBMIT</button>
+
+    </form>
 </div>
 
 </body>
