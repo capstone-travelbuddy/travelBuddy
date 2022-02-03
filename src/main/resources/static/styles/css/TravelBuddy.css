@@ -458,39 +458,6 @@ div.row.gutters-sm:hover::after{
     text-decoration: none !important;
 }
 
-/*.carousel-item {*/
-/*    height: 100vh;*/
-/*    min-height: 350px;*/
-/*    background-size: cover;*/
-/*}*/
-/*.carousel-indicators {*/
-/*    align-content: center!important;*/
-/*    margin: 0 auto;*/
-/*    justify-content: center!important;*/
-/*    text-align: center;*/
-/*}*/
-/*.carousel-indicators button {*/
-/*    height: 100px;*/
-/*    width: 100px;*/
-/*    display: inline-block;*/
-/*    padding: 0;*/
-/*    border-style: none;*/
-/*    transition: all 0.25s ease;*/
-/*}*/
-/*.carousel-indicators active {*/
-/*    height: 100px;*/
-/*    width: 100px;*/
-/*    padding: 0;*/
-/*    border-style: none;*/
-/*}*/
-
-/*.carousel-caption {*/
-/*    position: absolute;*/
-/*    top: 40%;*/
-/*    font-size: 5vw;*/
-/*    text-align: center;*/
-
-
 
 #category .container-fluid{
     /*position: absolute;*/
@@ -717,7 +684,7 @@ div.row.gutters-sm:hover::after{
 
 /*Shops Page Start*/
 .checked {
-    color: orangered;
+    color: #efd10c;
 }
 #map {
     width: 50%;
@@ -903,6 +870,7 @@ height: 15px;
     background-color: white;
 }
 
+/*Recommendation Form Start*/
 .form-holder {
     display: flex;
     flex-direction: column;
