@@ -1,138 +1,160 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:insert="fragments/header">
+
     <meta charset="UTF-8">
     <title>Shop Page</title>
-</head>
 
-<body id="shop">
+</head>
+<body id="shop" style="height: 100vh;">
 <nav th:insert="fragments/navbar"></nav>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
-                <!-- slides -->
-                <div class="carousel-inner" style="margin-top: -40px;">
-                    <div class="carousel-item" th:each="image : ${shop.images}"><img
-                            th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}" alt=""></div>
-                </div> <!-- Left right --> <a class="carousel-control-prev" href="#custCarousel" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next"
-                                                                         href="#custCarousel" data-slide="next"> <span
-                    class="carousel-control-next-icon"></span> </a> <!-- Thumbnails -->
-                <ol class="carousel-indicators">
-                    <li class="list-inline-item" th:each="image : ${shop.images}"><a id="carousel-selector-0"
-                                                                                     class="selected" data-slide-to="0"
-                                                                                     data-target="#custCarousel"> <img
-                            th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}" class="img-fluid">
-                    </a></li>
-                </ol>
+<section class="shop section" style="height: 100vh;">
+    <div id="shop demos" style="height: 100vh;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
+                        <!-- slides -->
+                        <div class="carousel-inner" style="margin-top: -40px;">
+                            <div class="carousel-item" th:each="image : ${shop.images}"><img
+                                    th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}" alt=""></div>
+                        </div>
+                        <!-- Left to Right --> <a class="carousel-control-prev" href="#custCarousel" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next"
+                                                                                 href="#custCarousel"
+                                                                                 data-slide="next"> <span
+                            class="carousel-control-next-icon"></span> </a>
+                        <!-- Thumbnails -->
+                        <ol class="carousel-indicators">
+                            <li class="list-inline-item" th:each="image : ${shop.images}"><a id="carousel-selector-0"
+                                                                                             class="selected"
+                                                                                             data-slide-to="0"
+                                                                                             data-target="#custCarousel">
+                                <img
+                                        th:src="@{'data:image/jpeg;base64,' + ${image.generateBase64Image()}}"
+                                        class="img-fluid">
+                            </a></li>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="h1 text-success text-center" th:text="${addLike}"></div>
-<div class="h1 text-success text-center" th:text="${removeLike}"></div>
-<div class="h1 text-success text-center" th:text="${addVisit}"></div>
-<div class="h1 text-success text-center" th:text="${removeVisit}"></div>
-<!--<div id="shop demo">-->
-<div id="shop contact" class="align-content-center">
-    <div class="align-text-item" style="margin-top: -30px;">
-        <h1 th:text="${shop.name}"></h1>
-        <h4 id="mark" th:text="${shop.address}"></h4>
+        <div class="h1 text-success text-center" th:text="${addLike}"></div>
+        <div class="h1 text-success text-center" th:text="${removeLike}"></div>
+        <div class="h1 text-success text-center" th:text="${addVisit}"></div>
+        <div class="h1 text-success text-center" th:text="${removeVisit}"></div>
+        <!--<div id="shop demo">-->
+        <div id="shop contact" class="align-content-center">
+            <div class="align-text-item" style="margin-top: -30px;">
+                <h1 th:text="${shop.name}"></h1>
+                <h4 id="mark" th:text="${shop.address}"></h4>
 
-        <div class="align-content" style="margin-top: 10px;">
-            <a th:href="${shop.website}" role="link"><i class="fas fa-globe fa-3x" style="padding-left: 20px;"></i></a>
-            <a href="#"><i class="fas fa-phone fa-3x" style="padding-left: 20px;"></i></a>
-            <!--            <a th:text="${shop.phoneNumber}"></a>-->
-            <a href="#"><i class="fas fa-directions fa-3x" style="padding-left: 20px;"></i></a>
-            <!--            <a id="mark" th:text="${shop.address}"></a>-->
-            <a th:href="${shop.socialURL}" role="link"><i class="fab fa-instagram fa-3x"
-                                                          style="padding-left: 20px;"></i></a>
+                <div class="align-content" style="margin-top: 10px;">
+                    <a th:href="${shop.website}" role="link"><i class="fas fa-globe fa-3x"
+                                                                style="padding-left: 20px;"></i></a>
+                    <a href="#"><i class="fas fa-phone fa-3x" style="padding-left: 20px;"></i></a>
+                    <!--            <a th:text="${shop.phoneNumber}"></a>-->
+                    <a href="#"><i class="fas fa-directions fa-3x" style="padding-left: 20px;"></i></a>
+                    <!--            <a id="mark" th:text="${shop.address}"></a>-->
+                    <a th:href="${shop.socialURL}" role="link"><i class="fab fa-instagram fa-3x"
+                                                                  style="padding-left: 20px;"></i></a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<div class="m-5">
-    <div sec:authorize="isAuthenticated()">
-        <a th:href="'/create/review/shop/' + ${shop.id}">
-            <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star" aria-hidden="true"></i>Write
-                A
-                Review
-            </button>
-        </a>
-        <a th:href="'/shop/' + ${shop.id} + '/upload/'">
-            <button type="button" class="btn btn-secondary btn-lg"><i class="fa fa-camera" aria-hidden="true"></i>
-                Add
-                Photo
-            </button>
-        </a>
-        <a th:if="${user.getLikedShops().contains(shop)}" class="btn"
-           th:href="'/like/shop/' + ${shop.id}">UNLIKE</a>
-        <a th:if="${!user.getLikedShops().contains(shop)}" class="btn" th:href="'/like/shop/' + ${shop.id}">LIKE</a>
-        <a th:if="${user.getShopsToVisit().contains(shop)}" class="btn"
-           th:href="'/toVisit/shop/' + ${shop.id}">REMOVE</a>
-        <a th:if="${!user.getShopsToVisit().contains(shop)}" class="btn" th:href="'/toVisit/shop/' + ${shop.id}">ADD</a>
-        <!--        <button th:attr="onclick=|add('${shop}')|" type="button" class="btn btn-secondary btn-lg">Save To Intineray-->
-        <!--        </button>-->
-    </div>
-</div>
-<!--    Reviews and Map-->
-<div id="reviews and map responsive" style="text-align: center; width: 100%;">
-    <div class="box"
-         style="float: left; width: 50%; overflow: auto; margin-left: 30px; margin-right: 20px; align-items: center;">
-
-        <h1>Reviews</h1>
-        <div th:if="${shop.getReviews().isEmpty()}">
-            No reviews found
+        <div class="m-5">
             <div sec:authorize="isAuthenticated()">
                 <a th:href="'/create/review/shop/' + ${shop.id}">
-                    <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star"
-                                                                            aria-hidden="true"></i>Write A
+                    <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star" aria-hidden="true"></i>Write
+                        A
                         Review
                     </button>
                 </a>
+                <a th:href="'/shop/' + ${shop.id} + '/upload/'">
+                    <button type="button" class="btn btn-secondary btn-lg"><i class="fa fa-camera"
+                                                                              aria-hidden="true"></i>
+                        Add
+                        Photo
+                    </button>
+                </a>
+                <a th:if="${user.getLikedShops().contains(shop)}" class="btn"
+                   th:href="'/like/shop/' + ${shop.id}">UNLIKE</a>
+                <a th:if="${!user.getLikedShops().contains(shop)}" class="btn"
+                   th:href="'/like/shop/' + ${shop.id}">LIKE</a>
+                <a th:if="${user.getShopsToVisit().contains(shop)}" class="btn"
+                   th:href="'/toVisit/shop/' + ${shop.id}">REMOVE</a>
+                <a th:if="${!user.getShopsToVisit().contains(shop)}" class="btn"
+                   th:href="'/toVisit/shop/' + ${shop.id}">ADD</a>
+                <!--        <button th:attr="onclick=|add('${shop}')|" type="button" class="btn btn-secondary btn-lg">Save To Intineray-->
+                <!--        </button>-->
             </div>
         </div>
-        <div th:each="review : ${shop.getReviews()}" class="comment mt-4 text-justify float-left w-100">
-            <img th:src="@{'data:image/jpeg;base64,'+${review.getUser().getUserImage().generateBase64Image()}}"
-                 alt="User Photo" class="rounded-circle" width="40" height="40"/>
-            <h4 th:text="${review.getUser().username}"></h4>
-            <div class="float-right">
-                <p th:if="${review.getRating() == 1}"><img class="Stars" th:src="@{/img/star.png}" alt="Star"></p>
-                <p th:if="${review.getRating() == 2}"><img class="Stars" th:src="@{/img/star.png}" alt="Star"><img
-                        class="Stars" th:src="@{/img/star.png}" alt="Star"></p>
-                <p th:if="${review.getRating() == 3}"><img class="Stars" th:src="@{/img/star.png}" alt="Star"><img
-                        class="Stars" th:src="@{/img/star.png}" alt="Star"><img class="Stars"
-                                                                                th:src="@{/img/star.png}"
-                                                                                alt="Star">
-                </p>
-                <p th:if="${review.getRating() == 4}"><img class="Stars" th:src="@{/img/star.png}" alt="Star"><img
-                        class="Stars" th:src="@{/img/star.png}" alt="Star"><img class="Stars"
-                                                                                th:src="@{/img/star.png}"
-                                                                                alt="Star"><img
-                        class="Stars" th:src="@{/img/star.png}" alt="Star"></p>
-                <p th:if="${review.getRating() == 5}"><img class="Stars" th:src="@{/img/star.png}" alt="Star"><img
-                        class="Stars" th:src="@{/img/star.png}" alt="Star"><img class="Stars"
-                                                                                th:src="@{/img/star.png}"
-                                                                                alt="Star"><img
-                        class="Stars" th:src="@{/img/star.png}" alt="Star"><img class="Stars"
-                                                                                th:src="@{/img/star.png}"
-                                                                                alt="Star">
-                </p>
+        <!--    Reviews and Map-->
+        <div class="shop reviews">
+            <div id="reviews and map responsive" style="text-align: center; width: 100%; margin-bottom: 40px;">
+                <div class="box"
+                     style="float: left; width: 50%; overflow: auto; margin-left: 30px; margin-right: 20px; align-items: center;margin-bottom: auto">
+
+                    <h1>Reviews</h1>
+                    <div th:if="${shop.getReviews().isEmpty()}">
+                        No reviews found
+                        <div sec:authorize="isAuthenticated()">
+                            <a th:href="'/create/review/shop/' + ${shop.id}">
+                                <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star"
+                                                                                        aria-hidden="true"></i>Write A
+                                    Review
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div th:each="review : ${shop.getReviews()}" class="comment mt-4 text-justify float-left w-100">
+                        <img th:src="@{'data:image/jpeg;base64,'+${review.getUser().getUserImage().generateBase64Image()}}"
+                             alt="User Photo" class="rounded-circle" width="40" height="40"/>
+                        <h4 th:text="${review.getUser().username}"></h4>
+                        <div class="float-right">
+                            <p th:if="${review.getRating() == 1}"><img class="Stars" th:src="@{/img/star.png}"
+                                                                       alt="Star">
+                            </p>
+                            <p th:if="${review.getRating() == 2}"><img class="Stars" th:src="@{/img/star.png}"
+                                                                       alt="Star"><img
+                                    class="Stars" th:src="@{/img/star.png}" alt="Star"></p>
+                            <p th:if="${review.getRating() == 3}"><img class="Stars" th:src="@{/img/star.png}"
+                                                                       alt="Star"><img
+                                    class="Stars" th:src="@{/img/star.png}" alt="Star"><img class="Stars"
+                                                                                            th:src="@{/img/star.png}"
+                                                                                            alt="Star">
+                            </p>
+                            <p th:if="${review.getRating() == 4}"><img class="Stars" th:src="@{/img/star.png}"
+                                                                       alt="Star"><img
+                                    class="Stars" th:src="@{/img/star.png}" alt="Star"><img class="Stars"
+                                                                                            th:src="@{/img/star.png}"
+                                                                                            alt="Star"><img
+                                    class="Stars" th:src="@{/img/star.png}" alt="Star"></p>
+                            <p th:if="${review.getRating() == 5}"><img class="Stars" th:src="@{/img/star.png}"
+                                                                       alt="Star"><img
+                                    class="Stars" th:src="@{/img/star.png}" alt="Star"><img class="Stars"
+                                                                                            th:src="@{/img/star.png}"
+                                                                                            alt="Star"><img
+                                    class="Stars" th:src="@{/img/star.png}" alt="Star"><img class="Stars"
+                                                                                            th:src="@{/img/star.png}"
+                                                                                            alt="Star">
+                            </p>
+                        </div>
+                        <br>
+                        <div class="float-right">
+                            <h4 id="review date" th:text="${review.getCreated()}"></h4>
+                        </div>
+                        <br>
+                        <p th:text="${review.getDescription()}"></p>
+                    </div>
+                </div>
             </div>
-            <br>
-            <div class="float-right">
-                <h4 id="review date" th:text="${review.getCreated()}"></h4>
-            </div>
-            <br>
-            <p th:text="${review.getDescription()}"></p>
+            <div class="box" id="map"
+                 style="float: right; width: 30%; height: 300px; margin-right: 30px; align-items: center; margin-top: 65px; margin-bottom: auto;"></div>
         </div>
     </div>
-</div>
-<div class="box" id="map"
-     style="float: right; width: 30%; height: 300px; margin-right: 30px; align-items: center; margin-top: 65px;"></div>
-
+</section>
 
 <script src="mapbox-geocoder-utils.js"></script>
 <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
@@ -151,7 +173,7 @@
         mapboxgl.accessToken = key;
         const map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v8',
+            style: 'mapbox://styles/mapbox/streets-v9',
             center: [-98.4916, 29.4252],
             zoom: 10,
         });
@@ -207,6 +229,8 @@
     var shopsinline = document.getElementsByClassName('list-inline-item')
     console.log(shopsinline[0].classList += " active")
 </script>
+
+<!--<footer th:insert="fragments/footer"></footer>-->
 
 </body>
 </html>
