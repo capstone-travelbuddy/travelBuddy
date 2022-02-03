@@ -9,7 +9,7 @@
 <div class="h1 text-success text-center" th:text="${add}"></div>
 <div class="profile-container">
 	<div class="profile-container" style="margin-left: 10px; margin-right: 10px;">
-		<div class="profile main-body">
+		<div class="profile main-body m-3">
 			<div class="row gutters-sm">
 				<div class="col-md-4 mb-3">
 					<div class="profile card">
@@ -28,28 +28,15 @@
 									<a th:href="@{/shop/recommend}">
 										<button type="submit" class="btn btn-primary">Add Local Recommendation</button>
 									</a>
+
+
+
+
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="card mt-3">
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-								<h6 class="mb-0">Want to Visit:</h6>
-							</li>
-							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
-								th:each="toVisit : ${user.getShopsToVisit()}">
-								<a class="mb-0 h6" th:href="'/shop/' + ${toVisit.id}" th:text="${toVisit.name}">
-								th:text="${toVisit.name}"></a>
-								<form th:action="'profile/toVisit/shop/' + ${toVisit.id}" method="get">
-									<button class="btn"><i class="fa fa-trash"></i></button>
-								</form>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-8">
-					<div class="card mb-3">
+					<div class="card mb-3 mt-4">
 						<div class="profile card-body">
 							<div class="row">
 								<div class="col-sm-3">
@@ -79,6 +66,24 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="card mt-3">
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+								<h6 class="mb-0">Want to Visit:</h6>
+							</li>
+							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+								th:each="toVisit : ${user.getShopsToVisit()}">
+								<a class="mb-0 h6" th:href="'/shop/' + ${toVisit.id}" th:text="${toVisit.name}">
+								th:text="${toVisit.name}"></a>
+								<form th:action="'profile/toVisit/shop/' + ${toVisit.id}" method="get">
+									<button class="btn"><i class="fa fa-trash"></i></button>
+								</form>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-8">
 					<div class="row gutters-sm">
 						<div class="col-sm-6 mb-3">
 							<div class="card h-100">
