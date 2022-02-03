@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head th:insert="fragments/header">
-
 	<meta charset="UTF-8"/>
 	<title>Sign up</title>
-
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
@@ -17,85 +14,64 @@
 					<div class="card-body p-md-5">
 						<div class="row justify-content-center">
 							<div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
-								<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Register</p>
-
+								<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4">Register</p>
 								<form class="mx-1 mx-md-4" th:action="@{/sign-up}" method="POST" th:object="${user}">
-
-									<div class="d-flex flex-row align-items-center mb-4">
-										<i class="fa fa-user fa-lg me-3 fa-fw" style="margin-top: -5px;"></i>
-										<div class="form-outline flex-fill mb-0">
+									<div class="d-flex flex-row align-items-center">
+										<div class="form-outline flex-fill mb-3">
 											<div class="text-danger h6" th:text="${userMessage}"></div>
-											<input type="text" id="name" class="form-control" th:field="*{username}" required/>
-											<label class="form-label" for="name">Your Name</label>
+											<label class="form-label" for="name"><i class="fa fa-user fa-lg me-3 fa-fw"></i>Your Name</label>
+											<input type="text" id="name" class="form-control" th:field="*{username}"
+												   required/>
 										</div>
 									</div>
-
-									<div class="d-flex flex-row align-items-center mb-4">
-										<i class="fa fa-envelope fa-lg me-3 fa-fw" style="margin-top: -5px;"></i>
-										<div class="form-outline flex-fill mb-0">
+									<div class="d-flex flex-row align-items-center">
+										<div class="form-outline flex-fill mb-3">
 											<div class="text-danger h6" th:text="${emailMessage}"></div>
-											<input type="email" id="email" class="form-control" th:field="*{email}" required/>
-											<label class="form-label" for="email">Your Email</label>
+											<label class="form-label" for="email"><i class="fa fa-envelope fa-lg me-3 fa-fw"></i>Your Email</label>
+											<input type="email" id="email" class="form-control" th:field="*{email}"
+												   required/>
 										</div>
 									</div>
-
-									<div class="d-flex flex-row align-items-center mb-4">
-										<i class="fa fa-lock fa-lg me-3 fa-fw" style="margin-top: -15px;"></i>
-										<div class="form-outline flex-fill mb-0">
+									<div class="d-flex flex-row align-items-center">
+										<div class="form-outline flex-fill mb-3">
+											<div class="text-danger h6"></div>
+											<label class="form-label" for="password"><i class="fa fa-lock fa-lg me-3 fa-fw"></i>Password</label>
 											<input type="password" id="password" class="form-control"
 												   th:field="*{password}" required/>
-											<label class="form-label" for="password">Password</label>
 										</div>
 									</div>
-
-									<div class="d-flex flex-row align-items-center mb-4">
-										<i class="fa fa-map-marker fa-lg me-3 fa-fw" style="margin-top: -15px;"></i>
-										<div class="form-outline flex-fill mb-0">
+									<div class="d-flex flex-row align-items-center">
+										<div class="form-outline flex-fill">
 											<div class="form-group">
 												<div class="text-danger h6" th:text="${cityMessage}"></div>
+												<label for="city"><i class="fa fa-map-marker fa-lg me-3 fa-fw"></i>Choose a City</label>
 												<select class="form-control" id="city" th:field="*{city}">
 													<option selected value="0">City</option>
 													<div th:each="city : ${cities}">
 														<option th:value="${city.id}" th:text="${city.name}"></option>
 													</div>
 												</select>
-												<label for="city">Choose a City</label>
 											</div>
 										</div>
 									</div>
-
-<!--									<div class="form-check d-flex justify-content-center mb-5">-->
-<!--										<input-->
-<!--												class="form-check-input me-2"-->
-<!--												type="checkbox"-->
-<!--												value=""-->
-<!--												id="form2Example3c"-->
-<!--										required/>-->
-<!--										<label class="form-check-label" for="form2Example3c">-->
-<!--											I agree all statements in <a href="#!">Terms of service</a>-->
-<!--										</label>-->
-<!--									</div>-->
-
-									<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-										<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+									<div class="d-flex justify-content-center">
+										<button type="submit" class="btn btn-primary btn-lg mt-3">Submit</button>
 									</div>
 								</form>
 							</div>
-							<div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-								<video style="width: 100%; height: auto;" playsinline="playsinline" autoplay="autoplay"
-									   muted="muted" loop="loop">
-									<source th:src="@{/video/travel-buddy.mp4}" type="video/mp4">
-								</video>
-							</div>
+<!--							<div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">-->
+<!--								<video style="width: 100%; height: auto;" playsinline="playsinline" autoplay="autoplay"-->
+<!--									   muted="muted" loop="loop" class="rounded-3">-->
+<!--									<source th:src="@{/video/travel-buddy.mp4}" type="video/mp4">-->
+<!--								</video>-->
+<!--							</div>-->
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</section>
+
 
 <footer class="text-center text-white" style="background-color: #0a4275;">
 
