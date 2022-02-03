@@ -13,7 +13,7 @@
 		<a th:href="@{/destinations}">Destinations</a>
 			<div sec:authorize="isAnonymous()">
 			<a th:href="@{/login}">Login</a>
-		</div>
+			</div>
 		<div sec:authorize="isAuthenticated()">
 			<form th:action="@{/logout}" th:method="post">
 				<button>logout</button>
