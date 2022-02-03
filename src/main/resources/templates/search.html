@@ -5,7 +5,7 @@
     <title>Search</title>
 </head>
 <body>
-<nav th:insert="fragments/navbar"></nav>
+<nav th:insert="fragments/navbar2"></nav>
 <form th:action="@{/search}" method="post"></form>
 <div th:each="shop : ${shops}"><div class="h1" th:text="${shop.name}"></div></div>
 

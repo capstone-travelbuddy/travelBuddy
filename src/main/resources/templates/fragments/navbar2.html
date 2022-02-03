@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments/header">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+<nav class="navbar navbar-expand-lg topNav main-logo">
+    <div class="container-fluid">
+        <a class="logo_li" th:href="@{/}">
+			<span class="span-logo">
+				<img th:src="@{/img/TBLogo2.jpg}" alt="TBLogo">
+			</span>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link mr-5" href="#">Destinations</a>
+                </li>
+                <li>
+                <form class="d-flex mt-3 ml-5 pl-5 pr-5">
+                    <input class="form-control me-2" type="text" placeholder="Find Shop By Name" aria-label="Search" size="50">
+                    <button class="btn" style="background-color: darkcyan; color: #f2f2f2; font-family: 'Poppins', sans-serif" type="submit" size="4">Search</button>
+                </form>
+                </li>
+                <li class="nav-item dropdown ml-5 pl-5">
+                    <a class="nav-link dropdown-toggle ml-5 pl-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu justify-content-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</div>
+
+</body>
+</html>
