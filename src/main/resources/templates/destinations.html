@@ -8,35 +8,57 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-<div id="carouselDestinationCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel" >
-    <div class="carousel-inner"  style="margin-top: -22px;">
-        <div class="carousel-item" th:each="city : ${cities}">
-            <img th:src="@{'data:image/jpeg;base64,'+${city.cityImage.generateBase64Image()}}" alt="Destination Photos"
-                 class="d-block w-100 h-100">
-            <div class="carousel-caption d-md-block responsive">
-                <a style="text-decoration:none" th:href="'category/' + ${city.id}">
-                    <h1 class="text-white text-center" th:text="${city.name}"></h1>
-                    <p class="fs-4 text-white text-center" th:text="${city.description}"></p>
-                </a>
+
+<div id="destinations" style="height: 100vh;">
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-6" th:each="city : ${cities}">
+        <a th:href="@{'/category/' + ${city.id}}" class="city-card-item image-popup">
+            <figure>
+                <div class="overlay"><i class="ti-plus"></i></div>
+                <img th:src="@{'data:image/jpeg;base64,'+${city.cityImage.generateBase64Image()}}"
+                     alt="City Image" style="width:100%; height:100%;" class="img-responsive">
+            </figure>
+            <div class="city-text">
+                <br>
+                <h2 th:text="${city.name}"></h2>
+                <p th:text="${city.description}"></p>
+                <p><span class="btn btn-primary">GO LOCAL</span></p>
             </div>
-        </div>
-
+        </a>
     </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselDestinationCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselDestinationCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
 </div>
+</div>
+<!--<div id="carouselDestinationCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel" >-->
+<!--    <div class="carousel-inner"  style="margin-top: -22px;">-->
+<!--        <div class="carousel-item" th:each="city : ${cities}">-->
+<!--            <img th:src="@{'data:image/jpeg;base64,'+${city.cityImage.generateBase64Image()}}" alt="Destination Photos"-->
+<!--                 class="d-block w-100 h-100">-->
+<!--            <div class="carousel-caption d-md-block responsive">-->
+<!--                <a style="text-decoration:none" th:href="'category/' + ${city.id}">-->
+<!--                    <h1 class="text-white text-center" th:text="${city.name}"></h1>-->
+<!--                    <p class="fs-4 text-white text-center" th:text="${city.description}"></p>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
 
-<script th:inline="javascript">
-    var destinations=document.getElementsByClassName('carousel-item')
-    console.log(destinations[0].classList +=" active")
+<!--    </div>-->
 
-</script>
+<!--    <button class="carousel-control-prev" type="button" data-bs-target="#carouselDestinationCaptions" data-bs-slide="prev">-->
+<!--        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--        <span class="visually-hidden">Previous</span>-->
+<!--    </button>-->
+<!--    <button class="carousel-control-next" type="button" data-bs-target="#carouselDestinationCaptions" data-bs-slide="next">-->
+<!--        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--        <span class="visually-hidden">Next</span>-->
+<!--    </button>-->
+<!--</div>-->
+
+<!--<script th:inline="javascript">-->
+<!--    var destinations=document.getElementsByClassName('carousel-item')-->
+<!--    console.log(destinations[0].classList +=" active")-->
+
+<!--</script>-->
+<footer th:insert="fragments/footer"></footer>
+
 </body>
 </html>

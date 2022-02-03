@@ -5,180 +5,43 @@
 
 
 /*Home Page Styling Start*/
+#travelBuddy-header {
+    position: relative;
+}
 
-#home .city-card-item {
-    display: block;
+#travelBuddy-header video{
+    height: 100vh;
+    object-fit: fill;
     width: 100%;
-    position: relative;
-    background: #fff;
-    overflow: hidden;
-    z-index: 9;
-    bottom: 0;
-    margin-bottom: 30px;
-    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
-    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
-    -ms-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
-    -o-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    -ms-border-radius: 0px;
-    border-radius: 0px;
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
-}
-
-#home .city-card-item figure {
-    height: 240px;
-    overflow: hidden;
-    z-index: 12;
-    position: relative;
-}
-
-#home .city-card-item figure .overlay {
-    opacity: 0;
-    visibility: hidden;
     z-index: 10;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.4);
-    -webkit-transition: 0.7s;
-    -o-transition: 0.7s;
-    transition: 0.7s;
+    background-position: center;
+    /*margin-top: -22px;*/
 }
 
-#home .city-card-item figure .overlay i {
-    z-index: 12;
-    color: #fff;
-    font-size: 30px;
-    position: absolute;
-    margin-left: -15px;
-    margin-top: -45px;
-    top: 50%;
-    left: 50%;
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
-}
+/*Team Page*/
 
-#home .city-card-item img {
-    z-index: 8;
-    opacity: 1;
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
-}
-
-#home .city-card-item .city-text {
-    padding: 0px 10px 10px 20px;
-    text-align: center;
-}
-
-#home .city-card-item .city-text h2, .city-card-item .city-text span {
-    text-decoration: none !important;
-}
-
-#home .city-card-item .city-text h2 {
-    font-size: 20px;
-    font-weight: 400;
-    margin: 0 0 10px 0;
-    color: #09C6AB;
-}
-
-#home .city-card-item .city-text span {
-    color: #b3b3b3;
-    font-size: 16px;
-    font-weight: 400;
-}
-
-#home .city-card-item .city-text p {
-    color: #000;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
-}
-
-#home .city-card-item .city-text span.btn {
-    color: #fff !important;
-    opacity: 1;
-    visibility: visible;
-    bottom: 0;
-    background: #1a1a1a;
-    border: 2px solid #1a1a1a !important;
-    position: relative;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
-}
-
-#home .city-card-item:hover, .city-card-item:focus {
-    bottom: 7px;
-    text-decoration: none;
-    -webkit-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
-    -ms-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
-    -o-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
-    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
-}
-
-#home .city-card-item:hover img, .city-card-item:focus img {
-    -webkot-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    -o-transform: scale(1.2);
-    transform: scale(1.2);
-}
-
-#home .city-card-item:hover span.btn, .city-card-item:focus span.btn {
-    opacity: 1;
-    visibility: visible;
-    bottom: 0px;
-    border: 2px solid #0adec0 !important;
-    background: #0adec0 !important;
-}
-
-#home .city-card-item:hover figure .overlay, .city-card-item:focus figure .overlay {
-    opacity: 1;
-    visibility: visible;
-}
-
-#home .city-card-item:hover figure .overlay i, .city-card-item:focus figure .overlay i {
-    margin-top: -15px;
-}
-
-#home .city-card-item:hover h2, .city-card-item:hover span, .city-card-item:focus h2, .city-card-item:focus span {
-    text-decoration: none !important;
-}
-
-
-/*Profile Cards*/
-
-#home body {
+#teamprofile body {
     background: #ddd;
 }
 
-#home .profile-area {
+#teamprofile .profile-area {
     padding: 80px 0;
 }
 
-#home .card {
+#teamprofile .card {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     overflow: hidden;
     border-radius: 15px;
 }
 
-#home .img1 img {
+#teamprofile .img1 img {
     height: 200px;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     width: 100%;
 }
 
-#home .img2 img {
+#teamprofile .img2 img {
     position: relative;
     display: block;
     margin-left: auto;
@@ -191,47 +54,47 @@
     margin-top: -80px;
 }
 
-#home .card:hover .img2 img {
+#teamprofile .card:hover .img2 img {
     border-color: darkcyan;
     transition: .7s;
 }
 
-#home .main-text {
+#teamprofile .main-text {
     padding: 30px 0;
     text-align: center;
 }
 
-#home .main-text h2 {
+#teamprofile .main-text h2 {
     text-transform: uppercase;
     font-weight: 900;
     font-size: 20px;
     margin: 0 0 20px;
 }
 
-#home .main-text p {
+#teamprofile .main-text p {
     font-size: 16px;
     padding: 0 35px;
 }
 
-#home .socials {
+#teamprofile .socials {
     text-align: center;
     padding-bottom: 20px;
 }
 
-#home .socials i {
+#teamprofile .socials i {
     font-size: 20px;
     color: darkcyan;
     padding: 0 10px;
 }
 
 /*footer*/
-#home .footer-basic {
-    padding: 40px 0;
+.footer-basic {
+    /*padding: 10px 0;*/
     background-color: #ffffff;
-    color: #4b4c4d;
+    /*color: #4b4c4d;*/
 }
 
-#home .footer-basic ul {
+.footer-basic ul {
     padding: 0;
     list-style: none;
     text-align: center;
@@ -240,49 +103,47 @@
     margin-bottom: 0;
 }
 
-#home .footer-basic li {
+.footer-basic li {
     padding: 0 10px;
 }
 
-#home .footer-basic ul a {
-    color: inherit;
-    text-decoration: none;
-    opacity: 0.8;
-}
+/*.footer-basic ul a {*/
+/*    color: inherit;*/
+/*    text-decoration: none;*/
+/*    opacity: 0.8;*/
+/*}*/
 
-#home .footer-basic ul a:hover {
+.footer-basic ul a:hover {
     opacity: 1;
 }
 
-#home .footer-basic .social {
+.footer-basic .social {
     text-align: center;
-    padding-bottom: 25px;
+    /*padding-bottom: 25px;*/
 }
 
-#home .footer-basic .social > a {
+.footer-basic .social > a {
     font-size: 24px;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    display: inline-block;
-    text-align: center;
-    border-radius: 50%;
-    border: 1px solid #ccc;
-    margin: 0 8px;
-    color: inherit;
-    opacity: 0.75;
+    width: 60px;
+    height: 60px;
+    /*line-height: 40px;*/
+    /*display: inline-block;*/
+    /*text-align: center;*/
+    /*border-radius: 50%;*/
+    /*border: 1px solid #ccc;*/
+    /*margin: 0 8px;*/
+    /*color: inherit;*/
+    /*opacity: 0.75;*/
 }
 
-#home .footer-basic .social > a:hover {
+.footer-basic .social > a:hover {
     opacity: 0.9;
 }
 
-#home .footer-basic .copyright {
-    margin-top: 15px;
+.footer-basic .copyright {
     text-align: center;
     font-size: 13px;
     color: #aaa;
-    margin-bottom: 0;
 }
 
 .topNav {
@@ -357,6 +218,7 @@ div.main_logo{
 
 
 /*Profile Page Start*/
+
 profile body{
     margin-top:20px;
     color: #1a202c;
@@ -388,6 +250,10 @@ profile body{
     padding: 1rem;
 }
 
+#profile-page .card:hover {
+    transform: none;
+}
+
 .gutters-sm {
     margin-right: -8px;
     margin-left: -8px;
@@ -397,6 +263,7 @@ profile body{
     padding-right: 8px;
     padding-left: 8px;
 }
+
 .mb-3, .my-3 {
     margin-bottom: 1rem!important;
 }
@@ -415,39 +282,158 @@ profile body{
 /*Profile Page End*/
 
 /*Destination Page Start*/
+.city-card-item {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+    z-index: 9;
+    bottom: 0;
+    margin-bottom: 30px;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+    -ms-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+    -o-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    border-radius: 10px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
 
-/*.carousel-item {*/
-/*    height: 100vh;*/
-/*    min-height: 350px;*/
-/*    background-size: cover;*/
-/*}*/
-/*.carousel-indicators {*/
-/*    align-content: center!important;*/
-/*    margin: 0 auto;*/
-/*    justify-content: center!important;*/
-/*    text-align: center;*/
-/*}*/
-/*.carousel-indicators button {*/
-/*    height: 100px;*/
-/*    width: 100px;*/
-/*    display: inline-block;*/
-/*    padding: 0;*/
-/*    border-style: none;*/
-/*    transition: all 0.25s ease;*/
-/*}*/
-/*.carousel-indicators active {*/
-/*    height: 100px;*/
-/*    width: 100px;*/
-/*    padding: 0;*/
-/*    border-style: none;*/
-/*}*/
+.city-card-item figure {
+    height: 240px;
+    overflow: hidden;
+    z-index: 12;
+    position: relative;
+}
 
-/*.carousel-caption {*/
-/*    position: absolute;*/
-/*    top: 40%;*/
-/*    font-size: 5vw;*/
-/*    text-align: center;*/
+.city-card-item figure .overlay {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    -webkit-transition: 0.7s;
+    -o-transition: 0.7s;
+    transition: 0.7s;
+}
 
+/*Destination Page End*/
+
+
+
+.city-card-item figure .overlay i {
+    z-index: 12;
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    margin-left: -15px;
+    margin-top: -45px;
+    top: 50%;
+    left: 50%;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.city-card-item img {
+    z-index: 8;
+    opacity: 1;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.city-card-item .city-text {
+    padding: 0px 10px 10px 20px;
+    text-align: center;
+}
+
+.city-card-item .city-text h2, .city-card-item .city-text span {
+    text-decoration: none !important;
+}
+
+.city-card-item .city-text h2 {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 0 10px 0;
+    color: #09C6AB;
+}
+
+.city-card-item .city-text span {
+    color: #b3b3b3;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.city-card-item .city-text p {
+    color: #000;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.city-card-item .city-text span.btn {
+    color: #fff !important;
+    opacity: 1;
+    visibility: visible;
+    bottom: 0;
+    background: #1a1a1a;
+    border: 2px solid #1a1a1a !important;
+    position: relative;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.city-card-item:hover, .city-card-item:focus {
+    bottom: 7px;
+    text-decoration: none;
+    -webkit-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+    -ms-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+    -o-box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
+}
+
+.city-card-item:hover img, .city-card-item:focus img {
+    -webkot-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.city-card-item:hover span.btn, .city-card-item:focus span.btn {
+    opacity: 1;
+    visibility: visible;
+    bottom: 0px;
+    border: 2px solid #0adec0 !important;
+    background: #0adec0 !important;
+}
+
+.city-card-item:hover figure .overlay, .city-card-item:focus figure .overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.city-card-item:hover figure .overlay i, .city-card-item:focus figure .overlay i {
+    margin-top: -15px;
+}
+
+.city-card-item:hover h2, .city-card-item:hover span, .city-card-item:focus h2, .city-card-item:focus span {
+    text-decoration: none !important;
+}
 
 
 #category .container-fluid{
@@ -462,7 +448,7 @@ profile body{
 .card-deck {
     /*border: 1px solid #ddd;*/
     padding: 20px;
-    box-shadow: 0px 0px 10px 0px #c5c5c5;
+    /*box-shadow: 0px 0px 10px 0px #c5c5c5;*/
     margin-bottom: 30px;
     float: left;
     border-radius: 10px;
@@ -482,6 +468,7 @@ profile body{
 .card-deck .card:hover {
     transform: scale(1.05);
 }
+
 .card-deck h5 a {
     font-size: 20px;
     text-decoration: none;
@@ -675,7 +662,7 @@ profile body{
 
 /*Shops Page Start*/
 .checked {
-    color: orangered;
+    color: #efd10c;
 }
 #map {
     width: 50%;
@@ -784,7 +771,7 @@ h3 {
     display: inline-block;
     /*vertical-align: top;*/
     /*width: 500px;*/
-    height: 500px;
+    height: 100%;
     /*margin-left: auto;*/
     /*margin-right: auto;*/
     margin-top: 10px;
@@ -860,3 +847,226 @@ height: 15px;
 #shop {
     background-color: white;
 }
+
+/*Recommendation Form Start*/
+.form-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.form-holder .form-content {
+    position: relative;
+    text-align: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 60px;
+}
+
+.form-content .form-items {
+    border: 3px solid #0a4275;
+    padding: 40px;
+    display: inline-block;
+    width: 100%;
+    min-width: 400px;
+    min-height: 500px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: left;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.form-items .form-select {
+    border: 1px solid #0a4275;
+    margin-bottom: 20px;
+    height: 40px;
+    font-size: 12px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+#recommendationform .form-content h3 {
+    color: #0a4275;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+#recommendationform .form-content h3.form-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-content p {
+    color: #0a4275;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-bottom: 30px;
+}
+
+
+.form-content label, .was-validated .form-check-input:invalid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{
+    color: #fff;
+}
+
+.form-content input[type=text], .form-content input[type=password], .form-content input[type=email], .form-content select {
+    width: 100%;
+    padding: 9px 20px;
+    text-align: left;
+    border: 0;
+    outline: 0;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    color: #8D8D8D;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+}
+
+
+#recommendationform .btn {
+    text-align: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    height: 30px;
+    font-size: 12px;
+}
+
+.form-content textarea {
+    position: static !important;
+    width: 100%;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-align: left;
+    background-color: #fff;
+    border: 0;
+    font-size: 15px;
+    font-weight: 300;
+    color: #8D8D8D;
+    outline: none;
+    resize: none;
+    height: 120px;
+    -webkit-transition: none;
+    transition: none;
+    margin-bottom: 14px;
+}
+
+.form-content textarea:hover, .form-content textarea:focus {
+    border: 0;
+    background-color: #ebeff8;
+    color: #8D8D8D;
+}
+
+.mv-up{
+    margin-top: -9px !important;
+    margin-bottom: 8px !important;
+}
+
+
+/*Review Form*/
+
+#reviewpage html,
+body {
+    height: 100%
+}
+
+#reviewpage body {
+    display: grid;
+}
+
+#reviewpage .shopname {
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+#reviewpage .rating {
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 130px;
+}
+
+#reviewpage .card {
+    position: relative;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    min-width: 0;
+    width: 400px;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #d2d2dc;
+    border-radius: 11px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+    box-shadow: 0px 0px 5px 0px rgb(161, 163, 164);
+    margin: 60px auto 0;
+    height: fit-content;
+
+
+}
+
+#reviewpage .card-heading {
+    font-size: 24px
+}
+
+#reviewpage .review h6 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+
+#reviewpage .form-group {
+    margin-top: 40px;
+}
+
+#reviewpage .cancel-button {
+    color: white;
+    background-color: #ef1515;
+    border-color: #ef1515;
+    height: 25px;
+    font-size: 12px;
+    float: left;
+    margin-top: 5px;
+}
+
+#reviewpage .submit {
+    color: white;
+    background-color: #0c8ef1;
+    border-color: #BABABA;
+    height: 25px;
+    font-size: 12px;
+    float: right;
+    margin-top: 5px;
+}
+
+#edit-profile .container {
+    box-sizing: border-box;
+    border: solid #04999e 10px;
+    padding: 5px;
+    margin: 10px;
+    display: block;
+    width: fit-content;
+}
+
