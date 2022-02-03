@@ -1,33 +1,57 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	  lang="en">
-<div th:fragment="navbar">
-	<nav class="navbar topNav main-logo">
-		<div class="container-fluid">
-		<a class="logo_li" th:href="@{/}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav class="navbar navbar-light" style="background-color: #ef482f">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">
 			<span class="span-logo">
 				<img th:src="@{/img/TBLogo2.jpg}" alt="TBLogo">
 			</span>
-		</a>
-		<a th:href="@{/destinations}">Destinations</a>
-			<div sec:authorize="isAnonymous()">
-			<a th:href="@{/login}">Login</a>
-			</div>
-		<div sec:authorize="isAuthenticated()">
-			<form th:action="@{/logout}" th:method="post">
-				<button>logout</button>
-				<a th:href="@{/profile}" th:text="${user.username}">Profile</a>
-			</form>
-		</div>
-		<div>
-				<form class="d-flex" th:action="@{/search}" method="post" th:object="${shop}">
-				<input class="form-control me-2" name="shops" id="shops" th:text="${name}" type="text"
-					   placeholder="Find by Shop Name" size="50" aria-label="Search">
-				<button class="btn btn-outline-success" size="4" type="submit">Search</button>
-				</form>
-		</div>
-		</div>
-	</nav>
-</div>
+        </a>
+<!--        <a class="navbar-brand" style="color: #f2f2f2" href="#">Travel Buddy</a>-->
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Travel Buddy</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-5">
+                    <li class="nav-item">
+                        <div sec:authorize="isAnonymous()">
+                        <a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
+                        </div>
+                        <div sec:authorize="isAuthenticated()">
+                            <form th:action="@{/logout}" th:method="post">
+                                <a th:href="@{/profile}" th:text=" ${user.username}">Profile</a>
+                                <a class="nav-link" aria-current="page" >
+                                    <button class="nav-link btn-link">Logout</button>
+                                </a>
+                            </form>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/destinations}">Destinations</a>
+                    </li>
+
+                </ul>
+                <form class="d-flex" th:action="@{/search}" method="post" th:object="${shop}">
+                    <input class="form-control me-2" type="search" name="shops" id="shops" th:text="${name}" placeholder="Find Shop By Name" aria-label="Search">
+                    <button class="btn" style="background-color: darkcyan; color: #f2f2f2; font-family: 'Poppins', sans-serif" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script th:insert="fragments/footer2"></script>
+</body>
 </html>
