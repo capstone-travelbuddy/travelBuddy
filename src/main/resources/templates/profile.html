@@ -97,14 +97,14 @@
 
                             </div>
                         </div>
-                        <div class="col-sm-6 mb-3">
+                        <div class="col-sm-6 mb-3" style="height: 400px; overflow: auto;">
                             <div class="card h-100">
-                                <div class="profile card-body">
+                                <div class="profile card-body text-center" style="margin-bottom: 30px">
                                     <h5 th:text="${user.username}+'s' + ' Reviews and Ratings'"
-                                        class="d-flex text-center mb-3" style="height: fit-content"></h5>
+                                        class="d-flex text-center mb-3"></h5>
                                 </div>
                                 <div th:each="review : ${user.getReviews()}">
-                                    <div class="float-right" style="margin-top: -10px;">
+                                    <div class="float-right">
                                         <p th:if="${review.getRating() == 1}"><img class="Stars"
                                                                                    th:src="@{/img/star.png}"></p>
                                         <p th:if="${review.getRating() == 2}"><img class="Stars"
