@@ -41,6 +41,7 @@ public class ProfileController {
 	@GetMapping("/profile")
 	public String profile(Model model) {
 		createCurrentUser(model);
+		model.addAttribute("style", "styleProfile");
 
 		return "profile";
 	}
