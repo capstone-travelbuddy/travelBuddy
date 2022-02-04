@@ -41,7 +41,7 @@
                         Local Favorite
                     </div>
                     <div class="card-body">
-                        <div th:text="${reviewDao.avg(shop.id)}"></div>
+                        <div th:text="${reviewDao.avgRound(1, shop.id)}"></div>
                         <div class="rate">
                             <input type="radio" id="star5" name="rate" value="5"/>
                             <label for="star5" title="text">5 stars</label>
