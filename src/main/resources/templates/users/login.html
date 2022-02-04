@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
 	<meta charset="utf-8">
-	<title>Login Page</title>
+	<title id="pageTitle">Login Page</title>
 </head>
 <body>
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 
 <section class="vh-100" style="background-color: #04999e; margin-top: -22px;">
 	<div class="container py-5 h-100">

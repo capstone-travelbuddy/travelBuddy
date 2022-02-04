@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
 	<meta charset="UTF-8">
-	<title>Upload Image</title>
+	<title id="pageTitle">Upload Image</title>
 </head>
 <body id="userPhoto">
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 <div class="container-fluid text-center" style="margin-top: -22px; min-height: 100vh;">
 	<div>
 		<h1 th:text="${user.username}"></h1>

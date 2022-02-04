@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
 
     <meta charset="UTF-8">
-    <title th:text="${city.name + ' Shop Categories'}"></title>
+    <title id="pageTitle" th:text="${city.name + ' Shop Categories'}"></title>
 
 </head>
 <body id="categories">
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 <section class="categories section" style="height: 100vh; background-color: #04999e; margin-top: -22px;">
 <div class="card-deck">
 <!--    <h1 class="text-center" style="color: white;" th:text="${city.name}"></h1>-->

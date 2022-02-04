@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
     <meta charset="UTF-8">
-    <title>Recommend a Shop</title>
+    <title id="pageTitle">Recommend a Shop</title>
 </head>
 <body>
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 <div id="recommendationform" class="form-body" style="background-color: #b3b3b3; margin-top: -22px;">
     <div class="row">
         <div class="form-holder">

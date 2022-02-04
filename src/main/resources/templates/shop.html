@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
 	<meta charset="UTF-8">
-	<title>Shop Page</title>
+	<title id="pageTitle">Shop Page</title>
 </head>
 <body id="shop" style="min-height: 100vh; background-color: #04999e">
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 <div class="h1 text-center" th:text="${addLike}"></div>
 <div class="h1 text-center" th:text="${removeLike}"></div>
 <div class="h1 text-center" th:text="${addVisit}"></div>

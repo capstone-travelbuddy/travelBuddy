@@ -3,11 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-/*NavBar Styling*/
-.navbar-light .navbar-toggler-icon{
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-
-}
 
 /*Home Page Styling Start*/
 #travelBuddy-header {
@@ -157,57 +152,57 @@
     color: #aaa;
 }
 
-.topNav {
-    overflow: hidden;
-    background-color: #ef482f;
-}
+/*.topNav {*/
+/*    overflow: hidden;*/
+/*    background-color: #ef482f;*/
+/*}*/
 
-.topNav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-#nav a:hover {
-    opacity:0.36;
-}
+/*.topNav a {*/
+/*    float: left;*/
+/*    display: block;*/
+/*    color: #f2f2f2;*/
+/*    text-align: center;*/
+/*    padding: 14px 16px;*/
+/*    text-decoration: none;*/
+/*    font-size: 17px;*/
+/*}*/
+/*#nav a:hover {*/
+/*    opacity:0.36;*/
+/*}*/
 
-.span-logo {
+/*.span-logo {*/
 
-    display: inline-block;
-    vertical-align: top;
-    height: 30px;
-    width: 150px;
-    margin-right: 20px;
+/*    display: inline-block;*/
+/*    vertical-align: top;*/
+/*    height: 30px;*/
+/*    width: 150px;*/
+/*    margin-right: 20px;*/
 
-}
-div.main_logo{
-    padding:0;
-    float:left
-}
-#nav div a.logo_li{
-    opacity:1
-}
-.span-logo img{
-    width:100%;
-    height:auto;
-}
+/*}*/
+/*div.main_logo{*/
+/*    padding:0;*/
+/*    float:left*/
+/*}*/
+/*#nav div a.logo_li{*/
+/*    opacity:1*/
+/*}*/
+/*.span-logo img{*/
+/*    width:100%;*/
+/*    height:auto;*/
+/*}*/
 
-.topnav a.active {
-    background-color: #ef482f;
-    color: white;
-}
+/*.topnav a.active {*/
+/*    background-color: #ef482f;*/
+/*    color: white;*/
+/*}*/
 
-@media screen and (max-width: 600px) {
-    .topnav a:not(:first-child) {display: none;}
-    .topnav a.icon {
-        float: right;
-        display: block;
-    }
-}
+/*@media screen and (max-width: 600px) {*/
+/*    .topnav a:not(:first-child) {display: none;}*/
+/*    .topnav a.icon {*/
+/*        float: right;*/
+/*        display: block;*/
+/*    }*/
+/*}*/
 
 @media screen and (max-width: 600px) {
     .topnav.responsive {
@@ -255,6 +250,7 @@ div.main_logo{
 /*    border: 0 solid rgba(0,0,0,.125);*/
 /*    border-radius: .25rem;*/
 /*}*/
+
 
 /*.profile card-body {*/
 /*    flex: 1 1 auto;*/
