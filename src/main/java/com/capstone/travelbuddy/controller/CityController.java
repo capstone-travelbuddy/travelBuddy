@@ -47,7 +47,8 @@ public class CityController {
 	private String mapboxApiKey;
 
 	@GetMapping("/team")
-	public String getTeam(){
+	public String getTeam(Model model){
+		createCurrentUser(model);
 		return "team";
 	}
 
