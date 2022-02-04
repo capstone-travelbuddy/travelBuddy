@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
 
     <meta charset="UTF-8"/>
-    <title>Leave a Review</title>
+    <title id="pageTitle">Leave a Review</title>
 
 </head>
 <body id="reviewpage">
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 
 <div class="card text-center py-4" style="border: 3px solid #0a4275">
     <h5 class="card-heading" style="color: #0a4275">Thanks For Supporting Our Local Business</h5>

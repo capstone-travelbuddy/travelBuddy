@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: profile-header">
 	<meta charset="UTF-8">
-	<title>Profile Page</title>
+	<title id="pageTitle">Profile Page</title>
 </head>
 <body id="profile-page">
 <nav th:insert="fragments/navbar"></nav>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
     <meta charset="UTF-8">
-    <title>Edit Profile</title>
+    <title id="pageTitle">Edit Profile</title>
 </head>
 <body id="edit-profile" style="background-color: #b3b3b3">
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 <div class="card text-center py-4" style="border: 3px solid #0a4275; width: 300px; margin: 30px auto 0;float: none; border-radius: 25px;">
     <h3 class="card-heading" style="color: #0a4275; margin-bottom: 40px; height: fit-content">Edit Profile</h3>
     <form th:action="@{#}" th:method="post" th:object="${user}">

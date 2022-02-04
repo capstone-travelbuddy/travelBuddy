@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
     <meta charset="utf-8">
-    <title>Travel Buddy</title>
+    <title id="pageTitle">Travel Buddy</title>
 </head>
 <body id="home">
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 
 <div id="travelBuddy-header" class="img-responsive" role="banner">
     <video playsinline="playsinline" autoplay="autoplay"
