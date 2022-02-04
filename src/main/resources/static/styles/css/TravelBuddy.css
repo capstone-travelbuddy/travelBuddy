@@ -23,10 +23,15 @@
     /*margin-top: -22px;*/
 }
 
+/*Sign Up Page*/
+#sign-up i {
+    margin-top: 20px;
+}
+
 /*Team Page*/
 
 #teamprofile body {
-    background: #ddd;
+    background: #b3b3b3;
 }
 
 #teamprofile .profile-area {
