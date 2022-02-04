@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/header :: header">
-    <meta charset="UTF-8">
-    <title id="pageTitle">Search</title>
+	<meta charset="UTF-8">
+	<title id="pageTitle">Search</title>
 </head>
-<body>
+<body id="search">
 <nav th:include="fragments/navbar"></nav>
 <form th:action="@{/search}" method="post"></form>
-<div th:each="shop : ${shops}"><div class="h1" th:text="${shop.name}"></div></div>
-
-
-
+<main style="background-color: #04999e">
+	<div class="container-fluid w-100" style="height: 100vh; margin-top: -22px">
+		<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+			<div class="col" th:each="shop : ${shops}">
+				<div class="card h-100 shadow-sm" style="margin-top: 40px;">
+					<img th:src="|data:image/jpeg;base64,${shop.images.get(0).generateBase64Image()}|"
+						 alt="Shop Photo" style="height: 162px;"/>
+					<div class="card-body">
+						<div th:if="${!shop.getReviews().isEmpty()}">
+                            <span class="fa-stack fa-2x float-end">
+                            <i class="fas fa-star fa-stack-2x" style="color: #efd10c;"></i>
+                            <strong class="fa-stack-1x rating-text"
+									th:text="${reviewDao.avgRound(1, shop.id)}"></strong>
+							</span>
+						</div>
+						<div class="clearfix mb-3"></div>
+						<h5 class="card-title text-center" th:text="${shop.name}"></h5>
+						<p class="card-text" th:text="${shop.description}"></p>
+						<div style="display: none" th:text="${shop.id}"></div>
+						<div class="text-center my-4">
+							<a th:href="'/shop/' + ${shop.id}" class="btn btn-primary">GO LOCAL!</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
 </body>
 </html>

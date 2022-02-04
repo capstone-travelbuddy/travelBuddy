@@ -53,15 +53,17 @@
 		<!--<div id="shop demo">-->
 		<div id="shop contact" class="align-content-center">
 			<div class="align-text-item" style="margin-top: -30px;">
-
-				
-				
-<!--				<h1 th:text="${shop.name}"></h1>-->
-
-				<div th:text="${'Local Review Average = ' + reviewDao.localAvgRound(1, shop.id)}"></div>
-				<div th:text="${'Traveler Review Average = ' + reviewDao.travelerAvgRound(1, shop.id)}"></div>
-				<h1 style="-webkit-text-stroke: .5px #0a4275; color: white; font-size: xxx-large; font-weight: bolder;" th:text="${shop.name}"></h1>
-
+				<div th:if="${reviewDao.getReviewsByShopIdAndUserType(shop.id, 1).isEmpty()}">No Local Reviews found!
+				</div>
+				<div th:unless="${reviewDao.getReviewsByShopIdAndUserType(shop.id, 1).isEmpty()}"
+					 th:text="${'Local Review Average = ' + reviewDao.localAvgRound(1, shop.id)}"></div>
+				<div th:if="${reviewDao.getReviewsByShopIdAndUserType(shop.id, 2).isEmpty()}">No Traveler Reviews
+					found!
+				</div>
+				<div th:unless="${reviewDao.getReviewsByShopIdAndUserType(shop.id, 2).isEmpty()}"
+					 th:text="${'Traveler Review Average = ' + reviewDao.travelerAvgRound(1, shop.id)}"></div>
+				<h1 style="-webkit-text-stroke: .5px #0a4275; color: white; font-size: xxx-large; font-weight: bolder;"
+					th:text="${shop.name}"></h1>
 				<h4 id="mark" th:text="${shop.address}"></h4>
 				<div class="align-content" style="margin-top: 10px;">
 					<a th:href="${shop.website}" role="link"><i class="fas fa-globe fa-3x"
@@ -103,17 +105,7 @@
 							</button>
 						</a>
 					</div>
-					<div th:if="${shop.getReviews().isEmpty()}">
-						No reviews found
-						<div sec:authorize="isAuthenticated()">
-							<a th:href="'/create/review/shop/' + ${shop.id}">
-								<button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star"
-																						aria-hidden="true"></i>Write A
-									Review
-								</button>
-							</a>
-						</div>
-					</div>
+					<div th:if="${shop.getReviews().isEmpty()}">No reviews found</div>
 					<div th:each="review : ${shop.getReviews()}" class="comment mt-4 text-justify float-left w-100">
 						<img th:src="@{'data:image/jpeg;base64,'+${review.getUser().getUserImage().generateBase64Image()}}"
 							 alt="User Photo" class="rounded-circle" width="40" height="40"/>

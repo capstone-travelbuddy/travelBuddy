@@ -147,18 +147,7 @@ public class CityController {
 
 	@GetMapping("/shop/{id}")
 	public String getShopView(@PathVariable int id, Model model) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (!(authentication instanceof AnonymousAuthenticationToken)) {
-			User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			User user = userDao.getById(currentUser.getId());
-			Shop shop = shopDao.getById(id);
-			model.addAttribute("shop", shop);
-			model.addAttribute("user", user);
-			model.addAttribute("reviewDao", reviewDao);
-			model.addAttribute("mapboxApiKey", mapboxApiKey);
-
-			return "shop";
-		}
+		createCurrentUser(model);
 		Shop shop = shopDao.getById(id);
 		model.addAttribute("shop", shop);
 		model.addAttribute("reviewDao", reviewDao);
@@ -179,6 +168,7 @@ public class CityController {
 	public String showShop(@RequestParam(name = "shops") String shops, Model model) {
 		createCurrentUser(model);
 		model.addAttribute("shops", shopDao.findByNameIgnoreCaseContaining(shops));
+		model.addAttribute("reviewDao", reviewDao);
 
 		return "search";
 	}
