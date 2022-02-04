@@ -96,12 +96,12 @@
 							</div>
 						</div>
 						<div class="col-sm-6 mb-3">
-							<div class="card h-100">
+							<div class="card" style="height: 500px; overflow: auto;">
 								<div class="profile card-body m-3">
 									<h5 th:text="${user.username}+'s' + ' Reviews and Ratings'"
 										class="d-flex text-center mb-3" style="height: fit-content;  font-size: 20px; font-weight: bold"></h5>
 								</div>
-								<div class="m-3" th:each="review : ${user.getReviews()}">
+								<div class="m-3" style="margin-top: 20px;" th:each="review : ${user.getReviews()}">
 									<div class="float-right" style="margin-top: -10px;">
 										<p th:if="${review.getRating() == 1}"><img class="Stars"
 																				   th:src="@{/img/star.png}"></p>

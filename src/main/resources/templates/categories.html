@@ -9,8 +9,9 @@
 <body id="categories">
 <nav th:include="fragments/navbar"></nav>
 <section class="categories section" style="height: 100vh; background-color: #04999e; margin-top: -22px;">
-<h1 class="text-center" style="color: white; margin-top: 5px;" th:text="${city.name}"></h1>
 <div class="card-deck">
+<!--    <h1 class="text-center" style="color: white;" th:text="${city.name}"></h1>-->
+
     <div class="card" th:each="category : ${categories}">
         <img th:src="@{'data:image/jpeg;base64,'+${category.categoryImage.generateBase64Image()}}"
              class="card-img-top"
