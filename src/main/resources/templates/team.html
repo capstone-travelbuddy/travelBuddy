@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
 
     <meta charset="UTF-8">
-    <title>Team Page</title>
+    <title id="pageTitle">Team Page</title>
 
 </head>
 <body>
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 <div id="teamprofile" class="profile-area">
     <div class="container">
         <div class="row">

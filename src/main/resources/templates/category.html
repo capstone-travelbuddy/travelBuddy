@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
     <meta charset="UTF-8">
     <title>Category</title>
 </head>
 <body id="category">
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 <main style="background-color: #04999e">
     <div class="container-fluid w-100" style="height: 100vh; margin-top: -22px">
         <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
@@ -35,13 +35,15 @@
             </div>
             <div class="col" th:each="shop : ${shops}">
                 <div class="card h-100 shadow-sm" style="margin-top: 40px;">
-                    <img th:src="@{'data:image/jpeg;base64,' + ${shop.images.get(0).generateBase64Image()}}"
+                    <img th:src="|data:image/jpeg;base64,${shop.images.get(0).generateBase64Image()}|"
                          alt="Shop Photo" style="height: 162px;"/>
                     <div class="label-top shadow-sm">
                         Local Favorite
                     </div>
                     <div class="card-body">
-                        <div th:text="${reviewDao.avgRound(1, shop.id)}"></div>
+                        <div th:if="${!shop.getReviews().isEmpty()}">
+                            <div th:text="${reviewDao.avgRound(1, shop.id)}"></div>
+                        </div>
                         <div class="rate">
                             <input type="radio" id="star5" name="rate" value="5"/>
                             <label for="star5" title="text">5 stars</label>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
     <meta charset="UTF-8">
-    <title>Search</title>
+    <title id="pageTitle">Search</title>
 </head>
 <body>
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 <form th:action="@{/search}" method="post"></form>
 <div th:each="shop : ${shops}"><div class="h1" th:text="${shop.name}"></div></div>
 

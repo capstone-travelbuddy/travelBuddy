@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
     <meta charset="UTF-8">
-    <title>Error Page</title>
+    <title id="pageTitle">Error Page</title>
 
     <style>
         h1 {
@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 <div class="container text-lg-center">
     <div class="container">
 <h1 style="color:red;font-size: 400px; font-weight: bolder" th:text="${status}"></h1>

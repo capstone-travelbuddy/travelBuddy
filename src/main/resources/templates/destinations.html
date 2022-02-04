@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
 
     <meta charset="UTF-8">
-    <title>Destinations</title>
+    <title id="pageTitle">Destinations</title>
 
 </head>
 <body>
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 
 <div id="destinations" style="height: 100vh; background-color: #04999e; margin-top: -22px">
 <div class="row" style="margin-left: 20px; margin-right: 20px;">
