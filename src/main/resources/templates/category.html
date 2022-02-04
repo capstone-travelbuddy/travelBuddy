@@ -40,9 +40,9 @@
                 <div class="card h-100 shadow-sm" style="margin-top: 40px;">
                     <img th:src="|data:image/jpeg;base64,${shop.images.get(0).generateBase64Image()}|"
                          alt="Shop Photo" style="height: 162px;"/>
-                    <div class="label-top shadow-sm">
-                        Local Favorite
-                    </div>
+<!--                    <div class="label-top shadow-sm">-->
+<!--                        Local Favorite-->
+<!--                    </div>-->
                     <div class="card-body">
                         <div th:if="${!shop.getReviews().isEmpty()}">
                             <span class="fa-stack fa-2x float-end">
