@@ -9,8 +9,8 @@
 <body id="reviewpage">
 <nav th:insert="fragments/navbar"></nav>
 
-<div class="card text-center py-4">
-    <h5 class="card-heading">Thanks For Supporting Our Local Business</h5>
+<div class="card text-center py-4" style="border: 3px solid #0a4275">
+    <h5 class="card-heading" style="color: #0a4275">Thanks For Supporting Our Local Business</h5>
     <div class="shopname" th:text="${shop.name}"></div>
     <form th:action="@{'/create/review/shop/' + ${shop.id}}" method="POST">
 
@@ -32,9 +32,9 @@
         </div>
 
         <a th:href="'/shop/' + ${shop.id}">
-            <button class="btn btn-success mb-2 cancel-button">CANCEL</button>
+            <button class="btn btn-success mb-2 cancel-button" style="background-color: #0a4275">CANCEL</button>
         </a>
-        <button class="btn btn-outline-primary submit">SUBMIT</button>
+        <button class="btn btn-outline-primary submit" style="background-color: #ef482f">SUBMIT</button>
 
     </form>
 </div>

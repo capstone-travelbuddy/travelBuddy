@@ -6,11 +6,11 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-<div id="recommendationform" class="form-body">
+<div id="recommendationform" class="form-body" style="background-color: #b3b3b3; margin-top: -22px;">
     <div class="row">
         <div class="form-holder">
             <div class="form-content">
-                <div class="form-items">
+                <div class="form-items" style="background-color: white;">
                     <h3>Submit a Local Recommendation</h3>
                     <p>Fill in the data below.</p>
                     <form th:action="@{/shop/recommend}" method="post">
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="form-button mt-3">
-                            <button id="submit" type="submit" class="btn btn-primary">Submit Recommendation</button>
+                            <button id="submit" type="submit" class="btn btn-primary" style="background-color: #ef482f">Submit Recommendation</button>
                         </div>
                     </form>
                 </div>

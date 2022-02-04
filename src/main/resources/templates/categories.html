@@ -8,8 +8,8 @@
 </head>
 <body id="categories">
 <nav th:insert="fragments/navbar"></nav>
-<section class="categories section" style="height: 100vh;">
-<h1 class="text-center" th:text="${city.name}"></h1>
+<section class="categories section" style="height: 100vh; background-color: #04999e; margin-top: -22px;">
+<h1 class="text-center" style="color: white; margin-top: 5px;" th:text="${city.name}"></h1>
 <div class="card-deck">
     <div class="card" th:each="category : ${categories}">
         <img th:src="@{'data:image/jpeg;base64,'+${category.categoryImage.generateBase64Image()}}"
@@ -23,7 +23,7 @@
                 consequatur cupiditate debitis dignissimos doloremque ea error ex, laboriosam nihil nulla
                 perferendis quisquam sunt vero vitae..</p>
             <div class="footer text-center">
-                <a th:href="${category.type} + '/' + ${city.id}" type="button" class="btn btn-warning">GO LOCAL!</a>
+                <a th:href="${category.type} + '/' + ${city.id}" type="button" class="btn btn-primary" style="background-color: #ef482f; color: white;">GO LOCAL!</a>
             </div>
         </div>
     </div>
