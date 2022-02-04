@@ -179,6 +179,7 @@ public class CityController {
 	public String showShop(@RequestParam(name = "shops") String shops, Model model) {
 		createCurrentUser(model);
 		model.addAttribute("shops", shopDao.findByNameIgnoreCaseContaining(shops));
+		model.addAttribute("reviewDao", reviewDao);
 
 		return "search";
 	}
