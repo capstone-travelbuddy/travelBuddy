@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
 	<meta charset="UTF-8">
-	<title>Shop Page</title>
+	<title id="pageTitle">Shop Page</title>
 </head>
 <body id="shop" style="min-height: 100vh; background-color: #04999e">
-<nav th:insert="fragments/navbar"></nav>
-<div class="h1 text-success text-center" th:text="${addLike}"></div>
-<div class="h1 text-success text-center" th:text="${removeLike}"></div>
-<div class="h1 text-success text-center" th:text="${addVisit}"></div>
-<div class="h1 text-success text-center" th:text="${removeVisit}"></div>
+<nav th:include="fragments/navbar"></nav>
+<div class="h1 text-center" th:text="${addLike}"></div>
+<div class="h1 text-center" th:text="${removeLike}"></div>
+<div class="h1 text-center" th:text="${addVisit}"></div>
+<div class="h1 text-center" th:text="${removeVisit}"></div>
 <section class="shop section" style="height: 100vh;">
 	<div id="shop demos" style="height: 100vh;">
 		<div class="container">
@@ -38,15 +38,30 @@
 							</a></li>
 						</ol>
 					</div>
+					<div sec:authorize="isAuthenticated()">
+						<a th:href="'/shop/' + ${shop.id} + '/upload/'">
+							<button type="button" class="btn btn-secondary btn-lg"><i class="fa fa-camera"
+																					  aria-hidden="true"></i>
+								Add
+								Photo
+							</button>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
 		<!--<div id="shop demo">-->
 		<div id="shop contact" class="align-content-center">
 			<div class="align-text-item" style="margin-top: -30px;">
-				<div th:text="${'Local Review Average = ' + reviewDao.localAvg(shop.id)}"></div>
-				<div th:text="${'Traveler Review Average = ' + reviewDao.travelerAvg(shop.id)}"></div>
+
+				
+				
+				<h1 th:text="${shop.name}"></h1>
+
+				<div th:text="${'Local Review Average = ' + reviewDao.localAvgRound(1, shop.id)}"></div>
+				<div th:text="${'Traveler Review Average = ' + reviewDao.travelerAvgRound(1, shop.id)}"></div>
 				<h1 style="-webkit-text-stroke: .5px #0a4275; color: white; font-size: xxx-large; font-weight: bolder;" th:text="${shop.name}"></h1>
+
 				<h4 id="mark" th:text="${shop.address}"></h4>
 				<div class="align-content" style="margin-top: 10px;">
 					<a th:href="${shop.website}" role="link"><i class="fas fa-globe fa-3x"
@@ -58,30 +73,20 @@
 					<a th:href="${shop.socialURL}" role="link"><i class="fab fa-instagram fa-3x"
 																  style="padding-left: 20px;"></i></a>
 				</div>
-			</div>
-		</div>
-		<div class="m-5">
-			<div sec:authorize="isAuthenticated()">
-				<a th:href="'/create/review/shop/' + ${shop.id}">
-					<button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star" aria-hidden="true"></i>Write
-						A Review
-					</button>
-				</a>
-				<a th:href="'/shop/' + ${shop.id} + '/upload/'">
-					<button type="button" class="btn btn-secondary btn-lg"><i class="fa fa-camera"
-																			  aria-hidden="true"></i>
-						Add
-						Photo
-					</button>
-				</a>
-				<a th:if="${user.getLikedShops().contains(shop)}" class="btn"
-				   th:href="'/like/shop/' + ${shop.id}">UNLIKE</a>
-				<a th:if="${!user.getLikedShops().contains(shop)}" class="btn"
-				   th:href="'/like/shop/' + ${shop.id}">LIKE</a>
-				<a th:if="${user.getShopsToVisit().contains(shop)}" class="btn"
-				   th:href="'/toVisit/shop/' + ${shop.id}">REMOVE</a>
-				<a th:if="${!user.getShopsToVisit().contains(shop)}" class="btn"
-				   th:href="'/toVisit/shop/' + ${shop.id}">ADD</a>
+				<div sec:authorize="isAuthenticated()">
+					<div>Favorites</div>
+					<a th:if="${user.getLikedShops().contains(shop)}" class="btn btn-primary"
+					   th:href="'/like/shop/' + ${shop.id}">REMOVE</a>
+					<a th:if="${!user.getLikedShops().contains(shop)}" class="btn btn-primary"
+					   th:href="'/like/shop/' + ${shop.id}">ADD</a>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+					<div>Want to Visit</div>
+					<a th:if="${user.getShopsToVisit().contains(shop)}" class="btn btn-primary"
+					   th:href="'/toVisit/shop/' + ${shop.id}">REMOVE</a>
+					<a th:if="${!user.getShopsToVisit().contains(shop)}" class="btn btn-primary"
+					   th:href="'/toVisit/shop/' + ${shop.id}">ADD</a>
+				</div>
 			</div>
 		</div>
 		<!--Reviews and Map-->
@@ -90,6 +95,14 @@
 				<div class="box"
 					 style="float: left; width: 50%; overflow: auto; margin-left: 40px; margin-right: 20px; align-items: center;height: 500px">
 					<h1>Reviews</h1>
+					<div sec:authorize="isAuthenticated()">
+						<a th:href="'/create/review/shop/' + ${shop.id}">
+							<button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star"
+																					aria-hidden="true"></i>Write
+								A Review
+							</button>
+						</a>
+					</div>
 					<div th:if="${shop.getReviews().isEmpty()}">
 						No reviews found
 						<div sec:authorize="isAuthenticated()">

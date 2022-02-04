@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:insert="fragments/header">
+<head th:include="fragments/header :: header">
 	<meta charset="UTF-8">
-	<title>Edit Review</title>
+	<title id="pageTitle">Edit Review</title>
 </head>
 <body>
-<nav th:insert="fragments/navbar"></nav>
+<nav th:include="fragments/navbar"></nav>
 
 <form th:action="@{#}" th:method="post" th:object="${review}">
 	<label><span th:text="${titleLabel}"></span>
