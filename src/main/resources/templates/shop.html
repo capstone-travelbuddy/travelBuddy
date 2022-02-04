@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Shop Page</title>
 </head>
-<body id="shop" style="height: 100vh;">
+<body id="shop" style="min-height: 100vh; background-color: #04999e">
 <nav th:insert="fragments/navbar"></nav>
 <div class="h1 text-center" th:text="${addLike}"></div>
 <div class="h1 text-center" th:text="${removeLike}"></div>
@@ -53,9 +53,15 @@
 		<!--<div id="shop demo">-->
 		<div id="shop contact" class="align-content-center">
 			<div class="align-text-item" style="margin-top: -30px;">
-				<div type="number" pattern="0.00" th:text="${'Local Review Average = ' + reviewDao.localAvgRound(1, shop.id)}"></div>
-				<div th:text="${'Traveler Review Average = ' + reviewDao.travelerAvgRound(1, shop.id)}"></div>
+
+				
+				
 				<h1 th:text="${shop.name}"></h1>
+
+				<div th:text="${'Local Review Average = ' + reviewDao.localAvgRound(1, shop.id)}"></div>
+				<div th:text="${'Traveler Review Average = ' + reviewDao.travelerAvgRound(1, shop.id)}"></div>
+				<h1 style="-webkit-text-stroke: .5px #0a4275; color: white; font-size: xxx-large; font-weight: bolder;" th:text="${shop.name}"></h1>
+
 				<h4 id="mark" th:text="${shop.address}"></h4>
 				<div class="align-content" style="margin-top: 10px;">
 					<a th:href="${shop.website}" role="link"><i class="fas fa-globe fa-3x"
@@ -87,7 +93,7 @@
 		<div class="shop reviews">
 			<div id="reviews and map responsive" style="text-align: center; width: 100%; margin-bottom: 40px;">
 				<div class="box"
-					 style="float: left; width: 50%; overflow: auto; margin-left: 30px; margin-right: 20px; align-items: center;height: 500px">
+					 style="float: left; width: 50%; overflow: auto; margin-left: 40px; margin-right: 20px; align-items: center;height: 500px">
 					<h1>Reviews</h1>
 					<div sec:authorize="isAuthenticated()">
 						<a th:href="'/create/review/shop/' + ${shop.id}">
@@ -153,7 +159,7 @@
 				</div>
 			</div>
 			<div class="box" id="map"
-				 style="float: right; width: 30%; height: 300px; margin-right: 30px; align-items: center; margin-top: 65px; margin-bottom: auto;"></div>
+				 style="float: right; width: 30%; height: 300px; margin-right: 40px; align-items: center; margin-top: 65px; margin-bottom: auto;"></div>
 		</div>
 	</div>
 </section>
@@ -228,7 +234,7 @@
 	console.log(shopsinline[0].classList += " active")
 </script>
 
-<!--<footer th:insert="fragments/footer"></footer>-->
+<footer th:insert="fragments/footer"></footer>
 
 </body>
 </html>

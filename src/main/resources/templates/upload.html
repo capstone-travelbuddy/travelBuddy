@@ -4,12 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Upload Image</title>
 </head>
-<body>
+<body style="background-color: #b3b3b3">
 <div class="text-success">
-	<h1 th:text="${message}"></h1>
+	<h1 style="color: #0a4275" th:text="${message}"></h1>
 </div>
 <div>
-	<form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+	<form style="border: 3px solid #0a4275" th:action="@{/upload}" method="post" enctype="multipart/form-data">
 		<div>
 			<h2>Upload Your Image:</h2>
 			<p>

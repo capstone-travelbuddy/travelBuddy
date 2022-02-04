@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Navbar</title>
 </head>
 <body>
 <nav class="navbar navbar-light" style="background-color: #ef482f">
@@ -13,18 +13,17 @@
 				<img th:src="@{/img/TBLogo2.jpg}" alt="TBLogo">
 			</span>
         </a>
-<!--        <a class="navbar-brand" style="color: #f2f2f2" href="#">Travel Buddy</a>-->
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <button class="navbar-toggler btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"  aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Travel Buddy</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="font-size: 3rem; font-family: 'Poppins', sans-serif">Travel Buddy</h5>
+                <button type="button" class="btn btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-5">
+            <div class="offcanvas-body ml-3">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-5" style="font-size: 2rem; font-family: 'Poppins', sans-serif">
                     <li class="nav-item">
                         <div sec:authorize="isAnonymous()">
                         <a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
@@ -41,9 +40,12 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/destinations}">Destinations</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/team}">About Our Team</a>
+                    </li>
 
                 </ul>
-                <form class="d-flex" th:action="@{/search}" method="post" th:object="${shop}">
+                <form class="d-flex mr-3" th:action="@{/search}" method="post" th:object="${shop}" style="align-content: center; width: 35rem; margin-top: 5rem">
                     <input class="form-control me-2" type="search" name="shops" id="shops" th:text="${name}" placeholder="Find Shop By Name" aria-label="Search">
                     <button class="btn" style="background-color: darkcyan; color: #f2f2f2; font-family: 'Poppins', sans-serif" type="submit">Search</button>
                 </form>
