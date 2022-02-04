@@ -44,15 +44,13 @@
                         Local Favorite
                     </div>
                     <div class="card-body">
-
-
-                        <span class="fa-stack fa-2x float-end">
+                        <div th:if="${!shop.getReviews().isEmpty()}">
+                            <span class="fa-stack fa-2x float-end">
                             <i class="fas fa-star fa-stack-2x" style="color: #efd10c;"></i>
                             <strong class="fa-stack-1x rating-text"
                                     th:text="${reviewDao.avgRound(1, shop.id)}"></strong>
                         </span>
-
-
+                        </div>
                         <div class="clearfix mb-3">
                             <!--                     <span class="float-end">-->
                             <!--                        <a th:href="'/shop/' + ${shop.id}" class="small text-muted">Reviews</a>-->
