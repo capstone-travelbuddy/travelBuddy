@@ -6,13 +6,13 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-<section class="sign-up" style="background-color: #00b0b1; height: 100vh; margin-bottom: 5px;">
+<section class="sign-up" style="background-color: #04999e; height: 100vh; margin-top: -22px;">
 	<div class="container h-100">
 		<div class="row d-flex justify-content-center align-items-center h-100">
-			<div class="col-lg-12 col-xl-12" style="background-color: #00b0b1; padding: 20px 20px;">
-				<div class="card text-black" style="border-radius: 25px; height: fit-content">
+			<div class="col-lg-12 col-xl-12" style="background-color: #04999e; padding: 20px 20px;">
+				<div class="card text-black" style="border-radius: 25px; height: fit-content; border: 3px solid #0a4275;">
 					<div class="card-body p-md-5">
-						<div class="row justify-content-center">
+						<div class="row justify-content-center" >
 							<div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 								<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4">Register</p>
 								<form class="mx-1 mx-md-4" th:action="@{/sign-up}" method="POST" th:object="${user}">
@@ -55,7 +55,7 @@
 										</div>
 									</div>
 									<div class="d-flex justify-content-center">
-										<button type="submit" class="btn btn-primary btn-lg mt-3">Submit</button>
+										<button type="submit" class="btn btn-primary btn-lg mt-3" style="background-color: #ef482f">Submit</button>
 									</div>
 								</form>
 							</div>
@@ -73,15 +73,8 @@
 	</div>
 
 
-<footer class="text-center text-white" style="background-color: #0a4275;">
-
-	<!-- Copyright -->
-	<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-		© 2022 Copyright:
-		<a class="text-white" href="https://github.com/capstone-travelbuddy">Travel Buddy</a>
-	</div>
-	<!-- Copyright -->
-</footer>
+</section>
+<footer th:insert="fragments/footer"></footer>
 
 </body>
 </html>
