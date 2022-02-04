@@ -15,7 +15,8 @@
     width: 100%;
     z-index: 10;
     background-position: center;
-    /*margin-top: -22px;*/
+    margin-top: -22px;
+    margin-bottom: -10px;
 }
 
 /*Team Page*/
@@ -283,7 +284,9 @@ profile body{
 /*Profile Page End*/
 
 /*Destination Page Start*/
+
 .city-card-item {
+    border: 3px solid #0a4275;
     display: block;
     width: 100%;
     height: 100%;
@@ -292,7 +295,9 @@ profile body{
     overflow: hidden;
     z-index: 9;
     bottom: 0;
-    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
     -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
     -ms-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
@@ -329,10 +334,6 @@ profile body{
     transition: 0.7s;
 }
 
-/*Destination Page End*/
-
-
-
 .city-card-item figure .overlay i {
     z-index: 12;
     color: #fff;
@@ -368,7 +369,7 @@ profile body{
     font-size: 20px;
     font-weight: 400;
     margin: 0 0 10px 0;
-    color: #09C6AB;
+    color: #0a4275;
 }
 
 .city-card-item .city-text span {
@@ -390,7 +391,7 @@ profile body{
     visibility: visible;
     bottom: 0;
     background: #1a1a1a;
-    border: 2px solid #1a1a1a !important;
+    border: 2px solid #0a4275 !important;
     position: relative;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
@@ -413,14 +414,6 @@ profile body{
     -ms-transform: scale(1.2);
     -o-transform: scale(1.2);
     transform: scale(1.2);
-}
-
-.city-card-item:hover span.btn, .city-card-item:focus span.btn {
-    opacity: 1;
-    visibility: visible;
-    bottom: 0px;
-    border: 2px solid #0adec0 !important;
-    background: #0adec0 !important;
 }
 
 .city-card-item:hover figure .overlay, .city-card-item:focus figure .overlay {
@@ -450,7 +443,7 @@ profile body{
     /*border: 1px solid #ddd;*/
     padding: 20px;
     /*box-shadow: 0px 0px 10px 0px #c5c5c5;*/
-    margin-bottom: 30px;
+    margin-top: 30px;
     float: left;
     border-radius: 10px;
 }
@@ -459,6 +452,7 @@ profile body{
     overflow: hidden;
     border-radius: 10px;
     transition: 1s;
+    border: 3px solid #0a4275;
 }
 
 .card-deck .card img{
@@ -475,6 +469,9 @@ profile body{
     text-decoration: none;
 }
 
+#categories .btn {
+    border: 2px solid #0a4275;
+}
 
 /*Categories End*/
 
@@ -498,14 +495,19 @@ profile body{
 	max-width: 1200px
 }
 
-.card {
+#category .card {
 	background: #fff;
 	box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
 	transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
-	border: 0;
-	border-radius: 1rem
+	border: 3px solid #0a4275;
+	border-radius: 25px;
+
 }
 
+#category img {
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+}
 .card h5 {
 	overflow: hidden;
 	height: 56px;
@@ -546,11 +548,14 @@ profile body{
 	}
 }
 
-.btn {
+#category .btn {
 	font-size: 1rem;
 	font-weight: 500;
 	text-transform: uppercase;
-	padding: 5px 50px 5px 50px
+	padding: 5px 50px 5px 50px;
+    background-color: #ef482f;
+    color: white;
+    border: 2px solid #0a4275;
 }
 
 .box .btn {
@@ -673,7 +678,7 @@ profile body{
 .comment {
     font-size: 12px;
     width: auto;
-    border: 2px solid rgb(4, 153, 158);
+    border: 3px solid #0a4275;
     background-color: floralwhite;
     float: left;
     border-radius: 5px;
@@ -718,6 +723,7 @@ p {
 #shop #custCarousel .carousel-indicators {
     position: static;
     margin-top: 10px;
+
 }
 
 #shop #custCarousel .carousel-indicators>li {
@@ -729,6 +735,7 @@ p {
     opacity: 1;
     width: 100px;
     height: 67px;
+    border: 3px solid white;
 }
 
 #shop #custCarousel .carousel-indicators li.active img {
@@ -740,7 +747,8 @@ p {
 }
 
 #shop .carousel-item img {
-    width: 100%;
+    border: 10px solid white;
+    width: 80%;
 }
 
 .align-items {
@@ -762,13 +770,18 @@ i {
     align-items: center;
 }
 
+
 h3 {
     margin-top: 0px;
 }
 
+#shop a {
+    color: white;
+}
 /*Reviews and Map*/
 .box {
     /*float: left;*/
+    background-color: white;
     display: inline-block;
     /*vertical-align: top;*/
     /*width: 500px;*/
@@ -778,13 +791,22 @@ h3 {
     margin-top: 10px;
     margin-bottom: 40px;
     padding: 5px;
-    border: 5px solid rgb(245, 248, 248);
+    border: 5px solid #0a4275;
     border-radius: 10px;
 
 }
 /*Shops Page End*/
 
 /*Review Page Start*/
+
+#reviewpage {
+    background-color: #b3b3b3;
+}
+
+#reviewpage .card {
+    border: 3px solid #0a4275;
+}
+
 #rating {
     text-align: center;
     display: flex;
@@ -843,11 +865,6 @@ height: 15px;
 
 /*Review Page End*/
 
-
-
-#shop {
-    background-color: white;
-}
 
 /*Recommendation Form Start*/
 .form-holder {
@@ -1071,3 +1088,44 @@ body {
     width: fit-content;
 }
 
+/*User Photo Upload Start*/
+
+#userPhoto {
+    background-color: #b3b3b3;
+
+}
+
+#userPhoto .container-fluid h1 {
+    color: #0a4275;
+    margin-top: 30px;"
+}
+
+#userPhoto .userUpload {
+    background-color: white;
+    max-width: 40em;
+    margin: 50px auto 0;
+    border: 3px solid #0a4275;
+    border-radius: 25px;
+}
+/*User Photo Upload End*/
+
+/*Photo Upload Start*/
+
+#photoUpload {
+    background-color: #b3b3b3;
+}
+
+#photoUpload .container-fluid h1 {
+    color: #0a4275;
+    margin-top: 30px;"
+}
+
+#photoUpload .photoUpload {
+    background-color: white;
+    max-width: 40em;
+    margin: 50px auto 0;
+    border: 3px solid #0a4275;
+    border-radius: 25px;
+}
+
+/*Photo Upload End*/
