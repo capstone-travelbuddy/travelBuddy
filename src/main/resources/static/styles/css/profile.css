@@ -3,7 +3,7 @@ body#profile-page {
 }
 profile body{
 	margin-top:20px;
-	color: #1a202c;
+	color: #0a4275;
 
 	text-align: left;
 	background-color: #e2e8f0;
@@ -46,6 +46,9 @@ profile body{
 	margin-left: -8px;
 }
 
+#profileImg img {
+	border: 2px solid #0a4275;
+}
 /*.gutters-sm>.col, .gutters-sm>[class*=col-] {*/
 	/*padding-right: 8px;*/
 	/*padding-left: 8px;*/
