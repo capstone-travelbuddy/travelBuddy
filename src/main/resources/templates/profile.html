@@ -14,7 +14,7 @@
 				<div class="col-md-4 mb-3">
 					<div class="profile card">
 						<div class="profile card-body">
-							<div class="d-flex flex-column align-items-center text-center">
+							<div id="profileImg" class="d-flex flex-column align-items-center text-center">
 								<img th:src="@{'data:image/jpeg;base64,'+${user.getUserImage().generateBase64Image()}}"
 									 alt="User Profile" class="rounded-circle" width="150">
 								<div class="mt-3">
