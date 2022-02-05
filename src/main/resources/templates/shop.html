@@ -16,7 +16,7 @@
 <div class="h1 text-center" th:text="${addVisit}"></div>
 <div class="h1 text-center" th:text="${removeVisit}"></div>
 
-<div class="box-wrapper" style="height: 100vh; width: 100vw; display: flex; flex-direction: column">
+<div class="box-wrapper" style="width: 100vw; display: flex; flex-direction: column">
     <div id="shopCarousel">
         <div class="container">
             <div class="row">
@@ -196,7 +196,7 @@
 
                     <div id="box6">
                         <div class="box" id="map"
-                             style="float: right; width: 400px; height: 300px; margin-right: 40px; margin-top: 50px; margin-bottom: auto;"></div>
+                             style="float: right; width: 400px; height: 300px; margin-right: 40px; margin-top: 50px; margin-bottom: 10px;"></div>
                     </div>
 
                 </div>
@@ -208,6 +208,7 @@
 
 
 
+<footer th:insert="fragments/footer"></footer>
 <script src="mapbox-geocoder-utils.js"></script>
 <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
@@ -278,8 +279,5 @@
     var shopsinline = document.getElementsByClassName('list-inline-item')
     console.log(shopsinline[0].classList += " active")
 </script>
-
-<!--<footer th:insert="fragments/footer"></footer>-->
-
 </body>
 </html>
