@@ -93,7 +93,7 @@
             <div class="shop reviews">
                 <div id="reviews and map responsive" style="text-align: center; width: 100%;">
                     <div class="box"
-                         style="float: left; width: 60%; overflow: auto; margin-left: 40px; margin-top: 20px; margin-right: 20px; align-items: center;height: 600px">
+                         style="float: left; width: 60%; overflow: auto; margin-left: 40px; margin-top: 40px; margin-right: 20px; align-items: center;height: 600px">
                         <span class="fa-stack fa-2x float-start">
                         <i class="fas fa-star fa-stack-2x" style="color: #efd10c;"></i>
                         <strong class="fa-stack-1x rating-text"
@@ -125,8 +125,12 @@
                             <img th:src="@{'data:image/jpeg;base64,'+${review.getUser().getUserImage().generateBase64Image()}}"
                                  alt="User Photo" class="rounded-circle" width="40" height="40"/>
                             <h4 th:text="${review.getUser().username}"></h4>
+                            <div class="float-right" style="margin-right: -10px;">
+                                <h4 id="review date" th:text="${review.getCreated()}"></h4>
+                            </div>
                             <div th:if="${review.getUserType() == 1}">LOCAL</div>
                             <div th:if="${review.getUserType() == 2}">TRAVELER</div>
+
                             <div class="float-right">
                                 <p th:if="${review.getRating() == 1}"><img class="Stars" th:src="@{/img/star.png}"
                                                                            alt="Star">
@@ -157,9 +161,7 @@
                                 </p>
                             </div>
                             <br>
-                            <div class="float-right">
-                                <h4 id="review date" th:text="${review.getCreated()}"></h4>
-                            </div>
+
                             <br>
                             <p th:text="${review.getDescription()}"></p>
                         </div>
@@ -168,7 +170,7 @@
 
                 <div class="middle-column">
                     <div id="shopContact"
-                         style="float: right; margin-right: 40px; margin-top: 10px;">
+                         style="float: right; margin-right: 40px; margin-top: 40px;">
                         <div class="globe">
                         <span class="fas fa-globe fa-3x"></span>&nbsp;&nbsp;&nbsp;
                             <a th:href="${shop.website}" role="link" th:text="${shop.website}"></a>
