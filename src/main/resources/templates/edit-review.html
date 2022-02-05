@@ -4,18 +4,71 @@
 	<meta charset="UTF-8">
 	<title id="pageTitle">Edit Review</title>
 </head>
-<body>
+<body id="editReview" style="background-color: #b3b3b3">
 <nav th:include="fragments/navbar"></nav>
 
-<form th:action="@{#}" th:method="post" th:object="${review}">
-	<label><span th:text="${titleLabel}"></span>
-		<input type="text" name="description" th:value="${review.description}">
-	</label>
-	<label><span th:text="${bodyLabel}"></span>
-		<input name="rating" th:value="${review.rating}">
-	</label>
-	<button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="card text-center py-4" style="border: 3px solid #0a4275; width: 300px; margin: 30px auto 0;float: none; border-radius: 25px;">
+	<h3 class="card-heading" style="color: #0a4275; margin-bottom: 40px; height: fit-content">Edit Profile</h3>
+<form th:action="@{#}" th:method="post" th:object="${user}">
+
+		<label><span th:text="${titleLabel}"></span>
+			<input type="text" name="description" th:value="${review.description}">
+		</label>
+		<div class="review mt-5 mb-5">
+
+			<div class="form-group">
+				<label><span th:text="${bodyLabel}"></span>
+					<input name="rating" th:value="${review.rating}">
+				</label>
+			</div>
+		</div>
+
+		<button class="btn btn-outline-primary submit" style="background-color: #ef482f; color: white;">SUBMIT</button>
+
+	</form>
+</div>
+
+<!--<div class="card text-center py-4" style="border: 3px solid #0a4275">-->
+<!--	<h5 class="card-heading" style="color: #0a4275">Edit Your Review</h5>-->
+<!--	<div class="shopname" th:text="${shop.name}"></div>-->
+<!--	<form th:action="@{#}" th:method="post" th:object="${review}">-->
+
+<!--		<label for="rating"></label>-->
+<!--		<div id="rating" class="rating">-->
+<!--			<input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>-->
+<!--			<input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>-->
+<!--			<input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>-->
+<!--			<input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>-->
+<!--			<input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>-->
+<!--		</div>-->
+<!--		<div class="review mt-5 mb-5">-->
+
+<!--			<div class="form-group">-->
+<!--				<label for="exampleFormControlTextarea1"></label>-->
+<!--				<h6>Leave Your Review Below</h6>-->
+<!--				<textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="10" th:value="${review.description}"></textarea>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		<a th:href="'/shop/' + ${shop.id}">-->
+<!--			<button class="btn btn-success mb-2 cancel-button" style="background-color: #0a4275">CANCEL</button>-->
+<!--		</a>-->
+<!--		<button class="btn btn-outline-primary submit" style="background-color: #ef482f">SUBMIT</button>-->
+
+<!--	</form>-->
+<!--</div>-->
+
+
+
+<!--<form th:action="@{#}" th:method="post" th:object="${review}">-->
+<!--	<label><span th:text="${titleLabel}"></span>-->
+<!--		<input type="text" name="description" th:value="${review.description}">-->
+<!--	</label>-->
+<!--	<label><span th:text="${bodyLabel}"></span>-->
+<!--		<input name="rating" th:value="${review.rating}">-->
+<!--	</label>-->
+<!--	<button type="submit" class="btn btn-primary">Submit</button>-->
+<!--</form>-->
 
 </body>
 </html>
