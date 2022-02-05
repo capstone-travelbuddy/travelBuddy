@@ -746,6 +746,7 @@ h2 {
 
 .rating-text {
     margin-top: .1em;
+    margin-left: .15em;
 }
 /*Category End*/
 
@@ -1217,7 +1218,28 @@ body {
 
 /*Photo Upload End*/
 
+#shop .btn-group {
+    margin: auto;
 
+}
 
+#shopContact .fas {
+    vertical-align: middle;
+}
 
+#shopContact {
+    display: inline-block;
+}
+
+#shopContact a {
+    font-size: 20px;
+}
+
+#mark {
+    font-size: 20px;
+}
+
+#shopContact .text {
+    font-size: 20px;
+}
 
