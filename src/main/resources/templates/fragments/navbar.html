@@ -6,23 +6,54 @@
 </head>
 <!--Navbar toggler styling-->
 <style>
-    .navbar-light .navbar-toggler-icon{
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 32 32'%3e%3cpath stroke='rgba%28230, 302, 202, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
 
-    }
-    .span-logo {
+        .navbar-light .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 32 32'%3e%3cpath stroke='rgba%28230, 302, 202, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
 
-        display: inline-block;
-        vertical-align: top;
-        height: 30px;
-        width: 150px;
-        margin-right: 20px;
+        }
 
-    }
-    .span-logo img{
-        width:100%;
-        height:auto;
-    }
+        .span-logo {
+
+            display: inline-block;
+            vertical-align: top;
+            height: 30px;
+            width: 150px;
+            margin-right: 20px;
+
+        }
+
+        .span-logo img {
+            width: 100%;
+            height: auto;
+        }
+        @media screen and (min-width: 600px) {
+            .navbar-light .navbar-toggler {
+                display: none;
+            }
+        }
+        @media screen and (min-width: 600px){
+            .navbar-light a:not(:first-child) {display: none;}
+            .navbar-light a.navbar-toggler {
+                float: right;
+                display: block;
+            }
+
+        }
+        @media screen and (min-width: 600px) {
+
+            .navbar-light.responsive a.navbar-toggler {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            .offcanvas-body.responsive a{
+                position: absolute;
+                display: block;
+                margin-left: 20rem;
+
+            }
+        }
+
 </style>
 
 
@@ -35,12 +66,18 @@
 				<img th:src="@{/img/TBLogo2.jpg}" alt="TBLogo">
 			</span>
         </a>
-        </div>
-
-
-        <button class="navbar-toggler mr-5" style="color: #f2f2f2; border-color: #f2f2f2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"  aria-controls="offcanvasNavbar">
+<!--Small Screen Toggle Icon-->
+        <button class="navbar-toggler mr-5 mb-3" style="color: #f2f2f2; border-color: #f2f2f2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"  aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
+<!--Medium to Large Screen Toggle Icon-->
+         <div class="container">
+        <button class="btn-link mr-5 mb-3" style="background-color: #ef482f;font-size:17px; color: #f2f2f2; font-family: 'Poppins', sans-serif" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"  aria-controls="offcanvasNavbar">
+            <i class='fas fa-map-signs'>Let's Explore</i>
+        </button>
+         </div>
+        </div>
+
 
 
 
@@ -50,7 +87,7 @@
                 <button type="button" class="btn btn-close text-reset mb-5 mr-5" data-bs-dismiss="offcanvas" aria-label="Close">CLOSE</button>
             </div>
             <div class="offcanvas-body ml-3">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-5" style="font-size: 2rem; font-family: 'Poppins', sans-serif">
+                <ul class="navbar-nav flex-grow-1 mt-5" style="font-size: 2rem; font-family: 'Poppins', sans-serif">
                     <li class="nav-item">
                         <div sec:authorize="isAnonymous()">
                         <a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
