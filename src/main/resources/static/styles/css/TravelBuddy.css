@@ -1265,3 +1265,88 @@ body {
 #shopContact .text {
     font-size: 20px;
 }
+
+/*Edit Profile Start*/
+#edit-profile .editProfile {
+    background-color: white;
+    max-width: 30em;
+    height: fit-content;
+    margin: 50px auto 0;
+    border: 3px solid #0a4275;
+    border-radius: 25px;
+}
+
+#edit-profile h1 {
+    color: #0a4275;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#edit-profile .userName {
+    font-size: 12px;
+    color: #0a4275;
+}
+
+#edit-profile .userEmail {
+    font-size: 12px;
+    color: #0a4275;
+}
+
+#edit-profile input {
+    /*width: 100px;*/
+    font-size: 12px;
+}
+
+#edit-profile label {
+    width: 200px;
+}
+
+/*Edit Review Start*/
+#editReview #rating {
+    text-align: center;
+    display: flex;
+    margin-left: 145px;
+    font-size: 20px;
+
+}
+
+#editReview .card {
+    background-color: white;
+    max-width: 40em;
+    height: 40em;
+    margin: 50px auto 0;
+    border: 3px solid #0a4275;
+    border-radius: 25px;
+}
+
+#editReview h1 {
+    color: #0a4275;
+    margin-bottom: 30px;
+}
+
+#editReview .updateRating {
+    font-size: 20px;
+}
+
+#editReview h2 {
+    font-weight: bold;
+}
+
+#editReview #description {
+    line-height: 5em;
+    width: 350px;
+
+}
+
+#editReview textarea[type="text"]
+{
+    font-size:12px;
+
+}
+
+#editReview textarea {
+    padding-top: 0;
+    padding-left: 0;
+    line-height: 1em;
+}
+
