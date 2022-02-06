@@ -1283,13 +1283,13 @@ body {
 }
 
 #edit-profile .userName {
-    font-size: 12px;
-    color: #0a4275;
+    font-size: 20px;
+    color: black;
 }
 
 #edit-profile .userEmail {
-    font-size: 12px;
-    color: #0a4275;
+    font-size: 20px;
+    color: black;
 }
 
 #edit-profile input {
@@ -1344,9 +1344,9 @@ body {
 
 }
 
-#editReview textarea {
-    padding-top: 0;
-    padding-left: 0;
-    line-height: 1em;
-}
+/*#editReview input {*/
+/*    line-height: 40px;*/
+/*}*/
+
+
 
