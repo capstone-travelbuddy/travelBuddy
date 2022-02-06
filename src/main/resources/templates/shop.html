@@ -124,14 +124,14 @@
                         <div th:each="review : ${shop.getReviews()}" class="comment mt-4 text-justify float-left w-100">
                             <img th:src="@{'data:image/jpeg;base64,'+${review.getUser().getUserImage().generateBase64Image()}}"
                                  alt="User Photo" class="rounded-circle" width="40" height="40"/>
-                            <h4 th:text="${review.getUser().username}"></h4>
-                            <div class="float-right" style="margin-right: -10px;">
+                            <h3 th:text="${review.getUser().username}" style="margin-left: 50px; margin-top: -30px;"></h3>
+                            <div class="float-right" style="margin-right: -10px;margin-top: -25px;">
                                 <h4 id="review date" th:text="${review.getCreated()}"></h4>
                             </div>
-                            <div th:if="${review.getUserType() == 1}">LOCAL</div>
-                            <div th:if="${review.getUserType() == 2}">TRAVELER</div>
+                            <div th:if="${review.getUserType() == 1}" style="font-weight: bold;">LOCAL</div>
+                            <div th:if="${review.getUserType() == 2}" style="font-weight: bold;">TRAVELER</div>
 
-                            <div class="float-right">
+                            <div class="float-right" style="margin-top: -20px;">
                                 <p th:if="${review.getRating() == 1}"><img class="Stars" th:src="@{/img/star.png}"
                                                                            alt="Star">
                                 </p>
@@ -163,7 +163,7 @@
                             <br>
 
                             <br>
-                            <p th:text="${review.getDescription()}"></p>
+                            <p th:text="${review.getDescription()}" style="font-size: 15px;"></p>
                         </div>
                     </div>
                 </div>
