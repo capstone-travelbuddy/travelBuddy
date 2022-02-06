@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title id="pageTitle">Category</title>
 </head>
-<body id="category">
+<body id="category" style="background-color: #04999e">
 <nav th:include="fragments/navbar"></nav>
-<main style="background-color: #04999e">
-    <div class="container-fluid w-100" style="height: 100vh; margin-top: -22px">
-        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+<!--<main style="background-color: #04999e">-->
+<div class="container-fluid text-center" style="margin-top: -22px; min-height: 100vh;margin-bottom: 60px;margin-left: auto; margin-right: auto;">
+     <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
             <div th:if="${shops.isEmpty()}">
                 <div class="col">
-                    <div class="card h-100 shadow-sm" style="margin: 0 auto; margin-top: 40px;">
+                    <div class="card shadow-sm" style="margin-left: auto; margin-right: auto; margin-top: 60px; margin-bottom: 40px;">
                         <img
                             th:src="@{/img/plus.jpeg}"
                             class="card-img-top" alt="...">
@@ -67,7 +67,8 @@
             </div>
         </div>
     </div>
-</main>
+<!--</div>-->
+<!--</main>-->
 <footer th:insert="fragments/footer"></footer>
 </body>
 </html>

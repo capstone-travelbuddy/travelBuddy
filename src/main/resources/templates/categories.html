@@ -8,10 +8,10 @@
 </head>
 <body id="categories">
 <nav th:include="fragments/navbar"></nav>
-<section class="categories section" style="height: 100vh; background-color: #04999e; margin-top: -22px;">
-<div class="card-deck">
+<!--<section class="categories section" style="height: 100vh; background-color: #04999e; margin-top: -22px;">-->
+<div class="container-fluid text-center" style="margin-top: -22px; min-height: 100vh; background-color: #04999e;">
+<div class="card-deck" style="margin-bottom: 30px;">
 <!--    <h1 class="text-center" style="color: white;" th:text="${city.name}"></h1>-->
-
     <div class="card" th:each="category : ${categories}">
         <img th:src="@{'data:image/jpeg;base64,'+${category.categoryImage.generateBase64Image()}}"
              class="card-img-top"
@@ -29,7 +29,8 @@
         </div>
     </div>
 </div>
-</section>
+</div>
+<!--</section>-->
 <footer th:insert="fragments/footer"></footer>
 
 </body>
