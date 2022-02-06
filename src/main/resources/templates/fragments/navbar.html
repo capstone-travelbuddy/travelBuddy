@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:insert="fragments/header">
-
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <!--Navbar toggler styling-->
 <style>
@@ -28,6 +28,7 @@
             width: 100%;
             height: auto;
         }
+
         @media screen and (min-width: 600px) {
             .navbar-light .navbar-toggler {
                 display: none;
@@ -87,10 +88,11 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
+
             <!--Medium to Large Screen Toggle Icon-->
                     <div class="container-fluid justify-content-end">
                         <button class="btn" style="background-color: #ef482f;font-size:17px; color: #f2f2f2; font-family: 'Poppins', sans-serif" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"  aria-controls="offcanvasNavbar">
-                            <div class='icon-container' data-icon="https://maxst.icons8.com/vue-static/landings/animated-icons/icons/map-pointer/map-pointer.json">Let's Explore</div>
+                            <i class="fas fa-map-marker-alt">Let's Explore</i>
 
                         </button>
                     </div>
