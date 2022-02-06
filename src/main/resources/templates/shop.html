@@ -93,7 +93,7 @@
 		</div>
 		<!--Reviews and Map-->
 		<div class="shop reviews">
-			<div id="reviews and map responsive" style="text-align: center; width: 100%; margin-bottom: 40px;">
+			<div id="reviews and map responsive" style="text-align: center; width: 90%; margin-bottom: 40px;">
 				<div class="box"
 					 style="float: left; width: 50%; overflow: auto; margin-left: 40px; margin-right: 20px; align-items: center;height: 500px">
 					<h1>Reviews</h1>
@@ -151,7 +151,7 @@
 				</div>
 			</div>
 			<div class="box" id="map"
-				 style="float: right; width: 30%; height: 300px; margin-right: 40px; align-items: center; margin-top: 65px; margin-bottom: auto;"></div>
+				 style="float: right; width: 45%; height: 500px; margin-right: 40px; align-items: center; margin-top: 10px; margin-bottom: auto;"></div>
 		</div>
 	</div>
 </section>
@@ -174,15 +174,17 @@
 			container: 'map',
 			style: 'mapbox://styles/mapbox/streets-v9',
 			center: [-98.4916, 29.4252],
-			zoom: 10,
+			zoom: 9,
 		});
 
 		map.addControl(new mapboxgl.GeolocateControl({
 			positionOptions: {
 				enableHighAccuracy: true,
-				showCompass: true
 			},
-			trackUserLocation: false
+			fitBoundsOptions: {linear: true, maxZoom: 10},
+			trackUserLocation: true,
+			mapbogl: mapboxgl,
+			showAccuracyCircle: false
 		}));
 
 		function geocode(search, token) {
