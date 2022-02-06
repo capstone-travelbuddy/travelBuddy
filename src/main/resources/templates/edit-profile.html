@@ -4,29 +4,29 @@
     <meta charset="UTF-8">
     <title id="pageTitle">Edit Profile</title>
 </head>
-<body id="edit-profile" style="background-color: #b3b3b3">
+<body id="edit-profile" style="background-color: #b3b3b3;">
 <nav th:include="fragments/navbar"></nav>
-<div class="card text-center py-4" style="border: 3px solid #0a4275; width: 300px; margin: 30px auto 0;float: none; border-radius: 25px;">
-    <h3 class="card-heading" style="color: #0a4275; margin-bottom: 40px; height: fit-content">Edit Profile</h3>
-    <form th:action="@{#}" th:method="post" th:object="${user}">
+<div class="container-fluid text-center" style="margin-top: -22px; min-height: 100vh;">
 
-        <label><span th:text="${titleLabel}"></span>
+    <form class="editProfile" th:action="@{#}" th:method="post" th:object="${user}">
+        <h1>Edit Profile</h1>
+        <label><span class="userName" th:text="${titleLabel}"></span>
             <input type="text" name="username" th:value="${user.username}">
         </label>
         <div class="review mt-5 mb-5">
 
             <div class="form-group">
-                <label><span th:text="${bodyLabel}"></span>
+                <label><span class="userEmail" th:text="${bodyLabel}"></span>
                     <input name="email" th:value="${user.email}">
                 </label>
             </div>
         </div>
 
-        <button class="btn btn-outline-primary submit" style="background-color: #ef482f; color: white;">SUBMIT</button>
+        <button class="btn btn-outline-primary submit" style="background-color: #ef482f; color: white; margin-bottom: 20px;">SUBMIT</button>
 
     </form>
 </div>
 
-
+<footer th:insert="fragments/footer"></footer>
 </body>
 </html>
