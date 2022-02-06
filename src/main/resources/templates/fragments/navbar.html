@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:insert="fragments/header">
@@ -8,7 +9,8 @@
 <style>
 
         .navbar-light .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 32 32'%3e%3cpath stroke='rgba%28230, 302, 202, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 32 32'%3e%3cpath stroke='rgba%28230, 302, 202, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+
 
         }
 
@@ -29,6 +31,7 @@
         @media screen and (min-width: 600px) {
             .navbar-light .navbar-toggler {
                 display: none;
+
             }
         }
         @media screen and (min-width: 600px){
@@ -41,16 +44,25 @@
         }
         @media screen and (min-width: 600px) {
 
-            .navbar-light.responsive a.navbar-toggler {
-                position: absolute;
-                right: 0;
-                top: 0;
-            }
+            /*.navbar-light.responsive a.navbar-toggler {*/
+            /*    display: flex;*/
+            /*    flex-wrap: wrap;*/
+            /*}*/
             .offcanvas-body.responsive a{
                 position: absolute;
                 display: block;
-                margin-left: 20rem;
 
+
+            }
+        }
+        @media screen and (max-width: 600px){
+            .navbar-light .btn{
+                display: none;
+            }
+        }
+        @media screen and (min-width: 768px){
+            .navbar-light .btn {
+                display: flex;
             }
         }
 
@@ -58,30 +70,36 @@
 
 
 <body>
+
+
+
 <nav class="navbar navbar-light" style="background-color: #ef482f">
-<!--    <div class="container">-->
-        <div class="container-fluid justify-content-start mt-3 ml-3">
-        <a class="navbar-brand" th:href="@{/}">
+
+        <div class="container-fluid align-items-center d-flex flex-nowrap">
+        <a class="navbar-brand mt-3" th:href="@{/}">
 			<span class="span-logo">
 				<img th:src="@{/img/TBLogo2.jpg}" alt="TBLogo">
 			</span>
         </a>
-<!--Small Screen Toggle Icon-->
-        <button class="navbar-toggler mr-5 mb-3" style="color: #f2f2f2; border-color: #f2f2f2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"  aria-controls="offcanvasNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-<!--Medium to Large Screen Toggle Icon-->
-         <div class="container">
-        <button class="btn-link mr-5 mb-3" style="background-color: #ef482f;font-size:17px; color: #f2f2f2; font-family: 'Poppins', sans-serif" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"  aria-controls="offcanvasNavbar">
-            <i class='fas fa-map-signs'>Let's Explore</i>
-        </button>
-         </div>
+            <!--Small Screen Toggle Icon-->
+                <div class="container-fluid justify-content-end">
+                    <button class="navbar-toggler" style="color: #f2f2f2; border-color: #f2f2f2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"  aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+            <!--Medium to Large Screen Toggle Icon-->
+                    <div class="container-fluid justify-content-end">
+                        <button class="btn" style="background-color: #ef482f;font-size:17px; color: #f2f2f2; font-family: 'Poppins', sans-serif" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"  aria-controls="offcanvasNavbar">
+                            <div class='icon-container' data-icon="https://maxst.icons8.com/vue-static/landings/animated-icons/icons/map-pointer/map-pointer.json">Let's Explore</div>
+
+                        </button>
+                    </div>
+               </div>
         </div>
 
 
 
-
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title mt-2" id="offcanvasNavbarLabel" style="font-size: 3rem; font-family: 'Poppins', sans-serif">Travel Buddy</h5>
                 <button type="button" class="btn btn-close text-reset mb-5 mr-5" data-bs-dismiss="offcanvas" aria-label="Close">CLOSE</button>
@@ -115,9 +133,10 @@
                 </form>
             </div>
         </div>
-<!--    </div>-->
+
 </nav>
 
 <script th:insert="fragments/footer"></script>
+<script th:insert="fragments/footer2"></script>
 </body>
 </html>
