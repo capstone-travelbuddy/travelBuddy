@@ -54,37 +54,62 @@
 						</div>
 					</div>
 					</div>
-					<div class="card mt-5">
-						<ul class="list-group list-group-flush" style="border-radius: 15px">
-							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-								<h6 class="mb-0"  style="text-align: center; height: fit-content; font-size: 20px; font-weight: bold">Want to Visit:</h6>
-							</li>
-							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
-								th:each="toVisit : ${user.getShopsToVisit()}">
-								<a class="mb-0 h6" style="text-align: center; height: fit-content; font-size: 15px; font-weight: bold" th:href="'/shop/' + ${toVisit.id}" th:text="${toVisit.name}"></a>
-								<form th:action="'profile/toVisit/shop/' + ${toVisit.id}" method="get">
-									<button class="btn"><i class="fa fa-trash"></i></button>
-								</form>
-							</li>
-						</ul>
-					</div>
+<!--					<div class="card mt-5">-->
+<!--						<ul class="list-group list-group-flush" style="border-radius: 15px">-->
+<!--							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">-->
+<!--								<h6 class="mb-0"  style="text-align: center; height: fit-content; font-size: 20px; font-weight: bold">Want to Visit:</h6>-->
+<!--							</li>-->
+<!--							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"-->
+<!--								th:each="toVisit : ${user.getShopsToVisit()}">-->
+<!--								<a class="mb-0 h6" style="text-align: center; height: fit-content; font-size: 15px; font-weight: bold" th:href="'/shop/' + ${toVisit.id}" th:text="${toVisit.name}"></a>-->
+<!--								<form th:action="'profile/toVisit/shop/' + ${toVisit.id}" method="get">-->
+<!--									<button class="btn"><i class="fa fa-trash"></i></button>-->
+<!--								</form>-->
+<!--							</li>-->
+<!--						</ul>-->
+<!--					</div>-->
 				</div>
+
 				<div class="col-md-8">
 					<div class="row gutters-sm">
-						<div class="col-sm-6 mb-3">
-							<div class="card h-100">
-								<div class="profile card-body m-3">
-									<h5 class="d-flex align-items-center mb-3"
-										style="text-align: center; height: fit-content; font-size: 20px; font-weight: bold">[[${user.username}]]'s Favorites:</h5>
-									<div th:each="shop : ${user.getLikedShops()}">
-										<div class="card-text" style="height: fit-content; font-size: 15px; font-weight: bold">
-											<a th:href="'/shop/' + ${shop.id}" th:text="${shop.name}"></a>
+						<div class="col-sm-4 mb-3">
+								<div class="card margin-auto" style="overflow: auto; height: 250px">
+									<div class="card h-100">
+										<div class="profile card-body m-3">
+											<ul class="list-group list-group-flush" style="border-radius: 15px">
+												<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+													<h6 class="mb-0"  style="text-align: center; height: fit-content; font-size: 20px; font-weight: bold">Want to Visit:</h6>
+												</li>
+												<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+													th:each="toVisit : ${user.getShopsToVisit()}">
+													<a class="mb-0 h6" style="text-align: center; height: fit-content; font-size: 15px; font-weight: bold" th:href="'/shop/' + ${toVisit.id}" th:text="${toVisit.name}"></a>
+													<form th:action="'profile/toVisit/shop/' + ${toVisit.id}" method="get">
+														<button class="btn"><i class="fa fa-trash"></i></button>
+													</form>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+	<!--						</div>-->
+
+	<!--						<div class="col-sm-6 mb-3">-->
+									<div class="card h-100">
+											<div class="profile card-body m-3">
+												<h5 class="d-flex align-items-center mb-3"
+													style="text-align: center; height: fit-content; font-size: 20px; font-weight: bold">[[${user.username}]]'s Favorites:</h5>
+												<div th:each="shop : ${user.getLikedShops()}">
+													<div class="card-text" style="height: fit-content; font-size: 15px; font-weight: bold">
+														<a th:href="'/shop/' + ${shop.id}" th:text="${shop.name}"></a>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 mb-3 h-100">
+
+
+						<div class="col-sm-8 mb-3 h-100">
 							<div class="card margin-auto" style="overflow: auto; height: 500px">
 								<div class="profile card-body m-3">
 									<h5 class="d-flex text-center mb-3" style="height: fit-content;  font-size: 20px; font-weight: bold">[[${user.username}]]'s Reviews and Ratings:</h5>
@@ -130,11 +155,10 @@
 							</div>
 						</div>
 					</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-</div>
 </body>
 </html>
