@@ -94,33 +94,33 @@
                 <div id="reviews and map responsive" style="text-align: center; width: 100%;">
                     <div class="box"
                          style="float: left; width: 60%; overflow: auto; margin-left: 40px; margin-top: 40px; margin-right: 20px; align-items: center;height: 600px">
-<!--                        <span class="fa-stack fa-2x float-start">-->
-<!--                        <i class="fas fa-star fa-stack-2x" style="color: #efd10c;"></i>-->
-<!--                        <strong class="fa-stack-1x rating-text"-->
-<!--                                th:text="${reviewDao.localAvgRound(1, shop.id)}"></strong>-->
-<!--                        </span>-->
-<!--                        <span class="fa-stack fa-2x float-end">-->
-<!--                        <i class="fas fa-star fa-stack-2x" style="color: #efd10c;"></i>-->
-<!--                        <strong class="fa-stack-1x rating-text"-->
-<!--                                th:text="${reviewDao.travelerAvgRound(1, shop.id)}"></strong>-->
-<!--                        </span>-->
-<!--                        <h1 class="shopReviews" style="text-align: center"> Reviews</h1><br>-->
-<!--                        <h5 class="localAvg float-start">Local<br>Avg.</h5>-->
-<!--                        <h5 class="travelerAvg float-end">Travel<br>Avg.</h5>-->
+                        <span class="fa-stack fa-2x float-start">
+                        <i class="fas fa-star fa-stack-2x" style="color: #efd10c;"></i>
+                        <strong class="fa-stack-1x rating-text"
+                                th:text="${reviewDao.localAvgRound(1, shop.id)}"></strong>
+                        </span>
+                        <span class="fa-stack fa-2x float-end">
+                        <i class="fas fa-star fa-stack-2x" style="color: #efd10c;"></i>
+                        <strong class="fa-stack-1x rating-text"
+                                th:text="${reviewDao.travelerAvgRound(1, shop.id)}"></strong>
+                        </span>
+                        <h1 class="shopReviews" style="text-align: center"> Reviews</h1><br>
+                        <h5 class="localAvg float-start">Local<br>Avg.</h5>
+                        <h5 class="travelerAvg float-end">Travel<br>Avg.</h5>
 
 
-<!--                        <div th:if="${shop.getReviews().isEmpty()}">-->
-<!--                            No reviews found-->
-<!--                            <div sec:authorize="isAuthenticated()">-->
-<!--                                <a th:href="'/create/review/shop/' + ${shop.id}">-->
-<!--                                    <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star"-->
-<!--                                                                                            aria-hidden="true"></i>Write-->
-<!--                                        A-->
-<!--                                        Review-->
-<!--                                    </button>-->
-<!--                                </a>-->
-<!--                            </div>-->
-<!--                        </div>-->
+                        <div th:if="${shop.getReviews().isEmpty()}">
+                            No reviews found
+                            <div sec:authorize="isAuthenticated()">
+                                <a th:href="'/create/review/shop/' + ${shop.id}">
+                                    <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-star"
+                                                                                            aria-hidden="true"></i>Write
+                                        A
+                                        Review
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
                         <div th:each="review : ${shop.getReviews()}" class="comment mt-4 text-justify float-left w-100">
                             <img th:src="@{'data:image/jpeg;base64,'+${review.getUser().getUserImage().generateBase64Image()}}"
                                  alt="User Photo" class="rounded-circle" width="40" height="40"/>
@@ -227,7 +227,7 @@
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v9',
             center: [-98.4916, 29.4252],
-            zoom: 9,
+            zoom: 10,
         });
 
 
@@ -235,11 +235,8 @@
             positionOptions: {
                 enableHighAccuracy: true
             },
-            trackUserLocation: true,
-			fitBoundsOptions: {linear: true, maxZoom: 9},
-			trackUserLocation: true,
-			mapbogl: mapboxgl,
-			showAccuracyCircle: false
+            trackUserLocation: true
+
         }));
 
         function geocode(search, token) {
