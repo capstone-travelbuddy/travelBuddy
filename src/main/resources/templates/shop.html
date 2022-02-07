@@ -238,8 +238,10 @@
             positionOptions: {
                 enableHighAccuracy: true
             },
-            trackUserLocation: true
-
+            fitBoundsOptions: {linear: true, maxZoom: 10},
+            trackUserLocation: true,
+            mapbogl: mapboxgl,
+            showAccuracyCircle: false
         }));
 
         function geocode(search, token) {
