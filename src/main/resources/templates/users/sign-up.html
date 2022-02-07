@@ -6,85 +6,84 @@
 </head>
 <body style="background-color: #04999e">
 <nav th:include="fragments/navbar"></nav>
-<section id="sign-up" style="background-color: #04999e; height: 100vh; margin-top: -22px;">
+<div class="container-fluid text-center" style="margin-top: -22px; min-height: 100vh;">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+            <div class="card"
+                 style="border-radius: 25px; height: fit-content; width: 75%; border: 3px solid #0a4275;margin: 30px auto;">
+                <div class="card-body p-md-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                            <p class="text-center h1 mb-5 mx-1 mx-md-4">Register</p>
+                            <form class="mx-1 mx-md-4" th:action="@{/sign-up}" method="POST" th:object="${user}">
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class="fa fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-3" style="font-size: 12px;">
+                                        <div class="text-danger h6" th:text="${userMessage}"></div>
+                                        <label class="form-label" for="name">Name</label>
+                                        <input type="text" id="name" class="form-control" th:field="*{username}"
+                                               required/>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class="fa fa-envelope fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-3" style="font-size: 12px;">
+                                        <div class="text-danger h6" th:text="${emailMessage}"></div>
+                                        <label class="form-label" for="email" style="font-size: 12px;">Email</label>
+                                        <input type="email" id="email" class="form-control" th:field="*{email}"
+                                               required/>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-3" style="font-size: 12px;">
+                                        <div class="text-danger h6"></div>
+                                        <label class="form-label" for="password"
+                                               style="font-size: 12px">Password</label>
+                                        <input type="password" id="password" class="form-control"
+                                               th:field="*{password}" required/>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class="fa fa-map-marker fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill">
+                                        <div class="form-group">
+                                            <div class="text-danger h6" th:text="${cityMessage}"></div>
 
-	<div class="container h-100">
-		<div class="row d-flex justify-content-center align-items-center h-100">
-			<div class="col-lg-12 col-xl-12" style="background-color: #04999e; padding: 20px 20px;">
-				<div class="card text-black" style="border-radius: 25px; height: fit-content; border: 3px solid #0a4275;">
-					<div class="card-body p-md-5">
-						<div class="row justify-content-center" >
-							<div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-								<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4">Register</p>
-								<form class="mx-1 mx-md-4" th:action="@{/sign-up}" method="POST" th:object="${user}">
+                                            <label for="city" style="font-size: 12px;">Choose a City</label>
+                                            <select class="form-control" id="city" style="font-size: 12px;"
+                                                    th:field="*{city}">
+                                                <option selected value="0">City</option>
 
-									<div class="d-flex flex-row align-items-center">
-                                        <i class="fa fa-user fa-lg me-3 fa-fw"></i>
-										<div class="form-outline flex-fill mb-3">
-											<div class="text-danger h6" th:text="${userMessage}"></div>
-											<label class="form-label" for="name">Name</label>
-											<input type="text" id="name" class="form-control" th:field="*{username}"
-												   required/>
-										</div>
-									</div>
-									<div class="d-flex flex-row align-items-center">
-                                        <i class="fa fa-envelope fa-lg me-3 fa-fw"></i>
-										<div class="form-outline flex-fill mb-3">
-											<div class="text-danger h6" th:text="${emailMessage}"></div>
-											<label class="form-label" for="email">Email</label>
-											<input type="email" id="email" class="form-control" th:field="*{email}"
-												   required/>
-										</div>
-									</div>
-									<div class="d-flex flex-row align-items-center">
-                                        <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
-										<div class="form-outline flex-fill mb-3">
-											<div class="text-danger h6"></div>
-											<label class="form-label" for="password">Password</label>
-											<input type="password" id="password" class="form-control"
-												   th:field="*{password}" required/>
-										</div>
-									</div>
-									<div class="d-flex flex-row align-items-center">
-                                        <i class="fa fa-map-marker fa-lg me-3 fa-fw"></i>
-										<div class="form-outline flex-fill">
-											<div class="form-group">
-												<div class="text-danger h6" th:text="${cityMessage}"></div>
-												<label for="city">Choose a City</label>
-												<select class="form-control" id="city" th:field="*{city}">
-													<option selected value="0">City</option>
-													<div th:each="city : ${cities}">
-														<option th:value="${city.id}" th:text="${city.name}"></option>
-													</div>
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="d-flex justify-content-center">
-										<button type="submit" class="btn btn-primary btn-lg mt-3" style="background-color: #ef482f">Submit</button>
-									</div>
-								</form>
-							</div>
+                                                <div th:each="city : ${cities}">
+                                                    <option th:value="${city.id}" th:text="${city.name}"></option>
 
-
-							<div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-								<video style="width: 100%; height: 100%;" playsinline="playsinline" autoplay="autoplay"
-									   muted="muted" class="rounded-3">
-									<source th:src="@{/video/texas.mp4}" type="video/mp4">
-								</video>
-							</div>
+                                                </div>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-primary btn-lg mt-3"
+                                            style="background-color: #ef482f; font-size: 15px;">Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
 
 
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-</section>
+                        <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                            <video style="width: 100%; height: 100%;" playsinline="playsinline" autoplay="autoplay"
+                                   muted="muted" class="rounded-3">
+                                <source th:src="@{/video/texas.mp4}" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <footer th:insert="fragments/footer"></footer>
 
 </body>
