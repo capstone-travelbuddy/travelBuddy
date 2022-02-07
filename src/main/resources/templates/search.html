@@ -7,34 +7,62 @@
 <body id="search">
 <nav th:include="fragments/navbar"></nav>
 <form th:action="@{/search}" method="post"></form>
-<main style="background-color: #04999e">
-	<div class="container-fluid w-100" style="height: 100vh; margin-top: -22px">
-		<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-			<div class="col" th:each="shop : ${shops}">
-				<div class="card h-100 shadow-sm" style="margin-top: 40px;">
-					<img th:src="|data:image/jpeg;base64,${shop.images.get(0).generateBase64Image()}|"
-						 alt="Shop Photo" style="height: 162px;"/>
+<div class="container-fluid text-center"
+	 style="margin-top: -22px; min-height: 100vh;margin-bottom: 60px;margin-left: auto; margin-right: auto;">
+	<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+		<div th:if="${shops.isEmpty()}">
+			<div class="col">
+				<div class="card shadow-sm"
+					 style="margin-left: auto; margin-right: auto; margin-top: 60px; margin-bottom: 40px;">
+					<img
+							th:src="@{/img/plus.jpeg}"
+							class="card-img-top" alt="...">
 					<div class="card-body">
-						<div th:if="${!shop.getReviews().isEmpty()}">
+
+						<div class="clearfix mb-3"><span class="float-start"><a href="#" class="small text-muted"
+																				style="font-size: 15px;">See Reviews</a></span>
+							<span class="fa-stack fa-2x float-end">
+                            <i class="fas fa-star fa-stack-2x" style="color: #efd10c; margin-top: -15px;"></i>
+                            <strong class="fa-stack-1x rating-text"></strong>
+                        </span>
+						</div>
+
+						<h5 class="card-title text-center">Recommend Your Favorite Local Shop</h5>
+						<p class="card-text text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+							Veniam quidem
+							eaque ut eveniet aut quis rerum. Asperiores accusamus harum ducimus velit odit ut.
+							Saepe, iste optio laudantium sed aliquam sequi.</p>
+						<div class="text-center my-4"><a th:href="@{/shop/recommend}" class="btn btn-warning">RECOMMEND
+							A SHOP</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col" th:each="shop : ${shops}">
+			<div class="card h-100 shadow-sm" style="margin-top: 40px;">
+				<img th:src="|data:image/jpeg;base64,${shop.images.get(0).generateBase64Image()}|"
+					 alt="Shop Photo" style="height: 162px;"/>
+				<div class="card-body">
+					<div th:if="${!shop.getReviews().isEmpty()}">
                             <span class="fa-stack fa-2x float-end">
                             <i class="fas fa-star fa-stack-2x" style="color: #efd10c;"></i>
                             <strong class="fa-stack-1x rating-text"
 									th:text="${reviewDao.avgRound(1, shop.id)}"></strong>
-							</span>
-						</div>
-						<div class="clearfix mb-3"></div>
-						<h5 class="card-title text-center" th:text="${shop.name}"></h5>
-						<p class="card-text" th:text="${shop.description}"></p>
-						<div style="display: none" th:text="${shop.id}"></div>
-						<div class="text-center my-4">
-							<a th:href="'/shop/' + ${shop.id}" class="btn btn-primary">GO LOCAL!</a>
-						</div>
+                        </span>
+					</div>
+					<div class="clearfix mb-3">
+					</div>
+					<h3 class="card-title text-center" th:text="${shop.name}"></h3>
+					<p class="card-text" th:text="${shop.description}"></p>
+					<div style="display: none" th:text="${shop.id}"></div>
+					<div class="text-center my-4">
+						<a th:href="'/shop/' + ${shop.id}" class="btn btn-primary">GO LOCAL!</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</main>
+</div>
 <footer th:insert="fragments/footer"></footer>
 </body>
 </html>
