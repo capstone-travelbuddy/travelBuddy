@@ -49,29 +49,28 @@
             }
 
         }
-        @media screen and (min-width: 600px) {
+        /*@media screen and (min-width: 768px) {*/
 
-            /*.navbar-light.responsive a.navbar-toggler {*/
-            /*    display: flex;*/
-            /*    flex-wrap: wrap;*/
-            /*}*/
-            .offcanvas-body.responsive a{
-                position: absolute;
-                display: block;
+        /*    .offcanvas-body.responsive a{*/
+        /*        position: absolute;*/
+        /*        display: block;*/
 
 
+        /*    }*/
+        /*}*/
+
+            @media screen and (max-width: 600px) {
+                .navbar-light .nav-btn {
+                    display: none;
+                }
             }
-        }
-        @media screen and (max-width: 600px){
-            .navbar-light .btn{
-                display: none;
+            @media screen and (min-width: 768px) {
+                .navbar-light .nav-btn {
+                    display: flex;
+                }
+
             }
-        }
-        @media screen and (min-width: 768px){
-            .navbar-light .btn {
-                display: flex;
-            }
-        }
+
 
 </style>
 
@@ -97,7 +96,7 @@
 
             <!--Medium to Large Screen Toggle Icon-->
                     <div class="container-fluid justify-content-end">
-                        <button class="btn" style="background-color: #ef482f;font-size:17px; color: #f2f2f2; font-family: 'Poppins', sans-serif" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"  aria-controls="offcanvasNavbar">
+                        <button class="nav-btn btn-link" style="background-color: #ef482f;font-size:17px; color: #f2f2f2; font-family: 'Poppins', sans-serif" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"  aria-controls="offcanvasNavbar">
                             <i class="fas fa-map-marker-alt">Let's Explore</i>
 
                         </button>
@@ -110,7 +109,7 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title mt-2" id="offcanvasNavbarLabel" style="font-size: 3rem; font-family: 'Poppins', sans-serif">Travel Buddy</h5>
-                <button type="button" class="btn btn-close text-reset mb-5 mr-5" data-bs-dismiss="offcanvas" aria-label="Close">CLOSE</button>
+                <button type="button" class="nav-btn btn-link btn-close text-reset mb-5 mr-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body ml-3">
                 <ul class="navbar-nav flex-grow-1 mt-5" style="font-size: 2rem; font-family: 'Poppins', sans-serif">
@@ -122,7 +121,7 @@
                             <form th:action="@{/logout}" th:method="post">
                                 <a th:href="@{/profile}" th:text=" ${user.username}">Profile</a>
                                 <a class="nav-link" aria-current="page" >
-                                    <button class="nav-link btn-link">Logout</button>
+                                    <button class="nav-btn btn-link">Logout</button>
                                 </a>
                             </form>
                         </div>
@@ -137,7 +136,7 @@
                 </ul>
                 <form class="d-flex mr-3" th:action="@{/search}" method="post" th:object="${shop}" style="align-content: center; width: 35rem; margin-top: 5rem">
                     <input class="form-control me-2" type="search" name="shops" id="shops" th:text="${name}" placeholder="Find Shop By Name" aria-label="Search">
-                    <button class="btn" style="background-color: darkcyan; color: #f2f2f2; font-family: 'Poppins', sans-serif" type="submit">Search</button>
+                    <button class="nav-btn" style="background-color: darkcyan; color: #f2f2f2; font-family: 'Poppins', sans-serif" type="submit">Search</button>
                 </form>
             </div>
         </div>
@@ -145,6 +144,6 @@
 </nav>
 
 <script th:insert="fragments/footer"></script>
-<script th:insert="fragments/footer2"></script>
+<!--<script th:insert="fragments/footer2"></script>-->
 </body>
 </html>
