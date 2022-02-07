@@ -8,37 +8,39 @@
 </head>
 <body id="reviewpage">
 <nav th:include="fragments/navbar"></nav>
+<div class="container-fluid text-center" style="margin-top: -22px; min-height: 100vh;">
+    <div class="card text-center py-4" style="border: 3px solid #0a4275">
+        <h5 class="card-heading" style="color: #0a4275">Thanks For Supporting Our Local Business</h5>
+        <div class="shopname" th:text="${shop.name}"></div>
+        <form th:action="@{'/create/review/shop/' + ${shop.id}}" method="POST">
 
-<div class="card text-center py-4" style="border: 3px solid #0a4275">
-    <h5 class="card-heading" style="color: #0a4275">Thanks For Supporting Our Local Business</h5>
-    <div class="shopname" th:text="${shop.name}"></div>
-    <form th:action="@{'/create/review/shop/' + ${shop.id}}" method="POST">
-
-        <label for="rating"></label>
-        <div id="rating" class="rating">
-            <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-            <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-            <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-            <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-            <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-        </div>
-        <div class="review mt-5 mb-5">
-
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1"></label>
-                <h6>Leave Your Review Below</h6>
-                <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="10"></textarea>
+            <label for="rating"></label>
+            <div id="rating" class="rating">
+                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
             </div>
-        </div>
+            <div class="review mt-5 mb-5">
 
-        <a th:href="'/shop/' + ${shop.id}">
-            <button class="btn btn-success mb-2 cancel-button" style="background-color: #0a4275">CANCEL</button>
-        </a>
-        <button class="btn btn-outline-primary submit" style="background-color: #ef482f">SUBMIT</button>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1"></label>
+                    <h6>Leave Your Review Below</h6>
+                    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="10"></textarea>
+                </div>
+            </div>
 
-    </form>
+            <a th:href="'/shop/' + ${shop.id}">
+                <button class="btn btn-success mb-2 cancel-button" style="background-color: #0a4275">CANCEL</button>
+            </a>
+            <button class="btn btn-outline-primary submit" style="background-color: #ef482f; color: white;">SUBMIT</button>
+
+        </form>
+    </div>
 </div>
 
+<footer th:insert="fragments/footer"></footer>
 </body>
 </html>
 
