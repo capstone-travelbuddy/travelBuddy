@@ -10,7 +10,7 @@
     <div class="card text-center py-4" style="border: 3px solid #0a4275">
         <h1 class="card-heading" style="color: #0a4275">Edit Your Review</h1>
 <!--        <div class="shopname" th:text="${shop.name}"></div>-->
-            <form class="editReview" th:action="@{#}" th:method="post" th:object="${user}">
+            <form class="editReview" th:action="@{#}" th:method="post" th:object="${review}">
 
             <label class="updateRating" for="rating" th:text="${bodyLabel}"></label><br>
             <div id="rating" class="rating">
@@ -24,7 +24,7 @@
 
                 <div class="form-group">
                     <label for="description"></label>
-                    <h2>Leave Your Updated Review Below</h2>
+                    <h2>Update Review Below</h2>
                     <textarea id="description" type="text" name="description" th:value="${review.description}"></textarea>
                 </div>
             </div>
