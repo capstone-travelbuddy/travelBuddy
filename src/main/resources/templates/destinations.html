@@ -8,7 +8,7 @@
 </head>
 <body>
 <nav th:include="fragments/navbar"></nav>
-<div id="destinations" class="container-fluid text-center" style="min-height: 100vh;background-color: #04999e">
+<div id="destinations" class="container-fluid text-center" style="margin-top: -22px; min-height: 100vh;background-color: #04999e">
 <div class="row" style="margin-left: 20px; margin-right: 20px; margin-bottom: 30px;">
     <div class="col-lg-4 col-md-4 col-sm-6" th:each="city : ${cities}">
         <a th:href="@{'/category/' + ${city.id}}" class="city-card-item image-popup">
