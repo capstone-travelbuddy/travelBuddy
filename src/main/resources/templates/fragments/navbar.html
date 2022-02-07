@@ -13,74 +13,68 @@
 
         .navbar-light .navbar-toggler-icon {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 32 32'%3e%3cpath stroke='rgba%28230, 302, 202, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-
-
         }
 
         .span-logo {
-
             display: inline-block;
             vertical-align: top;
             height: 30px;
             width: 150px;
             margin-right: 20px;
-
         }
 
         .span-logo img {
             width: 100%;
             height: auto;
         }
+
         .offcanvas-body{
             overflow-y: inherit;
         }
 
-        /*@media screen and (min-width: 600px) {*/
-        /*    .navbar-light .navbar-toggler {*/
-        /*        display: none;*/
+        @media screen and (min-width: 600px) {
+            .navbar-light .navbar-toggler {
+                display: none;
+            }
+        }
+
+    /*@media screen and (min-width: 600px) {*/
+    /*    .navbar-light a:not(:first-child) {*/
+    /*        display: none;*/
+    /*    }*/
+
+    /*    .navbar-light a.navbar-toggler {*/
+    /*        float: right;*/
+    /*        display: block;*/
+    /*    }*/
+
+    /*}*/
+
+    /*@media screen and (min-width: 768px) {*/
+
+    /*    .offcanvas-body.responsive a {*/
+    /*        position: absolute;*/
+    /*        display: block;*/
 
 
-        /*    }*/
-        /*}*/
+    /*    }*/
+    /*}*/
 
-        /*@media screen and (min-width: 600px){*/
-        /*    .navbar-light a:not(:first-child) {display: none;}*/
-        /*    .navbar-light a.navbar-toggler {*/
-        /*        float: right;*/
-        /*        display: block;*/
-        /*    }*/
+    /*@media screen and (max-width: 600px) {*/
+    /*    .navbar-light .nav-btn {*/
+    /*        display: none;*/
+    /*    }*/
+    /*}*/
 
-        /*}*/
-        /*@media screen and (min-width: 768px) {*/
+    /*@media screen and (min-width: 768px) {*/
+    /*    .navbar-light .nav-btn {*/
+    /*        display: flex;*/
+    /*    }*/
 
-        /*    .offcanvas-body.responsive a{*/
-        /*        position: absolute;*/
-        /*        display: block;*/
-
-
-        /*    }*/
-        /*}*/
-
-            /*@media screen and (max-width: 600px) {*/
-            /*    .navbar-light .nav-btn {*/
-            /*        display: none;*/
-            /*    }*/
-            /*}*/
-            /*@media screen and (min-width: 768px) {*/
-            /*    .navbar-light .nav-btn {*/
-            /*        display: flex;*/
-            /*    }*/
-
-            /*}*/
-
-
+    /*}*/
 </style>
 
-
 <body>
-
-
-
 <nav class="navbar navbar-light" style="background-color: #ef482f">
     <div class="container-fluid align-items-center d-flex flex-nowrap">
         <a class="navbar-brand mt-3" th:href="@{/}">
@@ -104,9 +98,6 @@
                     </div>
                </div>
 <!--        </div>-->
-
-
-
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title mt-2" id="offcanvasNavbarLabel" style="font-size: 3rem; font-family: 'Poppins', sans-serif">Travel Buddy</h5>
@@ -119,14 +110,12 @@
                         <a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
                         </div>
                         <div sec:authorize="isAuthenticated()">
-
                             <a style="color: black" th:href="@{/profile}" th:text=" ${user.username}">Profile</a>
                             <form th:action="@{/logout}" th:method="post">
                                 <a class="nav-link" aria-current="page" >
                                     <button style="color: black" class="nav-btn btn-link">Logout</button>
                                 </a>
                             </form>
-
                         </div>
                     </li>
                     <li class="nav-item">
@@ -135,7 +124,6 @@
                     <li class="nav-item">
                         <a style="color: black" class="nav-link" th:href="@{/team}">About Our Team</a>
                     </li>
-
                 </ul>
                 <form class="d-flex mr-3" th:action="@{/search}" method="post" th:object="${shop}" style="align-content: center; width: 35rem; margin-top: 5rem">
                     <input class="form-control me-2" type="search" name="shops" id="shops" th:text="${name}" placeholder="Find Shop By Name" aria-label="Search">
@@ -143,9 +131,7 @@
                 </form>
             </div>
         </div>
-
 </nav>
-
 <script th:insert="fragments/footer"></script>
 <!--<script th:insert="fragments/footer2"></script>-->
 </body>
