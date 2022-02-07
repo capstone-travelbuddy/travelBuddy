@@ -87,21 +87,24 @@
         </div>
     </div>
 
-
     <div id="shopDetails">
         <div id="shopReviews">
             <div class="shop reviews">
                 <div id="reviews and map responsive" style="text-align: center; width: 100%;">
                     <div class="box"
                          style="float: left; width: 600px; overflow: auto; margin-left: 80px; margin-top: 40px; margin-right: 20px; align-items: center;height: 600px">
+                        <div th:if="${reviewDao.getReviewsByShopIdAndUserType(shop.id, 1).isEmpty()}"></div>
                         <span class="fa-stack fa-2x float-start">
                         <i class="fas fa-star fa-stack-2x" style="color: #efd10c;"></i>
                         <strong class="fa-stack-1x rating-text"
+                                th:unless="${reviewDao.getReviewsByShopIdAndUserType(shop.id, 1).isEmpty()}"
                                 th:text="${reviewDao.localAvgRound(1, shop.id)}"></strong>
                         </span>
+                        <div th:if="${reviewDao.getReviewsByShopIdAndUserType(shop.id, 2).isEmpty()}"></div>
                         <span class="fa-stack fa-2x float-end">
                         <i class="fas fa-star fa-stack-2x" style="color: #efd10c;"></i>
                         <strong class="fa-stack-1x rating-text"
+                                th:unless="${reviewDao.getReviewsByShopIdAndUserType(shop.id, 2).isEmpty()}"
                                 th:text="${reviewDao.travelerAvgRound(1, shop.id)}"></strong>
                         </span>
                         <h1 class="shopReviews" style="text-align: center"> Reviews</h1><br>
