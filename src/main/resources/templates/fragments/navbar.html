@@ -35,20 +35,20 @@
             overflow-y: inherit;
         }
 
-        @media screen and (min-width: 600px) {
-            .navbar-light .navbar-toggler {
-                display: none;
+        /*@media screen and (min-width: 600px) {*/
+        /*    .navbar-light .navbar-toggler {*/
+        /*        display: none;*/
 
-            }
-        }
-        @media screen and (min-width: 600px){
-            .navbar-light a:not(:first-child) {display: none;}
-            .navbar-light a.navbar-toggler {
-                float: right;
-                display: block;
-            }
+        /*    }*/
+        /*}*/
+        /*@media screen and (min-width: 600px){*/
+        /*    .navbar-light a:not(:first-child) {display: none;}*/
+        /*    .navbar-light a.navbar-toggler {*/
+        /*        float: right;*/
+        /*        display: block;*/
+        /*    }*/
 
-        }
+        /*}*/
         /*@media screen and (min-width: 768px) {*/
 
         /*    .offcanvas-body.responsive a{*/
@@ -59,17 +59,17 @@
         /*    }*/
         /*}*/
 
-            @media screen and (max-width: 600px) {
-                .navbar-light .nav-btn {
-                    display: none;
-                }
-            }
-            @media screen and (min-width: 768px) {
-                .navbar-light .nav-btn {
-                    display: flex;
-                }
+            /*@media screen and (max-width: 600px) {*/
+            /*    .navbar-light .nav-btn {*/
+            /*        display: none;*/
+            /*    }*/
+            /*}*/
+            /*@media screen and (min-width: 768px) {*/
+            /*    .navbar-light .nav-btn {*/
+            /*        display: flex;*/
+            /*    }*/
 
-            }
+            /*}*/
 
 
 </style>
@@ -118,11 +118,13 @@
                         </div>
                         <div sec:authorize="isAuthenticated()">
                             <a th:href="@{/profile}" th:text=" ${user.username}">Profile</a>
+
                             <div th:action="@{/logout}" th:method="post">
-                                <a class="nav-link" aria-current="page" >
+                                <a class="btn-link" aria-current="page" >
                                     <button class="nav-btn btn-link">Logout</button>
                                 </a>
                             </div>
+
                         </div>
                     </li>
                     <li class="nav-item">
