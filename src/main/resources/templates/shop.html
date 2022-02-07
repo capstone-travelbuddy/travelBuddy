@@ -8,7 +8,7 @@
 <body id="shop" style="min-height: 100vh; background-color: #04999e">
 <nav th:include="fragments/navbar"></nav>
 
-<h1 style="-webkit-text-stroke: .5px #0a4275; text-align: center; color: white; font-size: xxx-large; font-weight: bolder;"
+<h1 style="-webkit-text-stroke: .5px #0a4275; text-align: center; color: white; font-size: xxx-large; font-weight: bolder; margin-top: 20px; font-family: Roboto"
     th:text="${shop.name}"></h1>
 
 <div class="h1 text-center" th:text="${addLike}"></div>
@@ -238,8 +238,10 @@
             positionOptions: {
                 enableHighAccuracy: true
             },
-            trackUserLocation: true
-
+            fitBoundsOptions: {linear: true, maxZoom: 10},
+            trackUserLocation: true,
+            mapbogl: mapboxgl,
+            showAccuracyCircle: false
         }));
 
         function geocode(search, token) {

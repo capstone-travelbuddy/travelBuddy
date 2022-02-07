@@ -6,6 +6,7 @@
 </head>
 <body id="category" style="background-color: #04999e">
 <nav th:include="fragments/navbar"></nav>
+
 <div class="container-fluid text-center"
 	 style="margin-top: -22px; min-height: 100vh;margin-bottom: 60px;margin-left: auto; margin-right: auto;">
 	<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
@@ -34,7 +35,7 @@
                             <span class="fa-stack fa-2x float-end">
                             <i class="fas fa-star fa-stack-2x" style="color: #efd10c;"></i>
                                 <strong class="fa-stack-1x rating-text">N/A</strong>
-                        </span>
+                            </span>
 					</div>
 					<div th:if="${!shop.getReviews().isEmpty()}">
                             <span class="fa-stack fa-2x float-end">
