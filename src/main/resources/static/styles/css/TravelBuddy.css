@@ -29,6 +29,9 @@
 #teamprofile body {
     background: #b3b3b3;
 }
+#teamprofile .col-md-3{
+
+}
 
 #teamprofile .profile-area {
     padding: 80px 0;
