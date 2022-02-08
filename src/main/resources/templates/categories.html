@@ -18,11 +18,7 @@
              alt="...">
         <div class="card-body">
             <h2 class="card-title text-center" th:text="${category.name}"></h2>
-<!--            <p class="card-text text-center" style="font-size: 15px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda-->
-<!--                deleniti, ea eveniet expedita explicabo id libero modi mollitia necessitatibus nesciunt officiis-->
-<!--                quibusdam, veritatis voluptates! Ducimus fugiat reiciendis soluta. Ad amet animi aperiam aut beatae,-->
-<!--                consequatur cupiditate debitis dignissimos doloremque ea error ex, laboriosam nihil nulla-->
-<!--                perferendis quisquam sunt vero vitae..</p>-->
+            <p class="card-text text-center" style="font-size: 15px;" th:text="${category.description}"></p>
             <div class="footer text-center">
                 <a th:href="${category.type} + '/' + ${city.id}" type="button" class="btn btn-primary" style="background-color: #ef482f; color: white;">GO LOCAL!</a>
             </div>
