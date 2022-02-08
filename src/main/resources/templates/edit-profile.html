@@ -6,7 +6,7 @@
 </head>
 <body id="edit-profile" style="background-color: #b3b3b3;">
 <nav th:include="fragments/navbar"></nav>
-<div class="container-fluid text-center" style="margin-top: -22px; min-height: 100vh;">
+<div class="container-fluid text-center" style="min-height: 100vh;">
 
     <form class="editProfile" th:action="@{#}" th:method="post" th:object="${user}">
         <h1>Edit Profile</h1>

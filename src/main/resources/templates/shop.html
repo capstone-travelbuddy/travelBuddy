@@ -3,12 +3,12 @@
       xmlns="http://www.w3.org/1999/html">
 <head th:include="fragments/header :: header">
     <meta charset="UTF-8">
-    <title id="pageTitle">Shop Page</title>
+    <title id="pageTitle" th:text="${shop.name}"></title>
 </head>
 <body id="shop" style="min-height: 100vh; background-color: #04999e">
 <nav th:include="fragments/navbar"></nav>
 
-<h1 style="-webkit-text-stroke: .5px #0a4275; text-align: center; color: white; font-size: xxx-large; font-weight: bolder;"
+<h1 style="-webkit-text-stroke: .5px #0a4275; text-align: center; color: white; font-size: xxx-large; font-weight: bolder; margin-top: 20px; font-family: Roboto"
     th:text="${shop.name}"></h1>
 
 <div class="h1 text-center" th:text="${addLike}"></div>
@@ -94,22 +94,24 @@
                     <div class="box"
                          style="float: left; width: 600px; overflow: auto; margin-left: 80px; margin-top: 40px; margin-right: 20px; align-items: center;height: 600px">
                         <div th:if="${reviewDao.getReviewsByShopIdAndUserType(shop.id, 1).isEmpty()}"></div>
-                        <span class="fa-stack fa-2x float-start">
+
+                        <div th:if="${reviewDao.getReviewsByShopIdAndUserType(shop.id, 2).isEmpty()}"></div>
+
+                        <h1 class="shopReviews" style="text-align: center" th:text="${shop.name} + '' + ' Reviews'"></h1><br>
+
+                        <p class="localAvg">Local Review Average:<span class="fa-stack fa-md">
                         <i class="fas fa-star fa-stack-2x" style="color: #efd10c;"></i>
                         <strong class="fa-stack-1x rating-text"
                                 th:unless="${reviewDao.getReviewsByShopIdAndUserType(shop.id, 1).isEmpty()}"
                                 th:text="${reviewDao.localAvgRound(1, shop.id)}"></strong>
-                        </span>
-                        <div th:if="${reviewDao.getReviewsByShopIdAndUserType(shop.id, 2).isEmpty()}"></div>
-                        <span class="fa-stack fa-2x float-end">
+                        </span></p>
+
+                        <p class="travelerAvg">Traveler Review Average:<span class="fa-stack fa-md">
                         <i class="fas fa-star fa-stack-2x" style="color: #efd10c;"></i>
                         <strong class="fa-stack-1x rating-text"
                                 th:unless="${reviewDao.getReviewsByShopIdAndUserType(shop.id, 2).isEmpty()}"
                                 th:text="${reviewDao.travelerAvgRound(1, shop.id)}"></strong>
-                        </span>
-                        <h1 class="shopReviews" style="text-align: center"> Reviews</h1><br>
-                        <h5 class="localAvg float-start">Local<br>Avg.</h5>
-                        <h5 class="travelerAvg float-end">Travel<br>Avg.</h5>
+                        </span></p>
 
 
                         <div th:if="${shop.getReviews().isEmpty()}">
@@ -128,11 +130,12 @@
                             <img th:src="@{'data:image/jpeg;base64,'+${review.getUser().getUserImage().generateBase64Image()}}"
                                  alt="User Photo" class="rounded-circle" width="40" height="40"/>
                             <h3 th:text="${review.getUser().username}" style="margin-left: 50px; margin-top: -30px;"></h3>
+
                             <div class="float-right" style="margin-right: -10px;margin-top: -25px;">
                                 <h4 id="review date" th:text="${review.getCreated()}"></h4>
                             </div>
-                            <div th:if="${review.getUserType() == 1}" style="font-weight: bold;">LOCAL</div>
-                            <div th:if="${review.getUserType() == 2}" style="font-weight: bold;">TRAVELER</div>
+                            <div th:if="${review.getUserType() == 1}" style="font-weight: bold; margin-top: 12px;">LOCAL</div>
+                            <div th:if="${review.getUserType() == 2}" style="font-weight: bold; margin-top: 12px;">TRAVELER</div>
 
                             <div class="float-right" style="margin-top: -20px;">
                                 <p th:if="${review.getRating() == 1}"><img class="Stars" th:src="@{/img/star.png}"
