@@ -84,9 +84,13 @@
 												<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
 													th:each="toVisit : ${user.getShopsToVisit()}">
 
+											
+
+
 													<form th:action="'profile/toVisit/shop/' + ${toVisit.id}" method="get" class="d-flex">
 														<a class="mb-0 h6" style="text-align: center; height: fit-content; font-size: 15px; font-weight: bold" th:href="'/shop/' + ${toVisit.id}" th:text="${toVisit.name}"></a>
 														<button class="btn"><i class="fa fa-trash" style="font-size: large"></i></button>
+
 													</form>
 												</li>
 											</ul>

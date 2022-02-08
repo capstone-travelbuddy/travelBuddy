@@ -1255,5 +1255,15 @@ body {
     margin-top: -3px;
 }
 
+.btn-xl {
+    padding: 10px 20px;
+    font-size: 25px;
+    /*border-radius: 10px;*/
+    width: 100%;
+    position: center;
+}
 
+i {
+    margin-right: 0px;
+}
 
