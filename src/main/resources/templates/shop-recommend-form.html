@@ -17,9 +17,9 @@
 
                         <div class="col-md-12">
                             <select class="form-select mt-3" id="city" name="city" required>
-                                <option class="text-muted" selected value="0">Choose a City</option>
+                                <option class="text-muted" style="color: #8D8D8D" selected value="0">Choose a City</option>
                                 <div th:each="city : ${cities}">
-                                    <option class="text-black" th:value="${city.id}" th:text="${city.name}"></option>
+                                    <option class="cityName" th:value="${city.id}" th:text="${city.name}"></option>
                                 </div>
                             </select>
                         </div>
@@ -28,7 +28,7 @@
                             <select class="form-select mt-3" id="category" name="category" required>
                                 <option class="text-muted" selected value="0">Choose a Category</option>
                                 <div th:each="category : ${categories}">
-                                    <option class="text-black" th:value="${category.id}" th:text="${category.name}"></option>
+                                    <option class="categoryTypes" th:value="${category.id}" th:text="${category.name}"></option>
                                 </div>
                             </select>
                         </div>

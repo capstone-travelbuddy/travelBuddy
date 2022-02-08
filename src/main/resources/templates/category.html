@@ -6,7 +6,6 @@
 </head>
 <body id="category" style="background-color: #04999e">
 <nav th:include="fragments/navbar"></nav>
-
 <div class="container-fluid text-center"
 	 style="margin-top: -22px; min-height: 100vh;margin-bottom: 60px;margin-left: auto; margin-right: auto;">
 	<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
@@ -50,7 +49,7 @@
 					<p class="card-text" th:text="${shop.description}"></p>
 					<div style="display: none" th:text="${shop.id}"></div>
 					<div class="text-center my-4">
-						<a th:href="'/shop/' + ${shop.id}" type="button" class="btn btn-primary">GO LOCAL!</a>
+						<a th:href="'/shop/' + ${shop.id}" class="btn-xl btn-primary">GO LOCAL!</a>
 					</div>
 				</div>
 			</div>
