@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title id="pageTitle">Search</title>
 </head>
-<body id="search">
+<body id="search" style="background-color: #04999e">
 <nav th:include="fragments/navbar"></nav>
 <form th:action="@{/search}" method="post"></form>
 <div class="container-fluid text-center"
@@ -50,7 +50,7 @@
 					<p class="card-text" th:text="${shop.description}"></p>
 					<div style="display: none" th:text="${shop.id}"></div>
 					<div class="text-center my-4">
-						<a th:href="'/shop/' + ${shop.id}" type="button" class="btn btn-primary">GO LOCAL!</a>
+						<a th:href="'/shop/' + ${shop.id}" type="button" class="btn btn-primary btn-lg" style="background-color: #ef482f">GO LOCAL!</a>
 					</div>
 				</div>
 			</div>
