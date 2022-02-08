@@ -85,7 +85,7 @@
 													th:each="toVisit : ${user.getShopsToVisit()}">
 													<a class="mb-0 h6" style="text-align: center; height: fit-content; font-size: 15px; font-weight: bold" th:href="'/shop/' + ${toVisit.id}" th:text="${toVisit.name}"></a>
 													<form th:action="'profile/toVisit/shop/' + ${toVisit.id}" method="get">
-														<button class="btn"><i class="fa fa-trash"></i></button>
+														<button class="btn-xl"><i class="fa fa-trash"></i></button>
 													</form>
 												</li>
 											</ul>
