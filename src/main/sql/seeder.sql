@@ -132,7 +132,32 @@ VALUES ('Jack Allen''s Kitchen Oak Hill', '7720 State Hwy 71 West, Austin, TX 78
         'https://thepeachedtortilla.com', 'http://instagram.com/peachedtortilla');
 
 INSERT INTO shops(name, address, category_id, city_id, description, website, socialurl)
-VALUES ('')
+VALUES ('La La Land Kind Cafe', '5626 Bell Ave, Dallas, TX 75206', 1, 3,
+        'Charming old home transformed into an organic coffee & tea shop with snacks & a dog-friendly patio.',
+        'http://lalalandkindcafe.com/', 'https://www.instagram.com/lalalandkindcafe/'),
+       ('Ascension Coffee', '1621 Oak Lawn Ave, Dallas, TX 75207', 1, 3,
+        'Stylish coffeehouse serving premium slow-roasted coffee, boutique wine, plus brunch & bar bites.',
+        'http://ascensiondallas.com/', 'https://www.instagram.com/ascensioncoffee/'),
+       ('Sip Stir Coffee House', '3800 McKinney Ave #180, Dallas, TX 75204', 1, 3,
+        'Modern, airy gathering spot for select coffee, espresso drinks & tea, plus pastries & cafe fare.',
+        'http://www.sipstircoffeehouse.com/', 'http://instagram.com/sipstircoffee'),
+       ('Opening Bell Coffee', '1409 Botham Jean Blvd, Dallas, TX 75215', 1, 3,
+        'Breakfast tacos, sandwiches, coffee, wine & beer at hip, relaxed hangout with live music & WiFi.',
+        'http://www.openingbellcoffee.com/', 'https://www.instagram.com/openingbellcoffee');
+
+INSERT INTO shops(name, address, category_id, city_id, description, website, socialurl)
+VALUES ('Deep Ellum Brewing Company', '2823 St Louis St, Dallas, TX 75226', 2, 3,
+        'Tap room & brewery for a variety of craft beers, also offering a food menu & a large outdoor patio.',
+        'https://deepellumbrewing.com/taprooms/', 'https://www.instagram.com/deepellumbrewing'),
+       ('Craft and Growler', '3601 Parry Ave, Dallas, TX 75226', 2, 3,
+        'Guests pull up keg stools to sample a wide array of local craft beers, or get growlers filled to go.',
+        'https://craftandgrowler.com', 'https://www.instagram.com/craftandgrowler/'),
+       ('Four Corners Brewing Company', '1311 S Ervay St, Dallas, TX 75215', 2, 3,
+        'Urban craft brewery in a former carriage house, with guided tours & a taproom hosting weekly events.',
+        'https://fcbrewing.com', 'https://www.instagram.com/fcbrewing/'),
+       ('Peticolas Brewing Company Taproom', '1301 Pace St, Dallas, TX 75207', 2, 3,
+        'Laid-back, 3-level taproom in a former warehouse offering a rotating list of housemade craft brews.',
+        'https://www.peticolasbrewing.com', 'https://instagram.com/peticolas/');
 
 #     https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl_QEd-Vbjc&#45;&#45;fCciZgMnXQmXiXOuc3mHi1w&usqp=CAU
 #     https://austin.com/wp-content/uploads/2020/08/Austin-Lady-Bird-Lake-scaled-e1598026929283.jpeg.jpeg
