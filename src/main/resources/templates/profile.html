@@ -107,7 +107,7 @@
                                                            th:href="'/shop/' + ${toVisit.id}"
                                                            th:text="${toVisit.name}"></a>
                                                         <button class="btn float-end"><i class="fa fa-trash"
-                                                                               style="font-size: large;"></i>
+                                                                                         style="font-size: large;"></i>
                                                         </button>
                                                     </form>
                                                 </li>
@@ -142,48 +142,52 @@
                                         <h5 class="d-flex text-center mb-3 align-items-center flex-wrap"
                                             style="height: fit-content;  font-size: 20px; font-weight: bold; margin-left: 75px">
                                             [[${user.username}]]'s Reviews and Ratings:</h5>
-                                    </div>
-                                    <div class="m-3" style="margin-top: 20px;" th:each="review : ${user.getReviews()}">
-                                        <div class="float-right" style="margin-top: -10px;">
-                                            <p th:if="${review.getRating() == 1}"><img class="Stars"
-                                                                                       th:src="@{/img/star.png}"></p>
-                                            <p th:if="${review.getRating() == 2}"><img class="Stars"
-                                                                                       th:src="@{/img/star.png}"><img
-                                                    class="Stars" th:src="@{/img/star.png}"></p>
-                                            <p th:if="${review.getRating() == 3}"><img class="Stars"
-                                                                                       th:src="@{/img/star.png}"><img
-                                                    class="Stars" th:src="@{/img/star.png}"><img class="Stars"
-                                                                                                 th:src="@{/img/star.png}">
-                                            </p>
-                                            <p th:if="${review.getRating() == 4}"><img class="Stars"
-                                                                                       th:src="@{/img/star.png}"><img
-                                                    class="Stars" th:src="@{/img/star.png}"><img class="Stars"
-                                                                                                 th:src="@{/img/star.png}"><img
-                                                    class="Stars" th:src="@{/img/star.png}"></p>
-                                            <p th:if="${review.getRating() == 5}"><img class="Stars"
-                                                                                       th:src="@{/img/star.png}"><img
-                                                    class="Stars" th:src="@{/img/star.png}"><img class="Stars"
-                                                                                                 th:src="@{/img/star.png}"><img
-                                                    class="Stars" th:src="@{/img/star.png}"><img class="Stars" ,
-                                                                                                 th:src="@{/img/star.png}">
-                                            </p>
+
+                                        <div class="m-3" style="margin-top: 30px;"
+                                             th:each="review : ${user.getReviews()}">
+                                            <div class="float-right" style="margin-top: 5px;">
+                                                <p th:if="${review.getRating() == 1}"><img class="Stars"
+                                                                                           th:src="@{/img/star.png}">
+                                                </p>
+                                                <p th:if="${review.getRating() == 2}"><img class="Stars"
+                                                                                           th:src="@{/img/star.png}"><img
+                                                        class="Stars" th:src="@{/img/star.png}"></p>
+                                                <p th:if="${review.getRating() == 3}"><img class="Stars"
+                                                                                           th:src="@{/img/star.png}"><img
+                                                        class="Stars" th:src="@{/img/star.png}"><img class="Stars"
+                                                                                                     th:src="@{/img/star.png}">
+                                                </p>
+                                                <p th:if="${review.getRating() == 4}"><img class="Stars"
+                                                                                           th:src="@{/img/star.png}"><img
+                                                        class="Stars" th:src="@{/img/star.png}"><img class="Stars"
+                                                                                                     th:src="@{/img/star.png}"><img
+                                                        class="Stars" th:src="@{/img/star.png}"></p>
+                                                <p th:if="${review.getRating() == 5}"><img class="Stars"
+                                                                                           th:src="@{/img/star.png}"><img
+                                                        class="Stars" th:src="@{/img/star.png}"><img class="Stars"
+                                                                                                     th:src="@{/img/star.png}"><img
+                                                        class="Stars" th:src="@{/img/star.png}"><img class="Stars" ,
+                                                                                                     th:src="@{/img/star.png}">
+                                                </p>
+                                            </div>
+                                            <a class="m-3 w-95" th:href="'/shop/' + ${review.shop.id}"
+                                               th:text="${review.shop.name}"
+                                               style="text-align: center; height: fit-content; font-size: 15px; font-weight: bold;"></a>
+                                            <div class="card-text m-3 w-95"
+                                                 style="height: fit-content; font-size: 15px; font-weight: bold"
+                                                 th:text="${review.description}"></div>
+                                            <div class="btn-toolbar mt-3 mb-3 w-100">
+                                                <form class="col" th:action="'/review/edit/' + ${review.id}"
+                                                      method="get">
+                                                    <button class="btn-primary btn-lg float-start">Edit</button>
+                                                </form>
+                                                <form class="col" th:action="'/review/delete/' + ${review.id}"
+                                                      method="post">
+                                                    <button class="btn-danger btn-lg float-end">Delete</button>
+                                                </form>
+                                            </div>
+                                            <hr>
                                         </div>
-                                        <a class="m-3 w-95" th:href="'/shop/' + ${review.shop.id}"
-                                           th:text="${review.shop.name}"
-                                           style="text-align: center; height: fit-content; font-size: 15px; font-weight: bold"></a>
-                                        <div class="card-text m-3 w-95"
-                                             style="height: fit-content; font-size: 15px; font-weight: bold"
-                                             th:text="${review.description}"></div>
-                                        <div class="btn-toolbar mt-3 mb-3 w-100">
-                                            <form class="col" th:action="'/review/edit/' + ${review.id}" method="get">
-                                                <button class="btn-primary btn-lg float-start">Edit</button>
-                                            </form>
-                                            <form class="col" th:action="'/review/delete/' + ${review.id}"
-                                                  method="post">
-                                                <button class="btn-danger btn-lg float-end">Delete</button>
-                                            </form>
-                                        </div>
-                                        <hr>
                                     </div>
                                 </div>
                             </div>
